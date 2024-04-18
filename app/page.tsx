@@ -40,10 +40,13 @@ export default function Home() {
 
   return (
     <div
-      className="relative overflow-x-hidden overflow-y-scroll w-screen h-screen no-scrollbar text-center m-0 p-0 font-[saibo]"
+      className="relative overflow-x-hidden overflow-y-scroll w-screen h-screen no-scrollbar text-center m-0 p-0 font-[saibo] select-none"
       onClick={(e) => {
-        generateHeart(e.pageX, e.pageY);
-        console.log(e);
+        if (boxallRef.current)
+          generateHeart(
+            e.clientX - 15,
+            e.clientY + boxallRef.current.scrollTop - 20
+          );
       }}
       ref={boxallRef}
     >
