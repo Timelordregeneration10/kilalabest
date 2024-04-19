@@ -10,6 +10,9 @@ export default function Home() {
     Array<{ px: number; py: number; order: number }>
   >([]);
 
+  const [showLeaveWeb, setShowLeaveWeb] = useState(false);
+  const [leaveWebTimeout, setLeaveWebTimeout] = useState<NodeJS.Timeout | null>(null);
+
   const generateHeart = (px: number, py: number) => {
     console.log(px, py);
     // setHeartlist((arr) => {
@@ -40,18 +43,38 @@ export default function Home() {
 
   return (
     <div
-      className="relative overflow-x-hidden overflow-y-scroll w-screen h-screen no-scrollbar text-center m-0 p-0 font-[saibo] select-none"
+      className="overflow-x-hidden overflow-y-scroll w-screen h-screen no-scrollbar text-center m-0 p-0 font-[saibo] select-none"
       onClick={(e) => {
         if (boxallRef.current)
           generateHeart(
-            e.clientX - 15,
-            e.clientY + boxallRef.current.scrollTop - 20
+            e.pageX - 15,
+            e.pageY - 20
           );
+      }}
+      onMouseLeave={() => {
+        setLeaveWebTimeout(setTimeout(() => {
+          setShowLeaveWeb(true);
+        }, 2000))
+      }}
+      onMouseEnter={() => {
+        if (leaveWebTimeout)
+          clearTimeout(leaveWebTimeout);
+        setLeaveWebTimeout(null);
       }}
       ref={boxallRef}
     >
       <div className="h-[75vh]">rmt</div>
       <div className="h-[75vh]">rmt</div>
+
+      {/* leaveweb page */}
+      {showLeaveWeb && (
+        <div className="absolute top-0 left-0 w-screen h-screen z-[99] bg-[url(./components/img/musedash/leaving.png)] bg-cover bg-center lg:bg-[length:100vw_100vh]">
+          <div className="absolute top-[43vh] right-0 px-[2vmax] text-[4vmax] sm:text-[6vmax] bg-[rgb(255,158,229)] text-white">you have leaved!</div>
+          <button onClick={() => { setShowLeaveWeb(false) }} className="absolute bottom-[25vh] right-[5vw] px-[2vmax] text-[5vmax] bg-[rgb(124,255,130)] text-white border-hidden transition-all hover:bg-[rgb(55,255,0)]">return</button>
+        </div>
+      )}
+
+      {/* heart bubble */}
       {heartList.map((item) => {
         return (
           <Image
