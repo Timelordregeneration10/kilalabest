@@ -1,4 +1,13 @@
 
+# metadata useclient分离 ✅
+
+# navi，navi宽度适配 ✅
+
+# kilalayout彻底完成 ✅
++ 向下滑动丝滑隐藏navi部分 => useState & style & transition
++ 不同宽度隐藏部分的navi高度不同 => useWindow钩子动态获取innerwidth & useEffect & useCallback
++ layout向page传参 => 上下文失败，暂时使用 requestAnimationFrame & localstorage
+
 # new 首屏
 
 ​初见transform左右，从下往上
@@ -30,3 +39,18 @@
 ​路由
 ​
 ​next大一统所有项目，个人网站为homepage
+
+# 新navi：
+- 首屏不在navi
+- RMT
+- 项目
+- 测试
+- 应用（生日快乐等非项目）
+- 工具
+- 番
+- 游戏
+- 画画
+
+# 主页只放入口和炫酷特效
+
+# 点按钮tween划到对应scrolltop不在navi

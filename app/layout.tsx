@@ -5,6 +5,7 @@ import { Providers as UIProvider } from "@/app/providers/nextui";
 
 import Head from "next/head";
 import { Toaster } from "react-hot-toast";
+import { KilaLayout } from "./providers/kilalayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,7 +41,11 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
       <body className={inter.className}>
-        <UIProvider>{children}</UIProvider>
+        <UIProvider>
+          <KilaLayout>
+            {children}
+          </KilaLayout>
+        </UIProvider>
         <Toaster />
       </body>
     </html>
