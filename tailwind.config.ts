@@ -33,10 +33,17 @@ const config: Config = {
             opacity: "0",
           },
         },
+        rmtcycle: {
+          from: {},
+          to: {
+            transform: "translateX(-50%)",
+          }
+        }
       },
       animation: {
         streamer: "streamer 5s infinite linear",
         personwebheart: "personwebheart 2s linear forwards",
+        rmtcycle: "rmtcycle 10s linear infinite backwards"
       },
     },
   },
