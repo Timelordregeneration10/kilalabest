@@ -8,7 +8,17 @@
 + 不同宽度隐藏部分的navi高度不同 => useWindow钩子动态获取innerwidth & useEffect & useCallback
 + layout向page传参 => 上下文失败，暂时使用 requestAnimationFrame & localstorage
 
-# new 首屏
+# 新素材寻找 ✅
++ 每部分bg
++ 仿mihoho首屏video
+
+# new 首屏框架 ✅
++ 光敏癫痫警告
++ 调整视频大小，1024px以下object-cover, 1024px以上object-fill
++ 首屏文案
+
+# 首屏细节
+- 角落核心概念式边框交合*2
 
 ​初见transform左右，从下往上
 ​加载更多

@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import Foot from '../components/footer';
+import Foot from './components/footer';
 import heartpng from "../components/img/heart.png";
 import { useRouter } from "next/navigation";
 import useWindow from "../hooks/useWindow";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
+import cookie from "js-cookie";
 
 export function KilaLayout({ children }: { children: React.ReactNode }) {
     const router = useRouter();
@@ -16,6 +18,9 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
     const [showLeaveWeb, setShowLeaveWeb] = useState(false);
     const [leaveWebTimeout, setLeaveWebTimeout] = useState<NodeJS.Timeout | null>(null);
 
+
+    const { isOpen: isWarningOpen, onOpen: onWarningOpen, onOpenChange: onWarningOpenChange } = useDisclosure();
+
     const contactItems = [
         { id: 'QQ', hoverColor: 'hover:text-[rgb(255,255,139)]', content: '3497049745' },
         { id: 'Wechat', hoverColor: 'hover:text-[rgb(255,139,139)]', content: 'timelord10point5' },
@@ -24,13 +29,13 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
 
     const naviItems = [
         { id: 'RMT', url: '/RMT' },
-        { id: 'Animes', url: '/Animes' },
         { id: 'Projects', url: '/Projects' },
-        { id: 'Games', url: '/Games' },
-        { id: 'Drawings', url: '/Drawings' },
         { id: 'Appications', url: '/Appications' },
         { id: 'Attempts', url: '/Attempts' },
         { id: 'Tools', url: '/Tools' },
+        { id: 'Animes', url: '/Animes' },
+        { id: 'Games', url: '/Games' },
+        { id: 'Drawings', url: '/Drawings' },
     ];
 
     const [contactContent, setContactContent] = useState('CONTACT ME');
@@ -87,7 +92,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
         requestAnimationFrame(setScrollTop);
     }
     useEffect(() => {
-        if(localStorage.getItem('kilaScrollTop')) boxallRef.current?.scrollTo(0, parseInt(localStorage.getItem('kilaScrollTop') as string));
+        if (localStorage.getItem('kilaScrollTop')) boxallRef.current?.scrollTo(0, parseInt(localStorage.getItem('kilaScrollTop') as string));
         setScrollTop();
     }, []);
 
@@ -125,7 +130,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
             {/* navi */}
             <div className="absolute top-0 left-0 w-screen text-white select-none z-[10] flex flex-col">
                 <div className="w-screen lg:h-[10vh] h-[12vh] sm:h-[16vh] flex lg:flex-row flex-col border-b-2 border-white overflow-hidden transition-[height_opacity] duration-500"
-                    style={{ height: navitopHeight, opacity: navitopHeight==='0vh'?'0.2':'1' }}>
+                    style={{ height: navitopHeight, opacity: navitopHeight === '0vh' ? '0.2' : '1' }}>
                     <div className="w-screen lg:w-[50vw] h-[6vh] sm:h-[8vh] lg:h-[10vh] border-white flex justify-center items-center lg:border-r-2 border-b-2 lg:border-b-0">
                         <div className="w-[88vw] lg:w-[44vw] h-[6vh] text-[2.4vmax] overflow-hidden pt-2 lg:p-0">
                             <div className="h-[6vh] w-[200vmax] animate-rmtcycle transition-colors duration-700 hover:text-[rgb(145,190,240)]">
@@ -138,7 +143,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
                             Nicholas Burkhardt
                         </div>
                         <div className=" w-[40%] text-[1.5vmax] flex flex-col">
-                            <div className=" h-[50%] border-r-2 flex justify-center items-center border-b-2 border-white transition-colors duration-500 hover:text-[rgb(255,158,229)]">
+                            <div className=" select-text h-[50%] border-r-2 flex justify-center items-center border-b-2 border-white transition-colors duration-500 hover:text-[rgb(255,158,229)]">
                                 {contactContent}
                             </div>
                             <div className="h-[50%] flex flex-row justify-around items-center ">
@@ -168,9 +173,35 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
 
             </div>
 
+            {/* modal for 光敏癫痫 */}
+            {!cookie.get('lightWarning') && (
+                <Modal isOpen={true} defaultOpen={true} isDismissable={false} hideCloseButton={true} onOpenChange={onWarningOpenChange}
+                    className=" bg-warning bg-cover sm:bg-contain bg-center lg:bg-[length:100%_100%]" size='3xl'>
+                    <ModalContent>
+                        {(onClose) => (
+                            <>
+                                <ModalHeader></ModalHeader>
+                                <ModalBody>
+                                    <div className="lg:h-[40vh] sm:h-[30vh] h-[20vh]"></div>
+                                </ModalBody>
+                                <ModalFooter>
+                                    <Button color="danger" variant="light" onPress={() => {
+                                        cookie.set("lightWarning", "accept", { expires: 365 });
+                                        onClose();
+                                    }}>
+                                        了解
+                                    </Button>
+                                </ModalFooter>
+                            </>
+                        )}
+                    </ModalContent>
+                </Modal>
+            )}
+
+
             {/* leaveweb page */}
             {showLeaveWeb && (
-                <div className="absolute top-0 left-0 w-screen h-screen z-[99] bg-[url(./components/img/musedash/leaving.png)] bg-cover bg-center lg:bg-[length:100vw_100vh]">
+                <div className="absolute top-0 left-0 w-screen h-screen z-[99] bg-leaveweb bg-cover bg-center lg:bg-[length:100vw_100vh]">
                     <div className="absolute top-[35vh] right-0 px-[2vmax] text-[4vmax] sm:text-[6vmax] bg-[rgb(255,158,229)] text-white">you have leaved!</div>
                     <button onClick={() => { setShowLeaveWeb(false) }} className="absolute bottom-[25vh] right-[5vw] px-[2vmax] text-[5vmax] bg-[rgb(124,255,130)] text-white border-hidden hover:bg-[rgb(55,255,0)]">return</button>
                 </div>
@@ -185,7 +216,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
                         src={heartpng}
                         alt="heart"
                         key={item.order}
-                        className={`absolute w-[40px] h-[40px] select-none pointer-events-none animate-personwebheart`}
+                        className={`absolute w-[40px] h-[40px] select-none pointer-events-none animate-personwebheart z-[2147483647]`}
                         style={{ top: item.py + "px", left: item.px + "px" }}
                     ></Image>
                 );
