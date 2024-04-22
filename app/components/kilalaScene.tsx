@@ -4,7 +4,7 @@ export default function KilalaScene() {
     return (
         <div className="h-screen w-screen bg-cover bg-center lg:bg-[length:100vw_100vh] relative">
             <video src="/kilalascene.mp4" autoPlay={true} loop={true} muted={true} playsInline={true} className="w-screen h-screen object-cover lg:object-fill"></video>
-            <div className="absolute top-0 left-0 w-screen h-screen bg-[#000000cf]">
+            <div className="absolute top-0 left-0 w-screen h-screen bg-[#000000af]">
                 {/* <div className="absolute"> */}
                     <div className="absolute top-[30vh] lg:top-[25vh] leading-[18vh] lqlm:leading-[24vh] left-[10vw] w-[80vw] h-[50vh] text-[20.4vh] lqlm:text-[32.4vh] md:text-[22.4vw] overflow-visible flex justify-center items-center text-transparent bg-kilalascene bg-clip-text bg-contain opacity-60 bg-center ">雷绮罗姆</div>
                     <div className="absolute top-[30vh] lg:top-[25vh] leading-[18vh] lqlm:leading-[24vh] left-[10vw] w-[80vw] h-[50vh] text-[20.4vh] lqlm:text-[32.4vh] md:text-[22.4vw] overflow-visible flex justify-center items-center text-transparent bg-kilalascene bg-clip-text bg-contain animate-sanInfinity opacity-60 bg-center ">雷绮罗姆</div>
