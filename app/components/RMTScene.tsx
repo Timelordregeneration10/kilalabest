@@ -1,166 +1,121 @@
-import bixinRem from "./img/rmt/bixinRem.webp";
-import fushouRem from "./img/rmt/fushouRem.webp";
+import useWindow from "../hooks/useWindow";
 import heavenRem from "./img/rmt/heavenRem.webp";
-import jpegRem from "./img/rmt/bixinRem.webp";
+import jpegRem from "./img/rmt/jpegRem.webp";
 import sisRem1Rem from "./img/rmt/sisRem1.webp";
 import sisRem2Rem from "./img/rmt/sisRem2.webp";
 import wangjiangRem from "./img/rmt/wangjiangRem.webp";
-import weixianRem from "./img/rmt/weixianRem.webp";
-import wyyRem from "./img/rmt/wyyRem.webp";
 import Image from "next/image";
 
+const Rems = [
+  {
+    rid: "wangjiangRem",
+    rsrc: wangjiangRem,
+    rscaleX: -1,
+    rscaleY: -1,
+    fwidth: 'w-[55vmax]',
+    fheight: 'h-[200vmin]',
+    rwidth: 672,
+    rheight: 1132,
+    rtranslateX: 48,
+    rtranslateY: 20,
+    rzIndex: 'z-[1]',
+    rposition: "left-0",
+  },
+  {
+    rid: "sisRem1Rem",
+    rsrc: sisRem1Rem,
+    rscaleX: 0.7,
+    rscaleY: -1,
+    fwidth: 'w-[80vmax]',
+    fheight: 'h-[120vmin]',
+    rwidth: 1002,
+    rheight: 744,
+    rtranslateX: -40,
+    rtranslateY: 80,
+    rzIndex: 'z-[2]',
+    rposition: "right-0",
+  },
+  {
+    rid: "jpegRem",
+    rsrc: jpegRem,
+    rscaleX: -0.8,
+    rscaleY: -1.6,
+    fwidth: 'w-[90vmax]',
+    fheight: 'h-[250vmin]',
+    rwidth: 1600,
+    rheight: 2212,
+    rtranslateX: 60,
+    rtranslateY: 160,
+    rzIndex: 'z-[3]',
+    rposition: "left-0",
+  },
+  {
+    rid: "sisRem2Rem",
+    rsrc: sisRem2Rem,
+    rscaleX: 1,
+    rscaleY: -1.2,
+    fwidth: 'w-[78vmax]',
+    fheight: 'h-[210vmin]',
+    rwidth: 992,
+    rheight: 1403,
+    rtranslateX: -100,
+    rtranslateY: 220,
+    rzIndex: 'z-[4]',
+    rposition: "right-0",
+  },
+  {
+    rid: "heavenRem",
+    rsrc: heavenRem,
+    rscaleX: -1,
+    rscaleY: -1.2,
+    fwidth: 'w-[120vmax]',
+    fheight: 'h-[250vmin]',
+    rwidth: 1996,
+    rheight: 2994,
+    rtranslateX: 120,
+    rtranslateY: 300,
+    rzIndex: 'z-[5]',
+    rposition: "left-0",
+  },
+];
+
 export default function RMTScene({ scrollTop }: { scrollTop: number }) {
-  const Rems = [
-    {
-      rid: "bixinRem",
-      rsrc: bixinRem,
-      rscaleX: 0,
-      rscaleY: -4,
-      fwidth: 26,
-      fheight: 70,
-      rwidth: 656,
-      rheight: 1166,
-      rtranslateX: 0,
-      rtranslateY: 45,
-      rzIndex: -1,
-      rposition: "text-end",
-    },
-    {
-      rid: "fushouRem",
-      rsrc: fushouRem,
-      rscaleX: 0,
-      rscaleY: -1,
-      fwidth: 25,
-      fheight: 70,
-      rwidth: 640,
-      rheight: 1024,
-      rtranslateX: 0,
-      rtranslateY: 13,
-      rzIndex: 1,
-      rposition: "text-start",
-    },
-    {
-      rid: "heavenRem",
-      rsrc: heavenRem,
-      rscaleX: -0.9,
-      rscaleY: -3.2,
-      fwidth: 120,
-      fheight: 200,
-      rwidth: 1996,
-      rheight: 2994,
-      rtranslateX: 50,
-      rtranslateY: 300,
-      rzIndex: 1,
-      rposition: "text-start",
-    },
-    {
-      rid: "jpegRem",
-      rsrc: jpegRem,
-      rscaleX: -1,
-      rscaleY: -1.6,
-      fwidth: 90,
-      fheight: 150,
-      rwidth: 1600,
-      rheight: 2212,
-      rtranslateX: 20,
-      rtranslateY: 120,
-      rzIndex: 1,
-      rposition: "text-start",
-    },
-    {
-      rid: "sisRem1Rem",
-      rsrc: sisRem1Rem,
-      rscaleX: 0.7,
-      rscaleY: -2,
-      fwidth: 50,
-      fheight: 120,
-      rwidth: 1002,
-      rheight: 744,
-      rtranslateX: -50,
-      rtranslateY: 60,
-      rzIndex: 1,
-      rposition: "text-end",
-    },
-    {
-      rid: "sisRem2Rem",
-      rsrc: sisRem2Rem,
-      rscaleX: 0.5,
-      rscaleY: -3.2,
-      fwidth: 26,
-      fheight: 70,
-      rwidth: 992,
-      rheight: 1403,
-      rtranslateX: -100,
-      rtranslateY: 180,
-      rzIndex: 1,
-      rposition: "text-end",
-    },
-    {
-      rid: "wangjiangRem",
-      rsrc: wangjiangRem,
-      rscaleX: 0,
-      rscaleY: -3,
-      fwidth: 55,
-      fheight: 140,
-      rwidth: 672,
-      rheight: 1132,
-      rtranslateX: -15,
-      rtranslateY: 65,
-      rzIndex: -1,
-      rposition: "text-center",
-    },
-    {
-      rid: "weixianRem",
-      rsrc: weixianRem,
-      rscaleX: -0.4,
-      rscaleY: -2.6,
-      fwidth: 30,
-      fheight: 120,
-      rwidth: 800,
-      rheight: 1200,
-      rtranslateX: 0,
-      rtranslateY: 0,
-      rzIndex: 1,
-      rposition: "text-start",
-    },
-    {
-      rid: "wyyRem",
-      rsrc: wyyRem,
-      rscaleX: 0,
-      rscaleY: -2,
-      fwidth: 55,
-      fheight: 120,
-      rwidth: 1475,
-      rheight: 2074,
-      rtranslateX: 17.5,
-      rtranslateY: 0,
-      rzIndex: -2,
-      rposition: "text-center",
-    },
-  ];
+
+  const windowWidth = useWindow().width;
+  const windowScaleX = windowWidth < 640 ? 1 : 1;
+  const windowScaleY = windowWidth < 640 ? -1 : 1;
 
   return (
-    <div className=" h-[200vh] w-screen bg-rmt bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
+    <div className=" h-[370vh] w-screen bg-rmt bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
+      {/* <div className="fixed pointer-events-none top-0 left-0 w-screen h-screen z-[0] bg-[#0000003f]"
+        style={{ clipPath: `inset(${scrollTop >= innerHeight ? 0 : (innerHeight - scrollTop) / innerHeight * 100}% 0% ${scrollTop <= innerHeight * 3.7 ? 0 : scrollTop >= innerHeight * 4.7 ? 100 : (scrollTop - innerHeight * 3.7) / innerHeight * 100}% 0%)` }}
+      ></div>
+      <div className="fixed pointer-events-none top-0 left-0 w-screen h-screen z-[6] "
+        style={{ clipPath: `inset(${scrollTop >= innerHeight ? 0 : (innerHeight - scrollTop) / innerHeight * 100}% 0% ${scrollTop <= innerHeight * 3.7 ? 0 : scrollTop >= innerHeight * 4.7 ? 100 : (scrollTop - innerHeight * 3.7) / innerHeight * 100}% 0%)` }}
+      >
+        <div className="absolute top-[30vh] lg:top-[25vh] leading-[18vh] lqlm:leading-[24vh] left-[10vw] w-[80vw] h-[50vh] text-[20.4vh] lqlm:text-[32.4vh] md:text-[38.4vw] overflow-visible flex justify-center items-center text-transparent bg-rmt bg-clip-text bg-contain bg-center opacity-80">
+          RMT
+        </div>
+      </div> */}
+      <a className=" absolute bottom-0 right-0 text-white text-[24.4vmax] mr-[10vmin] [text-shadow:_0.5vw_0.5vw_0.2vw_#91bef0] cursor-pointer "
+        href="/RMT">RMT</a>
       {Rems.map((Rem) => {
         return (
-          <div key={Rem.rid} className={` h-0 w-screen ${Rem.rposition} `}>
-            <Image
-              src={Rem.rsrc}
-              width={Rem.rwidth}
-              height={Rem.rheight}
-              alt={Rem.rid}
-              className={` w-[${Rem.fwidth}] h-[${Rem.fheight}] z-[${Rem.rzIndex}] `}
-              style={{
-                transform: `translate(${
-                  ((scrollTop - window.innerHeight) / 20) * Rem.rscaleX +
-                  Rem.rtranslateX
-                }vw,$${
-                  ((scrollTop - window.innerHeight) / 20) * Rem.rscaleY +
-                  Rem.rtranslateY
-                }vh)`,
-              }}
-            ></Image>
-          </div>
+          <Image
+            key={Rem.rid}
+            src={Rem.rsrc}
+            width={Rem.rwidth}
+            height={Rem.rheight}
+            alt={Rem.rid}
+            className={` ${Rem.fwidth} ${Rem.fheight} ${Rem.rzIndex} absolute top-0 ${Rem.rposition} pointer-events-none transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 opacity-90 `}
+            style={{
+              transform: `translate(${(scrollTop / 20) * windowScaleX * Rem.rscaleX +
+                Rem.rtranslateX
+                }vmax,${(scrollTop / 20) * windowScaleY * Rem.rscaleY +
+                Rem.rtranslateY
+                }vmin)`,
+            }}
+          ></Image>
         );
       })}
     </div>
