@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import KilalaScene from "./components/kilalaScene";
+import RMTScene from "./components/RMTScene";
 
 export default function Home() {
 
@@ -19,6 +20,7 @@ export default function Home() {
     return (
         <div>
             <KilalaScene></KilalaScene>
+            <RMTScene scrollTop={scrollTop}></RMTScene>
             <div className="h-[75vh]">rmt</div>
             <div className="h-[75vh]">rmt</div>
             <div>scrollTop: {scrollTop}</div>
