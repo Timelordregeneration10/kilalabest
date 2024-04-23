@@ -28,47 +28,61 @@
 # RMT细节
 - 文案
 
-​初见transform左右，从下往上
-​加载更多
-​ico图标用户可用性
-​原神启动
-​更多雷姆
-​不要电话
-​链接anilist
-​边框装饰
-​雷姆圣经字体设计
-​第一页为Nicholas no 个人网站（内含类似核心技术边框标签，悬浮（点击（或者settimeout））后魔法阵分裂样分散并显示更多）
-​关于视差滚动则需要改成近慢远快来增加透视感
-​bilibilitop鼠标进入区域后左右移动改变横向位置
-​视差滚动和bilibili都可以加入opacity
-​加入图片懒加载
-​生日快乐系列
-​clip-path应用（自定义对抗线，传送门预制path，水花，鼠标位置反色圈，clip-path轮播图，所有的出现消失动效都可以clip-path）
-​ai绘图得到素材
-​移动端适配？
+# notes
+? ​初见transform左右，从下往上
++ ​加载更多=>next自带懒加载
++ ​ico图标用户可用性=>deprecated
++ ​更多雷姆=>RMT
++ ​不要电话
+- ​链接anilist
+? ​边框装饰
+!! ​雷姆圣经字体设计
++ ​第一页为Nicholas no 个人网站（内含类似核心技术边框标签，悬浮（点击（或者settimeout））后魔法阵分裂样分散并显示更多）
+​+ 关于视差滚动则需要改成近慢远快来增加透视感
+​- bilibilitop鼠标进入区域后左右移动改变横向位置
+! ​视差滚动和bilibili都可以加入opacity
++ ​加入图片懒加载=>next
+​- 生日快乐系列=>application
+- ​clip-path应用（自定义对抗线，传送门预制path，水花，鼠标位置反色圈，clip-path轮播图，所有的出现消失动效都可以clip-path）
+- ​ai绘图得到素材
+- ​移动端适配​
++ ​js合并，压缩（打包）=>next
++ ​背景图片等比缩放（比如缩小后手机看到正中央）
++ ​喵斯新图片
+​? 苍翼风未来感
 ​
-​js合并，压缩（打包）
-​背景图片等比缩放（比如缩小后手机看到正中央）
-​
-​喵斯新图片
-​苍翼风未来感
-​
-​react，next.js
-​路由
-​
-​next大一统所有项目，个人网站为homepage
-
-# 新navi：
-- 首屏不在navi
-- RMT
-- 项目
-- 测试
-- 应用（生日快乐等非项目）
-- 工具
-- 番
-- 游戏
-- 画画
+# 新navi ✅
++ 首屏不在navi
++ RMT
++ 项目
++ 测试
++ 应用（生日快乐等非项目）
++ 工具
++ 番
++ 游戏
++ 画画
 
 # 主页只放入口和炫酷特效
+## 可用特效：
++ 背景视频
++ bg-clip-text text-transparent
++ cyberpunkfont
++ 视差滚动
+- 雷姆圣经标题=>切割：anime番，drawing画，其他：边框，背景填充
+- three.js-cube=>project
+- 弹窗=>application
+- css3d-立方=>attempt
+- css3d-魔法阵=>tool
+- png轮播(装饰边框)=>anime
+- 传送门(炫彩缤纷？仅fixed动画，出现时opacity=0，接下来的内容不展示，门满屏时show)=>game
+- three.js-rain=>drawing
+- bilibilitop
+- 原神启动
+? 背景swipper(内存consuming)
+? 点击文字
+? 弹幕
+- telev（非intro用）
+- lastdinner（非intro用）
+
 
 # 点按钮tween划到对应scrolltop不在navi

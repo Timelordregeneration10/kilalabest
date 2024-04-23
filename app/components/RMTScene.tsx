@@ -118,6 +118,12 @@ export default function RMTScene({ scrollTop }: { scrollTop: number }) {
           <p>爱</p>
         </div>
       </div>
+      <a
+        className="absolute left-6 -bottom-3 block text-[11vh] sm:text-[22.4vmax]  cursor-pointer text-white [text-shadow:_0.5vmax_0.5vmax_0.2vmax_#91bef0]"
+        href="/RMT"
+      >
+        REM:
+      </a>
       {Rems.map((Rem) => {
         return (
           <Image
@@ -126,13 +132,11 @@ export default function RMTScene({ scrollTop }: { scrollTop: number }) {
             width={Rem.rwidth}
             height={Rem.rheight}
             alt={Rem.rid}
-            className={` ${Rem.fwidth} ${Rem.fheight} ${Rem.rzIndex} absolute top-0 ${Rem.rposition} pointer-events-none transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 opacity-90 `}
+            className={` ${Rem.fwidth} ${Rem.fheight} ${Rem.rzIndex} absolute top-0 ${Rem.rposition} pointer-events-none transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 opacity-95 `}
             style={{
-              transform: `translate(${
-                (scrollTop / 20) * windowScaleX * Rem.rscaleX + Rem.rtranslateX
-              }vmax,${
-                (scrollTop / 20) * windowScaleY * Rem.rscaleY + Rem.rtranslateY
-              }vmin)`,
+              transform: `translate(${(scrollTop / 20) * windowScaleX * Rem.rscaleX + Rem.rtranslateX
+                }vmax,${(scrollTop / 20) * windowScaleY * Rem.rscaleY + Rem.rtranslateY
+                }vmin)`,
             }}
           ></Image>
         );
