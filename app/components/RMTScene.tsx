@@ -12,13 +12,13 @@ const Rems = [
     rsrc: wangjiangRem,
     rscaleX: -1,
     rscaleY: -1,
-    fwidth: 'w-[55vmax]',
-    fheight: 'h-[200vmin]',
+    fwidth: "w-[55vmax]",
+    fheight: "h-[200vmin]",
     rwidth: 672,
     rheight: 1132,
     rtranslateX: 48,
     rtranslateY: 20,
-    rzIndex: 'z-[1]',
+    rzIndex: "z-[1]",
     rposition: "left-0",
   },
   {
@@ -26,13 +26,13 @@ const Rems = [
     rsrc: sisRem1Rem,
     rscaleX: 0.7,
     rscaleY: -1,
-    fwidth: 'w-[80vmax]',
-    fheight: 'h-[120vmin]',
+    fwidth: "w-[80vmax]",
+    fheight: "h-[120vmin]",
     rwidth: 1002,
     rheight: 744,
     rtranslateX: -40,
     rtranslateY: 80,
-    rzIndex: 'z-[2]',
+    rzIndex: "z-[2]",
     rposition: "right-0",
   },
   {
@@ -40,13 +40,13 @@ const Rems = [
     rsrc: jpegRem,
     rscaleX: -0.8,
     rscaleY: -1.6,
-    fwidth: 'w-[90vmax]',
-    fheight: 'h-[250vmin]',
+    fwidth: "w-[90vmax]",
+    fheight: "h-[250vmin]",
     rwidth: 1600,
     rheight: 2212,
     rtranslateX: 60,
     rtranslateY: 160,
-    rzIndex: 'z-[3]',
+    rzIndex: "z-[3]",
     rposition: "left-0",
   },
   {
@@ -54,13 +54,13 @@ const Rems = [
     rsrc: sisRem2Rem,
     rscaleX: 1,
     rscaleY: -1.2,
-    fwidth: 'w-[78vmax]',
-    fheight: 'h-[210vmin]',
+    fwidth: "w-[78vmax]",
+    fheight: "h-[210vmin]",
     rwidth: 992,
     rheight: 1403,
     rtranslateX: -100,
     rtranslateY: 220,
-    rzIndex: 'z-[4]',
+    rzIndex: "z-[4]",
     rposition: "right-0",
   },
   {
@@ -68,22 +68,22 @@ const Rems = [
     rsrc: heavenRem,
     rscaleX: -1,
     rscaleY: -1.2,
-    fwidth: 'w-[120vmax]',
-    fheight: 'h-[250vmin]',
+    fwidth: "w-[120vmax]",
+    fheight: "h-[250vmin]",
     rwidth: 1996,
     rheight: 2994,
     rtranslateX: 120,
     rtranslateY: 300,
-    rzIndex: 'z-[5]',
+    rzIndex: "z-[5]",
     rposition: "left-0",
   },
 ];
 
 export default function RMTScene({ scrollTop }: { scrollTop: number }) {
-
   const windowWidth = useWindow().width;
+  const windowHeight = useWindow().height;
   const windowScaleX = windowWidth < 640 ? 1 : 1;
-  const windowScaleY = windowWidth < 640 ? -1 : 1;
+  const windowScaleY = windowWidth < 640 ? -1 : windowHeight / 789;
 
   return (
     <div className=" h-[370vh] w-screen bg-rmt bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
@@ -97,8 +97,27 @@ export default function RMTScene({ scrollTop }: { scrollTop: number }) {
           RMT
         </div>
       </div> */}
-      <a className=" absolute bottom-0 right-0 text-white text-[24.4vmax] mr-[10vmin] [text-shadow:_0.5vw_0.5vw_0.2vw_#91bef0] cursor-pointer "
-        href="/RMT">RMT</a>
+      <div className="absolute bottom-0 right-0 mr-[10vmin] text-white text-end">
+        <a
+          className=" block text-[15vh] sm:text-[24.4vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_#91bef0] cursor-pointer "
+          href="/RMT"
+        >
+          RMT
+        </a>
+        <div className="text-[8vw] sm:text-[5vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
+          <p>= Rem MaJi Tianshi =</p>
+          <p>所有温柔的来源和归属</p>
+          <p>用来定义永恒的度量</p>
+          <p>守恒律的唯一例外</p>
+          <p>盾牌座UY的具象</p>
+          <p>不败樱花永落</p>
+          <p>缤纷花与绮</p>
+          <p>人间美好</p>
+          <p>山与海</p>
+          <p>一切</p>
+          <p>爱</p>
+        </div>
+      </div>
       {Rems.map((Rem) => {
         return (
           <Image
@@ -109,11 +128,11 @@ export default function RMTScene({ scrollTop }: { scrollTop: number }) {
             alt={Rem.rid}
             className={` ${Rem.fwidth} ${Rem.fheight} ${Rem.rzIndex} absolute top-0 ${Rem.rposition} pointer-events-none transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 opacity-90 `}
             style={{
-              transform: `translate(${(scrollTop / 20) * windowScaleX * Rem.rscaleX +
-                Rem.rtranslateX
-                }vmax,${(scrollTop / 20) * windowScaleY * Rem.rscaleY +
-                Rem.rtranslateY
-                }vmin)`,
+              transform: `translate(${
+                (scrollTop / 20) * windowScaleX * Rem.rscaleX + Rem.rtranslateX
+              }vmax,${
+                (scrollTop / 20) * windowScaleY * Rem.rscaleY + Rem.rtranslateY
+              }vmin)`,
             }}
           ></Image>
         );
