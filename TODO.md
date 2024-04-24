@@ -68,8 +68,8 @@
 + bg-clip-text text-transparent
 + cyberpunkfont
 + 视差滚动
++ three.js-cube=>project
 - 雷姆圣经标题=>切割：anime番，drawing画，其他：边框，背景填充
-- three.js-cube=>project
 - 弹窗=>application
 - css3d-立方=>attempt
 - css3d-魔法阵=>tool
