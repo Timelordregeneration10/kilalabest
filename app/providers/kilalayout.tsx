@@ -57,13 +57,13 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
 
   const naviItems = [
     { id: "RMT", url: "/RMT" },
-    { id: "Projects", url: "/Projects" },
-    { id: "Appications", url: "/Appications" },
-    { id: "Attempts", url: "/Attempts" },
-    { id: "Tools", url: "/Tools" },
-    { id: "Animes", url: "/Animes" },
-    { id: "Games", url: "/Games" },
-    { id: "Drawings", url: "/Drawings" },
+    { id: "Project", url: "/project" },
+    { id: "Appication", url: "/appication" },
+    { id: "Attempt", url: "/attempt" },
+    { id: "Tool", url: "/tool" },
+    { id: "Anime", url: "/anime" },
+    { id: "Game", url: "/game" },
+    { id: "Drawing", url: "/drawing" },
   ];
 
   const [contactContent, setContactContent] = useState("CONTACT ME");
