@@ -1,9 +1,125 @@
+"use client";
 
+import { useEffect, useRef } from "react";
+//@ts-ignore
+import * as THREE from "three";
+import TWEEN from "@tweenjs/tween.js";
 
 export default function DrawingScene() {
-    return (
-        <div className="h-[200vh] w-screen bg-drawing bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
-            
+  const threeRainRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window != undefined) {
+      window.addEventListener("resize", () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    }
+    const scene = new THREE.Scene();
+    scene.background = null;
+    const texloader = new THREE.TextureLoader();
+    const materialforlook = new THREE.MeshBasicMaterial();
+    const geoforlook = new THREE.SphereGeometry(20, 20, 20);
+    const meshforlook = new THREE.Mesh(geoforlook, materialforlook);
+    meshforlook.position.set(0, 0, 0);
+
+    const groupGFD = new THREE.Group();
+    const textures2 = [];
+    for (let i = 0; i < 3; i++) {
+      textures2[i] = texloader.load(`/three/gfd/${i + 1}.webp`);
+    }
+
+    for (let i = 0; i < 1000; i++) {
+      const texture = textures2[i % 3];
+      const spritematerial = new THREE.SpriteMaterial({
+        map: texture,
+      });
+      const mesh = new THREE.Sprite(spritematerial);
+      groupGFD.add(mesh);
+      const size = Math.random() * 40 + 10;
+      mesh.scale.set(size, size, size);
+      const x = 1000 * (Math.random() - 0.5);
+      const y = 300 * Math.random() - 150;
+      const z = 1000 * (Math.random() - 0.5);
+      mesh.position.set(x, y, z);
+    }
+    scene.add(groupGFD);
+    groupGFD.visible = true;
+    meshforlook.position.set(0, 0, 0);
+
+    const camera = new THREE.PerspectiveCamera(
+      30,
+      window.innerWidth / window.innerHeight,
+      100,
+      3000
+    );
+    const R = 100; //相机圆周运动的半径
+    function circleMove() {
+      new TWEEN.Tween({ angle: 0 })
+        .to({ angle: Math.PI * 2 }, 16000)
+        .onUpdate(function (obj) {
+          camera.position.set(
+            R * Math.cos(obj.angle),
+            0,
+            R * Math.sin(obj.angle)
+          );
+          camera.lookAt(meshforlook.position);
+        })
+        .start();
+    }
+    circleMove();
+    setInterval(circleMove, 16000);
+
+    const renderer = new THREE.WebGLRenderer({
+      //抗锯齿属性，WebGLRenderer常用的一个属性
+      antialias: true,
+      //透明度alpha，用来使背景透明
+      alpha: true,
+    });
+    renderer.setClearAlpha(0); //设置alpha
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    console.log(renderer);
+    renderer.render(scene, camera); //每次scene或者camera改变都需要重新render
+
+    if (threeRainRef.current)
+      threeRainRef.current.appendChild(renderer.domElement);
+    const clock = new THREE.Clock();
+    function render() {
+      //官方的
+      const t = clock.getDelta();
+      groupGFD.children.forEach((mesh: any) => {
+        mesh.position.y -= t * 30;
+        if (mesh.position.y < -150) {
+          mesh.position.y = 150;
+        }
+      });
+
+      TWEEN.update();
+      renderer.render(scene, camera);
+      requestAnimationFrame(render);
+    }
+    render();
+  }, []);
+
+  return (
+    <div className="h-screen w-screen bg-drawing bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
+      {/* mainScene */}
+      <div
+        className=" absolute top-0 left-0 w-screen h-screen overflow-hidden"
+        ref={threeRainRef}
+      ></div>
+      {/* title and context */}
+      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-[20vw]">
+        <div className="relative text-white text-[15vh] sm:text-[22.4vmax]">
+          画
         </div>
-    )
+
+        <div className=" relative text-white text-[15.5vw] sm:text-[8vmax]">
+          <p>JC MAZE</p>
+          <p>绘画与生活</p>
+          <p>初中草稿纸</p>
+          <p>概率论涂鸦</p>
+        </div>
+      </div>
+    </div>
+  );
 }
