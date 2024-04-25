@@ -18,8 +18,10 @@
 + 首屏文案
 
 # 首屏细节
-? 角落核心概念式边框交合*2
-? 双底角小挂件/边饰
+
+# ? 角落核心概念式边框交合*2
+
+# ? 双底角小挂件/边饰
 
 # RMT ✅
 + 素材添加
@@ -69,20 +71,21 @@
 + cyberpunkfont
 + 视差滚动
 + three.js-cube=>project
++ three.js-rain=>drawing
 - 雷姆圣经标题=>切割：anime番，drawing画，其他：边框，背景填充
-- 弹窗=>application
-- css3d-立方=>attempt
-- css3d-魔法阵=>tool
 - png轮播(装饰边框)=>anime
-- 传送门(炫彩缤纷？仅fixed动画，出现时opacity=0，接下来的内容不展示，门满屏时show)=>game
-- three.js-rain=>drawing
-- bilibilitop
+- css3d-立方，<a>hover后立方展开，立方图片为游戏，另一侧核心概念边框交合=>game
+- 弹窗=>attempt
+- bilibilitop+danmuBG=>application
+- css3d-魔法阵=>tool
+- 传送门(炫彩缤纷？仅fixed动画，出现时opacity=0，接下来的内容不展示，门满屏时show，其他组件offset问题用localstorage)=>anime
 - 原神启动
-? 背景swipper(内存consuming)
 ? 点击文字
-? 弹幕
 - telev（非intro用）
 - lastdinner（非intro用）
+- 背景swipper(非intro用，内存consuming)
 
+# =>itemList=>png(无法单张PNG则截图2~3对角线拼)轮播=>hybrid them
+* PNG则无背景，边角小装饰
 
 # 点按钮tween划到对应scrolltop不在navi
