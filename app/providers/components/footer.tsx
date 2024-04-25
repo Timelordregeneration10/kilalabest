@@ -26,7 +26,7 @@ export default function Footer() {
                 ·
             </div>
             <div>
-                备案/许可证编号：沪ICP备2023026274号
+                备案/许可证编号：沪ICP备2023026274号-3
             </div>
         </div>
     )
