@@ -116,6 +116,11 @@ const config: Config = {
             visibility: 'hidden',
           },
         },
+        turn24: {
+          '100%': {
+            transform: 'rotateX(360deg) rotateY(360deg)',
+          },
+        },
       },
       animation: {
         streamer: "streamer 5s infinite linear",
@@ -123,10 +128,14 @@ const config: Config = {
         rmtcycle: "rmtcycle 10s linear infinite backwards",
         scrollcycle: "scrollcycle 1.3s linear infinite",
         sanInfinity: "sanInfinity 3s steps(1) infinite",
+        turn24: "turn24 6s linear infinite",
       },
     },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [
+    nextui(),
+    require("@xpd/tailwind-3dtransforms"),
+  ],
 };
 export default config;
