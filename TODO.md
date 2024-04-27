@@ -74,7 +74,7 @@
 + three.js-rain=>drawing
 - 雷姆圣经标题=>切割：anime番，drawing画，其他：边框，背景填充
 - png轮播(装饰边框)=>anime
-- css3d-立方，<a>hover后立方展开，立方图片为游戏，另一侧核心概念边框交合=>game
+------> css3d-立方，<a>hover后立方展开，立方图片为游戏，另一侧核心概念边框交合=>game
 - 弹窗=>attempt
 - bilibilitop+danmuBG=>application
 - css3d-魔法阵=>tool
@@ -89,3 +89,5 @@
 * PNG则无背景，边角小装饰
 
 # 点按钮tween划到对应scrolltop不在navi
+
+# threejs所需图片可懒加载
