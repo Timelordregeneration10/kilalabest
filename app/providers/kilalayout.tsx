@@ -100,23 +100,24 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
     }, 2000);
   };
 
-  var lastscroll = 0;
-  const naviLoop = useCallback(
-    (InnerWidth: number) => {
-      if (boxallRef.current) {
-        let currentscroll = boxallRef.current.scrollTop;
-        if (currentscroll > lastscroll) {
-          setNavitopHeight("0vh");
-        } else if (currentscroll < lastscroll) {
-          setNavitopHeight(
-            InnerWidth > 1024 ? "10vh" : InnerWidth > 640 ? "16vh" : "12vh"
-          );
-        }
-        lastscroll = currentscroll;
+  const lastscroll = useRef(0);
+  const naviLoop = useCallback(() => {
+    if (boxallRef.current) {
+      let currentscroll = boxallRef.current.scrollTop;
+      if (currentscroll > lastscroll.current) {
+        setNavitopHeight("0vh");
+      } else if (currentscroll < lastscroll.current) {
+        setNavitopHeight(
+          kilaInnerWidth > 1024
+            ? "10vh"
+            : kilaInnerWidth > 640
+            ? "16vh"
+            : "12vh"
+        );
       }
-    },
-    [kilaInnerWidth]
-  );
+      lastscroll.current = currentscroll;
+    }
+  }, [kilaInnerWidth]);
 
   useEffect(() => {
     setNavitopHeight(
@@ -159,7 +160,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
         setLeaveWebTimeout(null);
       }}
       onScroll={() => {
-        naviLoop(kilaInnerWidth);
+        naviLoop();
       }}
       ref={boxallRef}
     >
