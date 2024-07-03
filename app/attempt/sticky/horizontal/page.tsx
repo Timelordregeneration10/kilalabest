@@ -22,21 +22,21 @@ export default function Page() {
   // control stickyRef translateX
   useEffect(() => {
     if (stickyTopRef.current && scrollRef.current) {
-      stickyTopRef.current.style.transform = `rotate(45deg) translateX(-${
+      stickyTopRef.current.style.transform = `translateX(-${
         scrollTop >= stickyTopRef.current.scrollWidth - kilaInnerWidth
           ? stickyTopRef.current.scrollWidth - kilaInnerWidth
           : scrollTop
       }px)`;
     }
     if (stickyMiddleRef.current && scrollRef.current) {
-      stickyMiddleRef.current.style.transform = `rotate(45deg) translateX(-${
+      stickyMiddleRef.current.style.transform = `translateX(-${
         stickyMiddleRef.current.scrollWidth - kilaInnerWidth - scrollTop <= 0
           ? 0
           : stickyMiddleRef.current.scrollWidth - kilaInnerWidth - scrollTop
       }px)`;
     }
     if (stickyBottomRef.current && scrollRef.current) {
-      stickyBottomRef.current.style.transform = `rotate(45deg) translateX(-${
+      stickyBottomRef.current.style.transform = `translateX(-${
         scrollTop >= stickyBottomRef.current.scrollWidth - kilaInnerWidth
           ? stickyBottomRef.current.scrollWidth - kilaInnerWidth
           : scrollTop
@@ -71,7 +71,7 @@ export default function Page() {
   //   const shuffledAiyiRems2 = [...aiyiRems].sort(() => Math.random() - 0.5);
 
   return (
-    <div className="w-full min-h-screen relative bg-[#91bef0] [clip-path:_polygon(20%_0%,_0%_20%,_30%_50%,_0%_80%,_20%_100%,_50%_70%,_80%_100%,_100%_80%,_70%_50%,_100%_20%,_80%_0%,_50%_30%)]" ref={scrollRef}>
+    <div className="w-full min-h-screen relative bg-[#91bef0] " ref={scrollRef}>
       <div
         className=" sticky h-[calc(100vh/3)] left-0 top-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 "
         ref={stickyTopRef}

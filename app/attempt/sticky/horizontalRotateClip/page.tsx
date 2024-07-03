@@ -6,6 +6,9 @@ import IaiyiRems from "@/app/constants/aiyiRem";
 import useWindow from "@/app/hooks/useWindow";
 export default function Page() {
   const aiyiRems = IaiyiRems;
+  const rotateDEG = 20;
+  const stickyHeightVH = 50;
+
   const [scrollTop, setScrollTop] = useState(0);
   const refreshScrollTop = useCallback(() => {
     if (localStorage.getItem("kilaScrollTop"))
@@ -22,49 +25,37 @@ export default function Page() {
   // control stickyRef translateX
   useEffect(() => {
     if (stickyTopRef.current && scrollRef.current) {
-      stickyTopRef.current.style.transform = `translateY(-${
-        scrollTop >= stickyTopRef.current.scrollHeight - kilaInnerHeight
-          ? stickyTopRef.current.scrollHeight - kilaInnerHeight
+      stickyTopRef.current.style.transform = `rotate(${rotateDEG}deg) translateX(-${
+        scrollTop >= stickyTopRef.current.scrollWidth - kilaInnerWidth
+          ? stickyTopRef.current.scrollWidth - kilaInnerWidth
           : scrollTop
       }px)`;
     }
     if (stickyMiddleRef.current && scrollRef.current) {
-      stickyMiddleRef.current.style.transform = `translateY(-${
-        stickyMiddleRef.current.scrollHeight - kilaInnerHeight - scrollTop <= 0
+      stickyMiddleRef.current.style.transform = `rotate(${rotateDEG}deg) translateX(-${
+        stickyMiddleRef.current.scrollWidth - kilaInnerWidth - scrollTop <= 0
           ? 0
-          : stickyMiddleRef.current.scrollHeight - kilaInnerHeight - scrollTop
+          : stickyMiddleRef.current.scrollWidth - kilaInnerWidth - scrollTop
       }px)`;
     }
     if (stickyBottomRef.current && scrollRef.current) {
-      stickyBottomRef.current.style.transform = `translateY(-${
-        scrollTop >= stickyBottomRef.current.scrollHeight - kilaInnerHeight
-          ? stickyBottomRef.current.scrollHeight - kilaInnerHeight
+      stickyBottomRef.current.style.transform = `rotate(${rotateDEG}deg) translateX(-${
+        scrollTop >= stickyBottomRef.current.scrollWidth - kilaInnerWidth
+          ? stickyBottomRef.current.scrollWidth - kilaInnerWidth
           : scrollTop
       }px)`;
     }
-  }, [kilaInnerHeight, scrollTop]);
+  }, [kilaInnerWidth, scrollTop]);
 
   // control scrollRef height
   useEffect(() => {
-    if (
-      stickyTopRef.current &&
-      scrollRef.current &&
-      stickyBottomRef.current &&
-      stickyMiddleRef.current
-    ) {
-      if (scrollTop < stickyTopRef.current.scrollHeight - kilaInnerHeight) {
-        scrollRef.current.style.height =
-          String(stickyTopRef.current.scrollHeight * 2) + "px";
-      } else {
-        scrollRef.current.style.height =
-          String(stickyTopRef.current.scrollHeight) + "px";
-        // maintain scene when scrollRef over
-        stickyTopRef.current.style.transform = "";
-        stickyMiddleRef.current.style.transform = ""; // 可不加
-        stickyBottomRef.current.style.transform = "";
-      }
+    if (stickyTopRef.current && scrollRef.current) {
+      scrollRef.current.style.height =
+        String(
+          stickyTopRef.current.scrollWidth - kilaInnerWidth + kilaInnerHeight
+        ) + "px";
     }
-  }, [kilaInnerWidth, kilaInnerHeight, scrollTop]);
+  }, [kilaInnerWidth, kilaInnerHeight]);
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const stickyTopRef = useRef<HTMLDivElement | null>(null);
@@ -84,52 +75,72 @@ export default function Page() {
 
   return (
     <div
-      className="w-full min-h-screen relative bg-[#91bef0] flex "
+      className="w-full min-h-screen relative bg-[#91bef0] [clip-path:_polygon(20%_0%,_0%_20%,_30%_50%,_0%_80%,_20%_100%,_50%_70%,_80%_100%,_100%_80%,_70%_50%,_100%_20%,_80%_0%,_50%_30%)]"
       ref={scrollRef}
     >
       <div
-        className=" sticky w-[calc(100vw/3)] top-0 flex flex-col h-fit transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 "
+        className={` sticky left-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 `}
+        style={{
+          top:
+            String(
+              (100 - stickyHeightVH) / 2 -
+                stickyHeightVH / Math.cos((rotateDEG * Math.PI) / 180)
+            ) + "vh",
+          height: String(stickyHeightVH) + "vh",
+        }}
         ref={stickyTopRef}
       >
         {shuffledAiyiRems0.map((aiyiRem: string) => (
-          <div className=" aspect-[12/9] w-full" key={aiyiRem}>
+          <div className=" aspect-[9/16] h-full" key={aiyiRem}>
             <Image
               src={aiyiRem}
-              width={400}
+              width={200}
               height={300}
-              className="w-full aspect-[12/9] object-cover"
+              className="w-full h-full object-cover"
               alt="aiyiRem"
             ></Image>
           </div>
         ))}
       </div>
       <div
-        className=" sticky w-[calc(100vw/3)] top-0 flex flex-col h-fit transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 "
+        className={` sticky left-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 `}
+        style={{
+          top: String((100 - stickyHeightVH) / 2) + "vh",
+          height: String(stickyHeightVH) + "vh",
+        }}
         ref={stickyMiddleRef}
       >
         {shuffledAiyiRems1.map((aiyiRem: string) => (
-          <div className=" aspect-[12/9] w-full" key={aiyiRem}>
+          <div className=" aspect-[9/16] h-full" key={aiyiRem}>
             <Image
               src={aiyiRem}
-              width={400}
+              width={200}
               height={300}
-              className="w-full aspect-[12/9] object-cover"
+              className="w-full h-full object-cover"
               alt="aiyiRem"
             ></Image>
           </div>
         ))}
       </div>
       <div
-        className=" sticky w-[calc(100vw/3)] top-0 flex flex-col h-fit transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 "
+        className={` sticky flex w-auto transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 `}
+        style={{
+          top:
+            String(
+              (100 - stickyHeightVH) / 2 +
+                stickyHeightVH / Math.cos((rotateDEG * Math.PI) / 180)
+            ) + "vh",
+          height: String(stickyHeightVH) + "vh",
+        }}
         ref={stickyBottomRef}
       >
         {shuffledAiyiRems2.map((aiyiRem: string) => (
-          <div className=" aspect-[12/9] w-full" key={aiyiRem}>
+          <div className=" aspect-[9/16] h-full" key={aiyiRem}>
             <Image
               src={aiyiRem}
-              width={400}
+              width={200}
               height={300}
-              className="w-full aspect-[12/9] object-cover"
+              className="w-full h-full object-cover"
               alt="aiyiRem"
             ></Image>
           </div>
