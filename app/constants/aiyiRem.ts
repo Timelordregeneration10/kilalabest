@@ -16,4 +16,10 @@ addAiyiRems("jpg");
 addAiyiRems("png");
 addAiyiRems("jpeg");
 
-export default aiyiRems;
+const tempArray: Array<string> = [];
+for (let i = 0; i < 60; i++) {
+  tempArray.push("/three/gfd/" + String((i % 3) + 1) + ".webp");
+}
+
+// export default aiyiRems;
+export default tempArray;

@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import useWindow from "../hooks/useWindow";
-import hollowknight from "./img/game/hollowknight.webp";
-import endinglilies from "./img/game/endinglilies.webp";
-import terreria from "./img/game/terreria.webp";
-import astlibra from "./img/game/astlibra.webp";
-import skull from "./img/game/skull.webp";
-import no11 from "./img/game/no11.webp";
+import useWindow from "../../hooks/useWindow";
+import hollowknight from "../../components/img/game/hollowknight.webp";
+import endinglilies from "../../components/img/game/endinglilies.webp";
+import terreria from "../../components/img/game/terreria.webp";
+import astlibra from "../../components/img/game/astlibra.webp";
+import skull from "../../components/img/game/skull.webp";
+import no11 from "../../components/img/game/no11.webp";
 import Image from "next/image";
 
 const gamesrc = [hollowknight, endinglilies, terreria, astlibra, skull, no11];
