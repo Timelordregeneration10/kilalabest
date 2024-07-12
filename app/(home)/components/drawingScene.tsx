@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import TWEEN from "@tweenjs/tween.js";
 import { useRouter } from "next/navigation";
-import useWindow from "../hooks/useWindow";
+import useWindow from "../../hooks/useWindow";
 
 export default function DrawingScene() {
     const threeRainRef = useRef<HTMLDivElement>(null);

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import useWindow from "../hooks/useWindow";
+import useWindow from "../../hooks/useWindow";
 
 export default function ToolScene() {
     const isMobile = useWindow().width < 640;

@@ -1,10 +1,13 @@
-import useWindow from "../hooks/useWindow";
-import heavenRem from "./img/rmt/heavenRem.webp";
-import jpegRem from "./img/rmt/jpegRem.webp";
-import sisRem1Rem from "./img/rmt/sisRem1.webp";
-import sisRem2Rem from "./img/rmt/sisRem2.webp";
-import wangjiangRem from "./img/rmt/wangjiangRem.webp";
+"use client";
+import useWindow from "../../hooks/useWindow";
+import heavenRem from "../../components/img/rmt/heavenRem.webp";
+import jpegRem from "../../components/img/rmt/jpegRem.webp";
+import sisRem1Rem from "../../components/img/rmt/sisRem1.webp";
+import sisRem2Rem from "../../components/img/rmt/sisRem2.webp";
+import wangjiangRem from "../../components/img/rmt/wangjiangRem.webp";
 import Image from "next/image";
+import { useContext } from "react";
+import { kilalaContext } from "@/app/providers/kilalayout";
 
 const Rems = [
   {
@@ -79,7 +82,8 @@ const Rems = [
   },
 ];
 
-export default function RMTScene({ scrollTop }: { scrollTop: number }) {
+export default function RMTScene() {
+  const { scrollTop } = useContext(kilalaContext);
   const windowWidth = useWindow().width;
   const windowHeight = useWindow().height;
   const windowScaleX = windowWidth < 640 ? 1 : 1;
@@ -134,9 +138,11 @@ export default function RMTScene({ scrollTop }: { scrollTop: number }) {
             alt={Rem.rid}
             className={` ${Rem.fwidth} ${Rem.fheight} ${Rem.rzIndex} absolute top-0 ${Rem.rposition} pointer-events-none transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 opacity-95 `}
             style={{
-              transform: `translate(${(scrollTop / 20) * windowScaleX * Rem.rscaleX + Rem.rtranslateX
-                }vmax,${(scrollTop / 20) * windowScaleY * Rem.rscaleY + Rem.rtranslateY
-                }vmin)`,
+              transform: `translate(${
+                (scrollTop / 20) * windowScaleX * Rem.rscaleX + Rem.rtranslateX
+              }vmax,${
+                (scrollTop / 20) * windowScaleY * Rem.rscaleY + Rem.rtranslateY
+              }vmin)`,
             }}
           ></Image>
         );

@@ -1,22 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import IaiyiRems from "@/app/constants/aiyiRem";
 import useWindow from "@/app/hooks/useWindow";
+import { kilalaContext } from "@/app/providers/kilalayout";
 export default function Page() {
   const aiyiRems = IaiyiRems;
-  const [scrollTop, setScrollTop] = useState(0);
-  const refreshScrollTop = useCallback(() => {
-    if (localStorage.getItem("kilaScrollTop"))
-      setScrollTop(parseInt(localStorage.getItem("kilaScrollTop") as string));
-    requestAnimationFrame(refreshScrollTop);
-  }, []);
-
-  // get scrollTop
-  useEffect(() => {
-    refreshScrollTop();
-  }, [refreshScrollTop]);
+  const { scrollTop } = useContext(kilalaContext);
 
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
   // control stickyRef translateX
