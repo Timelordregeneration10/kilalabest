@@ -1,7 +1,7 @@
 // check aiyiRemjson
 const aiyiRemjson = {
-  jpg: 57,
-  png: 3,
+  jpg: 54,
+  png: 2,
   jpeg: 7,
 };
 
@@ -21,5 +21,5 @@ for (let i = 0; i < 60; i++) {
   tempArray.push("/three/gfd/" + String((i % 3) + 1) + ".webp");
 }
 
-// export default aiyiRems;
-export default tempArray;
+export default aiyiRems;
+// export default tempArray;
