@@ -34,7 +34,8 @@ def create_json_file(data, filename):
 
 # 指定需要重命名的目录路径
 # folder_path = "D:\\Nicholas\\images\\aiyiRem"
-folder_path = "D:\\Nicholas\\kilalabest\\public\\aiyiRem"
+# folder_path = "D:\\Nicholas\\kilalabest\\public\\aiyiRem"
+folder_path = "C:\\Users\\Nicholas\\Desktop\\Nicholas\\frontend\\application\\kilalabest\\public\\aiyiRem"
 
 # 调用函数进行重命名
 rename_images(folder_path,"jpg")
