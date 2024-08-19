@@ -10,11 +10,11 @@ export default function CardRotatePage() {
 
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
 
-  const [currentAiyiRem, setCurrentAiyiRem] = useState(
-    aiyiRems[Math.floor(Math.random() * aiyiRems.length)]
-  );
   // next image should not make last image disappear instantly
-  const [bgAiyiRem, setBgAiyiRem] = useState([currentAiyiRem, currentAiyiRem]);
+  const [twoAiyiRems, setTwoAiyiRems] = useState([
+    aiyiRems[Math.floor(Math.random() * aiyiRems.length)],
+    aiyiRems[Math.floor(Math.random() * aiyiRems.length)],
+  ]);
   const [currentAiyiRemSize, setCurrentAiyiRemSize] = useState<{
     width: number;
     height: number;
@@ -22,14 +22,12 @@ export default function CardRotatePage() {
     width: 0,
     height: 0,
   });
+  
   useEffect(() => {
     let it = setInterval(() => {
-      setCurrentAiyiRem((aiyiRem) => {
+      setTwoAiyiRems((twoAiyiRems) => {
         let index = Math.floor(Math.random() * aiyiRems.length);
-        setBgAiyiRem(() => {
-          return [aiyiRem, aiyiRems[index]];
-        });
-        return aiyiRems[index];
+        return [twoAiyiRems[1], aiyiRems[index]];
       });
     }, 3000);
     return () => {
@@ -43,13 +41,13 @@ export default function CardRotatePage() {
   }
 
   useEffect(() => {
-    getResult(currentAiyiRem);
-  }, [currentAiyiRem]);
+    getResult(twoAiyiRems[1]);
+  }, [twoAiyiRems]);
 
   return (
     <div className="fixed z-[100] w-screen h-screen bg-[#91bef0] ">
       <div className=" absolute w-full h-full top-0 left-0">
-        {bgAiyiRem.map((aiyiRem) => (
+        {twoAiyiRems.map((aiyiRem) => (
           <NextImage
             key={aiyiRem}
             src={aiyiRem}
@@ -93,7 +91,7 @@ export default function CardRotatePage() {
             }}
           >
             <NextImage
-              src={currentAiyiRem}
+              src={twoAiyiRems[1]}
               width={kilaInnerWidth}
               height={kilaInnerHeight}
               className="w-full h-full object-contain absolute top-0 left-0 rotate-45"
