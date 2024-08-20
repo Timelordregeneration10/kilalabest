@@ -289,6 +289,22 @@ const config: Config = {
             transform: "translateX(0) rotate(720deg) scale(1)",
           },
         },
+        rising: {
+          "0%": {
+            transform: "translateY(0)",
+          },
+          "100%": {
+            transform: "translateY(-95%)",
+          },
+        },
+        falling: {
+          "0%": {
+            transform: "translateY(0%)",
+          },
+          "100%": {
+            transform: "translateY(95%)",
+          },
+        },
       },
       animation: {
         streamer: "streamer 5s infinite linear",
@@ -301,6 +317,8 @@ const config: Config = {
         concreter: "concreter 1.5s linear forwards",
         slowbigger: "slowbigger 6s linear forwards",
         moving1: "moving1 3s ease forwards",
+        rising: "rising 1s linear alternate infinite",
+        falling: "falling 1s linear alternate infinite",
       },
     },
   },

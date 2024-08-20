@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-//@ts-ignore
 import * as THREE from "three";
 import TWEEN from "@tweenjs/tween.js";
 import { useRouter } from "next/navigation";

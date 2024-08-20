@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-//@ts-ignore
 import * as THREE from "three";
 import TWEEN from "@tweenjs/tween.js";
 import { useRouter } from "next/navigation";
@@ -82,7 +81,6 @@ export default function DrawingScene() {
         });
         renderer.setClearAlpha(0); //设置alpha
         renderer.setSize(window.innerWidth, window.innerHeight);
-        console.log(renderer);
         renderer.render(scene, camera); //每次scene或者camera改变都需要重新render
 
         if (threeRainRef.current)
