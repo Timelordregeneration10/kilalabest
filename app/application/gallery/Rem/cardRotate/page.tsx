@@ -107,7 +107,10 @@ export default function CardRotatePage() {
             src={aiyiRem}
             width={kilaInnerWidth}
             height={kilaInnerHeight}
-            className="min-w-[calc(100%+200px)] min-h-[calc(100%+200px)] object-cover blur-[15px] absolute top-[-100px] left-[-100px] animate-changeOpacity"
+            className="min-w-[calc(100%+200px)] min-h-[calc(100%+200px)] object-cover blur-[15px] absolute top-[-100px] left-[-100px] animate-[concreter_1.5s_linear_forwards,_slowbigger_6s_linear_forwards]"
+            style={{
+              animationPlayState: paused ? "paused" : "running",
+            }}
             alt="aiyiRem"
           ></NextImage>
         ))}
@@ -151,7 +154,7 @@ export default function CardRotatePage() {
               src={twoAiyiRems[1]}
               width={kilaInnerWidth}
               height={kilaInnerHeight}
-              className="w-full h-full object-contain absolute top-0 left-0 rotate-45"
+              className="w-full h-full object-contain absolute top-0 left-0 rotate-45 "
               alt="aiyiRem"
             ></NextImage>
           </div>

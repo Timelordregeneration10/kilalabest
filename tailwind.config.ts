@@ -129,7 +129,7 @@ const config: Config = {
             transform: " rotateY(360deg)",
           },
         },
-        changeOpacity: {
+        concreter: {
           "0%": {
             opacity: "0",
           },
@@ -137,12 +137,156 @@ const config: Config = {
             opacity: "1",
           },
         },
-        bigger:{
+        slowbigger: {
           "0%": {
             transform: "scale(1)",
           },
           "100%": {
             transform: "scale(1.2)",
+          },
+        },
+        moving1: {
+          "100%": {
+            transform: "translate(0,0) scale(1)",
+          },
+          "0%": {
+            transform: "translate(-20%, -20%) scale(2)",
+          },
+          "33%": {
+            transform: "translate(-20%, 20%) scale(2)",
+          },
+          "66%": {
+            transform: "translate(20%,0) scale(2)",
+          },
+        },
+        moving2: {
+          "100%": {
+            transform: "translate(0,0) scale(1)",
+          },
+          "0%": {
+            transform: "translate(20%, 20%) scale(2)",
+          },
+          "33%": {
+            transform: "translate(20%, -20%) scale(2)",
+          },
+          "66%": {
+            transform: "translate(-20%,0) scale(2)",
+          },
+        },
+        moving3: {
+          "100%": {
+            transform: "translate(0,0) scale(1)",
+          },
+          "0%": {
+            transform: "translate(-20%, 20%) scale(2)",
+          },
+          "33%": {
+            transform: "translate(20%, 20%) scale(2)",
+          },
+          "66%": {
+            transform: "translate(0,-20%) scale(2)",
+          },
+        },
+        moving4: {
+          "100%": {
+            transform: "translate(0,0) scale(1)",
+          },
+          "0%": {
+            transform: "translate(20%, -20%) scale(2)",
+          },
+          "33%": {
+            transform: "translate(-20%, -20%) scale(2)",
+          },
+          "66%": {
+            transform: "translate(0,20%) scale(2)",
+          },
+        },
+        rotate3d1: {
+          "0%": {
+            transform: "translate(-40%,-40%) rotate3d(1,1,1,90deg) scale(1)",
+          },
+          "80%": {
+            transform: "translate(0,0) rotate3d(0) scale(1.2)",
+          },
+          "90%": {
+            transform: "scale(1.2)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
+        rotate3d2: {
+          "0%": {
+            transform: "translate(40%,-40%) rotate3d(1,-2,1,180deg) scale(1)",
+          },
+          "80%": {
+            transform: "translate(0,0) rotate3d(0) scale(1.2)",
+          },
+          "90%": {
+            transform: "scale(1.2)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
+        rotate3d3: {
+          "0%": {
+            transform: "translate(-40%,40%) rotate3d(1,1,-2,270deg) scale(1)",
+          },
+          "80%": {
+            transform: "translate(0,0) rotate3d(0) scale(1.2)",
+          },
+          "90%": {
+            transform: "scale(1.2)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
+        rotate3d4: {
+          "0%": {
+            transform: "translate(40%,40%) rotate3d(1,1,-1,360deg) scale(1)",
+          },
+          "80%": {
+            transform: "translate(0,0) rotate3d(0) scale(1.2)",
+          },
+          "90%": {
+            transform: "scale(1.2)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
+        rotate1: {
+          "0%": {
+            transform: "translateX(-40%) rotate(0deg) scale(2)",
+          },
+          "100%": {
+            transform: "translateX(0) rotate(360deg) scale(1)",
+          },
+        },
+        rotate2: {
+          "0%": {
+            transform: "translateY(40%) rotate(135deg) scale(0.5)",
+          },
+          "100%": {
+            transform: "translateY(0) rotate(720deg) scale(1)",
+          },
+        },
+        rotate3: {
+          "0%": {
+            transform: "translateY(-40%) rotate(135deg) scale(2)",
+          },
+          "100%": {
+            transform: "translateY(0) rotate(360deg) scale(1)",
+          },
+        },
+        rotate4: {
+          "0%": {
+            transform: "translateX(40%) rotate(270deg) scale(0.5)",
+          },
+          "100%": {
+            transform: "translateX(0) rotate(720deg) scale(1)",
           },
         },
       },
@@ -154,8 +298,9 @@ const config: Config = {
         sanInfinity: "sanInfinity 3s steps(1) infinite",
         turn24: "turn24 6s linear infinite",
         cardRotate: "cardRotate 6s linear infinite",
-        changeOpacity: "changeOpacity 1.5s linear forwards",
-        bigger: "bigger 6s linear forwards",
+        concreter: "concreter 1.5s linear forwards",
+        slowbigger: "slowbigger 6s linear forwards",
+        moving1: "moving1 3s ease forwards",
       },
     },
   },
