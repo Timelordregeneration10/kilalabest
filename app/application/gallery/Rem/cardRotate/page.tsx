@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import NextImage from "next/image";
 import IaiyiRems from "@/app/constants/aiyiRem";
 import useWindow from "@/app/hooks/useWindow";
@@ -19,21 +19,69 @@ export default function CardRotatePage() {
     width: number;
     height: number;
   }>({
-    width: 0,
-    height: 0,
+    width: kilaInnerWidth,
+    height: kilaInnerHeight,
   });
-  
+
+  const [cycleInterval, setCycleInterval] = useState<NodeJS.Timeout | null>(
+    null
+  );
+  const [nextTimeout, setNextTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [paused, setPaused] = useState(false);
+  const firstRender = useRef(true);
+
   useEffect(() => {
-    let it = setInterval(() => {
-      setTwoAiyiRems((twoAiyiRems) => {
-        let index = Math.floor(Math.random() * aiyiRems.length);
-        return [twoAiyiRems[1], aiyiRems[index]];
-      });
-    }, 3000);
+    if (!firstRender.current) {
+      return;
+    }
+    firstRender.current = false;
+    setCycleInterval(
+      setInterval(() => {
+        setTwoAiyiRems((twoAiyiRems) => {
+          let index = Math.floor(Math.random() * aiyiRems.length);
+          return [twoAiyiRems[1], aiyiRems[index]];
+        });
+      }, 3000)
+    );
     return () => {
-      clearInterval(it);
+      if (cycleInterval) clearInterval(cycleInterval);
     };
-  }, [aiyiRems]);
+  }, [aiyiRems, firstRender, cycleInterval]);
+
+  const handleKeyDown = (key: string) => {
+    if (key === " ") {
+      if (nextTimeout) clearTimeout(nextTimeout);
+      setNextTimeout(null);
+      // running, stop it
+      if (!paused) {
+        if (cycleInterval) clearInterval(cycleInterval);
+        setCycleInterval(null);
+        setPaused(true);
+        // console.log("stop");
+      }
+      // paused, run it
+      else {
+        setNextTimeout(
+          setTimeout(() => {
+            setCycleInterval(
+              setInterval(() => {
+                setTwoAiyiRems((twoAiyiRems) => {
+                  let index = Math.floor(Math.random() * aiyiRems.length);
+                  return [twoAiyiRems[1], aiyiRems[index]];
+                });
+              }, 3000)
+            );
+            setTwoAiyiRems((twoAiyiRems) => {
+              let index = Math.floor(Math.random() * aiyiRems.length);
+              return [twoAiyiRems[1], aiyiRems[index]];
+            });
+          }, 1000)
+        );
+        setPaused(false);
+        // console.log("run");
+      }
+    }
+  };
 
   async function getResult(url: string) {
     let result = await getImageSizeByUrl(url);
@@ -45,7 +93,13 @@ export default function CardRotatePage() {
   }, [twoAiyiRems]);
 
   return (
-    <div className="fixed z-[100] w-screen h-screen bg-[#91bef0] ">
+    <div
+      className="fixed z-[100] w-screen h-screen bg-[#91bef0] outline-[transparent] outline-0 "
+      tabIndex={0}
+      onKeyDown={(e) => {
+        handleKeyDown(e.key);
+      }}
+    >
       <div className=" absolute w-full h-full top-0 left-0">
         {twoAiyiRems.map((aiyiRem) => (
           <NextImage
@@ -53,11 +107,14 @@ export default function CardRotatePage() {
             src={aiyiRem}
             width={kilaInnerWidth}
             height={kilaInnerHeight}
-            className="w-full h-full object-cover blur-[15px] absolute top-0 left-0 animate-changeOpacity"
+            className="min-w-[calc(100%+200px)] min-h-[calc(100%+200px)] object-cover blur-[15px] absolute top-[-100px] left-[-100px] animate-changeOpacity"
             alt="aiyiRem"
           ></NextImage>
         ))}
-        <div className="relative w-full h-full top-0 left-0 animate-cardRotate flex justify-center items-center">
+        <div
+          className="relative w-full h-full top-0 left-0 animate-cardRotate flex justify-center items-center"
+          style={{ animationPlayState: paused ? "paused" : "running" }}
+        >
           <div
             className="relative"
             style={{

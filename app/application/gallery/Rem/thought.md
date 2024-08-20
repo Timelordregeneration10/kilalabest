@@ -1,4 +1,7 @@
 
+# TODO:
+? cardRotate适配手机端，根据长宽比和屏幕长宽比对比判断用kilaInnerHeight还是kilaInnerWidth
+
 ### 用法：
 * 可用于b站视频制作->全屏当背景或是悬浮窗放在右下角等等
   * 到时候创建合集绮罗的雷姆世界！

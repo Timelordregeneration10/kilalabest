@@ -137,6 +137,14 @@ const config: Config = {
             opacity: "1",
           },
         },
+        bigger:{
+          "0%": {
+            transform: "scale(1)",
+          },
+          "100%": {
+            transform: "scale(1.2)",
+          },
+        },
       },
       animation: {
         streamer: "streamer 5s infinite linear",
@@ -146,7 +154,8 @@ const config: Config = {
         sanInfinity: "sanInfinity 3s steps(1) infinite",
         turn24: "turn24 6s linear infinite",
         cardRotate: "cardRotate 6s linear infinite",
-        changeOpacity: "changeOpacity 1.5s linear",
+        changeOpacity: "changeOpacity 1.5s linear forwards",
+        bigger: "bigger 6s linear forwards",
       },
     },
   },
