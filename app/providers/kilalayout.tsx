@@ -71,7 +71,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
   const naviItems = [
     { id: "RMT", url: "/RMT" },
     { id: "Project", url: "/project" },
-    { id: "Appication", url: "/appication" },
+    { id: "Application", url: "/application" },
     { id: "Attempt", url: "/attempt" },
     { id: "Tool", url: "/tool" },
     { id: "Anime", url: "/anime" },

@@ -89,6 +89,8 @@ export default function RMTScene() {
   const windowScaleX = windowWidth < 640 ? 1 : 1;
   const windowScaleY = windowWidth < 640 ? -1 : windowHeight / 789;
 
+  // TODO: Rem related link
+
   return (
     <div className=" h-[370vh] w-screen bg-rmt bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
       {/* <div className="fixed pointer-events-none top-0 left-0 w-screen h-screen z-[0] bg-[#0000003f]"

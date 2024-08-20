@@ -66,7 +66,7 @@ export default function Page() {
 
   return (
     <div
-      className="w-full min-h-screen relative bg-[#91bef0] [clip-path:_polygon(20%_0%,_0%_20%,_30%_50%,_0%_80%,_20%_100%,_50%_70%,_80%_100%,_100%_80%,_70%_50%,_100%_20%,_80%_0%,_50%_30%)]"
+      className="w-full min-h-screen relative bg-[#91bef0] "// [clip-path:_polygon(20%_0%,_0%_20%,_30%_50%,_0%_80%,_20%_100%,_50%_70%,_80%_100%,_100%_80%,_70%_50%,_100%_20%,_80%_0%,_50%_30%)]
       ref={scrollRef}
     >
       <div
