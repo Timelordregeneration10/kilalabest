@@ -15,14 +15,16 @@ export default function DrawingScene() {
   }, [initialAiyiRems]);
   const threeRainRef = useRef<HTMLDivElement>(null);
 
-  const aiyiRemSizes = useRef<Array<{ width: number; height: number;src:string }>>([]);
+  const aiyiRemSizes = useRef<
+    Array<{ width: number; height: number; src: string }>
+  >([]);
   const [finished, setFinished] = useState(false);
   async function getResult(url: string) {
     let result = await getImageSizeByUrl(url);
     aiyiRemSizes.current.push({
       width: result.width,
       height: result.height,
-      src:url,
+      src: url,
     });
     console.log(
       "aiyiRemSizes getting (" +
@@ -51,7 +53,6 @@ export default function DrawingScene() {
   }, [aiyiRems]);
 
   useEffect(() => {
-    console.log("rmt");
     if (!finished) {
       return;
     }
@@ -75,16 +76,16 @@ export default function DrawingScene() {
     }
 
     for (let i = 0; i < 2000; i++) {
-      const texture = textures2[i % aiyiRems.length];
+      const texture = textures2[i % textures2.length];
       const spritematerial = new THREE.SpriteMaterial({
         map: texture,
       });
       const mesh = new THREE.Sprite(spritematerial);
       groupGFD.add(mesh);
-      const scale = Math.random() * 20 + 30;
+      const scale = Math.random() * 20 + 40;
       mesh.scale.set(
-        (scale * aiyiRemSizes.current[i % aiyiRems.length].width) /
-          aiyiRemSizes.current[i % aiyiRems.length].height,
+        (scale * aiyiRemSizes.current[i % textures2.length].width) /
+          aiyiRemSizes.current[i % textures2.length].height,
         scale,
         scale
       );
@@ -106,7 +107,7 @@ export default function DrawingScene() {
     const R = 100; //相机圆周运动的半径
     function circleMove() {
       new TWEEN.Tween({ angle: 0 })
-        .to({ angle: Math.PI*2 }, 32000)
+        .to({ angle: Math.PI * 2 }, 64000)
         .onUpdate(function (obj) {
           camera.position.set(
             R * Math.cos(obj.angle),
@@ -118,7 +119,7 @@ export default function DrawingScene() {
         .start();
     }
     circleMove();
-    setInterval(circleMove, 32000);
+    setInterval(circleMove, 64000);
 
     const renderer = new THREE.WebGLRenderer({
       //抗锯齿属性，WebGLRenderer常用的一个属性

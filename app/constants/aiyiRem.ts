@@ -1,8 +1,8 @@
 // check aiyiRemjson
 const aiyiRemjson = {
-  jpg: 54,
-  png: 2,
-  jpeg: 7,
+  jpg: 124,
+  png: 20,
+  jpeg: 10,
 };
 
 const aiyiRems: Array<string> = [];
