@@ -28,6 +28,20 @@ export const metadata: Metadata = {
   creator: "Nicholas Burkhardt",
   publisher: "Nicholas Burkhardt",
   abstract: "Nicholas's Personal Website",
+  icons: [
+    {
+      rel: "icon",
+      url: "/favicon32x32.ico",
+      sizes: "32x32",
+      type: "image/x-icon",
+    },
+    {
+      rel: "icon",
+      url: "/favicon192x192.ico",
+      sizes: "192x192",
+      type: "image/x-icon",
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -37,14 +51,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-      </Head>
       <body className={inter.className}>
         <UIProvider>
-          <KilaLayout>
-            {children}
-          </KilaLayout>
+          <KilaLayout>{children}</KilaLayout>
         </UIProvider>
         <Toaster />
       </body>
