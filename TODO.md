@@ -1,4 +1,4 @@
-# ssl from https://manage.sslforfree.com/dashboard
+<!-- # ssl from https://manage.sslforfree.com/dashboard -->
 # metadata useclient分离 ✅
 
 # navi，navi宽度适配 ✅
@@ -93,3 +93,8 @@
 # 点按钮tween划到对应scrolltop不在navi
 
 # threejs所需图片可懒加载
+
+# ** new **
+# 视差滚动节流
+# 双子座星星坠落闪烁动效
+# 音乐part
