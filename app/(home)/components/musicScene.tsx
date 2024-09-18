@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import useWindow from "../../hooks/useWindow";
+import musicGIF from "../assets/music.gif";
+import Image from "next/image";
 
 export default function MusicScene() {
   const isMobile = useWindow().width < 640;
@@ -13,9 +15,9 @@ export default function MusicScene() {
       {/* mainScene */}
       <div className=" absolute top-0 left-0 w-screen h-screen"></div>
       {/* title and context */}
-      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center sm:gap-[10vw]">
+      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-[10vh] sm:gap-[10vw]">
         <div
-          className=" relative text-white h-[40vh] flex justify-center items-center cursor-pointer "
+          className=" relative text-white h-fit flex justify-center items-center cursor-pointer px-12 py-8 sm:px-24 sm:py-16"
           onMouseEnter={() => {
             setIsHover(true);
           }}
@@ -27,29 +29,89 @@ export default function MusicScene() {
           }}
         >
           <div
-            className={`text-[20vw] sm:text-[9.4vmax] ${
-              isHover ? "opacity-100" : "opacity-0"
-            } transition-opacity  text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#b5c4ff] to-[#ffe397e8]  `}
+            className={`text-[15vw] sm:text-[6.4vmax] ${
+              isHover ? "opacity-100" : "opacity-100"
+            } text-white `}
           >
             MUSIC
           </div>
+          {/* left top border */}
           <div
-            className={`absolute flex justify-center items-center h-[40vh] text-[30vw] sm:text-[11.2vmax] [clip-path:inset(_0_0_50%_0)] ${
-              isHover
-                ? "-translate-y-[8vw] sm:-translate-y-[3.8vmax]"
-                : "translate-y-1"
-            } transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#b5c4ff] to-[#ffe397e8]  `}
+            className="absolute top-0 left-0 w-full h-full border-5 sm:border-[10px] border-white transition-transform"
+            style={{
+              transform: isHover
+                ? `translate(${isMobile ? 24 : 48}px,${isMobile ? 16 : 32}px)`
+                : "",
+            }}
+          ></div>
+          {/* right top corner */}
+          <div
+            className="absolute top-0 right-0 w-[20px] sm:w-[40px] h-[20px] sm:h-[40px] sm:border-r-[10px] sm:border-t-[10px] border-l-0 border-b-0 border-r-5 border-t-5 border-white transition-transform"
+            style={{
+              transform: isHover
+                ? `translate(${isMobile ? 24 : 48}px,${isMobile ? -16 : -32}px)`
+                : "",
+            }}
+          ></div>
+          {/* right bottom border */}
+          <div
+            className="absolute top-0 left-0 w-full h-full border-5 sm:border-[10px] border-white transition-transform"
+            style={{
+              transform: isHover
+                ? `translate(${isMobile ? -24 : -48}px,${
+                    isMobile ? -16 : -32
+                  }px)`
+                : "",
+            }}
+          ></div>
+          {/* left bottom corner */}
+          <div
+            className="absolute bottom-0 left-0 w-[20px] sm:w-[40px] h-[20px] sm:h-[40px] sm:border-l-[10px] sm:border-b-[10px] border-r-0 border-t-0 border-l-5 border-b-5 border-white transition-transform"
+            style={{
+              transform: isHover
+                ? `translate(${isMobile ? -24 : -48}px,${isMobile ? 16 : 32}px)`
+                : "",
+            }}
+          ></div>
+          {/* top music gif */}
+          <div
+            className={`absolute ${
+              isMobile ? "w-[calc(100%-15px)]" : "w-[calc(100%-20px)]"
+            } top-[5px] left-[5px]`}
           >
-            音乐
+            <Image
+              width={60}
+              height={60}
+              alt="music"
+              src={musicGIF}
+              className="min-w-[60px] min-h-[60px] absolute top-0 transition-[left_transform]"
+              style={{
+                left: isHover ? "calc(100%)" : "0",
+                transform: isHover
+                  ? `translateY(${isMobile ? -16 : -32}px)`
+                  : "",
+              }}
+            ></Image>
           </div>
+          {/* bottom music gif */}
           <div
-            className={`absolute flex justify-center items-center h-[40vh] text-[30vw] sm:text-[11.2vmax] [clip-path:inset(_50%_0_0_0)] ${
-              isHover
-                ? "translate-y-[8vw] sm:translate-y-[3.8vmax]"
-                : "translate-y-0"
-            } transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#b5c4ff] to-[#ffe397e8]  `}
+            className={`absolute ${
+              isMobile ? "w-[calc(100%-15px)]" : "w-[calc(100%-20px)]"
+            } bottom-[5px] right-[5px]`}
           >
-            音乐
+            <Image
+              width={60}
+              height={60}
+              alt="music"
+              src={musicGIF}
+              className="min-w-[60px] min-h-[60px] absolute bottom-0 transition-[right_transform]"
+              style={{
+                right: isHover ? "calc(100%)" : "0",
+                transform: isHover
+                  ? `translateY(${isMobile ? 16 : 32}px)`
+                  : "",
+              }}
+            ></Image>
           </div>
         </div>
 
