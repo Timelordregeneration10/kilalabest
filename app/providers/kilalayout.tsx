@@ -25,6 +25,7 @@ import {
 // @ts-ignore;
 import cookie from "js-cookie";
 import TWEEN from "@tweenjs/tween.js";
+import { throttle } from "lodash";
 
 export const kilalaContext = createContext({
   scrollTop: 0,
@@ -73,7 +74,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
     { id: "Project", url: "/project" },
     { id: "Application", url: "/application" },
     { id: "Attempt", url: "/attempt" },
-    { id: "Tool", url: "/tool" },
+    { id: "Music", url: "/music" },
     { id: "Anime", url: "/anime" },
     { id: "Game", url: "/game" },
     { id: "Drawing", url: "/drawing" },
@@ -185,9 +186,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
           if (leaveWebTimeout) clearTimeout(leaveWebTimeout);
           setLeaveWebTimeout(null);
         }}
-        onScroll={() => {
-          naviLoop();
-        }}
+        onScroll={throttle(naviLoop, 100)}
         ref={boxallRef}
       >
         <div className=" min-h-screen">{children}</div>
