@@ -9,7 +9,8 @@
   - /RMT 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
   - /game 苍翼风未来感
   - 双子座星星坠落闪烁动效
-
+  - /anime使用dreamle的tutorial+爆炸性发炎
+  - ins风虚拟列表
 
 # RMT细节
 - 文案
@@ -33,11 +34,11 @@
 + three.js-cube=>project
 + three.js-rain=>drawing
 - 雷姆圣经标题=>切割：anime番，drawing画，其他：边框，背景填充
-- png轮播(装饰边框)=>anime
-------> css3d-立方，<a>hover后立方展开，立方图片为游戏，另一侧核心概念边框交合/echarts散点图=>game
-- 弹窗=>attempt
-- bilibilitop+danmuBG=>application
-- css3d-魔法阵=>music
+- sticky但是一个有一个空这样就能看见背景了=>anime
++ css3d-立方，<a>hover后立方展开，立方图片为游戏图片
+- 视差滚动=>music，一堆歌单往下放，music大字放中间
+- bilibilitop+danmuBG=>attempt
+- css3d-8角16片=>application
 - 传送门(炫彩缤纷？仅fixed动画，出现时opacity=0，接下来的内容不展示，门满屏时show，其他组件offset问题用localstorage)=>anime
 - 原神启动
 - telev（非intro用）
