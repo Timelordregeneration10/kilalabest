@@ -305,6 +305,32 @@ const config: Config = {
             transform: "translateY(95%)",
           },
         },
+        notbiggest: {
+          from: {
+            transform: "translateX(100vw)",
+          },
+
+          to: {
+            transform: "translateX(-300vw)",
+          },
+        },
+        toLeftBottom: {
+          from: {
+            transform: "translate(0, 0)",
+          },
+
+          to: {
+            transform: "translate(-50vw,70vh)",
+          },
+        },
+        musicAnimation: {
+          "0%": {
+            transform: "scale(1)",
+          },
+          "100%": {
+            transform: "scale(1.2)",
+          },
+        },
       },
       animation: {
         streamer: "streamer 5s infinite linear",
@@ -319,6 +345,9 @@ const config: Config = {
         moving1: "moving1 3s ease forwards",
         rising: "rising 1s linear alternate infinite",
         falling: "falling 1s linear alternate infinite",
+        notbiggest: "notbiggest 7s linear 1 forwards",
+        toLeftBottom: "toLeftBottom 1s linear 1 forwards",
+        musicAnimation: "musicAnimation 15s linear alternate infinite",
       },
     },
   },

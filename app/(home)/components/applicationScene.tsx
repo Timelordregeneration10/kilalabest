@@ -3,36 +3,213 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import useWindow from "../../hooks/useWindow";
+import birthday1 from "../../components/img/applicaton/birthday1.webp";
+import birthday2 from "../../components/img/applicaton/birthday2.webp";
+import birthday3 from "../../components/img/applicaton/birthday3.webp";
+import hdwpic from "../../components/img/applicaton/hdwpic.webp";
+import landu1 from "../../components/img/applicaton/landu1.webp";
+import landu2 from "../../components/img/applicaton/landu2.webp";
+import yuan from "../../components/img/applicaton/yuan.webp";
+import sakamoto from "../../components/img/applicaton/sakamoto.webp";
+import Image from "next/image";
+import applicationGIF from "../assets/application.gif";
+
+const gamesrc = [
+  birthday1,
+  birthday2,
+  birthday3,
+  hdwpic,
+  landu1,
+  landu2,
+  yuan,
+  sakamoto,
+];
 
 export default function ApplicationScene() {
-    const isMobile = useWindow().width < 640;
-    const [isHover, setIsHover] = useState(isMobile);
-    const router = useRouter();
-    return (
-        <div className="h-screen w-screen bg-application bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
-            {/* mainScene */}
-            <div
-                className=" absolute top-0 left-0 w-screen h-screen"
-            ></div>
-            {/* title and context */}
-            <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center sm:gap-[6vw]">
-                <div className=" relative text-white h-[40vh] flex justify-center items-center cursor-pointer "
-                    onMouseEnter={() => { setIsHover(true) }}
-                    onMouseLeave={() => { setIsHover(false) }}
-                    onClick={() => { router.push('/application') }}>
-                    <div className={`text-[20vw] sm:text-[9.4vmax] ${isHover ? 'opacity-100' : 'opacity-0'} transition-opacity  text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#ffb5e4] to-[#97ffe0e8]  `}>Application</div>
-                    <div className={`absolute flex justify-center items-center h-[40vh] text-[30vw] sm:text-[11.2vmax] [clip-path:inset(_0_0_50%_0)] ${isHover ? '-translate-y-[8vw] sm:-translate-y-[3.8vmax]' : 'translate-y-1'} transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#ffb5e4] to-[#97ffe0e8]  `}>应用</div>
-                    <div className={`absolute flex justify-center items-center h-[40vh] text-[30vw] sm:text-[11.2vmax] [clip-path:inset(_50%_0_0_0)] ${isHover ? 'translate-y-[8vw] sm:translate-y-[3.8vmax]' : 'translate-y-0'} transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#ffb5e4] to-[#97ffe0e8]  `}>应用</div>
-                </div>
+  const isMobile = useWindow().width < 640;
+  const [isHover, setIsHover] = useState(isMobile);
+  const router = useRouter();
 
-                <div className=" relative text-white text-[12.5vw] sm:text-[6vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
-                    <p>* 生日系列 *</p>
-                    <p>* 蓝毒信封 *</p>
-                    <p>* DV相册 *</p>
-                    <p>* 原神启动 *</p>
-                    <p>* 在下坂本 *</p>
+  let beforeTransforms = [];
+  let afterTransforms = [];
+  const translateZBefore = 6;
+  const translateZAfter = 15;
+
+  for (let i = 0; i < 16; i++) {
+    let temp = ``;
+    temp = `rotateX(${i % 2 == 1 ? -90 : 90}deg) rotateY(${
+      i >= 8 ? 0 : i % 4 >= 2 ? 90 : -90
+    }deg) rotateZ(${i >= 8 ? (i % 4 >= 2 ? 90 : -90) : 0}deg) translateZ(${
+      i % 8 >= 4 ? translateZBefore : -1 * translateZBefore
+    }vw)`;
+    beforeTransforms.push(temp);
+  }
+  for (let i = 0; i < 16; i++) {
+    let temp = ``;
+    temp = `rotateX(${i % 2 == 1 ? -90 : 90}deg) rotateY(${
+      i >= 8 ? 0 : i % 4 >= 2 ? 90 : -90
+    }deg) rotateZ(${i >= 8 ? (i % 4 >= 2 ? 90 : -90) : 0}deg) translateZ(${
+      i % 8 >= 4 ? translateZAfter : -1 * translateZAfter
+    }vw)`;
+    afterTransforms.push(temp);
+  }
+
+  let gamecubes = [];
+  for (let i = 0; i < 16; i++) {
+    gamecubes.push({
+      id: i,
+      src: gamesrc[i % 8],
+      beforeTransform: beforeTransforms[i],
+      afterTransform: afterTransforms[i],
+    });
+  }
+  const finalgamecubes = gamecubes;
+
+  return (
+    <div className="h-screen w-screen bg-application bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
+      {/* mainScene */}
+      <div className=" absolute top-0 left-0 w-screen h-screen"></div>
+      <div className="absolute z-[1] left-0 top-0 w-full h-full flex justify-center items-center ">
+        <div
+          className="relative w-[30vw] h-[30vw] transform-style-3d transition-[transform_width_height] duration-1000 "
+          style={{ perspective: isHover ? "1000px" : "1000px" }}
+        >
+          <div className="absolute w-full h-full transform-style-3d rotate-x-0 rotate-y-0 rotate-z-0 animate-turn24 ">
+            {finalgamecubes.map((gamecube) => {
+              return (
+                <div
+                  key={gamecube.id}
+                  className="absolute w-full h-full transform-style-3d transition-[transform_width_height] duration-1000"
+                  style={{
+                    transform: isHover
+                      ? gamecube.afterTransform
+                      : gamecube.beforeTransform,
+                  }}
+                >
+                  <Image
+                    src={gamecube.src}
+                    alt="gamecube"
+                    height={200}
+                    width={200}
+                    className="absolute object-cover transition-[transform_width_height] duration-1000"
+                    style={{
+                      width: isHover ? "40%" : "20%",
+                      height: isHover ? "40%" : "20%",
+                    }}
+                  />
                 </div>
-            </div>
+              );
+            })}
+          </div>
         </div>
-    )
+      </div>
+      {/* title and context */}
+      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-[10vh] sm:gap-[6vw]">
+        <div
+          className=" relative text-white h-fit flex justify-center items-center cursor-pointer px-12 py-8 sm:px-24 sm:py-16"
+          onMouseEnter={() => {
+            setIsHover(true);
+          }}
+          onMouseLeave={() => {
+            setIsHover(false);
+          }}
+          onClick={() => {
+            router.push("/application");
+          }}
+        >
+          <div
+            className={`relative z-[2] text-[10vw] sm:text-[4.4vmax] ${
+              isHover ? "opacity-100" : "opacity-100"
+            } text-white `}
+          >
+            APPLICATION
+          </div>
+          {/* left top border */}
+          <div
+            className="absolute z-[2] top-0 left-0 w-full h-full border-5 sm:border-[10px] border-white transition-transform"
+            style={{
+              transform: isHover
+                ? `translate(${isMobile ? 24 : 48}px,${isMobile ? 16 : 32}px)`
+                : "",
+            }}
+          ></div>
+          {/* right top corner */}
+          <div
+            className="absolute z-[2] top-0 right-0 w-[20px] sm:w-[40px] h-[20px] sm:h-[40px] sm:border-r-[10px] sm:border-t-[10px] border-l-0 border-b-0 border-r-5 border-t-5 border-white transition-transform"
+            style={{
+              transform: isHover
+                ? `translate(${isMobile ? 24 : 48}px,${isMobile ? -16 : -32}px)`
+                : "",
+            }}
+          ></div>
+          {/* right bottom border */}
+          <div
+            className="absolute z-[2] top-0 left-0 w-full h-full border-5 sm:border-[10px] border-white transition-transform"
+            style={{
+              transform: isHover
+                ? `translate(${isMobile ? -24 : -48}px,${
+                    isMobile ? -16 : -32
+                  }px)`
+                : "",
+            }}
+          ></div>
+          {/* left bottom corner */}
+          <div
+            className="absolute z-[2] bottom-0 left-0 w-[20px] sm:w-[40px] h-[20px] sm:h-[40px] sm:border-l-[10px] sm:border-b-[10px] border-r-0 border-t-0 border-l-5 border-b-5 border-white transition-transform"
+            style={{
+              transform: isHover
+                ? `translate(${isMobile ? -24 : -48}px,${isMobile ? 16 : 32}px)`
+                : "",
+            }}
+          ></div>
+          {/* top application gif */}
+          <div
+            className={`absolute z-[2] ${
+              isMobile ? "w-[calc(100%-15px)]" : "w-[calc(100%-20px)]"
+            } top-[5px] left-[5px]`}
+          >
+            <Image
+              width={60}
+              height={60}
+              alt="application"
+              src={applicationGIF}
+              className="min-w-[60px] min-h-[60px] absolute top-0 transition-[left_transform]"
+              style={{
+                left: isHover ? "calc(100%)" : "0",
+                transform: isHover
+                  ? `translateY(${isMobile ? -16 : -32}px)`
+                  : "",
+              }}
+            ></Image>
+          </div>
+          {/* bottom application gif */}
+          <div
+            className={`absolute z-[2] ${
+              isMobile ? "w-[calc(100%-15px)]" : "w-[calc(100%-20px)]"
+            } bottom-[5px] right-[5px]`}
+          >
+            <Image
+              width={60}
+              height={60}
+              alt="application"
+              src={applicationGIF}
+              className="min-w-[60px] min-h-[60px] absolute bottom-0 transition-[right_transform]"
+              style={{
+                right: isHover ? "calc(100%)" : "0",
+                transform: isHover ? `translateY(${isMobile ? 16 : 32}px)` : "",
+              }}
+            ></Image>
+          </div>
+        </div>
+
+        <div className=" relative text-white text-[12.5vw] sm:text-[6vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
+          <p>* 生日系列 *</p>
+          <p>* 蓝毒信封 *</p>
+          <p>* DV相册 *</p>
+          <p>* 原神启动 *</p>
+          <p>* 在下坂本 *</p>
+        </div>
+      </div>
+    </div>
+  );
 }
