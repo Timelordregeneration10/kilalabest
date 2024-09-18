@@ -15,10 +15,10 @@
 - 文案
 
 # notes
-? ​初见transform左右，从下往上
-? ​边框装饰
+- ​初见transform左右，从下往上，rotateY
+- ​边框装饰
 ​- bilibilitop鼠标进入区域后左右移动改变横向位置
-! ​视差滚动和bilibili都可以加入opacity
+- ​视差滚动和bilibili都可以加入opacity
 - ​ai绘图得到素材
 - ​移动端适配​
 - 角落核心概念式边框交合*2
