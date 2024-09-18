@@ -61,7 +61,7 @@
 + 项目
 + 测试
 + 应用（生日快乐等非项目）
-+ 工具
++ 音乐
 + 番
 + 游戏
 + 画画
@@ -90,11 +90,11 @@
 # =>itemList=>png(无法单张PNG则截图2~3对角线拼)轮播=>hybrid them
 * PNG则无背景，边角小装饰
 
-# 点按钮tween划到对应scrolltop不在navi
+# 点按钮tween划到对应scrolltop不在navi ✅
 
 # threejs所需图片可懒加载
 
 # ** new **
-# 视差滚动节流
+# 视差滚动节流 ✅
 # 双子座星星坠落闪烁动效
-# 音乐part
+# 音乐part ✅
