@@ -6,7 +6,7 @@
 # kilalayout彻底完成 ✅
 + 向下滑动丝滑隐藏navi部分 => useState & style & transition
 + 不同宽度隐藏部分的navi高度不同 => useWindow钩子动态获取innerwidth & useEffect & useCallback
-+ layout向page传参 => 上下文失败，暂时使用 requestAnimationFrame & localstorage
++ layout向page传参 => 上下文失败，暂时使用 requestAnimationFrame & localstorage＝＞上下文成功
 
 # 新素材寻找 ✅
 + 每部分bg
@@ -23,7 +23,7 @@
 
 # ? 双底角小挂件/边饰
 
-# 复数小标题可以2d转换增加层次感
+# 复数小标题可以2d转换增加层次感？可能会很乱
 
 # RMT ✅
 + 素材添加
@@ -76,7 +76,7 @@
 + three.js-rain=>drawing
 - 雷姆圣经标题=>切割：anime番，drawing画，其他：边框，背景填充
 - png轮播(装饰边框)=>anime
-------> css3d-立方，<a>hover后立方展开，立方图片为游戏，另一侧核心概念边框交合=>game
+------> css3d-立方，<a>hover后立方展开，立方图片为游戏，另一侧核心概念边框交合/echarts散点图=>game
 - 弹窗=>attempt
 - bilibilitop+danmuBG=>application
 - css3d-魔法阵=>tool
