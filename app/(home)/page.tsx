@@ -10,7 +10,7 @@ import DrawingScene from "./components/drawingScene";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <KilalaScene></KilalaScene>
       <RMTScene></RMTScene>
       <ProjectScene></ProjectScene>
@@ -20,6 +20,6 @@ export default function Home() {
       <AnimeScene></AnimeScene>
       <GameScene></GameScene>
       <DrawingScene></DrawingScene>
-    </div>
+    </>
   );
 }

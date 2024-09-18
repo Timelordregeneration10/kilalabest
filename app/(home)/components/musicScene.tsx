@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import useWindow from "../../hooks/useWindow";
 import musicGIF from "../assets/music.gif";
 import Image from "next/image";
+import musicBG from "@/app/components/img/musedash/music.webp";
 
 export default function MusicScene() {
   const isMobile = useWindow().width < 640;
@@ -13,7 +14,15 @@ export default function MusicScene() {
   return (
     <div className="h-screen w-screen bg-music bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
       {/* mainScene */}
-      <div className=" absolute top-0 left-0 w-screen h-screen"></div>
+      <div className=" absolute top-0 left-0 w-screen h-screen animate-musicAnimation">
+        <Image
+          src={musicBG}
+          width={1600}
+          height={900}
+          alt="musicbg"
+          className="w-full h-full bg-cover"
+        ></Image>
+      </div>
       {/* title and context */}
       <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-[10vh] sm:gap-[10vw]">
         <div
@@ -107,9 +116,7 @@ export default function MusicScene() {
               className="min-w-[60px] min-h-[60px] absolute bottom-0 transition-[right_transform]"
               style={{
                 right: isHover ? "calc(100%)" : "0",
-                transform: isHover
-                  ? `translateY(${isMobile ? 16 : 32}px)`
-                  : "",
+                transform: isHover ? `translateY(${isMobile ? 16 : 32}px)` : "",
               }}
             ></Image>
           </div>
