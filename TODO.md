@@ -1,3 +1,5 @@
+# lottiefiles 酷炫灵动GIF
+
 # 首屏开发
 ## 首屏细节
 
@@ -8,34 +10,19 @@
   - /game 苍翼风未来感
   - 双子座星星坠落闪烁动效
 
-# ? 角落核心概念式边框交合*2
-
-# ? 双底角小挂件/边饰
 
 # RMT细节
 - 文案
 
 # notes
 ? ​初见transform左右，从下往上
-+ ​加载更多=>next自带懒加载
-+ ​ico图标用户可用性=>deprecated
-+ ​更多雷姆=>RMT
-+ ​不要电话
-- ​链接anilist
 ? ​边框装饰
-!! ​雷姆圣经字体设计
-+ ​第一页为Nicholas no 个人网站（内含类似核心技术边框标签，悬浮（点击（或者settimeout））后魔法阵分裂样分散并显示更多）
-​+ 关于视差滚动则需要改成近慢远快来增加透视感
 ​- bilibilitop鼠标进入区域后左右移动改变横向位置
 ! ​视差滚动和bilibili都可以加入opacity
-+ ​加入图片懒加载=>next
-​- 生日快乐系列=>application
-- ​clip-path应用（自定义对抗线，传送门预制path，水花，鼠标位置反色圈，clip-path轮播图，所有的出现消失动效都可以clip-path）
 - ​ai绘图得到素材
 - ​移动端适配​
-+ ​js合并，压缩（打包）=>next
-+ ​背景图片等比缩放（比如缩小后手机看到正中央）
-+ ​喵斯新图片
+- 角落核心概念式边框交合*2
+- 双底角小挂件/边饰
 ​
 # 主页只放入口和炫酷特效
 ## 可用特效：
@@ -53,10 +40,24 @@
 - css3d-魔法阵=>music
 - 传送门(炫彩缤纷？仅fixed动画，出现时opacity=0，接下来的内容不展示，门满屏时show，其他组件offset问题用localstorage)=>anime
 - 原神启动
-? 点击文字
 - telev（非intro用）
 - lastdinner（非intro用）
 - 背景swipper(非intro用，内存consuming)
+
+# notes ✅
++ ​加载更多=>next自带懒加载
++ ​ico图标用户可用性=>deprecated
++ ​更多雷姆=>RMT
++ ​不要电话
++ ​链接anilist
++ ​第一页为Nicholas no 个人网站（内含类似核心技术边框标签，悬浮（点击（或者settimeout））后魔法阵分裂样分散并显示更多）
+​+ 关于视差滚动则需要改成近慢远快来增加透视感
++ ​加入图片懒加载=>next
+​+ 生日快乐系列=>application
++ ​clip-path应用（自定义对抗线，传送门预制path，水花，鼠标位置反色圈，clip-path轮播图，所有的出现消失动效都可以clip-path）
++ ​js合并，压缩（打包）=>next
++ ​背景图片等比缩放（比如缩小后手机看到正中央）
++ ​喵斯新图片
 
 # metadata useclient分离 ✅
 
