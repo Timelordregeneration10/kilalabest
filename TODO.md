@@ -1,33 +1,16 @@
-<!-- # ssl from https://manage.sslforfree.com/dashboard -->
-# metadata useclient分离 ✅
+# 首屏开发
+## 首屏细节
 
-# navi，navi宽度适配 ✅
-
-# kilalayout彻底完成 ✅
-+ 向下滑动丝滑隐藏navi部分 => useState & style & transition
-+ 不同宽度隐藏部分的navi高度不同 => useWindow钩子动态获取innerwidth & useEffect & useCallback
-+ layout向page传参 => 上下文失败，暂时使用 requestAnimationFrame & localstorage＝＞上下文成功
-
-# 新素材寻找 ✅
-+ 每部分bg
-+ 仿mihyho首屏video
-
-# new 首屏框架 ✅
-+ 光敏癫痫警告
-+ 调整视频大小，1024px以下object-cover, 1024px以上object-fill
-+ 首屏文案
-
-# 首屏细节
+# /navi开发
+## /navi总体设计
+- 每个/navi使用崭新主题
+  - /RMT 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
+  - /game 苍翼风未来感
+  - 双子座星星坠落闪烁动效
 
 # ? 角落核心概念式边框交合*2
 
 # ? 双底角小挂件/边饰
-
-# 复数小标题可以2d转换增加层次感？可能会很乱
-
-# RMT ✅
-+ 素材添加
-+ 动起来
 
 # RMT细节
 - 文案
@@ -53,19 +36,7 @@
 + ​js合并，压缩（打包）=>next
 + ​背景图片等比缩放（比如缩小后手机看到正中央）
 + ​喵斯新图片
-​? 苍翼风未来感
 ​
-# 新navi ✅
-+ 首屏不在navi
-+ RMT
-+ 项目
-+ 测试
-+ 应用（生日快乐等非项目）
-+ 音乐
-+ 番
-+ 游戏
-+ 画画
-
 # 主页只放入口和炫酷特效
 ## 可用特效：
 + 背景视频
@@ -87,14 +58,41 @@
 - lastdinner（非intro用）
 - 背景swipper(非intro用，内存consuming)
 
-# =>itemList=>png(无法单张PNG则截图2~3对角线拼)轮播=>hybrid them
-* PNG则无背景，边角小装饰
+# metadata useclient分离 ✅
+
+# navi，navi宽度适配 ✅
+
+# kilalayout彻底完成 ✅
++ 向下滑动丝滑隐藏navi部分 => useState & style & transition
++ 不同宽度隐藏部分的navi高度不同 => useWindow钩子动态获取innerwidth & useEffect & useCallback
++ layout向page传参 => 上下文失败，暂时使用 requestAnimationFrame & localstorage＝＞上下文成功
+
+# 新素材寻找 ✅
++ 每部分bg
++ 仿mihyho首屏video
+
+# new 首屏框架 ✅
++ 光敏癫痫警告
++ 调整视频大小，1024px以下object-cover, 1024px以上object-fill
++ 首屏文案
+
+# RMT ✅
++ 素材添加
++ 动起来
+
+# 新navi ✅
++ 首屏不在navi
++ RMT
++ 项目
++ 测试
++ 应用（生日快乐等非项目）
++ 音乐
++ 番
++ 游戏
++ 画画
 
 # 点按钮tween划到对应scrolltop不在navi ✅
 
-# threejs所需图片可懒加载
-
-# ** new **
 # 视差滚动节流 ✅
-# 双子座星星坠落闪烁动效
+
 # 音乐part ✅
