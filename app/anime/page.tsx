@@ -1,7 +1,7 @@
 const AnimePage: React.FC = () => {
   return (
     <div className="w-full ">
-      <h1>Nicholas's Top Anime</h1>
+      <h1>{"Nicholas's Top Anime"}</h1>
       <h2>comedy</h2>
       {["comedy1", "comedy2", "comedy3"].map((v, index) => (
         <div key={index}>
