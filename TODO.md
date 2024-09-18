@@ -79,7 +79,7 @@
 ------> css3d-立方，<a>hover后立方展开，立方图片为游戏，另一侧核心概念边框交合/echarts散点图=>game
 - 弹窗=>attempt
 - bilibilitop+danmuBG=>application
-- css3d-魔法阵=>tool
+- css3d-魔法阵=>music
 - 传送门(炫彩缤纷？仅fixed动画，出现时opacity=0，接下来的内容不展示，门满屏时show，其他组件offset问题用localstorage)=>anime
 - 原神启动
 ? 点击文字

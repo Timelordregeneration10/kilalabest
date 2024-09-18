@@ -73,7 +73,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
     { id: "Project", url: "/project" },
     { id: "Application", url: "/application" },
     { id: "Attempt", url: "/attempt" },
-    { id: "Tool", url: "/tool" },
+    { id: "Music", url: "/music" },
     { id: "Anime", url: "/anime" },
     { id: "Game", url: "/game" },
     { id: "Drawing", url: "/drawing" },

@@ -30,7 +30,7 @@ const config: Config = {
         project: "url('./components/img/musedash/project.webp')",
         application: "url('./components/img/musedash/application.webp')",
         attempt: "url('./components/img/musedash/attempt.webp')",
-        tool: "url('./components/img/musedash/tool.webp')",
+        music: "url('./components/img/musedash/music.webp')",
         anime: "url('./components/img/musedash/anime.webp')",
         game: "url('./components/img/musedash/game.webp')",
         drawing: "url('./components/img/musedash/drawing.webp')",
