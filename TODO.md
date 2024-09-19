@@ -1,9 +1,7 @@
-# lottiefiles 酷炫灵动GIF
-
-# 首屏开发
-## 首屏细节
-- 副标题文案与初见特效↓
-- ​初见transform左右，从下往上，rotateY
+# notes
+- ​ai绘图得到素材
+- ​移动端适配​
+- lottiefiles 酷炫灵动GIF
 
 # /navi开发
 ## /navi总体设计
@@ -14,16 +12,12 @@
   - /anime使用dreamle的tutorial+爆炸性发炎
   - ins风虚拟列表
 
-# RMT细节
-- 文案
 
-# notes
-​- bilibilitop鼠标进入区域后左右移动改变横向位置
-- ​视差滚动和bilibili都可以加入opacity
-- ​ai绘图得到素材
-- ​移动端适配​
-- 角落核心概念式边框交合*2
-- 双底角小挂件/边饰
+# 首屏开发 ✅
+## 首屏细节 ✅
++ 副标题文案与初见特效↓
++ ​初见transform左右，从下往上，rotateY
++ 文案
 ​
 # 主页只放入口和炫酷特效 ✅
 ## 可用特效：
