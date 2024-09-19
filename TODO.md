@@ -12,6 +12,10 @@
   - /anime使用dreamle的tutorial+爆炸性发炎
   - ins风虚拟列表
 
+# github图床见知乎收藏
+
+# 服务端获取文件目录 ✅
+- py获取aiyiRems中的图片修改.env实现自动化/middlewire.ts获取json＝＞服务端获取文件目录 => 部署后都打包webp，部署不需要，本地不压缩nextjs自己给你压缩，评价为不如手机相册和电脑壁纸
 
 # 首屏开发 ✅
 ## 首屏细节 ✅
