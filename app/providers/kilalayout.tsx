@@ -11,7 +11,7 @@ import {
 } from "react";
 import Foot from "./components/footer";
 import heartpng from "../components/img/heart.png";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import useWindow from "../hooks/useWindow";
 import {
   Modal,
@@ -70,19 +70,27 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
   ];
 
   const naviItems = [
-    { id: "RMT", url: "/RMT" },
-    { id: "Project", url: "/project" },
-    { id: "Application", url: "/application" },
-    { id: "Attempt", url: "/attempt" },
-    { id: "Music", url: "/music" },
-    { id: "Anime", url: "/anime" },
-    { id: "Game", url: "/game" },
-    { id: "Drawing", url: "/drawing" },
+    { id: "RMT", url: "/RMT", height: 3.7 },
+    { id: "Project", url: "/project", height: 1 },
+    { id: "Application", url: "/application", height: 3 },
+    { id: "Attempt", url: "/attempt", height: 1 },
+    {
+      id: "Music",
+      url: "https://music.163.com/#/user/home?id=479983448",
+      height: 1,
+    },
+    {
+      id: "Anime",
+      url: "https://anilist.co/user/NicholasBurkhardt/animelist",
+      height: 1,
+    },
+    { id: "Game", url: "https://space.bilibili.com/515016084", height: 1 },
+    { id: "Drawing", url: "/drawing", height: 1 },
   ];
 
   const [contactContent, setContactContent] = useState("CONTACT ME");
 
-  const { width: kilaInnerWidth } = useWindow();
+  const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
   const [navitopHeight, setNavitopHeight] = useState(
     kilaInnerWidth > 1024 ? "10vh" : kilaInnerWidth > 640 ? "16vh" : "12vh"
   );
@@ -168,6 +176,8 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
   //   setScrollTopLoop();
   // }, []);
 
+  const path = usePathname();
+
   return (
     <kilalaContext.Provider value={{ scrollTop, controlScrollTop }}>
       <div
@@ -195,7 +205,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
         <Foot></Foot>
 
         {/* navi */}
-        <div className="absolute top-0 left-0 w-screen text-white select-none z-[10] flex flex-col">
+        <div className="absolute top-0 left-0 w-screen text-white select-none z-[20] flex flex-col">
           <div
             className="w-screen lg:h-[10vh] h-[12vh] sm:h-[16vh] flex lg:flex-row flex-col border-b-2 border-white overflow-hidden transition-[height_opacity] duration-500"
             style={{
@@ -240,21 +250,27 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
 
-          <div className=" w-screen h-[6vh] sm:[8vh] lg:h-[5vh] text-white flex flex-row flex-wrap justify-around">
-            {naviItems.map((item) => {
-              return (
-                <div
-                  key={item.id}
-                  onClick={() => {
-                    router.push(item.url);
-                  }}
-                  className="cursor-pointer lg:w-[12.4vw] w-[24.9vw] h-[3vh] sm:h-[4vh] lg:h-[5vh] flex justify-center items-center text-[1.7vmax] border-b-2 border-r-2 shadow border-white transition-colors duration-500 hover:text-[violet]"
-                >
-                  {item.id}
-                </div>
-              );
-            })}
-          </div>
+          {path === "/" && (
+            <div className=" w-screen h-[6vh] sm:[8vh] lg:h-[5vh] text-white flex flex-row flex-wrap justify-around">
+              {naviItems.map((item, index) => {
+                return (
+                  <div
+                    key={item.id}
+                    onClick={() => {
+                      let sum = 1;
+                      for (let i = 0; i < index; i++) {
+                        sum += naviItems[i].height;
+                      }
+                      controlScrollTop(sum * kilaInnerHeight);
+                    }}
+                    className="cursor-pointer lg:w-[12.4vw] w-[24.9vw] h-[3vh] sm:h-[4vh] lg:h-[5vh] flex justify-center items-center text-[1.7vmax] border-b-2 border-r-2 shadow border-white transition-colors duration-500 hover:text-[violet]"
+                  >
+                    {item.id}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
 
         {/* modal for 光敏癫痫 */}

@@ -125,7 +125,7 @@ export default function AnimeScene() {
       </div>
       {/* title and context */}
       <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center sm:gap-[7vw]">
-        <div
+        <a
           className="order-1 sm:order-2 relative text-white h-[40vh] flex justify-center items-center cursor-pointer "
           onMouseEnter={() => {
             setIsHover(true);
@@ -133,9 +133,8 @@ export default function AnimeScene() {
           onMouseLeave={() => {
             setIsHover(false);
           }}
-          onClick={() => {
-            router.push("/anime");
-          }}
+          href="https://anilist.co/user/NicholasBurkhardt/animelist"
+          target="_blank"
         >
           <div
             className={`text-[20vw] sm:text-[9.4vmax] ${
@@ -162,7 +161,7 @@ export default function AnimeScene() {
           >
             番
           </div>
-        </div>
+        </a>
 
         <div className="order-2 sm:order-1 relative text-white text-[11.5vw] sm:text-[6vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
           <p className=" animate-bounce">

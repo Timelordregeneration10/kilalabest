@@ -25,7 +25,7 @@ export default function MusicScene() {
       </div>
       {/* title and context */}
       <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-[10vh] sm:gap-[10vw]">
-        <div
+        <a
           className=" relative text-white h-fit flex justify-center items-center cursor-pointer px-12 py-8 sm:px-24 sm:py-16"
           onMouseEnter={() => {
             setIsHover(true);
@@ -33,9 +33,8 @@ export default function MusicScene() {
           onMouseLeave={() => {
             setIsHover(false);
           }}
-          onClick={() => {
-            router.push("/music");
-          }}
+          href="https://music.163.com/#/user/home?id=479983448"
+          target="_blank"
         >
           <div
             className={`text-[15vw] sm:text-[6.4vmax] ${
@@ -120,7 +119,7 @@ export default function MusicScene() {
               }}
             ></Image>
           </div>
-        </div>
+        </a>
 
         <div className=" relative text-white text-[12.5vw] sm:text-[6vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
           <p className=" animate-bounce">
