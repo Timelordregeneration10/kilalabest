@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import useWindow from "../../hooks/useWindow";
 import birthday1 from "../../components/img/applicaton/birthday1.webp";
@@ -13,6 +13,8 @@ import yuan from "../../components/img/applicaton/yuan.webp";
 import sakamoto from "../../components/img/applicaton/sakamoto.webp";
 import Image from "next/image";
 import applicationGIF from "../assets/application.gif";
+import { kilalaContext } from "@/app/providers/kilalayout";
+import bg from "@/app/components/img/musedash/application.webp";
 
 const gamesrc = [
   birthday1,
@@ -65,13 +67,121 @@ export default function ApplicationScene() {
   }
   const finalgamecubes = gamecubes;
 
+  const boxRef = useRef<HTMLDivElement | null>(null);
+  const yuanRef = useRef<HTMLDivElement | null>(null);
+  const bgRef = useRef<HTMLDivElement | null>(null);
+
+  const { scrollTop } = useContext(kilalaContext);
+
+  const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
+
+  useEffect(() => {
+    // boxRef fixed 400vh
+    if (boxRef.current) {
+      const { top } = boxRef.current.getBoundingClientRect();
+      // before application scene show
+      if (top >= kilaInnerHeight) {
+        if (bgRef.current) bgRef.current.style.display = "none";
+      }
+      // scene enter visible area partly
+      else if (top > 0 && top < kilaInnerHeight) {
+        if (bgRef.current) {
+          bgRef.current.style.display = "block";
+          bgRef.current.style.opacity = "0";
+          bgRef.current.style.transform = `scale(1)`;
+        }
+      }
+      // bg bigger
+      else if (top <= 0 && top >= -kilaInnerHeight) {
+        if (bgRef.current) {
+          bgRef.current.style.opacity = "1";
+          bgRef.current.style.transform = `scale(${
+            -(top / kilaInnerHeight) + 1
+          }) rotate(0deg)`;
+        }
+        if (yuanRef.current) yuanRef.current.style.display = "none";
+      }
+      // bg bigger and rotate and fade and yuan show behind bg
+      else if (top < -kilaInnerHeight && top >= -2 * kilaInnerHeight) {
+        if (bgRef.current) {
+          bgRef.current.style.opacity = `${
+            (top + kilaInnerHeight) / kilaInnerHeight + 1
+          }`;
+          bgRef.current.style.transform = `scale(${
+            -((top + kilaInnerHeight) / kilaInnerHeight) + 2
+          }) rotate(${-((top + kilaInnerHeight) / kilaInnerHeight) * 90}deg)`;
+        }
+        if (yuanRef.current) {
+          yuanRef.current.style.display = `block`;
+          yuanRef.current.style.transform = `translateY(0)`;
+        }
+      }
+      // bg faded and yuan translateY run away
+      else if (top < -2 * kilaInnerHeight && top >= -3 * kilaInnerHeight) {
+        if (bgRef.current) {
+          bgRef.current.style.opacity = `0`;
+          bgRef.current.style.transform = `scale(3) rotate(90deg)`;
+          bgRef.current.style.display = "block";
+        }
+        if (yuanRef.current) {
+          yuanRef.current.style.transform = `translateY(${
+            ((top + 2 * kilaInnerHeight) / kilaInnerHeight) * 100
+          }vh)`;
+        }
+      }
+      // yuan vanish and bg display none
+      else if (top < -3 * kilaInnerHeight && top > -4 * kilaInnerHeight) {
+        if (bgRef.current) {
+          bgRef.current.style.display = "none";
+        }
+        if (yuanRef.current) {
+          yuanRef.current.style.display = `block`;
+          yuanRef.current.style.transform = `translateY(-100vh)`;
+        }
+      }
+      // yuan display none
+      else if (top < -4 * kilaInnerHeight) {
+        if (yuanRef.current) {
+          yuanRef.current.style.display = `none`;
+        }
+      }
+    }
+  }, [kilaInnerWidth, scrollTop, kilaInnerHeight]);
+
   return (
-    <div className="h-screen w-screen bg-application bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
-      {/* mainScene */}
-      <div className=" absolute top-0 left-0 w-screen h-screen"></div>
-      <div className="absolute z-[1] left-0 top-0 w-full h-full flex justify-center items-center ">
+    <div
+      className="h-[300vh] w-screen bg-application bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative"
+      ref={boxRef}
+    >
+      <div
+        className=" fixed top-0 left-0 w-screen h-screen pointer-events-none z-10 opacity-0 transition-[opacity_transform] duration-100 ease-[cubic-bezier(0.25,0.1,0.25,1)] hidden "
+        ref={bgRef}
+      >
+        <Image
+          src={bg}
+          width={1600}
+          height={900}
+          alt="bg"
+          className="w-full h-full bg-cover"
+        ></Image>
+      </div>
+      <div
+        className=" fixed top-0 left-0 w-screen h-screen pointer-events-none z-[9] transition-transform duration-100 ease-[cubic-bezier(0.25,0.1,0.25,1)] hidden "
+        ref={yuanRef}
+      >
+        <Image
+          src={
+            "https://timelord.cn/%E5%8E%9F%E7%A5%9E%E5%90%AF%E5%8A%A8/yuanshen.jpg"
+          }
+          width={1600}
+          height={900}
+          alt="yuan"
+          className="w-full h-full bg-cover"
+        ></Image>
+      </div>
+      <div className="absolute z-[11] left-0 top-0 w-full h-screen flex justify-center items-center ">
         <div
-          className="relative w-[30vw] h-[30vw] transform-style-3d transition-[transform_width_height] duration-1000 "
+          className="relative z-[11] w-[30vw] h-[30vw] transform-style-3d transition-[transform_width_height] duration-1000 "
           style={{ perspective: isHover ? "1000px" : "1000px" }}
         >
           <div className="absolute w-full h-full transform-style-3d rotate-x-0 rotate-y-0 rotate-z-0 animate-turn24 ">
@@ -104,7 +214,7 @@ export default function ApplicationScene() {
         </div>
       </div>
       {/* title and context */}
-      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-[10vh] sm:gap-[6vw]">
+      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-[10vh] sm:gap-[6vw] relative z-[12]">
         <div
           className=" relative text-white h-fit flex justify-center items-center cursor-pointer px-12 py-8 sm:px-24 sm:py-16"
           onMouseEnter={() => {
@@ -118,7 +228,7 @@ export default function ApplicationScene() {
           }}
         >
           <div
-            className={`relative z-[2] text-[10vw] sm:text-[4.4vmax] ${
+            className={`relative z-[12] text-[10vw] sm:text-[4.4vmax] ${
               isHover ? "opacity-100" : "opacity-100"
             } text-white `}
           >
@@ -126,7 +236,7 @@ export default function ApplicationScene() {
           </div>
           {/* left top border */}
           <div
-            className="absolute z-[2] top-0 left-0 w-full h-full border-5 sm:border-[10px] border-white transition-transform"
+            className="absolute z-[12] top-0 left-0 w-full h-full border-5 sm:border-[10px] border-white transition-transform"
             style={{
               transform: isHover
                 ? `translate(${isMobile ? 24 : 48}px,${isMobile ? 16 : 32}px)`
@@ -135,7 +245,7 @@ export default function ApplicationScene() {
           ></div>
           {/* right top corner */}
           <div
-            className="absolute z-[2] top-0 right-0 w-[20px] sm:w-[40px] h-[20px] sm:h-[40px] sm:border-r-[10px] sm:border-t-[10px] border-l-0 border-b-0 border-r-5 border-t-5 border-white transition-transform"
+            className="absolute z-[12] top-0 right-0 w-[20px] sm:w-[40px] h-[20px] sm:h-[40px] sm:border-r-[10px] sm:border-t-[10px] border-l-0 border-b-0 border-r-5 border-t-5 border-white transition-transform"
             style={{
               transform: isHover
                 ? `translate(${isMobile ? 24 : 48}px,${isMobile ? -16 : -32}px)`
@@ -144,7 +254,7 @@ export default function ApplicationScene() {
           ></div>
           {/* right bottom border */}
           <div
-            className="absolute z-[2] top-0 left-0 w-full h-full border-5 sm:border-[10px] border-white transition-transform"
+            className="absolute z-[12] top-0 left-0 w-full h-full border-5 sm:border-[10px] border-white transition-transform"
             style={{
               transform: isHover
                 ? `translate(${isMobile ? -24 : -48}px,${
@@ -155,7 +265,7 @@ export default function ApplicationScene() {
           ></div>
           {/* left bottom corner */}
           <div
-            className="absolute z-[2] bottom-0 left-0 w-[20px] sm:w-[40px] h-[20px] sm:h-[40px] sm:border-l-[10px] sm:border-b-[10px] border-r-0 border-t-0 border-l-5 border-b-5 border-white transition-transform"
+            className="absolute z-[12] bottom-0 left-0 w-[20px] sm:w-[40px] h-[20px] sm:h-[40px] sm:border-l-[10px] sm:border-b-[10px] border-r-0 border-t-0 border-l-5 border-b-5 border-white transition-transform"
             style={{
               transform: isHover
                 ? `translate(${isMobile ? -24 : -48}px,${isMobile ? 16 : 32}px)`
@@ -164,7 +274,7 @@ export default function ApplicationScene() {
           ></div>
           {/* top application gif */}
           <div
-            className={`absolute z-[2] ${
+            className={`absolute z-[12] ${
               isMobile ? "w-[calc(100%-15px)]" : "w-[calc(100%-20px)]"
             } top-[5px] left-[5px]`}
           >
@@ -184,7 +294,7 @@ export default function ApplicationScene() {
           </div>
           {/* bottom application gif */}
           <div
-            className={`absolute z-[2] ${
+            className={`absolute z-[12] ${
               isMobile ? "w-[calc(100%-15px)]" : "w-[calc(100%-20px)]"
             } bottom-[5px] right-[5px]`}
           >

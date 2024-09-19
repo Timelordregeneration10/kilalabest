@@ -10,6 +10,7 @@ import astlibra from "../../components/img/game/astlibra.webp";
 import skull from "../../components/img/game/skull.webp";
 import no11 from "../../components/img/game/no11.webp";
 import Image from "next/image";
+import gameGIF from "../assets/game.gif";
 
 const gamesrc = [hollowknight, endinglilies, terreria, astlibra, skull, no11];
 
@@ -87,8 +88,7 @@ export default function GameScene() {
   return (
     <div className="h-screen w-screen bg-game bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
       {/* mainScene */}
-      <div className=" absolute top-0 left-0 w-screen h-screen"></div>
-      <div className="absolute z-[1] left-0 top-0 w-full h-full flex justify-center items-center ">
+      <div className="absolute z-[1] left-0 top-0 w-screen h-screen flex justify-center items-center ">
         <div
           className="relative w-[30vw] h-[30vw] transform-style-3d transition-[transform_width_height] duration-1000 "
           style={{ perspective: isHover ? "1000px" : "1000px" }}
@@ -142,9 +142,9 @@ export default function GameScene() {
         </div>
       </div>
       {/* title and context */}
-      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center sm:gap-[10vw]">
+      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-[10vh] sm:gap-[10vw]">
         <div
-          className=" relative text-white h-[40vh] w-full flex justify-center items-center cursor-pointer "
+          className=" relative text-white h-fit flex justify-center items-center cursor-pointer px-12 py-8 sm:px-24 sm:py-16"
           onMouseEnter={() => {
             setIsHover(true);
           }}
@@ -156,34 +156,95 @@ export default function GameScene() {
           }}
         >
           <div
-            className={`relative z-[2] text-[25vw] sm:text-[10.4vmax] ${
-              isHover ? "opacity-100" : "opacity-0"
-            } transition-opacity  text-transparent bg-clip-text  bg-gradient-to-r from-[#ffb5c3] to-[#97e5ffe8]  `}
+            className={`relative z-[2] text-[15vw] sm:text-[6.4vmax] ${
+              isHover ? "opacity-100" : "opacity-100"
+            } text-white `}
           >
             GAME
           </div>
+          {/* left top border */}
           <div
-            className={`absolute z-[2] flex justify-center items-center h-[40vh] text-[40vw] sm:text-[16.2vmax] [clip-path:inset(_0_0_50%_0)] ${
-              isHover
-                ? "-translate-y-[8vw] sm:-translate-y-[3.8vmax]"
-                : "translate-y-1"
-            } transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[#ffb5c3] to-[#97e5ffe8]  `}
+            className="absolute z-[2] top-0 left-0 w-full h-full border-5 sm:border-[10px] border-white transition-transform"
+            style={{
+              transform: isHover
+                ? `translate(${isMobile ? 24 : 48}px,${isMobile ? 16 : 32}px)`
+                : "",
+            }}
+          ></div>
+          {/* right top corner */}
+          <div
+            className="absolute z-[2] top-0 right-0 w-[20px] sm:w-[40px] h-[20px] sm:h-[40px] sm:border-r-[10px] sm:border-t-[10px] border-l-0 border-b-0 border-r-5 border-t-5 border-white transition-transform"
+            style={{
+              transform: isHover
+                ? `translate(${isMobile ? 24 : 48}px,${isMobile ? -16 : -32}px)`
+                : "",
+            }}
+          ></div>
+          {/* right bottom border */}
+          <div
+            className="absolute z-[2] top-0 left-0 w-full h-full border-5 sm:border-[10px] border-white transition-transform"
+            style={{
+              transform: isHover
+                ? `translate(${isMobile ? -24 : -48}px,${
+                    isMobile ? -16 : -32
+                  }px)`
+                : "",
+            }}
+          ></div>
+          {/* left bottom corner */}
+          <div
+            className="absolute z-[2] bottom-0 left-0 w-[20px] sm:w-[40px] h-[20px] sm:h-[40px] sm:border-l-[10px] sm:border-b-[10px] border-r-0 border-t-0 border-l-5 border-b-5 border-white transition-transform"
+            style={{
+              transform: isHover
+                ? `translate(${isMobile ? -24 : -48}px,${isMobile ? 16 : 32}px)`
+                : "",
+            }}
+          ></div>
+          {/* top game gif */}
+          <div
+            className={`absolute z-[2] ${
+              isMobile ? "w-[calc(100%-15px)]" : "w-[calc(100%-23px)]"
+            } top-[5px] left-[5px]`}
           >
-            游
+            <Image
+              width={60}
+              height={60}
+              alt="game"
+              src={gameGIF}
+              className="min-w-[60px] min-h-[60px] absolute top-0 transition-[left_transform]"
+              style={{
+                left: isHover ? "calc(100%)" : "0",
+                transform: isHover
+                  ? `translateY(${isMobile ? -16 : -32}px)`
+                  : "",
+              }}
+            ></Image>
           </div>
+          {/* bottom game gif */}
           <div
-            className={`absolute z-[2] flex justify-center items-center h-[40vh] text-[40vw] sm:text-[16.2vmax] [clip-path:inset(_50%_0_0_0)] ${
-              isHover
-                ? "translate-y-[8vw] sm:translate-y-[3.8vmax]"
-                : "translate-y-0"
-            } transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[#ffb5c3] to-[#97e5ffe8]  `}
+            className={`absolute z-[2] ${
+              isMobile ? "w-[calc(100%-15px)]" : "w-[calc(100%-23px)]"
+            } bottom-[5px] right-[5px]`}
           >
-            游
+            <Image
+              width={60}
+              height={60}
+              alt="game"
+              src={gameGIF}
+              className="min-w-[60px] min-h-[60px] absolute bottom-0 transition-[right_transform]"
+              style={{
+                right: isHover ? "calc(100%)" : "0",
+                transform: isHover ? `translateY(${isMobile ? 16 : 32}px)` : "",
+              }}
+            ></Image>
           </div>
         </div>
 
-        <div className=" relative w-full text-white text-[12.5vw] sm:text-[6vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
-          <p>& somegame here &</p>
+        <div className=" relative text-white text-[12.5vw] sm:text-[6vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
+          <p>& 空洞骑士 &</p>
+          <p>& 泰拉瑞亚 &</p>
+          <p>& 死亡细胞 &</p>
+          <p>& 心渊梦境 &</p>
         </div>
       </div>
     </div>

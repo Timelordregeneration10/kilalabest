@@ -328,7 +328,7 @@ const config: Config = {
             transform: "scale(1)",
           },
           "100%": {
-            transform: "scale(1.2)",
+            transform: "scale(1.3)",
           },
         },
       },
@@ -347,7 +347,7 @@ const config: Config = {
         falling: "falling 1s linear alternate infinite",
         notbiggest: "notbiggest 7s linear 1 forwards",
         toLeftBottom: "toLeftBottom 1s linear 1 forwards",
-        musicAnimation: "musicAnimation 15s linear alternate infinite",
+        musicAnimation: "musicAnimation 30s linear alternate infinite",
       },
     },
   },

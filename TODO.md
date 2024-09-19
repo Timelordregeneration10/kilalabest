@@ -2,6 +2,8 @@
 
 # 首屏开发
 ## 首屏细节
+- 副标题文案与初见特效↓
+- ​初见transform左右，从下往上，rotateY
 
 # /navi开发
 ## /navi总体设计
@@ -16,8 +18,6 @@
 - 文案
 
 # notes
-- ​初见transform左右，从下往上，rotateY
-- ​边框装饰
 ​- bilibilitop鼠标进入区域后左右移动改变横向位置
 - ​视差滚动和bilibili都可以加入opacity
 - ​ai绘图得到素材
@@ -25,7 +25,7 @@
 - 角落核心概念式边框交合*2
 - 双底角小挂件/边饰
 ​
-# 主页只放入口和炫酷特效
+# 主页只放入口和炫酷特效 ✅
 ## 可用特效：
 + 背景视频
 + bg-clip-text text-transparent
@@ -38,9 +38,9 @@
 + danmuBG=>attempt
 + 聚焦=>music
 + sticky但是一个有一个空这样就能看见背景了=>anime
-- 雷姆圣经标题=>切割：anime番，drawing画，其他：边框，背景填充
-- 传送门(炫彩缤纷？仅fixed动画，出现时opacity=0，接下来的内容不展示，门满屏时show，其他组件offset问题用localstorage)=>anime
-- 原神启动
++ 雷姆圣经标题=>切割：anime番，drawing画，其他：边框，背景填充
++ 原神启动
+- 传送门(炫彩缤纷？仅fixed动画，出现时opacity=0，接下来的内容不展示，门满屏时show，其他组件offset问题用localstorage)(仅炫彩缤纷适合但突兀故非intro用)
 - telev（非intro用）
 - lastdinner（非intro用）
 - 背景swipper(非intro用，内存consuming)
