@@ -124,15 +124,12 @@ export default function ProjectScene() {
       {/* title and context */}
       <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center sm:gap-[8vw]">
         <div
-          className="order-1 sm:order-2 relative text-white h-[40vh] flex justify-center items-center cursor-pointer "
+          className="order-1 sm:order-2 relative text-white h-[40vh] flex justify-center items-center "
           onMouseEnter={() => {
             setIsHover(true);
           }}
           onMouseLeave={() => {
             setIsHover(false);
-          }}
-          onClick={() => {
-            router.push("/project");
           }}
         >
           <div

@@ -3,17 +3,25 @@
 - ​移动端适配​
 - lottiefiles 酷炫灵动GIF
 
+# 首屏开发 
+- intro里app，att，proj加上链接
+- 链接对应的页面调成可用）测试数据
+
 # /navi开发
-## /navi总体设计
-- 每个/navi使用崭新主题
-  - /RMT 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
-  - /game 苍翼风未来感
-  - 双子座星星坠落闪烁动效
-  - /anime使用dreamle的tutorial+爆炸性发炎
-  - ins风虚拟列表
+## 每个/navi使用崭新主题 => anime，music，game使用iframe失败于是直接外链，RMT压轴蓝毒窝最高杰作，drawing蓝毒窝弃用版，app，att，proj直接外链
+- /RMT 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
+- dreamle的tutorial, RMTprogress
+- 双子座星星坠落闪烁动效
 
+# SEO
 
-# 首屏开发 ✅
+# github图床见知乎收藏
+
+# kilalalayout导航栏改为点击滚动到对应位置 ✅
+
+# 服务端获取文件目录 ❌
+- py获取aiyiRems中的图片修改.env实现自动化/middlewire.ts获取json＝＞服务端获取文件目录 => 部署后都打包webp，部署不需要，本地不压缩nextjs自己给你压缩，评价为不如手机相册和电脑壁纸
+
 ## 首屏细节 ✅
 + 副标题文案与初见特效↓
 + ​初见transform左右，从下往上，rotateY

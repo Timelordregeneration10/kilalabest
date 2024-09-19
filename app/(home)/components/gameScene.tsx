@@ -157,7 +157,7 @@ export default function GameScene() {
       </div>
       {/* title and context */}
       <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-[10vh] sm:gap-[10vw]">
-        <div
+        <a
           className=" relative text-white h-fit flex justify-center items-center cursor-pointer px-12 py-8 sm:px-24 sm:py-16"
           onMouseEnter={() => {
             setIsHover(true);
@@ -165,9 +165,8 @@ export default function GameScene() {
           onMouseLeave={() => {
             setIsHover(false);
           }}
-          onClick={() => {
-            router.push("/game");
-          }}
+          href="https://space.bilibili.com/515016084"
+          target="_blank"
         >
           <div
             className={`relative z-[2] text-[15vw] sm:text-[6.4vmax] ${
@@ -252,7 +251,7 @@ export default function GameScene() {
               }}
             ></Image>
           </div>
-        </div>
+        </a>
 
         <div className=" relative z-[2] text-white text-start text-[6.5vw] sm:text-[3.5vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
           {gameList.map((name) => (

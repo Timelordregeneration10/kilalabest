@@ -167,7 +167,7 @@ export default function ApplicationScene() {
           height={900}
           loading="eager"
           alt="bg"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover sm:object-fill"
         ></Image>
       </div>
       <div
@@ -222,15 +222,12 @@ export default function ApplicationScene() {
       {/* title and context */}
       <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-[10vh] sm:gap-[10vw] relative z-[12]">
         <div
-          className=" relative text-white h-fit flex justify-center items-center cursor-pointer px-12 py-8 sm:px-24 sm:py-16"
+          className=" relative text-white h-fit flex justify-center items-center px-12 py-8 sm:px-24 sm:py-16"
           onMouseEnter={() => {
             setIsHover(true);
           }}
           onMouseLeave={() => {
             setIsHover(false);
-          }}
-          onClick={() => {
-            router.push("/application");
           }}
         >
           <div

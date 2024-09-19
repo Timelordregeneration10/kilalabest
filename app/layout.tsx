@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "NicholasのPersonal Website",
   description: "Nicholas's Personal Website, include many his work",
   applicationName: "Personal Website",
-  authors: { name: "Nicholas Burkhardt", url: "kilalabest.cn" },
+  authors: { name: "Nicholas Burkhardt", url: "https://kilalabest.cn" },
   generator: "Next.js",
   keywords: [
     "rmt",
