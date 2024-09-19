@@ -141,6 +141,7 @@ export default function RMTScene() {
                 ease: "easeInOut",
                 type: "tween",
               }}
+              key={name}
             >
               {name}
             </motion.p>

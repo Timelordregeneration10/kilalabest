@@ -264,6 +264,7 @@ export default function GameScene() {
                 ease: "easeInOut",
                 type: "tween",
               }}
+              key={name}
             >
               & {name} &
             </motion.p>
