@@ -38,7 +38,7 @@
 + danmuBG=>attempt
 + 聚焦=>music
 + sticky但是一个有一个空这样就能看见背景了=>anime
-- 雷姆圣经标题=>切割：anime番，drawing画，其他：边框，背景填充
++ 雷姆圣经标题=>切割：anime番，drawing画，其他：边框，背景填充
 - 传送门(炫彩缤纷？仅fixed动画，出现时opacity=0，接下来的内容不展示，门满屏时show，其他组件offset问题用localstorage)=>anime
 - 原神启动
 - telev（非intro用）
