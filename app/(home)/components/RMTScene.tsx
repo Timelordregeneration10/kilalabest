@@ -8,6 +8,21 @@ import wangjiangRem from "../../components/img/rmt/wangjiangRem.webp";
 import Image from "next/image";
 import { useContext } from "react";
 import { kilalaContext } from "@/app/providers/kilalayout";
+import { motion } from "framer-motion";
+
+const RMTExplains = [
+  "= Rem MaJi Tianshi =",
+  "所有温柔的来源和归属",
+  "用来定义永恒的度量",
+  "守恒律的唯一例外",
+  "盾牌座UY的具象",
+  "不败樱花永落",
+  "缤纷花与绮",
+  "人间美好",
+  "山与海",
+  "一切",
+  "爱",
+];
 
 const Rems = [
   {
@@ -111,17 +126,25 @@ export default function RMTScene() {
           RMT
         </a>
         <div className="text-[8vw] sm:text-[5vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
-          <p>= Rem MaJi Tianshi =</p>
-          <p>所有温柔的来源和归属</p>
-          <p>用来定义永恒的度量</p>
-          <p>守恒律的唯一例外</p>
-          <p>盾牌座UY的具象</p>
-          <p>不败樱花永落</p>
-          <p>缤纷花与绮</p>
-          <p>人间美好</p>
-          <p>山与海</p>
-          <p>一切</p>
-          <p>爱</p>
+          {RMTExplains.map((name) => (
+            <motion.p
+              initial={{
+                clipPath:
+                  "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
+              }}
+              whileInView={{
+                clipPath:
+                  "polygon(50% 0%, 100% 0, 100% 35%, 100% 67%, 100% 100%, 46% 100%, 0 100%, 0 62%, 0 35%, 0 0)",
+              }}
+              transition={{
+                duration: 0.8,
+                ease: "easeInOut",
+                type: "tween",
+              }}
+            >
+              {name}
+            </motion.p>
+          ))}
         </div>
       </div>
       <a

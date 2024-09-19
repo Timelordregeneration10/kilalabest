@@ -15,6 +15,7 @@ import Image from "next/image";
 import applicationGIF from "../assets/application.gif";
 import { kilalaContext } from "@/app/providers/kilalayout";
 import bg from "@/app/components/img/musedash/application.webp";
+import { motion } from "framer-motion";
 
 const gamesrc = [
   birthday1,
@@ -141,6 +142,9 @@ export default function ApplicationScene() {
       }
       // yuan display none
       else if (top < -4 * kilaInnerHeight) {
+        if (bgRef.current) {
+          bgRef.current.style.display = "none";
+        }
         if (yuanRef.current) {
           yuanRef.current.style.display = `none`;
         }
@@ -161,8 +165,9 @@ export default function ApplicationScene() {
           src={bg}
           width={1600}
           height={900}
+          loading="eager"
           alt="bg"
-          className="w-full h-full bg-cover"
+          className="w-full h-full object-cover"
         ></Image>
       </div>
       <div
@@ -176,7 +181,8 @@ export default function ApplicationScene() {
           width={1600}
           height={900}
           alt="yuan"
-          className="w-full h-full bg-cover"
+          loading="eager"
+          className="w-full h-full object-cover"
         ></Image>
       </div>
       <div className="absolute z-[11] left-0 top-0 w-full h-screen flex justify-center items-center ">
@@ -214,7 +220,7 @@ export default function ApplicationScene() {
         </div>
       </div>
       {/* title and context */}
-      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-[10vh] sm:gap-[6vw] relative z-[12]">
+      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-[10vh] sm:gap-[10vw] relative z-[12]">
         <div
           className=" relative text-white h-fit flex justify-center items-center cursor-pointer px-12 py-8 sm:px-24 sm:py-16"
           onMouseEnter={() => {
@@ -312,12 +318,73 @@ export default function ApplicationScene() {
           </div>
         </div>
 
-        <div className=" relative text-white text-[12.5vw] sm:text-[6vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
-          <p>* 生日系列 *</p>
-          <p>* 蓝毒信封 *</p>
-          <p>* DV相册 *</p>
-          <p>* 原神启动 *</p>
-          <p>* 在下坂本 *</p>
+        <div className=" relative text-white text-[8.5vw] text-start sm:text-[4vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
+          <motion.p
+            initial={{ transform: "translateY(-100%)", opacity: 0 }}
+            whileInView={{ transform: "translateY(0)", opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeInOut",
+              type: "tween",
+            }}
+          >
+            * 生日系列 *
+          </motion.p>
+          <motion.p
+            initial={{ transform: "translateY(-100%)", opacity: 0 }}
+            whileInView={{ transform: "translateY(0)", opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeInOut",
+              type: "tween",
+            }}
+          >
+            * 静静的蓝毒窝 *
+          </motion.p>
+          <motion.p
+            initial={{ transform: "translateY(-100%)", opacity: 0 }}
+            whileInView={{ transform: "translateY(0)", opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeInOut",
+              type: "tween",
+            }}
+          >
+            * DV帅照集 *
+          </motion.p>
+          <motion.p
+            initial={{ transform: "translateY(-100%)", opacity: 0 }}
+            whileInView={{ transform: "translateY(0)", opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeInOut",
+              type: "tween",
+            }}
+          >
+            * 原神启动！ *
+          </motion.p>
+          <motion.p
+            initial={{ transform: "translateY(-100%)", opacity: 0 }}
+            whileInView={{ transform: "translateY(0)", opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeInOut",
+              type: "tween",
+            }}
+          >
+            * 在下坂本，有何贵干 *
+          </motion.p>
+          <motion.p
+            initial={{ transform: "translateY(-100%)", opacity: 0 }}
+            whileInView={{ transform: "translateY(0)", opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeInOut",
+              type: "tween",
+            }}
+          >
+            * gallery系列 *
+          </motion.p>
         </div>
       </div>
     </div>

@@ -20,7 +20,7 @@ export default function MusicScene() {
           width={1600}
           height={900}
           alt="musicbg"
-          className="w-full h-full bg-cover"
+          className="w-full h-full object-cover"
         ></Image>
       </div>
       {/* title and context */}
@@ -123,10 +123,16 @@ export default function MusicScene() {
         </div>
 
         <div className=" relative text-white text-[12.5vw] sm:text-[6vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
-          <p>^ 天堂之风 ^</p>
-          <p>^ 衔尾游行 ^</p>
-          <p>^ 季节系列 ^</p>
-          <p>^ todo ^</p>
+          <p className=" animate-bounce">
+            ^{" "}
+            <a
+              href="https://music.163.com/#/user/home?id=479983448"
+              target="_blank"
+            >
+              Click
+            </a>{" "}
+            ^
+          </p>
         </div>
       </div>
     </div>

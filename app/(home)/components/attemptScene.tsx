@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import useWindow from "../../hooks/useWindow";
+import { motion } from "framer-motion";
 
 export default function AttemptScene() {
   const isMobile = useWindow().width < 640;
@@ -256,14 +257,74 @@ export default function AttemptScene() {
           </div>
         </div>
 
-        <div className="order-2 sm:order-1 relative text-white text-[11.5vw] sm:text-[6vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
-          <p>· CSS3D ·</p>
-          <p>· bilibilitop ·</p>
-          <p>· Font系列 ·</p>
-          <p>
-            · <span className=" text-[12.5vw] sm:text-[7vmax] ">Rem</span>
-            <span className=" text-[9vw] sm:text-[4.5vmax]">-Three</span> ·
-          </p>
+        <div className="order-2 sm:order-1 relative text-start sm:text-end text-white text-[6.5vw] sm:text-[4vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
+          <motion.p
+            initial={{ transform: "skewY(45deg)", opacity: 0 }}
+            whileInView={{ transform: "skewY(0)", opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeInOut",
+              type: "tween",
+            }}
+          >
+            · sticky系列 ·
+          </motion.p>
+          <motion.p
+            initial={{ transform: "skewY(-45deg)", opacity: 0 }}
+            whileInView={{ transform: "skewY(0)", opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeInOut",
+              type: "tween",
+            }}
+          >
+            · Rem - Three ·
+          </motion.p>
+          <motion.p
+            initial={{ transform: "skewY(45deg)", opacity: 0 }}
+            whileInView={{ transform: "skewY(0)", opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeInOut",
+              type: "tween",
+            }}
+          >
+            · CSS3D系列 ·
+          </motion.p>
+          <motion.p
+            initial={{ transform: "skewY(-45deg)", opacity: 0 }}
+            whileInView={{ transform: "skewY(0)", opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeInOut",
+              type: "tween",
+            }}
+          >
+            · bilibilitop ·
+          </motion.p>
+          <motion.p
+            initial={{ transform: "skewY(45deg)", opacity: 0 }}
+            whileInView={{ transform: "skewY(0)", opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeInOut",
+              type: "tween",
+            }}
+          >
+            · Font系列 ·
+          </motion.p>
+          <motion.p
+            initial={{ transform: "skewY(-45deg)", opacity: 0 }}
+            whileInView={{ transform: "skewY(0)", opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeInOut",
+              type: "tween",
+            }}
+            className="sm:text-[3vmax]"
+          >
+            · My Happy Engagement ·
+          </motion.p>
         </div>
       </div>
     </div>

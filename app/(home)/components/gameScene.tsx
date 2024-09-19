@@ -11,8 +11,22 @@ import skull from "../../components/img/game/skull.webp";
 import no11 from "../../components/img/game/no11.webp";
 import Image from "next/image";
 import gameGIF from "../assets/game.gif";
+import { motion } from "framer-motion";
 
 const gamesrc = [hollowknight, endinglilies, terreria, astlibra, skull, no11];
+
+const gameList = [
+  "Hollow Knight",
+  "Terreria",
+  "苍翼：混沌效应",
+  "神之天平",
+  "Dead Cells",
+  "心渊梦境",
+  "Ending Lilies",
+  "musedash",
+  "noita",
+  "小骨：英雄杀手",
+];
 
 export default function GameScene() {
   const isMobile = useWindow().width < 640;
@@ -240,11 +254,20 @@ export default function GameScene() {
           </div>
         </div>
 
-        <div className=" relative text-white text-[12.5vw] sm:text-[6vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
-          <p>& 空洞骑士 &</p>
-          <p>& 泰拉瑞亚 &</p>
-          <p>& 死亡细胞 &</p>
-          <p>& 心渊梦境 &</p>
+        <div className=" relative z-[2] text-white text-start text-[6.5vw] sm:text-[3.5vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
+          {gameList.map((name) => (
+            <motion.p
+              initial={{ clipPath: "inset(70%)" }}
+              whileInView={{ clipPath: "inset(0%)" }}
+              transition={{
+                duration: 0.8,
+                ease: "easeInOut",
+                type: "tween",
+              }}
+            >
+              & {name} &
+            </motion.p>
+          ))}
         </div>
       </div>
     </div>

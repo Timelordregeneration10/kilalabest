@@ -165,7 +165,7 @@ export default function AnimeScene() {
         </div>
 
         <div className="order-2 sm:order-1 relative text-white text-[11.5vw] sm:text-[6vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
-          <p>
+          <p className=" animate-bounce">
             %{" "}
             <a
               href="https://anilist.co/user/NicholasBurkhardt/animelist"
