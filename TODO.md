@@ -4,7 +4,10 @@
 - lottiefiles 酷炫灵动GIF
 
 # 首屏开发 
-- intro里app，att，proj加上链接
++ intro里proj加上链接
+  - =>细节待优化如提示是测试环境，如请求失败，如提示账号密码，自己过一遍
+- intro里app加上链接=>系列可以在timelord/kilalabest放个index.html/page.tsx
+- intro里att加上链接
 - 链接对应的页面调成可用）测试数据
 
 # /navi开发

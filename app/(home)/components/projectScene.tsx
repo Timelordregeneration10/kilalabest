@@ -7,6 +7,15 @@ import { useRouter } from "next/navigation";
 import useWindow from "../../hooks/useWindow";
 import { motion } from "framer-motion";
 
+const projects = [
+  { name: "Code-Web: 模型应用管理平台", url: "https://timelordregeneration10.github.io/CodeWeb/" },
+  { name: "选课系统", url: "https://timelord.cn/courseSelectionSystem" },
+  { name: "今何啖兮: 智能膳食推荐系统", url: "https://timelordregeneration10.github.io/Nutrition_Recommendation/" },
+  { name: "旅行物语", url: "https://timelordregeneration10.github.io/notimetotravel/" },
+  { name: "教务管理系统", url: "https://timelordregeneration10.github.io/Educational-administration-management-system/" },
+  { name: "admintest", url: "https://timelordregeneration10.github.io/admintest/" },
+];
+
 export default function ProjectScene() {
   const threeCubeRef = useRef<HTMLDivElement>(null);
   const isMobile = useWindow().width < 640;
@@ -160,72 +169,26 @@ export default function ProjectScene() {
         </div>
 
         <div className="order-2 sm:order-1 relative text-white text-[5.5vw] sm:text-[3vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] text-start sm:text-end">
-          <motion.p
-            initial={{ transform: "translateX(-50%)", opacity: 0 }}
-            whileInView={{ transform: "translateX(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            - 3D医疗 -
-          </motion.p>
-          <motion.p
-            initial={{ transform: "translateX(50%)", opacity: 0 }}
-            whileInView={{ transform: "translateX(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            - 今何啖兮: 智能膳食推荐系统 -
-          </motion.p>
-          <motion.p
-            initial={{ transform: "translateX(-50%)", opacity: 0 }}
-            whileInView={{ transform: "translateX(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            - 选课系统 -
-          </motion.p>
-          <motion.p
-            initial={{ transform: "translateX(50%)", opacity: 0 }}
-            whileInView={{ transform: "translateX(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            - 旅行物语 -
-          </motion.p>
-          <motion.p
-            initial={{ transform: "translateX(-50%)", opacity: 0 }}
-            whileInView={{ transform: "translateX(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            - 教务管理系统 -
-          </motion.p>
-          <motion.p
-            initial={{ transform: "translateX(50%)", opacity: 0 }}
-            whileInView={{ transform: "translateX(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            - Code-Web: 模型应用管理平台 -
-          </motion.p>
+          {projects.map((pro, index) => (
+            <motion.p
+              key={pro.name}
+              initial={{
+                transform:
+                  index % 2 === 0 ? "translateX(-50%)" : "translateX(50%)",
+                opacity: 0,
+              }}
+              whileInView={{ transform: "translateX(0)", opacity: 1 }}
+              transition={{
+                duration: 0.8,
+                ease: "easeInOut",
+                type: "tween",
+              }}
+            >
+              <a href={pro.url} target="_blank">
+                - {pro.name} -
+              </a>
+            </motion.p>
+          ))}
         </div>
       </div>
     </div>
