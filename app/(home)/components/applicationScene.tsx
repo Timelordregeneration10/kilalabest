@@ -1,7 +1,6 @@
 "use client";
 
 import { useContext, useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
 import useWindow from "../../hooks/useWindow";
 import birthday1 from "../../components/img/applicaton/birthday1.webp";
 import birthday2 from "../../components/img/applicaton/birthday2.webp";
@@ -17,7 +16,16 @@ import { kilalaContext } from "@/app/providers/kilalayout";
 import bg from "@/app/components/img/musedash/application.webp";
 import { motion } from "framer-motion";
 
-const gamesrc = [
+const applications = [
+  { name: "生日系列", url: "https://timelord.cn/birthday" },
+  { name: "静静的蓝毒窝", url: "https://timelord.cn/%E9%9D%99%E9%9D%99%E7%9A%84%E8%93%9D%E6%AF%92%E7%AA%9D/" },
+  { name: "DV帅照集", url: "https://timelord.cn/hdwpic/" },
+  { name: "原神启动！", url: "https://timelord.cn/%E5%8E%9F%E7%A5%9E%E5%90%AF%E5%8A%A8/" },
+  { name: "在下坂本，有何贵干", url: "https://timelord.cn/sakamoto/" },
+  { name: "Rem gallery系列", url: "https://kilalabest.cn/application/gallery/Rem" },
+];
+
+const appsrc = [
   birthday1,
   birthday2,
   birthday3,
@@ -31,7 +39,6 @@ const gamesrc = [
 export default function ApplicationScene() {
   const isMobile = useWindow().width < 640;
   const [isHover, setIsHover] = useState(isMobile);
-  const router = useRouter();
 
   let beforeTransforms = [];
   let afterTransforms = [];
@@ -61,7 +68,7 @@ export default function ApplicationScene() {
   for (let i = 0; i < 16; i++) {
     gamecubes.push({
       id: i,
-      src: gamesrc[i % 8],
+      src: appsrc[i % 8],
       beforeTransform: beforeTransforms[i],
       afterTransform: afterTransforms[i],
     });
@@ -315,73 +322,23 @@ export default function ApplicationScene() {
           </div>
         </div>
 
-        <div className=" relative text-white text-[8.5vw] text-start sm:text-[4vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
-          <motion.p
-            initial={{ transform: "translateY(-100%)", opacity: 0 }}
-            whileInView={{ transform: "translateY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            * 生日系列 *
-          </motion.p>
-          <motion.p
-            initial={{ transform: "translateY(-100%)", opacity: 0 }}
-            whileInView={{ transform: "translateY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            * 静静的蓝毒窝 *
-          </motion.p>
-          <motion.p
-            initial={{ transform: "translateY(-100%)", opacity: 0 }}
-            whileInView={{ transform: "translateY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            * DV帅照集 *
-          </motion.p>
-          <motion.p
-            initial={{ transform: "translateY(-100%)", opacity: 0 }}
-            whileInView={{ transform: "translateY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            * 原神启动！ *
-          </motion.p>
-          <motion.p
-            initial={{ transform: "translateY(-100%)", opacity: 0 }}
-            whileInView={{ transform: "translateY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            * 在下坂本，有何贵干 *
-          </motion.p>
-          <motion.p
-            initial={{ transform: "translateY(-100%)", opacity: 0 }}
-            whileInView={{ transform: "translateY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            * gallery系列 *
-          </motion.p>
+        <div className=" relative text-white text-[8.5vw] text-start sm:text-[3.5vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
+          {applications.map((app) => (
+            <motion.p
+              key={app.name}
+              initial={{ transform: "translateY(-100%)", opacity: 0 }}
+              whileInView={{ transform: "translateY(0)", opacity: 1 }}
+              transition={{
+                duration: 0.8,
+                ease: "easeInOut",
+                type: "tween",
+              }}
+            >
+              <a href={app.url} target="_blank">
+                * {app.name} *
+              </a>
+            </motion.p>
+          ))}
         </div>
       </div>
     </div>

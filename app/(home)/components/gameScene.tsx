@@ -265,7 +265,9 @@ export default function GameScene() {
               }}
               key={name}
             >
-              & {name} &
+              <a href="https://timelord.cn?to=game" target="_blank">
+                & {name} &
+              </a>
             </motion.p>
           ))}
         </div>

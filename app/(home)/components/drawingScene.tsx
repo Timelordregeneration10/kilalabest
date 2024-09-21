@@ -7,6 +7,13 @@ import { useRouter } from "next/navigation";
 import useWindow from "../../hooks/useWindow";
 import { motion } from "framer-motion";
 
+const drawings = [
+  { name: "JC迷宫", url: "https://timelord.cn?to=maze" },
+  { name: "绘画与生活", url: "https://timelord.cn?to=drawing" },
+  { name: "初中草稿纸", url: "/drawing" },
+  { name: "概率论涂鸦", url: "/drawing" },
+];
+
 export default function DrawingScene() {
   const threeRainRef = useRef<HTMLDivElement>(null);
   const isMobile = useWindow().width < 640;
@@ -153,50 +160,25 @@ export default function DrawingScene() {
         </div>
 
         <div className=" relative text-white text-[12.5vw] sm:text-[7vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
-          <motion.p
-            initial={{ transform: "skewX(45deg)", opacity: 0 }}
-            whileInView={{ transform: "skewY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            + JC MAZE +
-          </motion.p>
-          <motion.p
-            initial={{ transform: "skewX(-45deg)", opacity: 0 }}
-            whileInView={{ transform: "skewY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            + 绘画与生活 +
-          </motion.p>
-          <motion.p
-            initial={{ transform: "skewX(45deg)", opacity: 0 }}
-            whileInView={{ transform: "skewY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            + 初中草稿纸 +
-          </motion.p>
-          <motion.p
-            initial={{ transform: "skewX(-45deg)", opacity: 0 }}
-            whileInView={{ transform: "skewY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            + 概率论涂鸦 +
-          </motion.p>
+          {drawings.map(({ name, url }, index) => (
+            <motion.p
+              key={name}
+              initial={{
+                transform: index % 2 === 0 ? "skewX(-45deg)" : "skewX(45deg)",
+                opacity: 0,
+              }}
+              whileInView={{ transform: "skewY(0)", opacity: 1 }}
+              transition={{
+                duration: 0.8,
+                ease: "easeInOut",
+                type: "tween",
+              }}
+            >
+              <a href={url} target="_blank">
+                + {name} +
+              </a>
+            </motion.p>
+          ))}
         </div>
       </div>
     </div>

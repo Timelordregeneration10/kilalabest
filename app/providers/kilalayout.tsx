@@ -199,7 +199,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
         onScroll={throttle(naviLoop, 100)}
         ref={boxallRef}
       >
-        <div className=" min-h-screen">{children}</div>
+        <div className=" min-h-screen w-full">{children}</div>
 
         {/* footer放在components里是因为footer都是静态的，剥离出来可以服务端渲染 */}
         <Foot></Foot>

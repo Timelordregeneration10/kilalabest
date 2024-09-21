@@ -1,13 +1,22 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import TWEEN from "@tweenjs/tween.js";
-import IaiyiRems from "@/app/constants/aiyiRem";
+// import IaiyiRems from "@/app/constants/aiyiRem";
 import getImageSizeByUrl from "@/app/utils/getImageSizeByUrl";
 
 export default function DrawingScene() {
-  const initialAiyiRems = IaiyiRems;
+  // const initialAiyiRems = IaiyiRems;
+  
+  const initialAiyiRems = useMemo(() => {
+    const temp = [];
+    for (let i = 0; i < 9; i++) {
+      temp.push("/aiyiRemPublic/" + String(i + 1) + ".webp");
+    }
+    return temp;
+  }, []);
+
   const [aiyiRems, setAiyiRems] = useState(initialAiyiRems);
 
   useEffect(() => {

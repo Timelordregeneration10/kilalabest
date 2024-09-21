@@ -1,12 +1,21 @@
 "use client";
 
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import IaiyiRems from "@/app/constants/aiyiRem";
+// import IaiyiRems from "@/app/constants/aiyiRem";
 import useWindow from "@/app/hooks/useWindow";
 import { kilalaContext } from "@/app/providers/kilalayout";
 export default function Page() {
-  const aiyiRems = IaiyiRems;
+  // const aiyiRems = IaiyiRems;
+
+  const aiyiRems = useMemo(() => {
+    const temp = [];
+    for (let i = 0; i < 9; i++) {
+      temp.push("/aiyiRemPublic/" + String(i + 1) + ".webp");
+    }
+    return temp;
+  }, []);
+
   const { scrollTop } = useContext(kilalaContext);
 
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
@@ -62,16 +71,30 @@ export default function Page() {
   const stickyMiddleRef = useRef<HTMLDivElement | null>(null);
   const stickyBottomRef = useRef<HTMLDivElement | null>(null);
 
-  const [shuffledAiyiRems0, setShuffledAiyiRems0] = useState(aiyiRems);
-  const [shuffledAiyiRems1, setShuffledAiyiRems1] = useState(aiyiRems);
-  const [shuffledAiyiRems2, setShuffledAiyiRems2] = useState(aiyiRems);
-  useEffect(() => {
-    setShuffledAiyiRems0([...aiyiRems].sort(() => Math.random() - 0.5));
-    setShuffledAiyiRems1([...aiyiRems].sort(() => Math.random() - 0.5));
-    setShuffledAiyiRems2([...aiyiRems].sort(() => Math.random() - 0.5));
-  }, [aiyiRems]);
-  //   const shuffledAiyiRems1 = [...aiyiRems].sort(() => Math.random() - 0.5);
-  //   const shuffledAiyiRems2 = [...aiyiRems].sort(() => Math.random() - 0.5);
+  const shuffledAiyiRems0 = useMemo(
+    () => [
+      ...[...aiyiRems].sort(() => Math.random() - 0.5),
+      ...[...aiyiRems].sort(() => Math.random() - 0.5),
+      ...[...aiyiRems].sort(() => Math.random() - 0.5),
+    ],
+    [aiyiRems]
+  );
+  const shuffledAiyiRems1 = useMemo(
+    () => [
+      ...[...aiyiRems].sort(() => Math.random() - 0.5),
+      ...[...aiyiRems].sort(() => Math.random() - 0.5),
+      ...[...aiyiRems].sort(() => Math.random() - 0.5),
+    ],
+    [aiyiRems]
+  );
+  const shuffledAiyiRems2 = useMemo(
+    () => [
+      ...[...aiyiRems].sort(() => Math.random() - 0.5),
+      ...[...aiyiRems].sort(() => Math.random() - 0.5),
+      ...[...aiyiRems].sort(() => Math.random() - 0.5),
+    ],
+    [aiyiRems]
+  );
 
   return (
     <div

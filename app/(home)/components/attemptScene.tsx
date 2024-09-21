@@ -1,14 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import useWindow from "../../hooks/useWindow";
 import { motion } from "framer-motion";
+
+const attempts = [
+  { name: "sticky系列", url: "https://kilalabest.cn/attempt/sticky" },
+  { name: "初学three.js与Rem", url: "https://timelord.cn/threeRem" },
+  { name: "CSS3D系列", url: "https://timelord.cn/css3d" },
+  { name: "bilibilitop", url: "https://timelord.cn/bilibilitop" },
+  { name: "Font系列", url: "https://timelord.cn/fontSeries" },
+  { name: "My Happy Engagement", url: "https://timelord.cn/myHappyEngagement" },
+];
 
 export default function AttemptScene() {
   const isMobile = useWindow().width < 640;
   const [isHover, setIsHover] = useState(isMobile);
-  const router = useRouter();
 
   const words = [
     "如果真爱有颜色，那一定是蓝色！",
@@ -255,73 +262,35 @@ export default function AttemptScene() {
         </div>
 
         <div className="order-2 sm:order-1 relative text-start sm:text-end text-white text-[6.5vw] sm:text-[4vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
-          <motion.p
-            initial={{ transform: "skewY(45deg)", opacity: 0 }}
-            whileInView={{ transform: "skewY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            · sticky系列 ·
-          </motion.p>
-          <motion.p
-            initial={{ transform: "skewY(-45deg)", opacity: 0 }}
-            whileInView={{ transform: "skewY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            · Rem - Three ·
-          </motion.p>
-          <motion.p
-            initial={{ transform: "skewY(45deg)", opacity: 0 }}
-            whileInView={{ transform: "skewY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            · CSS3D系列 ·
-          </motion.p>
-          <motion.p
-            initial={{ transform: "skewY(-45deg)", opacity: 0 }}
-            whileInView={{ transform: "skewY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            · bilibilitop ·
-          </motion.p>
-          <motion.p
-            initial={{ transform: "skewY(45deg)", opacity: 0 }}
-            whileInView={{ transform: "skewY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-          >
-            · Font系列 ·
-          </motion.p>
-          <motion.p
-            initial={{ transform: "skewY(-45deg)", opacity: 0 }}
-            whileInView={{ transform: "skewY(0)", opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              type: "tween",
-            }}
-            className="sm:text-[3vmax]"
-          >
-            · My Happy Engagement ·
-          </motion.p>
+          {attempts.map((att, index) => (
+            <motion.p
+              key={att.name}
+              initial={{
+                transform: index % 2 === 0 ? "skewY(45deg)" : "skewY(-45deg)",
+                opacity: 0,
+              }}
+              whileInView={{ transform: "skewY(0)", opacity: 1 }}
+              transition={{
+                duration: 0.8,
+                ease: "easeInOut",
+                type: "tween",
+              }}
+            >
+              <a
+                href={att.url}
+                target="_blank"
+                style={{
+                  fontSize:
+                    att.name === "My Happy Engagement" ||
+                    att.name === "初学three.js与Rem"
+                      ? "3vmax"
+                      : "inherit",
+                }}
+              >
+                · {att.name} ·
+              </a>
+            </motion.p>
+          ))}
         </div>
       </div>
     </div>
