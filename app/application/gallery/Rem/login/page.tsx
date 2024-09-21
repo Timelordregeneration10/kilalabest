@@ -1,11 +1,19 @@
 "use client";
 
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import IaiyiRems from "@/app/constants/aiyiRem";
+// import IaiyiRems from "@/app/constants/aiyiRem";
 import useWindow from "@/app/hooks/useWindow";
 export default function Page() {
-  const aiyiRems = IaiyiRems;
+  // const aiyiRems = IaiyiRems;
+  
+  const aiyiRems = useMemo(() => {
+    const temp = [];
+    for (let i = 0; i < 9; i++) {
+      temp.push("/aiyiRemPublic/" + String(i + 1) + ".webp");
+    }
+    return temp;
+  }, []);
 
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
 
