@@ -123,7 +123,7 @@ export default function RMTScene() {
           className=" block text-[15vh] sm:text-[24.4vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_#91bef0] cursor-pointer "
           href="/RMT"
         >
-          RMT
+          <h2>RMT</h2>
         </a>
         <div className="text-[8vw] sm:text-[5vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
           {RMTExplains.map((name) => (
@@ -152,7 +152,7 @@ export default function RMTScene() {
         className="absolute left-6 -bottom-3 block text-[11vh] sm:text-[22.4vmax]  cursor-pointer text-white [text-shadow:_0.5vmax_0.5vmax_0.2vmax_#91bef0]"
         href="/RMT"
       >
-        REM:
+        <h2>REM:</h2>
       </a>
       {Rems.map((Rem) => {
         return (

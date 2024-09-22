@@ -1,28 +1,25 @@
 "use client";
 
 import { useContext, useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
 import useWindow from "../../hooks/useWindow";
 import Image from "next/image";
-import boom1 from "../assets/boom1.webp";
-import boom2 from "../assets/boom2.webp";
-import boom3 from "../assets/boom3.webp";
-import boom4 from "../assets/boom4.webp";
-import boom5 from "../assets/boom5.webp";
-import boom6 from "../assets/boom6.webp";
-import boom7 from "../assets/boom7.webp";
-import boom8 from "../assets/boom8.webp";
-import boom9 from "../assets/boom9.webp";
+import suki1 from "../assets/suki1.webp";
+import suki2 from "../assets/suki2.webp";
+import suki3 from "../assets/suki3.webp";
+import suki4 from "../assets/suki4.webp";
+import suki5 from "../assets/suki5.webp";
+import suki6 from "../assets/suki6.webp";
+import suki7 from "../assets/suki7.webp";
+import suki8 from "../assets/suki8.webp";
+import suki9 from "../assets/suki9.webp";
 import { kilalaContext } from "@/app/providers/kilalayout";
 
-const booms = [boom1, boom2, boom3, boom4, boom5, boom6, boom7, boom8, boom9];
+const sukis = [suki1, suki2, suki3, suki4, suki5, suki6, suki7, suki8, suki9];
 
 export default function AnimeScene() {
   const isMobile = useWindow().width < 640;
   const [isHover, setIsHover] = useState(isMobile);
-  const router = useRouter();
-
-  const aiyiRems = booms;
+  const aiyiRems = sukis;
   const { scrollTop } = useContext(kilalaContext);
 
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
@@ -80,7 +77,7 @@ export default function AnimeScene() {
                   width={400}
                   height={300}
                   className="w-full h-full object-cover"
-                  alt="boom"
+                  alt="suki"
                 ></Image>
               )}
             </div>
@@ -98,7 +95,7 @@ export default function AnimeScene() {
                   width={400}
                   height={300}
                   className="w-full h-full object-cover"
-                  alt="boom"
+                  alt="suki"
                 ></Image>
               )}
             </div>
@@ -116,7 +113,7 @@ export default function AnimeScene() {
                   width={400}
                   height={300}
                   className="w-full h-full object-cover"
-                  alt="boom"
+                  alt="suki"
                 ></Image>
               )}
             </div>
@@ -141,7 +138,7 @@ export default function AnimeScene() {
               isHover ? "opacity-100" : "opacity-0"
             } transition-opacity  text-transparent bg-clip-text  bg-gradient-to-r from-[#ffabfe] via-[white] to-[#97efffdb]  `}
           >
-            Anime
+            <h2>Anime</h2>
           </div>
           <div
             className={`absolute flex justify-center items-center h-[40vh] text-[30vw] sm:text-[11.2vmax] [clip-path:inset(_0_0_50%_0)] ${
@@ -150,7 +147,7 @@ export default function AnimeScene() {
                 : "translate-y-1"
             } transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[#ffabfe] via-[white] to-[#97efffdb] `}
           >
-            番
+            <p>番</p>
           </div>
           <div
             className={`absolute flex justify-center items-center h-[40vh] text-[30vw] sm:text-[11.2vmax] [clip-path:inset(_50%_0_0_0)] ${
@@ -159,7 +156,7 @@ export default function AnimeScene() {
                 : "translate-y-0"
             } transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[#ffabfe] via-[white] to-[#97efffdb] `}
           >
-            番
+            <p>番</p>
           </div>
         </a>
 

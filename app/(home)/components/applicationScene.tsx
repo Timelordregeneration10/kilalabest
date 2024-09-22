@@ -242,7 +242,7 @@ export default function ApplicationScene() {
               isHover ? "opacity-100" : "opacity-100"
             } text-white `}
           >
-            APPLICATION
+            <h2>APPLICATION</h2>
           </div>
           {/* left top border */}
           <div

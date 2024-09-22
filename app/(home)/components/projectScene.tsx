@@ -8,12 +8,27 @@ import useWindow from "../../hooks/useWindow";
 import { motion } from "framer-motion";
 
 const projects = [
-  { name: "Code-Web: 模型应用管理平台", url: "https://timelordregeneration10.github.io/CodeWeb/" },
+  {
+    name: "Code-Web: 模型应用管理平台",
+    url: "https://timelordregeneration10.github.io/CodeWeb/",
+  },
   { name: "选课系统", url: "https://timelord.cn/courseSelectionSystem" },
-  { name: "今何啖兮: 智能膳食推荐系统", url: "https://timelordregeneration10.github.io/Nutrition_Recommendation/" },
-  { name: "旅行物语", url: "https://timelordregeneration10.github.io/notimetotravel/" },
-  { name: "教务管理系统", url: "https://timelordregeneration10.github.io/Educational-administration-management-system/" },
-  { name: "admintest", url: "https://timelordregeneration10.github.io/admintest/" },
+  {
+    name: "今何啖兮: 智能膳食推荐系统",
+    url: "https://timelordregeneration10.github.io/Nutrition_Recommendation/",
+  },
+  {
+    name: "旅行物语",
+    url: "https://timelordregeneration10.github.io/notimetotravel/",
+  },
+  {
+    name: "教务管理系统",
+    url: "https://timelordregeneration10.github.io/Educational-administration-management-system/",
+  },
+  {
+    name: "admintest",
+    url: "https://timelordregeneration10.github.io/admintest/",
+  },
 ];
 
 export default function ProjectScene() {
@@ -146,7 +161,7 @@ export default function ProjectScene() {
               isHover ? "opacity-100" : "opacity-0"
             } transition-opacity  text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#b4f1d1] to-[#fffb87db]  `}
           >
-            Project
+            <h2>Project</h2>
           </div>
           <div
             className={`absolute flex justify-center items-center h-[40vh] text-[30vw] sm:text-[11.2vmax] [clip-path:inset(_0_0_50%_0)] ${
@@ -155,7 +170,7 @@ export default function ProjectScene() {
                 : "translate-y-1"
             } transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#b4f1d1] to-[#fffb87db]  `}
           >
-            项目
+            <p>项目</p>
           </div>
           <div
             className={`absolute flex justify-center items-center h-[40vh] text-[30vw] sm:text-[11.2vmax] [clip-path:inset(_50%_0_0_0)] ${
@@ -164,7 +179,7 @@ export default function ProjectScene() {
                 : "translate-y-0"
             } transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#b4f1d1] to-[#fffb87db]  `}
           >
-            项目
+            <p>项目</p>
           </div>
         </div>
 
