@@ -41,7 +41,7 @@ export default function MusicScene() {
               isHover ? "opacity-100" : "opacity-100"
             } text-white `}
           >
-            MUSIC
+            <h2>MUSIC</h2>
           </div>
           {/* left top border */}
           <div

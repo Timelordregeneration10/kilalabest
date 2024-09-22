@@ -35,6 +35,7 @@ const config: Config = {
         game: "url('./components/img/musedash/game.webp')",
         drawing: "url('./components/img/musedash/drawing.webp')",
         warning: "url('./components/img/musedash/warning.webp')",
+        graffiti: "url('./components/img/drawing/graffiti/bg.jpg')",
       },
       keyframes: {
         streamer: {

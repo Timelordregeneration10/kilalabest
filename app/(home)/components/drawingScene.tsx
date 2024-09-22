@@ -10,8 +10,7 @@ import { motion } from "framer-motion";
 const drawings = [
   { name: "JC迷宫", url: "https://timelord.cn?to=maze" },
   { name: "绘画与生活", url: "https://timelord.cn?to=drawing" },
-  { name: "初中草稿纸", url: "/drawing" },
-  { name: "概率论涂鸦", url: "/drawing" },
+  { name: "涂鸦系列", url: "/drawing/graffiti" },
 ];
 
 export default function DrawingScene() {
@@ -137,7 +136,7 @@ export default function DrawingScene() {
               isHover ? "opacity-100" : "opacity-0"
             } transition-opacity  text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#f1b4f1] to-[#65adffbe]  `}
           >
-            Drawing
+            <h2>Drawing</h2>
           </div>
           <div
             className={`absolute flex justify-center items-center h-[40vh] text-[40vw] sm:text-[22.4vmax] [clip-path:inset(_0_0_50%_0)] ${
@@ -146,7 +145,7 @@ export default function DrawingScene() {
                 : "translate-y-1"
             } transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#f1b4f1] to-[#65adffbe]  `}
           >
-            画
+            <p>画</p>
           </div>
           <div
             className={`absolute flex justify-center items-center h-[40vh] text-[40vw] sm:text-[22.4vmax] [clip-path:inset(_50%_0_0_0)] ${
@@ -155,7 +154,7 @@ export default function DrawingScene() {
                 : "translate-y-0"
             } transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#f1b4f1] to-[#65adffbe]  `}
           >
-            画
+            <p>画</p>
           </div>
         </div>
 

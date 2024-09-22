@@ -227,7 +227,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
             </div>
             <div className="w-screen lg:w-[50vw] h-[6vh] sm:h-[8vh] lg:h-[10vh] flex flex-row-reverse">
               <div className=" w-[60%] text-[2.6vmax] sm:text-[3.2vmax] flex justify-center items-center transition-colors duration-700 hover:text-[rgb(255,158,229)]">
-                Nicholas Burkhardt
+                <a href="/">Nicholas Burkhardt</a>
               </div>
               <div className=" w-[40%] text-[1.5vmax] flex flex-col">
                 <div className=" select-text h-[50%] border-r-2 flex justify-center items-center border-b-2 border-white transition-colors duration-500 hover:text-[rgb(255,158,229)]">

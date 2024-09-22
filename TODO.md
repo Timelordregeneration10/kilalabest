@@ -15,14 +15,20 @@
 - =>细节待优化如提示是测试环境，如请求失败，如提示账号密码，自己过一遍
 
 # /navi开发
-## 每个/navi使用崭新主题 => anime，music，game使用iframe失败于是直接外链，RMT压轴蓝毒窝最高杰作，drawing蓝毒窝弃用版，app，att，proj直接外链
-- /RMT 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
++ 思考：每个/navi使用崭新主题 => anime，music，game使用iframe失败于是直接外链，RMT压轴蓝毒窝最高杰作，drawing蓝毒窝弃用版，app，att，proj直接外链
+## /RMT
+- 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
 - dreamle的tutorial, RMTprogress
 - 双子座星星坠落闪烁动效
+- 加入世界锚
 
 # SEO
+- 查看nextjs部署文档，看看何故favicon不显示
 
 # github图床见知乎收藏
+
+## /Drawing ✅
++ sticky
 
 # kilalalayout导航栏改为点击滚动到对应位置 ✅
 

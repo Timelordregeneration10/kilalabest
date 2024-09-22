@@ -239,7 +239,7 @@ export default function AttemptScene() {
               isHover ? "opacity-100" : "opacity-0"
             } transition-opacity  text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#beb4f1] to-[#97efffdb]  `}
           >
-            Attempt
+            <h2>Attempt</h2>
           </div>
           <div
             className={`absolute flex justify-center items-center h-[40vh] text-[30vw] sm:text-[11.2vmax] [clip-path:inset(_0_0_50%_0)] ${
@@ -248,7 +248,7 @@ export default function AttemptScene() {
                 : "translate-y-1"
             } transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#beb4f1] to-[#97efffdb]  `}
           >
-            浅尝
+            <p>浅尝</p>
           </div>
           <div
             className={`absolute flex justify-center items-center h-[40vh] text-[30vw] sm:text-[11.2vmax] [clip-path:inset(_50%_0_0_0)] ${
@@ -257,7 +257,7 @@ export default function AttemptScene() {
                 : "translate-y-0"
             } transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#beb4f1] to-[#97efffdb]  `}
           >
-            浅尝
+            <p>浅尝</p>
           </div>
         </div>
 

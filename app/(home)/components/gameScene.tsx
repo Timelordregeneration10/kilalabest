@@ -173,7 +173,7 @@ export default function GameScene() {
               isHover ? "opacity-100" : "opacity-100"
             } text-white `}
           >
-            GAME
+            <h2>GAME</h2>
           </div>
           {/* left top border */}
           <div
