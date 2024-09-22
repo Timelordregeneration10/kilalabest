@@ -1,18 +1,7 @@
 # notes
-- ​ai绘图得到素材
-- ​移动端适配​
-- lottiefiles 酷炫灵动GIF
-
-# 首屏开发 
-+ intro里proj加上链接
-+ intro里app加上链接
-  + =>系列可以在timelord/kilalabest放个index.html/page.tsx
-+ intro里att加上链接
-  + =>系列可以在timelord/kilalabest放个index.html/page.tsx
-+ game右侧游戏点了没反应=>timelord.cn?to=game
-+ drawing右侧链接点了没反应=>timelord.cn?to=maze,drawing
-+ 链接对应的页面调成可用）测试数据
-- =>细节待优化如提示是测试环境，如请求失败，如提示账号密码，自己过一遍
+* ​ai绘图得到素材
++ ​移动端适配​
+* lottiefiles 酷炫灵动GIF
 
 # /navi开发
 + 思考：每个/navi使用崭新主题 => anime，music，game使用iframe失败于是直接外链，RMT压轴蓝毒窝最高杰作，drawing蓝毒窝弃用版，app，att，proj直接外链
@@ -26,6 +15,17 @@
 - 查看nextjs部署文档，看看何故favicon不显示
 
 # github图床见知乎收藏
+
+# 首屏开发 ✅
++ intro里proj加上链接
++ intro里app加上链接
+  + =>系列可以在timelord/kilalabest放个index.html/page.tsx
++ intro里att加上链接
+  + =>系列可以在timelord/kilalabest放个index.html/page.tsx
++ game右侧游戏点了没反应=>timelord.cn?to=game
++ drawing右侧链接点了没反应=>timelord.cn?to=maze,drawing
++ 链接对应的页面调成可用）测试数据
++ =>细节待优化如提示是测试环境，如请求失败，如提示账号密码，自己过一遍
 
 ## /Drawing ✅
 + sticky

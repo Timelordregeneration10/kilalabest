@@ -10,12 +10,12 @@ import { motion } from "framer-motion";
 const projects = [
   {
     name: "Code-Web: 模型应用管理平台",
-    url: "https://timelordregeneration10.github.io/CodeWeb/",
+    url: "https://timelordregeneration10.github.io/CodeWeb/login",
   },
   { name: "选课系统", url: "https://timelord.cn/courseSelectionSystem" },
   {
     name: "今何啖兮: 智能膳食推荐系统",
-    url: "https://timelordregeneration10.github.io/Nutrition_Recommendation/",
+    url: "https://timelordregeneration10.github.io/Nutrition_Recommendation/login",
   },
   {
     name: "旅行物语",
