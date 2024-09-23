@@ -1,7 +1,8 @@
 部署在Github的个人网站https://kilalabest.cn
 我的角色：作者
 (由于部署在Github上，所以需要在能够访问Github的网络环境下打开个人网站，如果一直加载不完请更换至合适的网络环境！)
-技术栈：使用基于React的生产级框架Next.js进行开发，css框架采用tailwindCSS，涉及到的动画特效基本都是自己手写，第三方库有用到three.js, tween.js, framer-motion等
+技术栈：
+    使用基于React的生产级框架Next.js进行开发，css框架采用tailwindCSS，涉及到的动画特效基本都是自己手写，第三方库有用到three.js, tween.js, framer-motion等
 项目内容：
     做过的各种项目，从刚学前端时候纯用html,css,js做的膳食推荐系统，到经历了各种成长后的用Next.js框架写的模型管理平台。
     各种应用程序，如生日系列就是写给不同对象的生日礼物，如静静的蓝毒窝就是同学托我做给他女朋友静静的蓝毒图片展示网站，再如Rem gallery则包含了以不同方式展示Rem图片的不同gallery。
