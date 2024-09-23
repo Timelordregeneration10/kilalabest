@@ -5,13 +5,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: "https://kilalabest.cn",
       lastModified: new Date().toISOString(),
-      changeFrequency: "weekly",
+      changeFrequency: "hourly",
       priority: 1,
     },
     {
       url: "https://kilalabest.cn/RMT",
       lastModified: new Date().toISOString(),
-      changeFrequency: "weekly",
+      changeFrequency: "daily",
       priority: 0.8,
     },
   ];
