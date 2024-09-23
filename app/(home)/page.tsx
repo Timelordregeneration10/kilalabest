@@ -9,6 +9,23 @@ import GameScene from "./components/gameScene";
 import DrawingScene from "./components/drawingScene";
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org/",
+    "@type": "Person",
+    name: "Nicholas Burkhardt",
+    url: "https://kilalabest.cn",
+    image: "https://kilalabest.cn/profile.jpg",
+    sameAs: [
+      "https://github.com/Timelordregeneration10",
+      "https://kilalabest.cn",
+    ],
+    jobTitle: "Frontend Engineer",
+    worksFor: {
+      "@type": "Organization",
+      name: "Nicholas Burkhardt",
+    },
+  };
+
   return (
     <>
       <KilalaScene></KilalaScene>
@@ -20,6 +37,10 @@ export default function Home() {
       <AnimeScene></AnimeScene>
       <GameScene></GameScene>
       <DrawingScene></DrawingScene>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </>
   );
 }
