@@ -5,7 +5,7 @@ import useWindow from "../../hooks/useWindow";
 import { motion } from "framer-motion";
 
 const attempts = [
-  { name: "sticky系列", url: "https://kilalabest.cn/attempt/sticky" },
+  { name: "sticky系列", url: "/attempt/sticky" },
   { name: "初学three.js与Rem", url: "https://timelord.cn/threeRem" },
   { name: "CSS3D系列", url: "https://timelord.cn/css3d" },
   { name: "bilibilitop", url: "https://timelord.cn/bilibilitop" },

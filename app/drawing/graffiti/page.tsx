@@ -13,9 +13,6 @@ export default function Page() {
   async function getResult(url: string) {
     let result = await getImageSizeByUrl(url);
     setGraffitis((g) => {
-      if (g.length >= 14) {
-        setSizeGotton(true);
-      }
       return [...g, { width: result.width, height: result.height, url }];
     });
   }
@@ -26,18 +23,22 @@ export default function Page() {
     if (!firstRender.current) {
       return;
     }
+    const arr = [];
     for (let i = 0; i < 8; i += 2) {
-      getResult("/graffiti/v" + String(i) + ".webp");
+      arr.push(getResult("/graffiti/v" + String(i) + ".webp"));
     }
     for (let i = 0; i < 7; i += 2) {
-      getResult("/graffiti/h" + String(i) + ".webp");
+      arr.push(getResult("/graffiti/h" + String(i) + ".webp"));
     }
     for (let i = 1; i < 8; i += 2) {
-      getResult("/graffiti/v" + String(i) + ".webp");
+      arr.push(getResult("/graffiti/v" + String(i) + ".webp"));
     }
     for (let i = 1; i < 7; i += 2) {
-      getResult("/graffiti/h" + String(i) + ".webp");
+      arr.push(getResult("/graffiti/h" + String(i) + ".webp"));
     }
+    Promise.all(arr).then(() => {
+      setSizeGotton(true);
+    });
     firstRender.current = false;
     return () => {
       setGraffitis([]);
