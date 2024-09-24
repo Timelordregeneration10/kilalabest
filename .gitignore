@@ -37,3 +37,6 @@ next-env.d.ts
 
 # big files
 /public/aiyiRem
+
+# vscode counter
+.VSCodeCounter
