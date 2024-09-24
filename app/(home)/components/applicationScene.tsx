@@ -22,7 +22,7 @@ const applications = [
   { name: "DV帅照集", url: "https://timelord.cn/hdwpic/" },
   { name: "原神启动！", url: "https://timelord.cn/%E5%8E%9F%E7%A5%9E%E5%90%AF%E5%8A%A8/" },
   { name: "在下坂本，有何贵干", url: "https://timelord.cn/sakamoto/" },
-  { name: "Rem gallery系列", url: "https://kilalabest.cn/application/gallery/Rem" },
+  { name: "Rem gallery系列", url: "/application/gallery/Rem" },
 ];
 
 const appsrc = [
