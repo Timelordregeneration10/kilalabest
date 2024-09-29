@@ -37,11 +37,38 @@ export const metadata: Metadata = {
     },
     {
       rel: "icon",
+      url: "/favicon.ico",
+      sizes: "any",
+      type: "image/x-icon",
+    },
+    {
+      rel: "icon",
       url: "/favicon192x192.ico",
       sizes: "192x192",
       type: "image/x-icon",
     },
   ],
+  openGraph: {
+    title: "Nicholas's Personal Website",
+    description: "Nicholas's Personal Website, include many his work",
+    url: "https://kilalabest.cn",
+    siteName: "kilalabest.cn",
+    images: [
+      {
+        url: "https://kilalabest.cn/profile.jpg", // Must be an absolute URL
+        width: 933,
+        height: 933,
+      },
+      {
+        url: "https://kilalabest.cn/profile.jpg", // Must be an absolute URL
+        width: 933,
+        height: 933,
+        alt: "kilalabest pic",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
