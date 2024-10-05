@@ -1,11 +1,10 @@
 "use client";
 
+import useScroll from "@/app/hooks/useScroll";
 import useWindow from "@/app/hooks/useWindow";
-import { kilalaContext } from "@/app/providers/kilalayout";
-import { useContext } from "react";
 
 export default function ScrollToRMTscene() {
-  const { controlScrollTop } = useContext(kilalaContext);
+  const { controlScrollTop } = useScroll();
   const { height } = useWindow();
   return (
     <div

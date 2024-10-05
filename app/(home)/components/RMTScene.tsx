@@ -7,8 +7,8 @@ import sisRem2Rem from "../../components/img/rmt/sisRem2.webp";
 import wangjiangRem from "../../components/img/rmt/wangjiangRem.webp";
 import Image from "next/image";
 import { useContext } from "react";
-import { kilalaContext } from "@/app/providers/kilalayout";
 import { motion } from "framer-motion";
+import useScroll from "@/app/hooks/useScroll";
 
 const RMTExplains = [
   "= Rem MaJi Tianshi =",
@@ -98,7 +98,7 @@ const Rems = [
 ];
 
 export default function RMTScene() {
-  const { scrollTop } = useContext(kilalaContext);
+  const { scrollTop } = useScroll();
   const windowWidth = useWindow().width;
   const windowHeight = useWindow().height;
   const windowScaleX = windowWidth < 640 ? 1 : 1;

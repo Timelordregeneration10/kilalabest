@@ -3,6 +3,15 @@
 + ​移动端适配​
 * lottiefiles 酷炫灵动GIF
 
+# scrollTop新获取路径
+- useScroll: <a href="https://github.com/InhiblabCore/vue-hooks-plus/blob/master/packages/hooks/src/useScroll/index.ts">vue hook</a>
+- 简而言之：
+  - document.scrollingElement.scrollTop（其实大部分情况scrollingElement还是根元素html，也就是下面的documentElement）
+  - document.documentElement.scrollTop
+
+# 动画丝滑问题
+- 研究useSpring
+
 # /navi开发
 + 思考：每个/navi使用崭新主题 => anime，music，game使用iframe失败于是直接外链，RMT压轴蓝毒窝最高杰作，drawing蓝毒窝弃用版，app，att，proj直接外链
 ## /RMT

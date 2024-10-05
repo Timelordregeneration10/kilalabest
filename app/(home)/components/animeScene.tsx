@@ -12,7 +12,7 @@ import suki6 from "../assets/suki6.webp";
 import suki7 from "../assets/suki7.webp";
 import suki8 from "../assets/suki8.webp";
 import suki9 from "../assets/suki9.webp";
-import { kilalaContext } from "@/app/providers/kilalayout";
+import useScroll from "@/app/hooks/useScroll";
 
 const sukis = [suki1, suki2, suki3, suki4, suki5, suki6, suki7, suki8, suki9];
 
@@ -20,7 +20,7 @@ export default function AnimeScene() {
   const isMobile = useWindow().width < 640;
   const [isHover, setIsHover] = useState(isMobile);
   const aiyiRems = sukis;
-  const { scrollTop } = useContext(kilalaContext);
+  const { scrollTop } = useScroll();
 
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
 
