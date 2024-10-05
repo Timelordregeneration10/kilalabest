@@ -64,18 +64,20 @@ export default function DrawingScene() {
       3000
     );
     const R = 100; //相机圆周运动的半径
+    const tw = new TWEEN.Tween({ angle: 0 })
+      .to({ angle: Math.PI * 2 }, 16000)
+      .onUpdate(function (obj) {
+        camera.position.set(
+          R * Math.cos(obj.angle),
+          0,
+          R * Math.sin(obj.angle)
+        );
+        camera.lookAt(meshforlook.position);
+      });
+    const group = new TWEEN.Group();
+    group.add(tw);
     function circleMove() {
-      new TWEEN.Tween({ angle: 0 })
-        .to({ angle: Math.PI * 2 }, 16000)
-        .onUpdate(function (obj) {
-          camera.position.set(
-            R * Math.cos(obj.angle),
-            0,
-            R * Math.sin(obj.angle)
-          );
-          camera.lookAt(meshforlook.position);
-        })
-        .start();
+      tw.start();
     }
     circleMove();
     setInterval(circleMove, 16000);
@@ -103,7 +105,7 @@ export default function DrawingScene() {
         }
       });
 
-      TWEEN.update();
+      group.update();
       renderer.render(scene, camera);
       requestAnimationFrame(render);
     }

@@ -95,7 +95,7 @@ export default function Page() {
   return (
     <div className="w-full min-h-screen relative bg-[#91bef0] overflow-hidden" ref={scrollRef}>
       <div
-        className=" absolute w-[calc(100vw/3)] left-0 top-0 flex flex-col h-auto transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 "
+        className=" absolute w-[calc(100vw/3)] left-0 top-0 flex flex-col h-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 "
         ref={stickyTopRef}
       >
         {shuffledAiyiRems0.map((aiyiRem: string) => (
@@ -111,7 +111,7 @@ export default function Page() {
         ))}
       </div>
       <div
-        className=" absolute w-[calc(100vw/3)] left-[calc(100vw/3)] top-0 flex flex-col h-auto transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 "
+        className=" absolute w-[calc(100vw/3)] left-[calc(100vw/3)] top-0 flex flex-col h-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 "
         ref={stickyMiddleRef}
       >
         {shuffledAiyiRems1.map((aiyiRem: string) => (
@@ -127,7 +127,7 @@ export default function Page() {
         ))}
       </div>
       <div
-        className=" absolute w-[calc(100vw/3)] top-0 left-[calc(200vw/3)] flex flex-col h-auto transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 "
+        className=" absolute w-[calc(100vw/3)] top-0 left-[calc(200vw/3)] flex flex-col h-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 "
         ref={stickyBottomRef}
       >
         {shuffledAiyiRems2.map((aiyiRem: string) => (

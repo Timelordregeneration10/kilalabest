@@ -89,7 +89,7 @@ export default function Page() {
         ref={stickyRef}
       >
         <div
-          className=" sticky h-[100vh] left-0 top-0 flex w-fit transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 "
+          className=" sticky h-[100vh] left-0 top-0 flex w-fit transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 "
           ref={stickyTopRef}
         >
           {graffitis.map((graffiti) => (

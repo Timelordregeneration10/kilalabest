@@ -8,15 +8,17 @@ function useScroll() {
   const controlScrollTop = (FNscrollTop: number) => {
     setScrollTop(FNscrollTop);
     const duration = Math.abs(FNscrollTop - scrollTop) / 10;
-    new TWEEN.Tween({ objScrollTop: scrollTop })
+    const tw = new TWEEN.Tween({ objScrollTop: scrollTop })
       .to({ objScrollTop: FNscrollTop }, duration)
       .onUpdate((obj) => {
         document.documentElement.scrollTop = obj.objScrollTop;
       })
       .start();
+    const group = new TWEEN.Group();
+    group.add(tw);
     let count = 0;
     function render() {
-      TWEEN.update();
+      group.update();
       if (count++ > duration / 16.6) return;
       requestAnimationFrame(render);
     }
@@ -25,15 +27,25 @@ function useScroll() {
 
   useEffect(() => {
     if (typeof document !== undefined) {
-      const updateScrollTop = () => {
-        setScrollTop(
-          document.documentElement.scrollTop || document.body.scrollTop
-        );
+      const updateScrollTop = (pos: number) => {
+        setScrollTop(pos);
       };
-      updateScrollTop();
-      window.addEventListener("scroll", updateScrollTop);
+      let lastKnownScrollPosition = 0;
+      let ticking = false;
+      const scrollHandler = () => {
+        lastKnownScrollPosition =
+          document.documentElement.scrollTop || document.body.scrollTop;
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateScrollTop(lastKnownScrollPosition);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+      document.addEventListener("scroll", scrollHandler);
       return () => {
-        window.removeEventListener("scroll", updateScrollTop);
+        document.removeEventListener("scroll", scrollHandler);
       };
     }
   }, []);

@@ -162,7 +162,7 @@ export default function RMTScene() {
             width={Rem.rwidth}
             height={Rem.rheight}
             alt={Rem.rid}
-            className={` ${Rem.fwidth} ${Rem.fheight} ${Rem.rzIndex} absolute top-0 ${Rem.rposition} pointer-events-none transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 opacity-95 `}
+            className={` ${Rem.fwidth} ${Rem.fheight} ${Rem.rzIndex} absolute top-0 ${Rem.rposition} pointer-events-none transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-500 opacity-95 `}
             style={{
               transform: `translate(${
                 (scrollTop / 20) * windowScaleX * Rem.rscaleX + Rem.rtranslateX

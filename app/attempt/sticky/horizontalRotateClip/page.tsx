@@ -92,7 +92,7 @@ export default function Page() {
       ref={scrollRef}
     >
       <div
-        className={` sticky left-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 `}
+        className={` sticky left-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 `}
         style={{
           top:
             String(
@@ -116,7 +116,7 @@ export default function Page() {
         ))}
       </div>
       <div
-        className={` sticky left-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 `}
+        className={` sticky left-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 `}
         style={{
           top: String((100 - stickyHeightVH) / 2) + "vh",
           height: String(stickyHeightVH) + "vh",
@@ -136,7 +136,7 @@ export default function Page() {
         ))}
       </div>
       <div
-        className={` sticky flex w-auto transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 `}
+        className={` sticky flex w-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 `}
         style={{
           top:
             String(
