@@ -1,10 +1,10 @@
 "use client";
 
-import { useContext, useEffect, useRef, useState, useMemo } from "react";
+import { useContext, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
 // import IaiyiRems from "@/app/constants/aiyiRem";
 import useWindow from "@/app/hooks/useWindow";
-import { kilalaContext } from "@/app/providers/kilalayout";
+import { stickyScrollContext } from "../providers/stickyProvider";
 export default function Page() {
   // const aiyiRems = IaiyiRems;
 
@@ -18,7 +18,7 @@ export default function Page() {
   const rotateDEG = 20;
   const stickyHeightVH = 50;
 
-  const { scrollTop } = useContext(kilalaContext);
+  const { scrollTop } = useContext(stickyScrollContext);
 
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
   // control stickyRef translateX

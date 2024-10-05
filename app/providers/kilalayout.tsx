@@ -24,17 +24,10 @@ import {
 } from "@nextui-org/react";
 // @ts-ignore;
 import cookie from "js-cookie";
-import TWEEN from "@tweenjs/tween.js";
-import { throttle } from "lodash";
-
-export const kilalaContext = createContext({
-  scrollTop: 0,
-  controlScrollTop: (scrollTop: number) => {},
-});
+import useScroll from "../hooks/useScroll";
 
 export function KilaLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const boxallRef = useRef<HTMLDivElement>(null);
 
   const [heartList, setHeartlist] = useState<
     Array<{ px: number; py: number; order: number }>
@@ -122,27 +115,20 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
     }, 2000);
   };
 
-  const [scrollTop, setScrollTop] = useState(0);
+  const { scrollTop, controlScrollTop } = useScroll();
 
   const lastscroll = useRef(0);
-  const naviLoop = useCallback(() => {
-    if (boxallRef.current) {
-      setScrollTop(boxallRef.current.scrollTop);
-      let currentscroll = boxallRef.current.scrollTop;
-      if (currentscroll > lastscroll.current) {
-        setNavitopHeight("0vh");
-      } else if (currentscroll < lastscroll.current) {
-        setNavitopHeight(
-          kilaInnerWidth > 1024
-            ? "10vh"
-            : kilaInnerWidth > 640
-            ? "16vh"
-            : "12vh"
-        );
-      }
-      lastscroll.current = currentscroll;
+  useEffect(() => {
+    const currentscroll = scrollTop;
+    if (currentscroll > lastscroll.current) {
+      setNavitopHeight("0vh");
+    } else if (currentscroll < lastscroll.current) {
+      setNavitopHeight(
+        kilaInnerWidth > 1024 ? "10vh" : kilaInnerWidth > 640 ? "16vh" : "12vh"
+      );
     }
-  }, [kilaInnerWidth, setScrollTop]);
+    lastscroll.current = currentscroll;
+  }, [kilaInnerWidth, scrollTop]);
 
   useEffect(() => {
     setNavitopHeight(
@@ -150,197 +136,167 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
     );
   }, [kilaInnerWidth]);
 
-  const controlScrollTop = (FNscrollTop: number) => {
-    setScrollTop(FNscrollTop);
-    const duration = 400;
-    new TWEEN.Tween({ objScrollTop: scrollTop })
-      .to({ objScrollTop: FNscrollTop }, duration)
-      .onUpdate(function (obj) {
-        if (boxallRef.current) boxallRef.current.scrollTop = obj.objScrollTop;
-      })
-      .start();
-    let count = 0;
-    function render() {
-      TWEEN.update();
-      if (count++ > duration / 16.6) return;
-      requestAnimationFrame(render);
-    }
-    render();
-  };
-
-  // const setScrollTopLoop = () => {
-  //   if (boxallRef.current) setScrollTop(boxallRef.current.scrollTop);
-  //   requestAnimationFrame(setScrollTopLoop);
-  // };
-  // useEffect(() => {
-  //   setScrollTopLoop();
-  // }, []);
-
   const path = usePathname();
 
   return (
-    <kilalaContext.Provider value={{ scrollTop, controlScrollTop }}>
-      <div
-        className="overflow-x-hidden overflow-y-scroll w-screen h-screen no-scrollbar text-center m-0 p-0 font-[saibo] select-none"
-        onClick={(e) => {
-          if (boxallRef.current) generateHeart(e.pageX - 15, e.pageY - 20);
-        }}
-        onMouseLeave={() => {
-          setLeaveWebTimeout(
-            setTimeout(() => {
-              setShowLeaveWeb(true);
-            }, 2000)
-          );
-        }}
-        onMouseEnter={() => {
-          if (leaveWebTimeout) clearTimeout(leaveWebTimeout);
-          setLeaveWebTimeout(null);
-        }}
-        onScroll={throttle(naviLoop, 100)}
-        ref={boxallRef}
-      >
-        <div className=" min-h-screen w-full">{children}</div>
+    <div
+      className="w-screen text-center overflow-x-hidden no-scrollbar m-0 p-0 font-[saibo] select-none"
+      onClick={(e) => {
+        generateHeart(e.pageX - 15, e.pageY - 20);
+      }}
+      onMouseLeave={() => {
+        setLeaveWebTimeout(
+          setTimeout(() => {
+            setShowLeaveWeb(true);
+          }, 2000)
+        );
+      }}
+      onMouseEnter={() => {
+        if (leaveWebTimeout) clearTimeout(leaveWebTimeout);
+        setLeaveWebTimeout(null);
+      }}
+    >
+      <div className=" min-h-screen w-full">{children}</div>
 
-        {/* footer放在components里是因为footer都是静态的，剥离出来可以服务端渲染 */}
-        <Foot></Foot>
+      {/* footer放在components里是因为footer都是静态的，剥离出来可以服务端渲染 */}
+      <Foot></Foot>
 
-        {/* navi */}
-        <div className="absolute top-0 left-0 w-screen text-white select-none z-[20] flex flex-col">
-          <div
-            className="w-screen lg:h-[10vh] h-[12vh] sm:h-[16vh] flex lg:flex-row flex-col border-b-2 border-white overflow-hidden transition-[height_opacity] duration-500"
-            style={{
-              height: navitopHeight,
-              opacity: navitopHeight === "0vh" ? "0.2" : "1",
-            }}
-          >
-            <div className="w-screen lg:w-[50vw] h-[6vh] sm:h-[8vh] lg:h-[10vh] border-white flex justify-center items-center lg:border-r-2 border-b-2 lg:border-b-0">
-              <div
-                className="w-[88vw] lg:w-[44vw] h-[6vh] text-[2.4vmax] overflow-hidden pt-2 lg:p-0 cursor-pointer"
-                onClick={() => router.push("/")}
-              >
-                <div className="h-[6vh] w-[200vmax] animate-rmtcycle transition-colors duration-700 hover:text-[rgb(145,190,240)]">
-                  R · M · T R · M · T R · M · T R · M · T R · M · T R · M · T R
-                  · M · T R · M · T R · M · T R · M · T R · M · T R · M · T R ·
-                  M · T
-                </div>
-              </div>
-            </div>
-            <div className="w-screen lg:w-[50vw] h-[6vh] sm:h-[8vh] lg:h-[10vh] flex flex-row-reverse">
-              <div className=" w-[60%] text-[2.6vmax] sm:text-[3.2vmax] flex justify-center items-center transition-colors duration-700 hover:text-[rgb(255,158,229)]">
-                <a href="/">Nicholas Burkhardt</a>
-              </div>
-              <div className=" w-[40%] text-[1.5vmax] flex flex-col">
-                <div className=" select-text h-[50%] border-r-2 flex justify-center items-center border-b-2 border-white transition-colors duration-500 hover:text-[rgb(255,158,229)]">
-                  {contactContent}
-                </div>
-                <div className="h-[50%] flex flex-row justify-around items-center ">
-                  {contactItems.map((item) => {
-                    return (
-                      <div
-                        className={` flex flex-1 h-full justify-center items-center border-r-2 border-white transition-colors duration-500 cursor-pointer text-white ${item.hoverColor}`}
-                        key={item.id}
-                        onClick={() => setContactContent(item.content)}
-                      >
-                        {item.id}
-                      </div>
-                    );
-                  })}
-                </div>
+      {/* navi */}
+      <div className="fixed top-0 left-0 w-screen text-white select-none z-[20] flex flex-col">
+        <div
+          className="w-screen lg:h-[10vh] h-[12vh] sm:h-[16vh] flex lg:flex-row flex-col border-b-2 border-white overflow-hidden transition-[height_opacity] duration-500"
+          style={{
+            height: navitopHeight,
+            opacity: navitopHeight === "0vh" ? "0.2" : "1",
+          }}
+        >
+          <div className="w-screen lg:w-[50vw] h-[6vh] sm:h-[8vh] lg:h-[10vh] border-white flex justify-center items-center lg:border-r-2 border-b-2 lg:border-b-0">
+            <div
+              className="w-[88vw] lg:w-[44vw] h-[6vh] text-[2.4vmax] overflow-hidden pt-2 lg:p-0 cursor-pointer"
+              onClick={() => router.push("/")}
+            >
+              <div className="h-[6vh] w-[200vmax] animate-rmtcycle transition-colors duration-700 hover:text-[rgb(145,190,240)]">
+                R · M · T R · M · T R · M · T R · M · T R · M · T R · M · T R ·
+                M · T R · M · T R · M · T R · M · T R · M · T R · M · T R · M ·
+                T
               </div>
             </div>
           </div>
-
-          {path === "/" && (
-            <div className=" w-screen h-[6vh] sm:[8vh] lg:h-[5vh] text-white flex flex-row flex-wrap justify-around">
-              {naviItems.map((item, index) => {
-                return (
-                  <div
-                    key={item.id}
-                    onClick={() => {
-                      let sum = 1;
-                      for (let i = 0; i < index; i++) {
-                        sum += naviItems[i].height;
-                      }
-                      controlScrollTop(sum * kilaInnerHeight);
-                    }}
-                    className="cursor-pointer lg:w-[12.4vw] w-[24.9vw] h-[3vh] sm:h-[4vh] lg:h-[5vh] flex justify-center items-center text-[1.7vmax] border-b-2 border-r-2 shadow border-white transition-colors duration-500 hover:text-[violet]"
-                  >
-                    {item.id}
-                  </div>
-                );
-              })}
+          <div className="w-screen lg:w-[50vw] h-[6vh] sm:h-[8vh] lg:h-[10vh] flex flex-row-reverse">
+            <div className=" w-[60%] text-[2.6vmax] sm:text-[3.2vmax] flex justify-center items-center transition-colors duration-700 hover:text-[rgb(255,158,229)]">
+              <a href="/">Nicholas Burkhardt</a>
             </div>
-          )}
+            <div className=" w-[40%] text-[1.5vmax] flex flex-col">
+              <div className=" select-text h-[50%] border-r-2 flex justify-center items-center border-b-2 border-white transition-colors duration-500 hover:text-[rgb(255,158,229)]">
+                {contactContent}
+              </div>
+              <div className="h-[50%] flex flex-row justify-around items-center ">
+                {contactItems.map((item) => {
+                  return (
+                    <div
+                      className={` flex flex-1 h-full justify-center items-center border-r-2 border-white transition-colors duration-500 cursor-pointer text-white ${item.hoverColor}`}
+                      key={item.id}
+                      onClick={() => setContactContent(item.content)}
+                    >
+                      {item.id}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* modal for 光敏癫痫 */}
-        {!cookie.get("lightWarning") && (
-          <Modal
-            isOpen={true}
-            defaultOpen={true}
-            isDismissable={false}
-            hideCloseButton={true}
-            onOpenChange={onWarningOpenChange}
-            className=" bg-warning bg-cover sm:bg-contain bg-center lg:bg-[length:100%_100%]"
-            size="3xl"
-          >
-            <ModalContent>
-              {(onClose) => (
-                <>
-                  <ModalHeader></ModalHeader>
-                  <ModalBody>
-                    <div className="lg:h-[40vh] sm:h-[30vh] h-[20vh]"></div>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button
-                      color="danger"
-                      variant="light"
-                      onPress={() => {
-                        cookie.set("lightWarning", "accept", { expires: 365 });
-                        onClose();
-                      }}
-                    >
-                      了解
-                    </Button>
-                  </ModalFooter>
-                </>
-              )}
-            </ModalContent>
-          </Modal>
-        )}
-
-        {/* leaveweb page */}
-        {showLeaveWeb && (
-          <div className="absolute top-0 left-0 w-screen h-screen z-[99] bg-leaveweb bg-cover bg-center lg:bg-[length:100vw_100vh]">
-            <div className="absolute top-[35vh] right-0 px-[2vmax] text-[4vmax] sm:text-[6vmax] bg-[rgb(255,158,229)] text-white">
-              you have leaved!
-            </div>
-            <button
-              onClick={() => {
-                setShowLeaveWeb(false);
-              }}
-              className="absolute bottom-[25vh] right-[5vw] px-[2vmax] text-[5vmax] bg-[rgb(124,255,130)] text-white border-hidden hover:bg-[rgb(55,255,0)]"
-            >
-              return
-            </button>
+        {path === "/" && (
+          <div className=" w-screen h-[6vh] sm:[8vh] lg:h-[5vh] text-white flex flex-row flex-wrap justify-around">
+            {naviItems.map((item, index) => {
+              return (
+                <div
+                  key={item.id}
+                  onClick={() => {
+                    let sum = 1;
+                    for (let i = 0; i < index; i++) {
+                      sum += naviItems[i].height;
+                    }
+                    controlScrollTop(sum * kilaInnerHeight);
+                  }}
+                  className="cursor-pointer lg:w-[12.4vw] w-[24.9vw] h-[3vh] sm:h-[4vh] lg:h-[5vh] flex justify-center items-center text-[1.7vmax] border-b-2 border-r-2 shadow border-white transition-colors duration-500 hover:text-[violet]"
+                >
+                  {item.id}
+                </div>
+              );
+            })}
           </div>
         )}
-
-        {/* heart bubble */}
-        {heartList.map((item) => {
-          return (
-            <Image
-              height={40}
-              width={40}
-              src={heartpng}
-              alt="heart"
-              key={item.order}
-              className={`absolute w-[40px] h-[40px] select-none pointer-events-none animate-personwebheart z-[2147483647]`}
-              style={{ top: item.py + "px", left: item.px + "px" }}
-            ></Image>
-          );
-        })}
       </div>
-    </kilalaContext.Provider>
+
+      {/* modal for 光敏癫痫 */}
+      {!cookie.get("lightWarning") && (
+        <Modal
+          isOpen={true}
+          defaultOpen={true}
+          isDismissable={false}
+          hideCloseButton={true}
+          onOpenChange={onWarningOpenChange}
+          className=" bg-warning bg-cover sm:bg-contain bg-center lg:bg-[length:100%_100%]"
+          size="3xl"
+        >
+          <ModalContent>
+            {(onClose) => (
+              <>
+                <ModalHeader></ModalHeader>
+                <ModalBody>
+                  <div className="lg:h-[40vh] sm:h-[30vh] h-[20vh]"></div>
+                </ModalBody>
+                <ModalFooter>
+                  <Button
+                    color="danger"
+                    variant="light"
+                    onPress={() => {
+                      cookie.set("lightWarning", "accept", { expires: 365 });
+                      onClose();
+                    }}
+                  >
+                    了解
+                  </Button>
+                </ModalFooter>
+              </>
+            )}
+          </ModalContent>
+        </Modal>
+      )}
+
+      {/* leaveweb page */}
+      {showLeaveWeb && (
+        <div className="fixed top-0 left-0 w-screen h-screen z-[99] bg-leaveweb bg-cover bg-center lg:bg-[length:100vw_100vh]">
+          <div className="absolute top-[35vh] right-0 px-[2vmax] text-[4vmax] sm:text-[6vmax] bg-[rgb(255,158,229)] text-white">
+            you have leaved!
+          </div>
+          <button
+            onClick={() => {
+              setShowLeaveWeb(false);
+            }}
+            className="absolute bottom-[25vh] right-[5vw] px-[2vmax] text-[5vmax] bg-[rgb(124,255,130)] text-white border-hidden hover:bg-[rgb(55,255,0)]"
+          >
+            return
+          </button>
+        </div>
+      )}
+
+      {/* heart bubble */}
+      {heartList.map((item) => {
+        return (
+          <Image
+            height={40}
+            width={40}
+            src={heartpng}
+            alt="heart"
+            key={item.order}
+            className={`absolute w-[40px] h-[40px] select-none pointer-events-none animate-personwebheart z-[2147483647]`}
+            style={{ top: item.py + "px", left: item.px + "px" }}
+          ></Image>
+        );
+      })}
+    </div>
   );
 }

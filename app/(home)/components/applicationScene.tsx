@@ -12,9 +12,9 @@ import yuan from "../../components/img/applicaton/yuan.webp";
 import sakamoto from "../../components/img/applicaton/sakamoto.webp";
 import Image from "next/image";
 import applicationGIF from "../assets/application.gif";
-import { kilalaContext } from "@/app/providers/kilalayout";
 import bg from "@/app/components/img/musedash/application.webp";
 import { motion } from "framer-motion";
+import useScroll from "@/app/hooks/useScroll";
 
 const applications = [
   { name: "生日系列", url: "https://timelord.cn/birthday" },
@@ -79,7 +79,7 @@ export default function ApplicationScene() {
   const yuanRef = useRef<HTMLDivElement | null>(null);
   const bgRef = useRef<HTMLDivElement | null>(null);
 
-  const { scrollTop } = useContext(kilalaContext);
+  const { scrollTop } = useScroll();
 
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
 
