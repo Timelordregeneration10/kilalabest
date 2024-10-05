@@ -25,15 +25,25 @@ function useScroll() {
 
   useEffect(() => {
     if (typeof document !== undefined) {
-      const updateScrollTop = () => {
-        setScrollTop(
-          document.documentElement.scrollTop || document.body.scrollTop
-        );
+      const updateScrollTop = (pos: number) => {
+        setScrollTop(pos);
       };
-      updateScrollTop();
-      window.addEventListener("scroll", updateScrollTop);
+      let lastKnownScrollPosition = 0;
+      let ticking = false;
+      const scrollHandler = () => {
+        lastKnownScrollPosition =
+          document.documentElement.scrollTop || document.body.scrollTop;
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateScrollTop(lastKnownScrollPosition);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+      document.addEventListener("scroll", scrollHandler);
       return () => {
-        window.removeEventListener("scroll", updateScrollTop);
+        document.removeEventListener("scroll", scrollHandler);
       };
     }
   }, []);
