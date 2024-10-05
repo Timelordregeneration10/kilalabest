@@ -8,15 +8,17 @@ function useScroll() {
   const controlScrollTop = (FNscrollTop: number) => {
     setScrollTop(FNscrollTop);
     const duration = Math.abs(FNscrollTop - scrollTop) / 10;
-    new TWEEN.Tween({ objScrollTop: scrollTop })
+    const tw = new TWEEN.Tween({ objScrollTop: scrollTop })
       .to({ objScrollTop: FNscrollTop }, duration)
       .onUpdate((obj) => {
         document.documentElement.scrollTop = obj.objScrollTop;
       })
       .start();
+    const group = new TWEEN.Group();
+    group.add(tw);
     let count = 0;
     function render() {
-      TWEEN.update();
+      group.update();
       if (count++ > duration / 16.6) return;
       requestAnimationFrame(render);
     }
