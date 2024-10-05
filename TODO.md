@@ -10,7 +10,9 @@
   - document.documentElement.scrollTop
 
 # 动画丝滑问题
-- 研究useSpring
+- cubic-bezier完胜，之前有问题不采用认为是dev环境特有的卡顿或者贝塞尔曲线用的不对
+- 研究useSpring => 大部分丝滑动画不需要弹簧物理效果
+- 好用的tiny spring库：<a href="https://github.com/skevy/wobble/blob/develop/demos/1-chat-heads/index.tsx">wobble</a>
 
 # /navi开发
 + 思考：每个/navi使用崭新主题 => anime，music，game使用iframe失败于是直接外链，RMT压轴蓝毒窝最高杰作，drawing蓝毒窝弃用版，app，att，proj直接外链

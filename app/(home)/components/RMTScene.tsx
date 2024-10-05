@@ -6,10 +6,9 @@ import sisRem1Rem from "../../components/img/rmt/sisRem1.webp";
 import sisRem2Rem from "../../components/img/rmt/sisRem2.webp";
 import wangjiangRem from "../../components/img/rmt/wangjiangRem.webp";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { motion } from "framer-motion";
 import useScroll from "@/app/hooks/useScroll";
-import * as TWEEN from "@tweenjs/tween.js";
 
 const RMTExplains = [
   "= Rem MaJi Tianshi =",
@@ -105,28 +104,20 @@ export default function RMTScene() {
   const windowScaleX = windowWidth < 640 ? 1 : 1;
   const windowScaleY = windowWidth < 640 ? -1 : windowHeight / 789;
 
-  const [currentScale, setCurrentScale] = useState(0);
-  useEffect(() => {
-    setCurrentScale(scrollTop / 20);
-    const tw=new TWEEN.Tween({ objscale: currentScale })
-      .to({ objscale: scrollTop / 20 }, 500)
-      .dynamic(true)
-      .onUpdate((obj) => {
-        setCurrentScale(obj.objscale);
-      })
-      .start();
-    const group = new TWEEN.Group();
-    group.add(tw);
-    function render() {
-      if (tw.update()) requestAnimationFrame(render);
-    }
-    render();
-  }, [scrollTop]);
-
   // TODO: Rem related link
 
   return (
     <div className=" h-[370vh] w-screen bg-rmt bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
+      {/* <div className="fixed pointer-events-none top-0 left-0 w-screen h-screen z-[0] bg-[#0000003f]"
+        style={{ clipPath: `inset(${scrollTop >= innerHeight ? 0 : (innerHeight - scrollTop) / innerHeight * 100}% 0% ${scrollTop <= innerHeight * 3.7 ? 0 : scrollTop >= innerHeight * 4.7 ? 100 : (scrollTop - innerHeight * 3.7) / innerHeight * 100}% 0%)` }}
+      ></div>
+      <div className="fixed pointer-events-none top-0 left-0 w-screen h-screen z-[6] "
+        style={{ clipPath: `inset(${scrollTop >= innerHeight ? 0 : (innerHeight - scrollTop) / innerHeight * 100}% 0% ${scrollTop <= innerHeight * 3.7 ? 0 : scrollTop >= innerHeight * 4.7 ? 100 : (scrollTop - innerHeight * 3.7) / innerHeight * 100}% 0%)` }}
+      >
+        <div className="absolute top-[30vh] lg:top-[25vh] leading-[18vh] lqlm:leading-[24vh] left-[10vw] w-[80vw] h-[50vh] text-[20.4vh] lqlm:text-[32.4vh] md:text-[38.4vw] overflow-visible flex justify-center items-center text-transparent bg-rmt bg-clip-text bg-contain bg-center opacity-80">
+          RMT
+        </div>
+      </div> */}
       <div className="absolute bottom-0 right-0 mr-[10vmin] text-white text-end">
         <a
           className=" block text-[15vh] sm:text-[24.4vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_#91bef0] cursor-pointer "
@@ -171,12 +162,12 @@ export default function RMTScene() {
             width={Rem.rwidth}
             height={Rem.rheight}
             alt={Rem.rid}
-            className={` ${Rem.fwidth} ${Rem.fheight} ${Rem.rzIndex} absolute top-0 ${Rem.rposition} pointer-events-none opacity-95 `}
+            className={` ${Rem.fwidth} ${Rem.fheight} ${Rem.rzIndex} absolute top-0 ${Rem.rposition} pointer-events-none transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-500 opacity-95 `}
             style={{
               transform: `translate(${
-                currentScale * windowScaleX * Rem.rscaleX + Rem.rtranslateX
+                (scrollTop / 20) * windowScaleX * Rem.rscaleX + Rem.rtranslateX
               }vmax,${
-                currentScale * windowScaleY * Rem.rscaleY + Rem.rtranslateY
+                (scrollTop / 20) * windowScaleY * Rem.rscaleY + Rem.rtranslateY
               }vmin)`,
             }}
           ></Image>

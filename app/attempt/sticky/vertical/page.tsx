@@ -102,7 +102,7 @@ export default function Page() {
       ref={scrollRef}
     >
       <div
-        className=" sticky w-[calc(100vw/3)] top-0 flex flex-col h-fit transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 "
+        className=" sticky w-[calc(100vw/3)] top-0 flex flex-col h-fit transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 "
         ref={stickyTopRef}
       >
         {shuffledAiyiRems0.map((aiyiRem: string) => (
@@ -118,7 +118,7 @@ export default function Page() {
         ))}
       </div>
       <div
-        className=" sticky w-[calc(100vw/3)] top-0 flex flex-col h-fit transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 "
+        className=" sticky w-[calc(100vw/3)] top-0 flex flex-col h-fit transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 "
         ref={stickyMiddleRef}
       >
         {shuffledAiyiRems1.map((aiyiRem: string) => (
@@ -134,7 +134,7 @@ export default function Page() {
         ))}
       </div>
       <div
-        className=" sticky w-[calc(100vw/3)] top-0 flex flex-col h-fit transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 "
+        className=" sticky w-[calc(100vw/3)] top-0 flex flex-col h-fit transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 "
         ref={stickyBottomRef}
       >
         {shuffledAiyiRems2.map((aiyiRem: string) => (

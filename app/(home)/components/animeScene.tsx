@@ -66,7 +66,7 @@ export default function AnimeScene() {
       {/* mainScene */}
       <div className=" absolute top-0 left-0 w-screen h-screen">
         <div
-          className=" relative h-[calc(100vh/3)] left-0 top-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 "
+          className=" relative h-[calc(100vh/3)] left-0 top-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 "
           ref={stickyTopRef}
         >
           {shuffledAiyiRems0.map((aiyiRem, index) => (
@@ -84,7 +84,7 @@ export default function AnimeScene() {
           ))}
         </div>
         <div
-          className=" relative h-[calc(100vh/3)] left-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 "
+          className=" relative h-[calc(100vh/3)] left-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 "
           ref={stickyMiddleRef}
         >
           {shuffledAiyiRems1.map((aiyiRem, index) => (
@@ -102,7 +102,7 @@ export default function AnimeScene() {
           ))}
         </div>
         <div
-          className=" relative h-[calc(100vh/3)] left-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.1,0.25,1)] duration-100 "
+          className=" relative h-[calc(100vh/3)] left-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 "
           ref={stickyBottomRef}
         >
           {shuffledAiyiRems2.map((aiyiRem, index) => (

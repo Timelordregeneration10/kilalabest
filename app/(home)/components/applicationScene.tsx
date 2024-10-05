@@ -165,7 +165,7 @@ export default function ApplicationScene() {
       ref={boxRef}
     >
       <div
-        className=" fixed top-0 left-0 w-screen h-screen pointer-events-none z-10 opacity-0 transition-[opacity_transform] duration-100 ease-[cubic-bezier(0.25,0.1,0.25,1)] hidden "
+        className=" fixed top-0 left-0 w-screen h-screen pointer-events-none z-10 opacity-0 transition-[opacity_transform] duration-400 ease-[cubic-bezier(0.25,0.75,0.85,1)] hidden "
         ref={bgRef}
       >
         <Image
@@ -178,7 +178,7 @@ export default function ApplicationScene() {
         ></Image>
       </div>
       <div
-        className=" fixed top-0 left-0 w-screen h-screen pointer-events-none z-[9] transition-transform duration-100 ease-[cubic-bezier(0.25,0.1,0.25,1)] hidden "
+        className=" fixed top-0 left-0 w-screen h-screen pointer-events-none z-[9] transition-transform duration-400 ease-[cubic-bezier(0.25,0.75,0.85,1)] hidden "
         ref={yuanRef}
       >
         <Image
