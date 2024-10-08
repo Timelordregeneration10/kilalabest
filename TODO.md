@@ -3,30 +3,31 @@
 + ​移动端适配​
 * lottiefiles 酷炫灵动GIF
 
-# scrollTop新获取路径
-- useScroll: <a href="https://github.com/InhiblabCore/vue-hooks-plus/blob/master/packages/hooks/src/useScroll/index.ts">vue hook</a>
-- 简而言之：
-  - document.scrollingElement.scrollTop（其实大部分情况scrollingElement还是根元素html，也就是下面的documentElement）
-  - document.documentElement.scrollTop
-
-# 动画丝滑问题
-- cubic-bezier完胜，之前有问题不采用认为是dev环境特有的卡顿或者贝塞尔曲线用的不对
-- 研究useSpring => 大部分丝滑动画不需要弹簧物理效果
-- 好用的tiny spring库：<a href="https://github.com/skevy/wobble/blob/develop/demos/1-chat-heads/index.tsx">wobble</a>
-
-# /navi开发
-+ 思考：每个/navi使用崭新主题 => anime，music，game使用iframe失败于是直接外链，RMT压轴蓝毒窝最高杰作，drawing蓝毒窝弃用版，app，att，proj直接外链
-## /RMT
+# /RMT
 - 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
 - dreamle的tutorial, RMTprogress
 - 双子座星星坠落闪烁动效
 - 背景纯白svg分段鼠标悬浮随其摇曳，鼠标不在区域则过一段事件自己摇曳<a href="https://www.bilibili.com/video/BV1ZusYeGEfj/?spm_id_from=333.999.0.0&vd_source=46ce54f3d46b4d66190ac3b10e7a3309">效果</a>
 - 加入世界锚
 
-# SEO
-- 查看nextjs部署文档，看看何故favicon不显示
-
 # github图床见知乎收藏
+
+# SEO ✅
++ 查看nextjs部署文档，看看何故favicon不显示 => 有说是需要等待，然后google搜索结果是已经有favicon了
+
+# scrollTop新获取路径 ✅
++ useScroll: <a href="https://github.com/InhiblabCore/vue-hooks-plus/blob/master/packages/hooks/src/useScroll/index.ts">vue hook</a>
++ 简而言之：
+  + document.scrollingElement.scrollTop（其实大部分情况scrollingElement还是根元素html，也就是下面的documentElement）
+  + document.documentElement.scrollTop
+
+# 动画丝滑问题 ✅
++ cubic-bezier完胜，之前有问题不采用认为是dev环境特有的卡顿或者贝塞尔曲线用的不对
++ 研究useSpring => 大部分丝滑动画不需要弹簧物理效果
++ 好用的tiny spring库：<a href="https://github.com/skevy/wobble/blob/develop/demos/1-chat-heads/index.tsx">wobble</a>
+
+# /navi开发 ✅
++ 思考：每个/navi使用崭新主题 => anime，music，game使用iframe失败于是直接外链，RMT压轴蓝毒窝最高杰作，drawing蓝毒窝弃用版，app，att，proj直接外链
 
 # 首屏开发 ✅
 + intro里proj加上链接
