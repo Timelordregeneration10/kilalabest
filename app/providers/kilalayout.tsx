@@ -10,7 +10,7 @@ import {
   useState,
 } from "react";
 import Foot from "./components/footer";
-import heartpng from "../components/img/heart.png";
+import heartpng from "../assets/heart.png";
 import { usePathname, useRouter } from "next/navigation";
 import useWindow from "../hooks/useWindow";
 import {

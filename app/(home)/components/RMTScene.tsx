@@ -1,10 +1,10 @@
 "use client";
 import useWindow from "../../hooks/useWindow";
-import heavenRem from "../../components/img/rmt/heavenRem.webp";
-import jpegRem from "../../components/img/rmt/jpegRem.webp";
-import sisRem1Rem from "../../components/img/rmt/sisRem1.webp";
-import sisRem2Rem from "../../components/img/rmt/sisRem2.webp";
-import wangjiangRem from "../../components/img/rmt/wangjiangRem.webp";
+import heavenRem from "../../assets/rmt/heavenRem.webp";
+import jpegRem from "../../assets/rmt/jpegRem.webp";
+import sisRem1Rem from "../../assets/rmt/sisRem1.webp";
+import sisRem2Rem from "../../assets/rmt/sisRem2.webp";
+import wangjiangRem from "../../assets/rmt/wangjiangRem.webp";
 import Image from "next/image";
 import { useContext } from "react";
 import { motion } from "framer-motion";
