@@ -24,18 +24,18 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "streamer-color": "linear-gradient(90deg, #03a9f4, #f441a5, #03a9f4)",
-        leaveweb: "url('./components/img/musedash/leaving.webp')", //最终会被打包到global.css
-        kilalascene: "url('./components/img/musedash/kilalascene.webp')",
-        rmt: "url('./components/img/musedash/rmt.webp')",
-        project: "url('./components/img/musedash/project.webp')",
-        application: "url('./components/img/musedash/application.webp')",
-        attempt: "url('./components/img/musedash/attempt.webp')",
-        music: "url('./components/img/musedash/music.webp')",
-        anime: "url('./components/img/musedash/anime.webp')",
-        game: "url('./components/img/musedash/game.webp')",
-        drawing: "url('./components/img/musedash/drawing.webp')",
-        warning: "url('./components/img/musedash/warning.webp')",
-        graffiti: "url('./components/img/drawing/graffiti/bg.jpg')",
+        leaveweb: "url('./assets/musedash/leaving.webp')", //最终会被打包到global.css
+        kilalascene: "url('./assets/musedash/kilalascene.webp')",
+        rmt: "url('./assets/musedash/rmt.webp')",
+        project: "url('./assets/musedash/project.webp')",
+        application: "url('./assets/musedash/application.webp')",
+        attempt: "url('./assets/musedash/attempt.webp')",
+        music: "url('./assets/musedash/music.webp')",
+        anime: "url('./assets/musedash/anime.webp')",
+        game: "url('./assets/musedash/game.webp')",
+        drawing: "url('./assets/musedash/drawing.webp')",
+        warning: "url('./assets/musedash/warning.webp')",
+        graffiti: "url('./assets/drawing/graffiti/bg.jpg')",
       },
       keyframes: {
         streamer: {

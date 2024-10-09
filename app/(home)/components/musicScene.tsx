@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import useWindow from "../../hooks/useWindow";
 import musicGIF from "../assets/music.gif";
 import Image from "next/image";
-import musicBG from "@/app/components/img/musedash/music.webp";
+import musicBG from "@/app/assets/musedash/music.webp";
 
 export default function MusicScene() {
   const isMobile = useWindow().width < 640;

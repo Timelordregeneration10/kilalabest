@@ -2,17 +2,17 @@
 
 import { useContext, useEffect, useRef, useState } from "react";
 import useWindow from "../../hooks/useWindow";
-import birthday1 from "../../components/img/applicaton/birthday1.webp";
-import birthday2 from "../../components/img/applicaton/birthday2.webp";
-import birthday3 from "../../components/img/applicaton/birthday3.webp";
-import hdwpic from "../../components/img/applicaton/hdwpic.webp";
-import landu1 from "../../components/img/applicaton/landu1.webp";
-import landu2 from "../../components/img/applicaton/landu2.webp";
-import yuan from "../../components/img/applicaton/yuan.webp";
-import sakamoto from "../../components/img/applicaton/sakamoto.webp";
+import birthday1 from "../../assets/applicaton/birthday1.webp";
+import birthday2 from "../../assets/applicaton/birthday2.webp";
+import birthday3 from "../../assets/applicaton/birthday3.webp";
+import hdwpic from "../../assets/applicaton/hdwpic.webp";
+import landu1 from "../../assets/applicaton/landu1.webp";
+import landu2 from "../../assets/applicaton/landu2.webp";
+import yuan from "../../assets/applicaton/yuan.webp";
+import sakamoto from "../../assets/applicaton/sakamoto.webp";
 import Image from "next/image";
 import applicationGIF from "../assets/application.gif";
-import bg from "@/app/components/img/musedash/application.webp";
+import bg from "@/app/assets/musedash/application.webp";
 import { motion } from "framer-motion";
 import useScroll from "@/app/hooks/useScroll";
 

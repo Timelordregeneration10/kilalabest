@@ -1,16 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useEffect, useRef, useState } from "react";
 import Foot from "./components/footer";
-import heartpng from "../components/img/heart.png";
+import heartpng from "../assets/heart.png";
 import { usePathname, useRouter } from "next/navigation";
 import useWindow from "../hooks/useWindow";
 import {
@@ -25,6 +18,11 @@ import {
 // @ts-ignore;
 import cookie from "js-cookie";
 import useScroll from "../hooks/useScroll";
+
+const hideLeaveWebPages = (path: string) => {
+  if (path.startsWith("/camouflage")) return true;
+  return false;
+};
 
 export function KilaLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -145,6 +143,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
         generateHeart(e.pageX - 15, e.pageY - 20);
       }}
       onMouseLeave={() => {
+        if (hideLeaveWebPages(path)) return;
         setLeaveWebTimeout(
           setTimeout(() => {
             setShowLeaveWeb(true);
