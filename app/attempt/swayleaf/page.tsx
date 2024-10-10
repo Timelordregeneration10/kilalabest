@@ -23,6 +23,7 @@ const SwayLeafPage: React.FC = () => {
           hoverAreaBackgroundColor={leaf.bg}
           style={{ transform: `translateY(${leaf.y}px)` }}
           key={leaf.key}
+          overlapped={true}
         ></SwayLeaf>
       ))}
     </div>
