@@ -1,6 +1,6 @@
 "use client";
 import Image, { StaticImageData } from "next/image";
-import heartPNG from "@/app/assets/heart.png";
+import leafPNG from "@/app/assets/leaf.png";
 import { CSSProperties, MouseEvent, useMemo, useRef, useState } from "react";
 import { throttle } from "lodash";
 import useScroll from "@/app/hooks/useScroll";
@@ -18,7 +18,7 @@ interface SwayLeafProps {
 const defaultProps = {
   width: 40,
   height: 40,
-  src: heartPNG,
+  src: leafPNG,
   hoverAreaScale: 5,
   hoverAreaBackgroundColor: "transparent",
 };
@@ -50,8 +50,8 @@ const SwayLeaf: React.FC<SwayLeafProps> = ({
       e.clientY - hoverAreaPosition.top,
     ];
     setRelativePos([
-      offsetX - (width * hoverAreaScale) / 2,
-      offsetY - (height * hoverAreaScale) / 2,
+      offsetX - (width * hoverAreaScale - 1) / 2,
+      offsetY - (height * hoverAreaScale - 1) / 2,
     ]);
   };
 
