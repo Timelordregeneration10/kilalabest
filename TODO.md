@@ -3,6 +3,11 @@
 + ​移动端适配​
 * lottiefiles 酷炫灵动GIF
 
+# attempt
+## swayleaf
+- useMemo导致的水合失败 => useEffect
+- canvas实现 => 没有transition也没有animation => abandon
+
 # /RMT
 - 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
 - dreamle的tutorial, RMTprogress

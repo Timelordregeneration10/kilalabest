@@ -70,8 +70,8 @@ const SwayLeaf: React.FC<SwayLeafProps> = ({
       e.clientY - hoverAreaPosition.top,
     ];
     setRelativePos([
-      offsetX - (width * hoverAreaScale - 1) / 2,
-      offsetY - (height * hoverAreaScale - 1) / 2,
+      offsetX - (width * hoverAreaScale) / 2,
+      offsetY - (height * hoverAreaScale) / 2,
     ]);
   };
 
@@ -85,23 +85,30 @@ const SwayLeaf: React.FC<SwayLeafProps> = ({
       const dis = (x1: number, y1: number, x2: number, y2: number): number => {
         return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
       };
+      let ticking = false;
       const mouseMoveHandler = (e: MouseEvent) => {
-        // TODO: 椭圆
-        if (
-          dis(
-            e.clientX,
-            e.clientY,
-            hoverAreaPosition.centerX,
-            hoverAreaPosition.centerY
-          ) >
-          (Math.sqrt(width * height) * hoverAreaScale) / 2
-        ) {
-          setRelativePos([0, 0]);
-          setSwaying(true);
-        } else {
-          setSwaying(false);
-          // @ts-ignore
-          handleMouseMove(e);
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            // TODO: 椭圆
+            if (
+              dis(
+                e.clientX,
+                e.clientY,
+                hoverAreaPosition.centerX,
+                hoverAreaPosition.centerY
+              ) >
+              (Math.sqrt(width * height) * hoverAreaScale) / 2
+            ) {
+              setRelativePos([0, 0]);
+              setSwaying(true);
+            } else {
+              setSwaying(false);
+              // @ts-ignore
+              handleMouseMove(e);
+            }
+            ticking = false;
+          });
+          ticking = true;
         }
       };
       // @ts-ignore
@@ -110,7 +117,7 @@ const SwayLeaf: React.FC<SwayLeafProps> = ({
         window.removeEventListener(
           "mousemove",
           // @ts-ignore
-          mouseMoveHandler as EventListenerOrEventListenerObject
+          mouseMoveHandler
         );
       };
     }
@@ -136,9 +143,7 @@ const SwayLeaf: React.FC<SwayLeafProps> = ({
             transform: `translate(${relativePos[0]}px,${relativePos[1]}px)`,
             width: width + "px",
             height: height + "px",
-            transition: swaying
-              ? "transform 0.5s cubic-bezier(0.25,1.25,0.25,1.25)"
-              : "none",
+            transition: "transform 0.5s cubic-bezier(0.25,1.25,0.25,1.25)",
           }}
         >
           <Image
