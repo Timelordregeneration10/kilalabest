@@ -70,8 +70,8 @@ const SwayLeaf: React.FC<SwayLeafProps> = ({
       e.clientY - hoverAreaPosition.top,
     ];
     setRelativePos([
-      offsetX - (width * hoverAreaScale - 1) / 2,
-      offsetY - (height * hoverAreaScale - 1) / 2,
+      offsetX - (width * hoverAreaScale) / 2,
+      offsetY - (height * hoverAreaScale) / 2,
     ]);
   };
 
@@ -85,33 +85,43 @@ const SwayLeaf: React.FC<SwayLeafProps> = ({
       const dis = (x1: number, y1: number, x2: number, y2: number): number => {
         return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
       };
-      const mouseMoveHandler=(e:MouseEvent)=>{
-        // TODO: 椭圆
-        if (
-          dis(
-            e.clientX,
-            e.clientY,
-            hoverAreaPosition.centerX,
-            hoverAreaPosition.centerY
-          ) >
-          (Math.sqrt(width * height) * hoverAreaScale) / 2
-        ) {
-          setRelativePos([0, 0]);
-          setSwaying(true);
-        } else {
-          setSwaying(false);
-          // @ts-ignore
-          handleMouseMove(e);
+      let ticking = false;
+      const mouseMoveHandler = (e: MouseEvent) => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            // TODO: 椭圆
+            if (
+              dis(
+                e.clientX,
+                e.clientY,
+                hoverAreaPosition.centerX,
+                hoverAreaPosition.centerY
+              ) >
+              (Math.sqrt(width * height) * hoverAreaScale) / 2
+            ) {
+              setRelativePos([0, 0]);
+              setSwaying(true);
+            } else {
+              setSwaying(false);
+              // @ts-ignore
+              handleMouseMove(e);
+            }
+            ticking = false;
+          });
+          ticking = true;
         }
-      }
+      };
       // @ts-ignore
       window.addEventListener("mousemove", mouseMoveHandler);
-      return ()=>{
-        // @ts-ignore
-        window.removeEventListener("mousemove",mouseMoveHandler as EventListenerOrEventListenerObject);
-      }
+      return () => {
+        window.removeEventListener(
+          "mousemove",
+          // @ts-ignore
+          mouseMoveHandler
+        );
+      };
     }
-  }, [overlapped,hoverAreaPosition]);
+  }, [overlapped, hoverAreaPosition]);
 
   return (
     <div
@@ -126,6 +136,27 @@ const SwayLeaf: React.FC<SwayLeafProps> = ({
         ...style,
       }}
     >
+      {/* leaf div */}
+      <div className="flex justify-center items-center w-full h-full absolute">
+        <div
+          style={{
+            transform: `translate(${relativePos[0]}px,${relativePos[1]}px)`,
+            width: width + "px",
+            height: height + "px",
+            transition: "transform 0.5s cubic-bezier(0.25,1.25,0.25,1.25)",
+          }}
+        >
+          <Image
+            alt="leaf"
+            width={width ? width : defaultProps.width}
+            height={height ? height : defaultProps.height}
+            src={src ? src : defaultProps.src}
+            style={{
+              animation: swaying ? "cardRotate 6s linear infinite" : "",
+            }}
+          ></Image>
+        </div>
+      </div>
       {/* hover area */}
       <div
         className="[clip-path:circle()] cursor-pointer "
@@ -150,29 +181,7 @@ const SwayLeaf: React.FC<SwayLeafProps> = ({
           setRelativePos([0, 0]);
           setSwaying(true);
         }}
-      >
-        <div className="flex justify-center items-center w-full h-full">
-          <div
-            // className=" transition-transform duration-500 ease-[cubic-bezier(0.25,1.25,0.25,1.25)]"
-            style={{
-              transform: `translate(${relativePos[0]}px,${relativePos[1]}px)`,
-              width: width + "px",
-              height: height + "px",
-              transition: swaying ? "transform 0.5s" : "none",
-            }}
-          >
-            <Image
-              alt="leaf"
-              width={width ? width : defaultProps.width}
-              height={height ? height : defaultProps.height}
-              src={src ? src : defaultProps.src}
-              style={{
-                animation: swaying ? "cardRotate 6s linear infinite" : "",
-              }}
-            ></Image>
-          </div>
-        </div>
-      </div>
+      ></div>
     </div>
   );
 };
