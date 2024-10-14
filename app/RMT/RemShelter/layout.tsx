@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import RemAbsorbBG from "@/app/RMT/RemAbsorb/assets/RemAbsorbBG.webp";
+import RemShelterBG from "@/app/RMT/RemShelter/assets/RemShelterBG.webp";
 import type { Viewport } from "next";
 
 export const viewport: Viewport = {
@@ -12,18 +12,18 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Rem Absorb",
-  description:
-    "A fancy game which your goal is absorbing Rem and avoid master of great sin",
-  applicationName: "Rem Absorb",
+  title: "RemShelter",
+  description: "逃离大罪司教的围追堵截，拯救雷姆！",
+  applicationName: "蕾姆庇护所",
   authors: {
     name: "Nicholas Burkhardt",
-    url: "https://kilalabest.cn/RMT/RemAbsorb",
+    url: "https://kilalabest.cn/RMT/RemShelter",
   },
   generator: "Next.js",
   keywords: [
-    "蕾姆吸收",
-    "雷姆吸收",
+    "RemShelter",
+    "蕾姆庇护所",
+    "雷姆庇护所",
     "雷姆小游戏",
     "蕾姆小游戏",
     "rmt",
@@ -35,8 +35,7 @@ export const metadata: Metadata = {
   ],
   creator: "Nicholas Burkhardt",
   publisher: "Nicholas Burkhardt",
-  abstract:
-    "A fancy game which your goal is absorbing Rem and avoid master of great sin",
+  abstract: "逃离大罪司教的围追堵截，拯救雷姆！",
   icons: [
     {
       rel: "icon",
@@ -61,20 +60,16 @@ export default function RootLayout({
   return (
     <>
       <Image
-        src={RemAbsorbBG}
-        alt="RemAbsorbBG"
+        src={RemShelterBG}
+        alt="RemShelterBG"
         height={744}
         width={1200}
         className="w-screen h-screen object-cover md:object-fill absolute left-0 right-0 pointer-events-none opacity-20"
       ></Image>
       <div className="fixed opacity-0 pointer-events-none">
-        <h1>Rem Absorb</h1>
-        <p>
-          A fancy game which your goal is absorbing Rem and avoid master of
-          great sin
-        </p>
+        <h1>蕾姆庇护所</h1>
+        <p>逃离大罪司教的围追堵截，拯救雷姆！</p>
         <h2>注意事项</h2>
-        <h2>逃离大罪司教，拯救雷姆！</h2>
         <p>
           1.
           本应用部署在Github上，所以需要确保你的网络环境能够正常访问Github，以确保流畅体验。

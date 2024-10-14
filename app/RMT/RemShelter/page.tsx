@@ -13,7 +13,7 @@ import {
 import useWindow from "@/app/hooks/useWindow";
 import cookie from "js-cookie";
 
-const RemAbsorbPage: React.FC = () => {
+const RemShelterPage: React.FC = () => {
   const [gameState, setGameState] = useState(0);
   const [currentDifficulty, setCurrentDifficulty] = useState(1);
 
@@ -25,7 +25,7 @@ const RemAbsorbPage: React.FC = () => {
   } = useDisclosure();
 
   useEffect(() => {
-    const instuctionReaded = cookie.get("RemAbsorbInstuctionReaded");
+    const instuctionReaded = cookie.get("RemShelterInstuctionReaded");
     if (!instuctionReaded) {
       onInstuctionOpen();
     }
@@ -232,7 +232,7 @@ const RemAbsorbPage: React.FC = () => {
                 <Button
                   className="bg-[#ffcafbbb] hover:bg-[#ff6be4a3] font-thin text-2xl font-[saibo]"
                   onPress={() => {
-                    cookie.set("RemAbsorbInstuctionReaded", "yes", {
+                    cookie.set("RemShelterInstuctionReaded", "yes", {
                       expires: 365,
                     });
                     onclose();
@@ -249,4 +249,4 @@ const RemAbsorbPage: React.FC = () => {
   );
 };
 
-export default RemAbsorbPage;
+export default RemShelterPage;

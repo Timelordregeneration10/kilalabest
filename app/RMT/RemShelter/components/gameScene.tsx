@@ -12,12 +12,12 @@ import RemCursor7 from "@/app/assets/rmt/RemCursors/7.gif";
 import RemCursor8 from "@/app/assets/rmt/RemCursors/8.gif";
 import RemCursor9 from "@/app/assets/rmt/RemCursors/9.gif";
 import RemCursor10 from "@/app/assets/rmt/RemCursors/10.gif";
-import taido from "@/app/RMT/RemAbsorb/assets/taido.webp";
-import seyu from "@/app/RMT/RemAbsorb/assets/seyu.webp";
-import qiangyu from "@/app/RMT/RemAbsorb/assets/qiangyu.webp";
-import baoshi from "@/app/RMT/RemAbsorb/assets/baoshi.webp";
-import fennu from "@/app/RMT/RemAbsorb/assets/fennu.webp";
-import aoman from "@/app/RMT/RemAbsorb/assets/aoman.webp";
+import taido from "@/app/RMT/RemShelter/assets/taido.webp";
+import seyu from "@/app/RMT/RemShelter/assets/seyu.webp";
+import qiangyu from "@/app/RMT/RemShelter/assets/qiangyu.webp";
+import baoshi from "@/app/RMT/RemShelter/assets/baoshi.webp";
+import fennu from "@/app/RMT/RemShelter/assets/fennu.webp";
+import aoman from "@/app/RMT/RemShelter/assets/aoman.webp";
 import { StaticImageData } from "next/image";
 
 const RemCursors = [
@@ -54,7 +54,7 @@ interface GameSceneProps {
   setGameState: Dispatch<SetStateAction<number>>;
 }
 
-interface RemAbsorbSetting {
+interface RemShelterSetting {
   generateSpeed: number;
   totalTime: number;
   waluyiPossibility: number;
@@ -68,7 +68,7 @@ interface RemAbsorbSetting {
   waluyiOccurTimeRate: number;
 }
 
-const defaultSettings: RemAbsorbSetting = {
+const defaultSettings: RemShelterSetting = {
   generateSpeed: 5,
   totalTime: 20,
   waluyiPossibility: 0.1,
@@ -88,8 +88,8 @@ const GameScene: React.FC<GameSceneProps> = ({
 }) => {
   const [leafArrays, setLeafArrays] = useState<Leaf[]>();
   const [score, setScore] = useState(0);
-  const handleChooseDifficulty = (d: number): RemAbsorbSetting => {
-    let r: RemAbsorbSetting = defaultSettings;
+  const handleChooseDifficulty = (d: number): RemShelterSetting => {
+    let r: RemShelterSetting = defaultSettings;
     switch (d) {
       case 1:
         r = defaultSettings;

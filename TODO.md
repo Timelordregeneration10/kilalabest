@@ -3,8 +3,17 @@
 + ​移动端适配​
 * lottiefiles 酷炫灵动GIF
 
-# application
-## 基于swayleaf的蕾姆捕捉小游戏-RemAbsorb
+# /RMT
+- 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
+- dreamle的tutorial, RMTprogress
+<!-- - 双子座星星坠落闪烁动效 -->
+- 背景纯白svg分段鼠标悬浮随其摇曳，鼠标不在区域则过一段事件自己摇曳<a href="https://www.bilibili.com/video/BV1ZusYeGEfj/?spm_id_from=333.999.0.0&vd_source=46ce54f3d46b4d66190ac3b10e7a3309">效果</a>
+- 加入世界锚
+- Rem cursor!
+
+# github图床见知乎收藏
+
+## 基于swayleaf的蕾姆保护小游戏-RemShelter ✅
 + leaf类随时间消失
 + 隔一段时间增加leaf类数目
 + leaf类有自己的捕捉触发回调函数，得分或失分
@@ -26,16 +35,6 @@
 + 背景图可能会加载慢，记得压缩
 + 后端/数据库部署了解一下？=> 不了解
 + SEO
-
-# /RMT
-- 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
-- dreamle的tutorial, RMTprogress
-<!-- - 双子座星星坠落闪烁动效 -->
-- 背景纯白svg分段鼠标悬浮随其摇曳，鼠标不在区域则过一段事件自己摇曳<a href="https://www.bilibili.com/video/BV1ZusYeGEfj/?spm_id_from=333.999.0.0&vd_source=46ce54f3d46b4d66190ac3b10e7a3309">效果</a>
-- 加入世界锚
-- Rem cursor!
-
-# github图床见知乎收藏
 
 ## swayleaf ✅
 - useMemo导致的水合失败 => useEffect
