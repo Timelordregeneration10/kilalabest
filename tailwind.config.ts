@@ -332,6 +332,14 @@ const config: Config = {
             transform: "scale(1.3)",
           },
         },
+        warning: {
+          "0%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
+          },
+        },
       },
       animation: {
         streamer: "streamer 5s infinite linear",
@@ -349,6 +357,7 @@ const config: Config = {
         notbiggest: "notbiggest 7s linear 1 forwards",
         toLeftBottom: "toLeftBottom 1s linear 1 forwards",
         musicAnimation: "musicAnimation 30s linear alternate infinite",
+        warning: "warning 0.2s linear infinite alternate",
       },
     },
   },

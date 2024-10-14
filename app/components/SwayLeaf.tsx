@@ -9,7 +9,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { throttle } from "lodash";
 import useScroll from "@/app/hooks/useScroll";
 import useWindow from "@/app/hooks/useWindow";
 
@@ -19,9 +18,11 @@ interface SwayLeafProps {
   src?: StaticImageData | string;
   hoverAreaScale?: number;
   hoverAreaBackgroundColor?: string;
-  // 是否可以重叠
-  overlapped?: boolean;
   style?: CSSProperties;
+  // 存在时间，负数表示不消失
+  initialVanishTime?: number;
+  // 进入领域后回调函数（存在则认为触发后叶子会消失）
+  callbackFn?: () => void;
 }
 
 const defaultProps = {
@@ -30,8 +31,8 @@ const defaultProps = {
   src: leafPNG,
   hoverAreaScale: 5,
   hoverAreaBackgroundColor: "transparent",
-  // 默认不可重叠，性能较好
-  overlapped: false,
+  // 默认不消失
+  initialVanishTime: -1,
 };
 
 const SwayLeaf: React.FC<SwayLeafProps> = ({
@@ -40,12 +41,15 @@ const SwayLeaf: React.FC<SwayLeafProps> = ({
   src = defaultProps.src,
   hoverAreaScale = defaultProps.hoverAreaScale,
   hoverAreaBackgroundColor = defaultProps.hoverAreaBackgroundColor,
-  overlapped = defaultProps.overlapped,
   style,
+  initialVanishTime = defaultProps.initialVanishTime,
+  callbackFn,
 }) => {
   const [relativePos, setRelativePos] = useState([0, 0]);
   const [swaying, setSwaying] = useState(true);
   const hoverAreaRef = useRef<HTMLDivElement | null>(null);
+  const [vanishTime, setVanishTime] = useState<number>(initialVanishTime);
+  const [trapped, setTrapped] = useState(false);
   const { scrollTop } = useScroll();
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
   const hoverAreaPosition: {
@@ -65,6 +69,7 @@ const SwayLeaf: React.FC<SwayLeafProps> = ({
   }, [scrollTop, hoverAreaRef.current, kilaInnerHeight, kilaInnerWidth]);
 
   const handleMouseMove = (e: MouseEvent) => {
+    setTrapped(true);
     const [offsetX, offsetY] = [
       e.clientX - hoverAreaPosition.left,
       e.clientY - hoverAreaPosition.top,
@@ -75,57 +80,84 @@ const SwayLeaf: React.FC<SwayLeafProps> = ({
     ]);
   };
 
-  const mouseMoveHandler = throttle(
-    overlapped ? () => {} : handleMouseMove,
-    16
-  );
-
+  const [EOF, setEOF] = useState(false);
+  // overlapped
   useEffect(() => {
-    if (overlapped) {
-      const dis = (x1: number, y1: number, x2: number, y2: number): number => {
-        return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
-      };
-      let ticking = false;
-      const mouseMoveHandler = (e: MouseEvent) => {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            // TODO: 椭圆
-            if (
-              dis(
-                e.clientX,
-                e.clientY,
-                hoverAreaPosition.centerX,
-                hoverAreaPosition.centerY
-              ) >
-              (Math.sqrt(width * height) * hoverAreaScale) / 2
-            ) {
-              setRelativePos([0, 0]);
-              setSwaying(true);
-            } else {
-              setSwaying(false);
-              // @ts-ignore
-              handleMouseMove(e);
-            }
-            ticking = false;
-          });
-          ticking = true;
+    const dis = (x1: number, y1: number, x2: number, y2: number): number => {
+      return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+    };
+    let ticking = false;
+    const mouseMoveHandler = (e: MouseEvent) => {
+      if (EOF) {
+        return;
+      }
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          // TODO: 椭圆
+          if (
+            dis(
+              e.clientX,
+              e.clientY,
+              hoverAreaPosition.centerX,
+              hoverAreaPosition.centerY
+            ) >
+            (Math.sqrt(width * height) * hoverAreaScale) / 2
+          ) {
+            setRelativePos([0, 0]);
+            setSwaying(true);
+          } else {
+            setSwaying(false);
+            // @ts-ignore
+            handleMouseMove(e);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    // @ts-ignore
+    window.addEventListener("mousemove", mouseMoveHandler);
+    return () => {
+      window.removeEventListener(
+        "mousemove",
+        // @ts-ignore
+        mouseMoveHandler
+      );
+    };
+  }, [hoverAreaPosition, EOF]);
+
+  // vanish time
+  const leafRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (vanishTime > 0) {
+      let t1 = setTimeout(() => {
+        if (leafRef.current) {
+          leafRef.current.style.opacity = "0";
         }
-      };
-      // @ts-ignore
-      window.addEventListener("mousemove", mouseMoveHandler);
+      }, vanishTime);
+      let t2 = setTimeout(() => {
+        if (leafRef.current) {
+          leafRef.current.style.display = "none";
+          setEOF(true);
+        }
+      }, vanishTime + 250);
       return () => {
-        window.removeEventListener(
-          "mousemove",
-          // @ts-ignore
-          mouseMoveHandler
-        );
+        clearTimeout(t1);
+        clearTimeout(t2);
       };
     }
-  }, [overlapped, hoverAreaPosition]);
+  }, [vanishTime]);
+
+  useEffect(() => {
+    if (trapped && callbackFn) {
+      setVanishTime(1);
+      callbackFn();
+    }
+  }, [trapped]);
 
   return (
     <div
-      className="relative flex justify-center items-center"
+      className="relative flex justify-center items-center transition-opacity"
       style={{
         width: width + "px",
         height: height + "px",
@@ -135,6 +167,7 @@ const SwayLeaf: React.FC<SwayLeafProps> = ({
         maxHeight: height + "px",
         ...style,
       }}
+      ref={leafRef}
     >
       {/* leaf div */}
       <div className="flex justify-center items-center w-full h-full absolute">
@@ -169,17 +202,6 @@ const SwayLeaf: React.FC<SwayLeafProps> = ({
           maxWidth: hoverAreaScale * 100 + "%",
           maxHeight: hoverAreaScale * 100 + "%",
           backgroundColor: hoverAreaBackgroundColor,
-        }}
-        onMouseEnter={(e) => {
-          if (overlapped) return;
-          setSwaying(false);
-        }}
-        onMouseMove={mouseMoveHandler}
-        onMouseLeave={(e) => {
-          if (overlapped) return;
-          mouseMoveHandler.cancel();
-          setRelativePos([0, 0]);
-          setSwaying(true);
         }}
       ></div>
     </div>

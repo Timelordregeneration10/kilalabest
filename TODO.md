@@ -4,13 +4,18 @@
 * lottiefiles 酷炫灵动GIF
 
 # application
-## 基于swayleaf的蕾姆捕捉小游戏-RemAdsorb
-- leaf类随时间消失
-- leaf类有自己的捕捉触发回调函数，得分或失分
-- 失分类出现预警
-- 不同类hoverareascale不同，backgroundColor也不同
-- 倒计时
-- 分数面板
+## 基于swayleaf的蕾姆捕捉小游戏-RemAbsorb
++ leaf类随时间消失
++ 隔一段时间增加leaf类数目
++ leaf类有自己的捕捉触发回调函数，得分或失分
++ 失分类出现预警
++ 不同类hoverareascale不同，backgroundColor也不同
++ 倒计时
++ 分数面板
++ vanish之后array里删除
++ 难度调整
++ UI调整
+-页面美化
 
 # /RMT
 - 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
