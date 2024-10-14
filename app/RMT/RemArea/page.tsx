@@ -48,6 +48,7 @@ const RemAreaPage: React.FC = () => {
       });
     }
     setRemArrays(Rems);
+    return () => setRemArrays(undefined);
   }, []);
   return (
     <div className="w-full h-screen p-10 flex justify-around items-center flex-wrap gap-10 overflow-hidden">
@@ -58,7 +59,6 @@ const RemAreaPage: React.FC = () => {
             hoverAreaScale={Rem.scale}
             style={{ transform: `translateY(${Rem.y}px)` }}
             key={Rem.key}
-            overlapped={true}
             height={50}
             width={50}
           ></SwayLeaf>
