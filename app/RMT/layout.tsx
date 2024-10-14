@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "RMT",
   description: "Rem Maji TianShi",
   applicationName: "RMT",
-  authors: { name: "Nicholas Burkhardt", url: "https://kilalabest.cn" },
+  authors: { name: "Nicholas Burkhardt", url: "https://kilalabest.cn/RMT" },
   generator: "Next.js",
   keywords: ["rmt", "RMT", "雷姆", "蕾姆", "Rem", "レム"],
   creator: "Nicholas Burkhardt",
