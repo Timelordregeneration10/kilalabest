@@ -23,7 +23,7 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "streamer-color": "linear-gradient(90deg, #03a9f4, #f441a5, #03a9f4)",
+        "streamer-color": "linear-gradient(90deg, #91bdf044, #ee82ee44, #91bdf044)",
         leaveweb: "url('./assets/musedash/leaving.webp')", //最终会被打包到global.css
         kilalascene: "url('./assets/musedash/kilalascene.webp')",
         rmt: "url('./assets/musedash/rmt.webp')",

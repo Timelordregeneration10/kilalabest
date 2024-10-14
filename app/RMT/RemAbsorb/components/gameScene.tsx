@@ -1,14 +1,6 @@
 "use client";
 import SwayLeaf from "@/app/components/SwayLeaf";
-import {
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import RemCursor0 from "@/app/assets/rmt/RemCursors/0.gif";
 import RemCursor1 from "@/app/assets/rmt/RemCursors/1.gif";
 import RemCursor2 from "@/app/assets/rmt/RemCursors/2.gif";
@@ -21,6 +13,11 @@ import RemCursor8 from "@/app/assets/rmt/RemCursors/8.gif";
 import RemCursor9 from "@/app/assets/rmt/RemCursors/9.gif";
 import RemCursor10 from "@/app/assets/rmt/RemCursors/10.gif";
 import taido from "@/app/RMT/RemAbsorb/assets/taido.webp";
+import seyu from "@/app/RMT/RemAbsorb/assets/seyu.webp";
+import qiangyu from "@/app/RMT/RemAbsorb/assets/qiangyu.webp";
+import baoshi from "@/app/RMT/RemAbsorb/assets/baoshi.webp";
+import fennu from "@/app/RMT/RemAbsorb/assets/fennu.webp";
+import aoman from "@/app/RMT/RemAbsorb/assets/aoman.webp";
 import { StaticImageData } from "next/image";
 
 const RemCursors = [
@@ -37,7 +34,7 @@ const RemCursors = [
   RemCursor10,
 ];
 
-const waluyi = [taido];
+const waluyi = [taido, seyu, qiangyu, baoshi, fennu, aoman];
 
 interface Leaf {
   src: StaticImageData;
@@ -72,14 +69,14 @@ interface RemAbsorbSetting {
 }
 
 const defaultSettings: RemAbsorbSetting = {
-  generateSpeed: 1,
-  totalTime: 30,
+  generateSpeed: 5,
+  totalTime: 20,
   waluyiPossibility: 0.1,
-  warningTime: 1000,
+  warningTime: 2000,
   waluyiScore: -100,
-  RemSizeRate: 1,
-  RemScaleRate: 1,
-  RemOccurTimeRate: 1,
+  RemSizeRate: 1.5,
+  RemScaleRate: 1.5,
+  RemOccurTimeRate: 2,
   waluyiSizeRate: 1,
   waluyiScaleRate: 1,
   waluyiOccurTimeRate: 1,
@@ -91,55 +88,74 @@ const GameScene: React.FC<GameSceneProps> = ({
 }) => {
   const [leafArrays, setLeafArrays] = useState<Leaf[]>();
   const [score, setScore] = useState(0);
-  const [settings, setSettings] = useState<RemAbsorbSetting>(defaultSettings);
   const handleChooseDifficulty = (d: number): RemAbsorbSetting => {
     let r: RemAbsorbSetting = defaultSettings;
     switch (d) {
       case 1:
-        r = {
-          generateSpeed: 5,
-          totalTime: 30,
-          waluyiPossibility: 0.1,
-          warningTime: 1000,
-          waluyiScore: -100,
-          RemSizeRate: 1,
-          RemScaleRate: 1,
-          RemOccurTimeRate: 1,
-          waluyiSizeRate: 1,
-          waluyiScaleRate: 1,
-          waluyiOccurTimeRate: 1,
-        };
+        r = defaultSettings;
         break;
       case 2:
         r = {
           generateSpeed: 10,
-          totalTime: 45,
-          waluyiPossibility: 0.2,
-          warningTime: 700,
-          waluyiScore: -500,
-          RemSizeRate: 0.8,
-          RemScaleRate: 0.8,
-          RemOccurTimeRate: 0.8,
-          waluyiSizeRate: 1.5,
-          waluyiScaleRate: 1.5,
-          waluyiOccurTimeRate: 1.5,
+          totalTime: 30,
+          waluyiPossibility: 0.1,
+          warningTime: 1200,
+          waluyiScore: -200,
+          RemSizeRate: 1.2,
+          RemScaleRate: 1.2,
+          RemOccurTimeRate: 1.2,
+          waluyiSizeRate: 1.1,
+          waluyiScaleRate: 1.1,
+          waluyiOccurTimeRate: 1.4,
         };
         break;
       case 3:
         r = {
-          generateSpeed: 20,
-          totalTime: 60,
-          waluyiPossibility: 0.3,
-          warningTime: 5000,
+          generateSpeed: 12,
+          totalTime: 40,
+          waluyiPossibility: 0.15,
+          warningTime: 1000,
+          waluyiScore: -500,
+          RemSizeRate: 1,
+          RemScaleRate: 1,
+          RemOccurTimeRate: 0.5,
+          waluyiSizeRate: 1.2,
+          waluyiScaleRate: 1.2,
+          waluyiOccurTimeRate: 1.2,
+        };
+        break;
+      case 4:
+        r = {
+          generateSpeed: 14,
+          totalTime: 50,
+          waluyiPossibility: 0.2,
+          warningTime: 800,
           waluyiScore: -999,
+          RemSizeRate: 0.7,
+          RemScaleRate: 0.7,
+          RemOccurTimeRate: 0.7,
+          waluyiSizeRate: 1.3,
+          waluyiScaleRate: 1.3,
+          waluyiOccurTimeRate: 1,
+        };
+        break;
+      case 5:
+        r = {
+          generateSpeed: 16,
+          totalTime: 60,
+          waluyiPossibility: 0.2,
+          warningTime: 600,
+          waluyiScore: -9999,
           RemSizeRate: 0.5,
           RemScaleRate: 0.5,
           RemOccurTimeRate: 0.5,
-          waluyiSizeRate: 2,
-          waluyiScaleRate: 2,
-          waluyiOccurTimeRate: 2,
+          waluyiSizeRate: 1.4,
+          waluyiScaleRate: 1.4,
+          waluyiOccurTimeRate: 1,
         };
         break;
+      default:
+        r = defaultSettings;
     }
     return r;
   };
@@ -169,19 +185,21 @@ const GameScene: React.FC<GameSceneProps> = ({
               ? RemCursors[Math.floor(Math.random() * RemCursors.length)]
               : waluyi[Math.floor(Math.random() * waluyi.length)],
             scale: !showWarning
-              ? Math.random() * 3 * RemScaleRate + 3
-              : Math.random() * 3 * waluyiScaleRate + 3,
+              ? Math.random() * 2 * RemScaleRate + 2
+              : Math.random() * 2 * waluyiScaleRate + 2,
             size: !showWarning
               ? Math.random() * 40 * RemSizeRate + 30
-              : Math.random() * 40 * waluyiSizeRate + 40,
+              : Math.random() * 40 * waluyiSizeRate + 50,
             top: Math.random() * 100,
             left: Math.random() * 100,
             backgroundColor: !showWarning ? "#91bef022" : "#f96c7d22",
-            score: !showWarning ? Math.floor(Math.random() * 80) : waluyiScore,
+            score: !showWarning
+              ? Math.floor((Math.random() * 80) / RemScaleRate / RemSizeRate)
+              : Math.floor(waluyiScore * Math.random()),
             showWarning,
             vanishTime: !showWarning
               ? Math.random() * 2000 * RemOccurTimeRate + 2000
-              : Math.random() * 5000 * waluyiOccurTimeRate + 3000,
+              : Math.random() * 5000 * waluyiOccurTimeRate + 2000,
             key: sec,
           };
           if (showWarning) {
@@ -215,7 +233,18 @@ const GameScene: React.FC<GameSceneProps> = ({
         generateInterval.current = null;
       }
     };
-  }, []);
+  }, [
+    RemOccurTimeRate,
+    RemScaleRate,
+    RemSizeRate,
+    generateSpeed,
+    waluyiOccurTimeRate,
+    waluyiPossibility,
+    waluyiScaleRate,
+    waluyiScore,
+    waluyiSizeRate,
+    warningTime,
+  ]);
 
   useEffect(() => {
     let i = setInterval(() => {
@@ -242,28 +271,25 @@ const GameScene: React.FC<GameSceneProps> = ({
       alert("You get " + score + " !");
       setGameState(0);
     }
-  }, [restTime, score]);
+  }, [restTime, score, setGameState]);
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">
       {/* current difficulty */}
-      <div className="absolute top-20 left-4 text-[3vmax]">
+      <div className="absolute lg:top-20 sm:top-32 top-24 left-4 text-[3vmax]">
         current difficulty: lv{" "}
-        <span className=" text-[4vmax]  text-[#91bef0] ">
+        <span className=" text-[4vmax]  text-[violet] ">
           {currentDifficulty}
         </span>
       </div>
       {/* score */}
-      <div className="absolute top-20 right-6 text-[3vmax]">
-        score:{" "}
-        <span className=" text-[6vmax] text-transparent bg-application bg-clip-text bg-contain bg-center ">
-          {score}
-        </span>
+      <div className="absolute lg:top-[88px] sm:top-[136px] top-[104px] right-6 text-[3vmax]">
+        score: <span className=" text-[6vmax] text-[#91bef0] ">{score}</span>
       </div>
       {/* restTime */}
       <div className="absolute bottom-4 left-4 text-[3vmax]">
         restTime:{" "}
-        <span className=" text-[4vmax]  text-[#91bef0] ">{restTime}</span>
+        <span className=" text-[4vmax]  text-[#a291f0] ">{restTime}</span>
       </div>
       {/* back */}
       <div
