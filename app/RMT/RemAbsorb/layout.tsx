@@ -73,6 +73,23 @@ export default function RootLayout({
           A fancy game which your goal is absorbing Rem and avoid master of
           great sin
         </p>
+        <h2>注意事项</h2>
+        <p>
+          1.
+          本应用部署在Github上，所以需要确保你的网络环境能够正常访问Github，以确保流畅体验。
+        </p>
+        <p>
+          2.
+          本游戏通过移动鼠标进行，进入到蓝色范围则得分，红色区域出现时有预警，预警消失后触碰到红色区域失分。
+        </p>
+        <p>
+          3.
+          不同难度区域的出现速度不同，区域大小不同，留存时间不同，区域分数不同，lv1-lv5红色区域最高失分分别为-100，-200，-500，-999，-9999。
+        </p>
+        <p>
+          4.
+          虽然我觉得不太可能，但是如果在lv5分别达到了22222和44444分的话可以找我领奖励哦~
+        </p>
       </div>
       <>{children}</>
     </>
