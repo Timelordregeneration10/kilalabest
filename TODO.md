@@ -3,10 +3,14 @@
 + ​移动端适配​
 * lottiefiles 酷炫灵动GIF
 
-# attempt
-## swayleaf
-- useMemo导致的水合失败 => useEffect
-- canvas实现 => 没有transition也没有animation => abandon
+# application
+## 基于swayleaf的蕾姆捕捉小游戏-RemAdsorb
+- leaf类随时间消失
+- leaf类有自己的捕捉触发回调函数，得分或失分
+- 失分类出现预警
+- 不同类hoverareascale不同，backgroundColor也不同
+- 倒计时
+- 分数面板
 
 # /RMT
 - 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
@@ -17,6 +21,10 @@
 - Rem cursor!
 
 # github图床见知乎收藏
+
+## swayleaf ✅
+- useMemo导致的水合失败 => useEffect
+- canvas实现 => 没有transition也没有animation => abandon
 
 # SEO ✅
 + 查看nextjs部署文档，看看何故favicon不显示 => 有说是需要等待，然后google搜索结果是已经有favicon了
