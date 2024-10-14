@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: "https://kilalabest.cn/RMT/RemAbsorb",
+      url: "https://kilalabest.cn/RMT/RemShelter",
       lastModified: new Date().toISOString(),
       changeFrequency: "daily",
       priority: 0.6,

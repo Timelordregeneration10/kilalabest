@@ -20,7 +20,7 @@ import cookie from "js-cookie";
 import useScroll from "../hooks/useScroll";
 
 const hideLeaveWebPages = (path: string) => {
-  if (path.startsWith("/camouflage") || path.startsWith("/RMT/RemAbsorb"))
+  if (path.startsWith("/camouflage") || path.startsWith("/RMT/RemShelter"))
     return true;
   return false;
 };
