@@ -279,6 +279,7 @@ const GameScene: React.FC<GameSceneProps> = ({
             // warning
             <div
               className="relative flex justify-center items-center transition-opacity"
+              key={leaf.key + "#"}
               style={{
                 width: leaf.size + "px",
                 height: leaf.size + "px",
