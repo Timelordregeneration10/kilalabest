@@ -57,6 +57,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org/",
+    "@type": "WebSite",
+    name: "RemShelter",
+    url: "https://kilalabest.cn/RMT/RemShelter",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://cn.bing.com/search?q={search_term_string}RemShelter",
+      "query-input": "required name=search_term_string",
+    },
+  };
   return (
     <>
       <Image
@@ -95,6 +106,10 @@ export default function RootLayout({
         </p>
       </div>
       <>{children}</>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </>
   );
 }
