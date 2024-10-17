@@ -297,6 +297,9 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
           ></Image>
         );
       })}
+
+      {/* hana following */}
+      {}
     </div>
   );
 }

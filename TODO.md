@@ -3,11 +3,18 @@
 + ​移动端适配​
 * lottiefiles 酷炫灵动GIF
 
+# kilalayout
+## 控制爱心和繁花和导航栏和leaveWeb显示
+## 繁花跟随
+- mousemove繁花跟随
+- 花随机颜色，大小，轻微translateXY
+- 花动画：rotate？
+- 到时间自动消失
+
 # /RMT
 - 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
 - dreamle的tutorial, RMTprogress
-<!-- - 双子座星星坠落闪烁动效 -->
-- 背景纯白svg分段鼠标悬浮随其摇曳，鼠标不在区域则过一段事件自己摇曳<a href="https://www.bilibili.com/video/BV1ZusYeGEfj/?spm_id_from=333.999.0.0&vd_source=46ce54f3d46b4d66190ac3b10e7a3309">效果</a>
++ 背景纯白svg分段鼠标悬浮随其摇曳，鼠标不在区域则过一段事件自己摇曳<a href="https://www.bilibili.com/video/BV1ZusYeGEfj/?spm_id_from=333.999.0.0&vd_source=46ce54f3d46b4d66190ac3b10e7a3309">效果</a> => RemArea&RemShelter
 - 加入世界锚
 - Rem cursor!
 
