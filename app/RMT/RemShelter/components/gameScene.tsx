@@ -86,7 +86,7 @@ const GameScene: React.FC<GameSceneProps> = ({
   currentDifficulty,
   setGameState,
 }) => {
-  const [leafArrays, setLeafArrays] = useState<Leaf[]>();
+  const [leafArrays, setLeafArrays] = useState<Leaf[]>([]);
   const [score, setScore] = useState(0);
   const handleChooseDifficulty = (d: number): RemShelterSetting => {
     let r: RemShelterSetting = defaultSettings;
@@ -205,25 +205,20 @@ const GameScene: React.FC<GameSceneProps> = ({
           if (showWarning) {
             setTimeout(() => {
               setLeafArrays((v) =>
-                v
-                  ? v.map((vv) => {
-                      if (vv.key === sec) {
-                        return { ...vv, showWarning: false };
-                      } else {
-                        return vv;
-                      }
-                    })
-                  : v
+                v.map((vv) => {
+                  if (vv.key === sec) {
+                    return { ...vv, showWarning: false };
+                  } else {
+                    return vv;
+                  }
+                })
               );
             }, warningTime);
           }
           setTimeout(() => {
-            setLeafArrays((v) => (v ? v.filter((vv) => vv.key != sec) : v));
+            setLeafArrays((v) => v.filter((vv) => vv.key != sec));
           }, n.vanishTime + 1000);
-          if (v) return [...v, n];
-          else {
-            return [n];
-          }
+          return [...v, n];
         });
       }, 1000 / generateSpeed);
     }
@@ -267,7 +262,7 @@ const GameScene: React.FC<GameSceneProps> = ({
         clearInterval(generateInterval.current);
         generateInterval.current = null;
       }
-      setLeafArrays(undefined);
+      setLeafArrays([]);
       alert("You get " + score + " !");
       setGameState(0);
     }
@@ -299,58 +294,57 @@ const GameScene: React.FC<GameSceneProps> = ({
         back
       </div>
       {/* leafs */}
-      {leafArrays &&
-        leafArrays.map((leaf) =>
-          leaf.showWarning ? (
-            // warning
+      {leafArrays.map((leaf) =>
+        leaf.showWarning ? (
+          // warning
+          <div
+            className="relative flex justify-center items-center transition-opacity"
+            key={leaf.key + "#"}
+            style={{
+              width: leaf.size + "px",
+              height: leaf.size + "px",
+              minWidth: leaf.size + "px",
+              minHeight: leaf.size + "px",
+              maxWidth: leaf.size + "px",
+              maxHeight: leaf.size + "px",
+              position: "absolute",
+              top: `${leaf.top}vh`,
+              left: `${leaf.left}vw`,
+            }}
+          >
             <div
-              className="relative flex justify-center items-center transition-opacity"
-              key={leaf.key + "#"}
+              className="[clip-path:circle()] cursor-pointer bg-[#f96c7d11] animate-warning"
               style={{
-                width: leaf.size + "px",
-                height: leaf.size + "px",
-                minWidth: leaf.size + "px",
-                minHeight: leaf.size + "px",
-                maxWidth: leaf.size + "px",
-                maxHeight: leaf.size + "px",
-                position: "absolute",
-                top: `${leaf.top}vh`,
-                left: `${leaf.left}vw`,
+                width: leaf.scale * 100 + "%",
+                height: leaf.scale * 100 + "%",
+                minWidth: leaf.scale * 100 + "%",
+                minHeight: leaf.scale * 100 + "%",
+                maxWidth: leaf.scale * 100 + "%",
+                maxHeight: leaf.scale * 100 + "%",
               }}
-            >
-              <div
-                className="[clip-path:circle()] cursor-pointer bg-[#f96c7d11] animate-warning"
-                style={{
-                  width: leaf.scale * 100 + "%",
-                  height: leaf.scale * 100 + "%",
-                  minWidth: leaf.scale * 100 + "%",
-                  minHeight: leaf.scale * 100 + "%",
-                  maxWidth: leaf.scale * 100 + "%",
-                  maxHeight: leaf.scale * 100 + "%",
-                }}
-              ></div>
-            </div>
-          ) : (
-            // leaf
-            <SwayLeaf
-              src={leaf.src}
-              hoverAreaScale={leaf.scale}
-              style={{
-                position: "absolute",
-                top: `${leaf.top}vh`,
-                left: `${leaf.left}vw`,
-              }}
-              key={leaf.key}
-              height={leaf.size}
-              width={leaf.size}
-              initialVanishTime={leaf.vanishTime}
-              hoverAreaBackgroundColor={leaf.backgroundColor}
-              callbackFn={() => {
-                setScore((v) => v + leaf.score);
-              }}
-            ></SwayLeaf>
-          )
-        )}
+            ></div>
+          </div>
+        ) : (
+          // leaf
+          <SwayLeaf
+            src={leaf.src}
+            hoverAreaScale={leaf.scale}
+            style={{
+              position: "absolute",
+              top: `${leaf.top}vh`,
+              left: `${leaf.left}vw`,
+            }}
+            key={leaf.key}
+            height={leaf.size}
+            width={leaf.size}
+            initialVanishTime={leaf.vanishTime}
+            hoverAreaBackgroundColor={leaf.backgroundColor}
+            callbackFn={() => {
+              setScore((v) => v + leaf.score);
+            }}
+          ></SwayLeaf>
+        )
+      )}
     </div>
   );
 };
