@@ -23,7 +23,8 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "streamer-color": "linear-gradient(90deg, #91bdf044, #ee82ee44, #91bdf044)",
+        "streamer-color":
+          "linear-gradient(90deg, #91bdf044, #ee82ee44, #91bdf044)",
         leaveweb: "url('./assets/musedash/leaving.webp')", //最终会被打包到global.css
         kilalascene: "url('./assets/musedash/kilalascene.webp')",
         rmt: "url('./assets/musedash/rmt.webp')",
@@ -340,6 +341,28 @@ const config: Config = {
             opacity: "0",
           },
         },
+        fadeInOut: {
+          "0%": {
+            opacity: "0",
+          },
+          "20%": {
+            opacity: "1",
+          },
+          "80%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
+          },
+        },
+        hanamove: {
+          "0%": {
+            transform: "translate(0px) rotate(0deg)",
+          },
+          "100%": {
+            transform: "translate(100px) rotate(360deg)",
+          },
+        },
       },
       animation: {
         streamer: "streamer 5s infinite linear",
@@ -358,6 +381,8 @@ const config: Config = {
         toLeftBottom: "toLeftBottom 1s linear 1 forwards",
         musicAnimation: "musicAnimation 30s linear alternate infinite",
         warning: "warning 0.2s linear infinite alternate",
+        fadeInOut: "fadeInOut 2s linear forwards",
+        hanamove: "hanamove 2s linear forwards",
       },
     },
   },

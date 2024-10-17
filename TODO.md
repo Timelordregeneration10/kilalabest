@@ -3,14 +3,6 @@
 + ​移动端适配​
 * lottiefiles 酷炫灵动GIF
 
-# kilalayout
-## 控制爱心和繁花和导航栏和leaveWeb显示
-## 繁花跟随
-- mousemove繁花跟随
-- 花随机颜色，大小，轻微translateXY
-- 花动画：rotate？
-- 到时间自动消失
-
 # /RMT
 - 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
 - dreamle的tutorial, RMTprogress
@@ -19,6 +11,14 @@
 - Rem cursor!
 
 # github图床见知乎收藏
+
+## 控制爱心和繁花和导航栏和leaveWeb显示 ✅
+## 繁花跟随 ✅
++ mousemove繁花跟随
++ 花随机颜色，大小，(轻微translateXY => 太乱abandoned)
++ 花动画：rotate？
++ 到时间自动消失
++ 节流
 
 ## 基于swayleaf的蕾姆保护小游戏-RemShelter ✅
 + leaf类随时间消失

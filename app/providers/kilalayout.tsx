@@ -18,24 +18,81 @@ import {
 // @ts-ignore;
 import cookie from "js-cookie";
 import useScroll from "../hooks/useScroll";
+import { BsFlower1 } from "react-icons/bs";
+import { throttle } from "lodash";
 
-const hideLeaveWebPages = (path: string) => {
+interface Heart {
+  px: number;
+  py: number;
+  order: number;
+}
+
+interface Hana {
+  top: number;
+  left: number;
+  key: number;
+  rotate: number;
+  size: number;
+  color: string;
+}
+
+const contactItems = [
+  {
+    id: "QQ",
+    hoverColor: "hover:text-[rgb(255,255,139)]",
+    content: "3497049745",
+  },
+  {
+    id: "Wechat",
+    hoverColor: "hover:text-[rgb(255,139,139)]",
+    content: "timelord10point5",
+  },
+  {
+    id: "Email",
+    hoverColor: "hover:text-[rgb(174,255,255)]",
+    content: "3497049745@qq.com",
+  },
+];
+
+// height means scene scrollHeight
+const naviItems = [
+  { id: "RMT", url: "/RMT", height: 3.7 },
+  { id: "Project", url: "/project", height: 1 },
+  { id: "Application", url: "/application", height: 3 },
+  { id: "Attempt", url: "/attempt", height: 1 },
+  {
+    id: "Music",
+    url: "https://music.163.com/#/user/home?id=479983448",
+    height: 1,
+  },
+  {
+    id: "Anime",
+    url: "https://anilist.co/user/NicholasBurkhardt/animelist",
+    height: 1,
+  },
+  { id: "Game", url: "https://space.bilibili.com/515016084", height: 1 },
+  { id: "Drawing", url: "/drawing", height: 1 },
+];
+
+const hideLeaveWeb = (path: string) => {
   if (path.startsWith("/camouflage") || path.startsWith("/RMT/RemShelter"))
     return true;
   return false;
 };
 
+const hideHana = (path: string) => {
+  if (path.startsWith("/RMT/RemArea")) return true;
+  return false;
+};
+
+const hideHeart = (path: string) => {
+  if (path.startsWith("/RMT/RemArea")) return true;
+  return false;
+};
+
 export function KilaLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-
-  const [heartList, setHeartlist] = useState<
-    Array<{ px: number; py: number; order: number }>
-  >([]);
-
-  const [showLeaveWeb, setShowLeaveWeb] = useState(false);
-  const [leaveWebTimeout, setLeaveWebTimeout] = useState<NodeJS.Timeout | null>(
-    null
-  );
+  const path = usePathname();
 
   const {
     isOpen: isWarningOpen,
@@ -43,76 +100,12 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
     onOpenChange: onWarningOpenChange,
   } = useDisclosure();
 
-  const contactItems = [
-    {
-      id: "QQ",
-      hoverColor: "hover:text-[rgb(255,255,139)]",
-      content: "3497049745",
-    },
-    {
-      id: "Wechat",
-      hoverColor: "hover:text-[rgb(255,139,139)]",
-      content: "timelord10point5",
-    },
-    {
-      id: "Email",
-      hoverColor: "hover:text-[rgb(174,255,255)]",
-      content: "3497049745@qq.com",
-    },
-  ];
-
-  const naviItems = [
-    { id: "RMT", url: "/RMT", height: 3.7 },
-    { id: "Project", url: "/project", height: 1 },
-    { id: "Application", url: "/application", height: 3 },
-    { id: "Attempt", url: "/attempt", height: 1 },
-    {
-      id: "Music",
-      url: "https://music.163.com/#/user/home?id=479983448",
-      height: 1,
-    },
-    {
-      id: "Anime",
-      url: "https://anilist.co/user/NicholasBurkhardt/animelist",
-      height: 1,
-    },
-    { id: "Game", url: "https://space.bilibili.com/515016084", height: 1 },
-    { id: "Drawing", url: "/drawing", height: 1 },
-  ];
-
   const [contactContent, setContactContent] = useState("CONTACT ME");
 
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
   const [navitopHeight, setNavitopHeight] = useState(
     kilaInnerWidth > 1024 ? "10vh" : kilaInnerWidth > 640 ? "16vh" : "12vh"
   );
-
-  const generateHeart = (px: number, py: number) => {
-    // setHeartlist((arr) => {
-    //   let tempHeartlist = arr;
-    //   const sec =new Date().getTime();
-    //   tempHeartlist.push({ px:px, py:py, order: sec });
-    //   return tempHeartlist;
-    // });
-    // 因为react浅监听，内容还是数组所以不触发监听，需要解构（相当于浅拷贝）才能触发更新
-    let sec = new Date().getTime();
-    setHeartlist([...heartList, { px, py, order: sec }]);
-
-    // 精准延时remove
-    setTimeout((sec: number) => {
-      setHeartlist((arr) => {
-        let tempHeartlist = [...arr];
-        let index = 0;
-        for (let i = 0; i < tempHeartlist.length; i++) {
-          if (tempHeartlist[i].order === sec) {
-            index = i;
-          }
-        }
-        tempHeartlist.splice(index, 1);
-        return tempHeartlist;
-      });
-    }, 2000);
-  };
 
   const { scrollTop, controlScrollTop } = useScroll();
 
@@ -135,27 +128,117 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
     );
   }, [kilaInnerWidth]);
 
-  const path = usePathname();
+  // leave web
+  const [showLeaveWeb, setShowLeaveWeb] = useState(false);
+  const [leaveWebTimeout, setLeaveWebTimeout] = useState<NodeJS.Timeout | null>(
+    null
+  );
+  useEffect(() => {
+    if (hideLeaveWeb(path)) return;
+    const mouseLeaveHandler = () => {
+      setLeaveWebTimeout(
+        setTimeout(() => {
+          setShowLeaveWeb(true);
+        }, 2000)
+      );
+    };
+    const mouseEnterHandler = () => {
+      if (leaveWebTimeout) clearTimeout(leaveWebTimeout);
+      setLeaveWebTimeout(null);
+    };
+    document.addEventListener("mouseleave", mouseLeaveHandler);
+    document.addEventListener("mouseenter", mouseEnterHandler);
+    return () => {
+      document.removeEventListener("mouseleave", mouseLeaveHandler);
+      document.removeEventListener("mouseenter", mouseEnterHandler);
+    };
+  }, [path, leaveWebTimeout]);
+
+  // heart bubble
+  const [heartList, setHeartlist] = useState<Array<Heart>>([]);
+  useEffect(() => {
+    if (hideHeart(path)) return;
+    let ticking = false;
+    const clickHandle = (e: MouseEvent) => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setHeartlist((v) => {
+            const sec = Math.random();
+            const h: Heart = {
+              px: e.pageX - 20,
+              py: e.pageY - 20,
+              order: sec,
+            };
+            setTimeout(() => {
+              setHeartlist((v) => v.filter((vv) => vv.order != sec));
+            }, 2000);
+            // 因为react浅监听，内容还是数组所以不触发监听，需要解构（相当于浅拷贝）才能触发更新
+            return [...v, h];
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    // @ts-ignore
+    window.addEventListener("click", clickHandle);
+    return () => {
+      window.removeEventListener(
+        "click",
+        // @ts-ignore
+        clickHandle
+      );
+    };
+  }, [path]);
+
+  // hana following
+  const [hanaArray, setHanaArray] = useState<Hana[]>([]);
+  useEffect(() => {
+    if (hideHana(path)) return;
+    let ticking = false;
+    const mouseMoveHandler = (e: MouseEvent) => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setHanaArray((v) => {
+            const sec = Math.random();
+            const size = Math.random() * 6 + 24;
+            const r = Math.floor(Math.random() * 76 + 180);
+            const g = Math.floor(Math.random() * 76 + 180);
+            const b = Math.floor(Math.random() * 76 + 180);
+            const o = Math.random() * 0.3 + 0.3;
+            const color = `rgba(${r},${g},${b},${o})`;
+            const h: Hana = {
+              top: e.pageY + size / 2,
+              left: e.pageX + size / 2,
+              size,
+              color,
+              rotate: Math.random() * 360,
+              key: sec,
+            };
+            setTimeout(() => {
+              setHanaArray((v) => v.filter((vv) => vv.key != sec));
+            }, 2000);
+            return [...v, h];
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    const handler = throttle(mouseMoveHandler, 100);
+    // @ts-ignore
+    window.addEventListener("mousemove", handler);
+    return () => {
+      window.removeEventListener(
+        "mousemove",
+        // @ts-ignore
+        handler
+      );
+    };
+  }, [path]);
 
   return (
-    <div
-      className="w-screen text-center overflow-x-hidden no-scrollbar m-0 p-0 font-[saibo] select-none"
-      onClick={(e) => {
-        generateHeart(e.pageX - 15, e.pageY - 20);
-      }}
-      onMouseLeave={() => {
-        if (hideLeaveWebPages(path)) return;
-        setLeaveWebTimeout(
-          setTimeout(() => {
-            setShowLeaveWeb(true);
-          }, 2000)
-        );
-      }}
-      onMouseEnter={() => {
-        if (leaveWebTimeout) clearTimeout(leaveWebTimeout);
-        setLeaveWebTimeout(null);
-      }}
-    >
+    <div className="w-screen text-center overflow-x-hidden no-scrollbar m-0 p-0 font-[saibo] select-none">
       <div className=" min-h-screen w-full">{children}</div>
 
       {/* footer放在components里是因为footer都是静态的，剥离出来可以服务端渲染 */}
@@ -284,7 +367,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
       )}
 
       {/* heart bubble */}
-      {heartList.map((item) => {
+      {heartList.map((item: Heart) => {
         return (
           <Image
             height={40}
@@ -299,7 +382,26 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
       })}
 
       {/* hana following */}
-      {}
+      {hanaArray.map((hana: Hana) => {
+        return (
+          <div
+            className="absolute animate-fadeInOut select-none pointer-events-none z-[2147483646]"
+            style={{
+              width: hana.size + "px",
+              height: hana.size + "px",
+              top: hana.top + "px",
+              left: hana.left + "px",
+              transform: ` rotate(${hana.rotate}deg)`,
+            }}
+            key={hana.key}
+          >
+            <BsFlower1
+              className="w-full h-full animate-hanamove"
+              style={{ color: hana.color }}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }
