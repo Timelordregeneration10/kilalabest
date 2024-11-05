@@ -3,13 +3,20 @@
 + ​移动端适配​
 * lottiefiles 酷炫灵动GIF
 
+## 水波雷姆复刻-Ripple
+- css: 原理：多个div叠在一起，background-fixed，让背景有大有小配合动画慢慢变大延迟依次出现
+  + 单纯css实现
+  + 加入js点击事件
+  - 放入原文：<a href="https://segmentfault.com/a/1190000019132065">链接</a>
+
+- webglshader
+
 # 优化
 - sticky结束处理，参考showmecode
 
 # 特效
 - 鼠标移动过快连锁闪电特效，停留点点星光<a href="https://www.bilibili.com/video/BV15SC2YMEMW">效果</a>
 - 代码雨复刻
-- 水波雷姆复刻
 - 其他wallpaper engine雷姆复刻
 
 # 首屏
