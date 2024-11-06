@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const CamouflagePage: React.FC = () => {
+const RippleAttemptPage: React.FC = () => {
   const [clickPoints, setClickPoints] = useState<
     { x: number; y: number; key: number; baseZIndex: number }[]
   >([]);
@@ -39,6 +39,9 @@ const CamouflagePage: React.FC = () => {
   }, [count]);
   return (
     <div className="w-full h-screen flex justify-center items-center relative">
+      <a href="https://segmentfault.com/a/1190000019132065" target="_blank">
+        原文链接
+      </a>
       <div className="w-[50vh] h-[50vh] relative overflow-hidden">
         <div
           ref={clickRef}
@@ -79,4 +82,4 @@ const CamouflagePage: React.FC = () => {
   );
 };
 
-export default CamouflagePage;
+export default RippleAttemptPage;

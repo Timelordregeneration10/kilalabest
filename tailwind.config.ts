@@ -363,6 +363,14 @@ const config: Config = {
             transform: "translate(100px) rotate(360deg)",
           },
         },
+        ripple: {
+          "0%": {
+            clipPath: "circle(0%)",
+          },
+          "100%": {
+            clipPath: "circle(70%)",
+          },
+        },
       },
       animation: {
         streamer: "streamer 5s infinite linear",
@@ -383,6 +391,7 @@ const config: Config = {
         warning: "warning 0.2s linear infinite alternate",
         fadeInOut: "fadeInOut 2s linear forwards",
         hanamove: "hanamove 2s linear forwards",
+        ripple: "ripple 1s forwards",
       },
     },
   },
