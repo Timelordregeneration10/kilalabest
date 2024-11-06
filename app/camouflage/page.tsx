@@ -38,18 +38,15 @@ const CamouflagePage: React.FC = () => {
     }
   }, [count]);
   return (
-    <div className="w-full h-screen flex justify-center items-center">
+    <div className="w-full h-screen flex justify-center items-center relative">
       <div className="w-[50vh] h-[50vh] relative overflow-hidden">
         <div
           ref={clickRef}
-          className="absolute top-0 left-0 w-[50vh] h-[50vh] bg-center bg-fixed animate-ripple bg-[url('/aiyiRemPublic/7.webp')]"
-          style={{
-            backgroundSize: "100%",
-          }}
+          className="absolute top-0 left-0 w-full h-full bg-[length:_100%] bg-center bg-fixed bg-[url('/aiyiRemPublic/7.webp')]"
         ></div>
         {clickPoints.map((clickPoint) => (
           <div
-            className="w-full h-full absolute top-0 left-0 pointer-events-none "
+            className="w-full h-full absolute top-0 left-0 pointer-events-none"
             key={clickPoint.key}
           >
             {Array(6)

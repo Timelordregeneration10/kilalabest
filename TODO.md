@@ -4,11 +4,10 @@
 * lottiefiles 酷炫灵动GIF
 
 ## 水波雷姆复刻-Ripple
-- css: 原理：多个div叠在一起，background-fixed，让背景有大有小配合动画慢慢变大延迟依次出现
++ css: 原理：多个div叠在一起，background-fixed，让背景有大有小配合动画慢慢变大延迟依次出现
   + 单纯css实现
   + 加入js点击事件
-  - 放入原文：<a href="https://segmentfault.com/a/1190000019132065">链接</a>
-
+  + 放入原文：<a href="https://segmentfault.com/a/1190000019132065">链接</a>
 - webglshader
 
 # 优化
