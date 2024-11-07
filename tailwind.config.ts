@@ -363,12 +363,26 @@ const config: Config = {
             transform: "translate(100px) rotate(360deg)",
           },
         },
-        ripple: {
+        ripple1: {
+          "0%": {
+            width: "0%",
+            height: "0%",
+            top: "50%",
+            left: "50%",
+          },
+          "100%": {
+            width: "100%",
+            height: "100%",
+            top: "0%",
+            left: "0%",
+          },
+        },
+        ripple2: {
           "0%": {
             clipPath: "circle(0%)",
           },
           "100%": {
-            clipPath: "circle(70%)",
+            clipPath: "circle(50%)",
           },
         },
       },
@@ -391,7 +405,8 @@ const config: Config = {
         warning: "warning 0.2s linear infinite alternate",
         fadeInOut: "fadeInOut 2s linear forwards",
         hanamove: "hanamove 2s linear forwards",
-        ripple: "ripple 1s forwards",
+        ripple1: "ripple1 1s forwards",
+        ripple2: "ripple2 1s forwards",
       },
     },
   },
