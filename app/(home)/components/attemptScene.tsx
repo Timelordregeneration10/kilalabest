@@ -175,7 +175,7 @@ export default function AttemptScene() {
   }, []);
 
   return (
-    <div className="h-screen w-screen bg-attempt bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
+    <div className="h-screen w-screen bg-attempt bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative overflow-hidden">
       {/* mainScene */}
       <div className=" absolute top-0 left-0 w-screen h-screen"></div>
       {/* danmu */}
