@@ -1,43 +1,56 @@
 "use client";
 
+import { debounce, throttle } from "lodash";
 import { useEffect, useRef, useState } from "react";
 
 const RippleAttemptPage: React.FC = () => {
   const [clickPoints, setClickPoints] = useState<
-    { x: number; y: number; key: number; baseZIndex: number }[]
+    { x: number; y: number; key: number }[]
   >([]);
   const [count, setCount] = useState(0);
   const clickRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     if (clickRef.current) {
+      let ticking = false;
       const handleAddRipple = (e: MouseEvent) => {
-        const key = Math.random();
-        setClickPoints((v) => [
-          ...v,
-          {
-            x:
-              e.offsetX -
-              (clickRef.current ? (clickRef.current.offsetWidth * 0.2) / 2 : 0),
-            y:
-              e.offsetY -
-              (clickRef.current
-                ? (clickRef.current.offsetHeight * 0.2) / 2
-                : 0),
-            key,
-            baseZIndex: count + 1,
-          },
-        ]);
-        setCount((v) => v + 1);
-        setTimeout(() => {
-          setClickPoints((v) => v.filter((vv) => vv.key != key));
-        }, 1600);
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            console.log("rmt");
+            const key = Math.random();
+            setClickPoints((v) => [
+              ...v,
+              {
+                x:
+                  e.offsetX -
+                  (clickRef.current
+                    ? (clickRef.current.offsetWidth * 0.2) / 2
+                    : 0),
+                y:
+                  e.offsetY -
+                  (clickRef.current
+                    ? (clickRef.current.offsetHeight * 0.2) / 2
+                    : 0),
+                key,
+              },
+            ]);
+            setCount((v) => v + 1);
+            setTimeout(() => {
+              setClickPoints((v) => v.filter((vv) => vv.key != key));
+            }, 1600);
+            ticking = false;
+          });
+          ticking = true;
+        }
       };
+      const throttled = throttle(handleAddRipple, 100);
       clickRef.current.addEventListener("click", handleAddRipple);
+      clickRef.current.addEventListener("mousemove", throttled);
       return () => {
         clickRef.current?.removeEventListener("click", handleAddRipple);
+        clickRef.current?.removeEventListener("mousemove", throttled);
       };
     }
-  }, [count]);
+  }, []);
   return (
     <div className="w-full h-screen relative overflow-hidden">
       {/* width and height should be same and divide-friendly */}
@@ -55,7 +68,7 @@ const RippleAttemptPage: React.FC = () => {
             className=" w-[20%] h-[20%] absolute pointer-events-none "
             key={clickPoint.key}
             style={{
-              zIndex: clickPoint.baseZIndex,
+              zIndex: 2,
               top: clickPoint.y + "px",
               left: clickPoint.x + "px",
             }}
