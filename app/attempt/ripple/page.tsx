@@ -15,7 +15,6 @@ const RippleAttemptPage: React.FC = () => {
       const handleAddRipple = (e: MouseEvent) => {
         if (!ticking) {
           requestAnimationFrame(() => {
-            console.log("rmt");
             const key = Math.random();
             setClickPoints((v) => [
               ...v,
