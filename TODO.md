@@ -3,12 +3,7 @@
 + ​移动端适配​
 * lottiefiles 酷炫灵动GIF
 
-## 水波雷姆复刻-Ripple
-+ css: 原理：多个div叠在一起，background-fixed，让背景有大有小配合动画慢慢变大延迟依次出现
-  + 单纯css实现
-  + 加入js点击事件
-  + 放入原文：<a href="https://segmentfault.com/a/1190000019132065">链接</a>
-- webglshader
+# three-shader => to be continued (参见fe-study-three-shader)
 
 # 优化
 - sticky结束处理，参考showmecode
@@ -29,6 +24,12 @@
 - Rem cursor!
 
 # github图床见知乎收藏
+
+## 水波雷姆复刻-Ripple ✅
++ css: 原理：多个div叠在一起，background-fixed，让背景有大有小配合动画慢慢变大延迟依次出现
+  + 单纯css实现
+  + 加入js点击事件
+  + 放入原文：<a href="https://segmentfault.com/a/1190000019132065">链接</a>
 
 ## 控制爱心和繁花和导航栏和leaveWeb显示 ✅
 ## 繁花跟随 ✅
