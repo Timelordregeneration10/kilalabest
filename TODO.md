@@ -5,11 +5,18 @@
 
 # three-shader => to be continued (参见fe-study-three-shader)
 
+## 鼠标移动过快连锁闪电特效，停留点点星光<a href="https://www.bilibili.com/video/BV15SC2YMEMW">效果</a>
+- canvas简单绘制线条，图形
+- canvas透明顶层展示
+- 鼠标移动过快时绘制图形变大
+- 鼠标慢慢移动时点点星光绘制
+- 连锁闪电绘制
+- 美化与性能调优
+
 # 优化
 - sticky结束处理，参考showmecode
 
 # 特效
-- 鼠标移动过快连锁闪电特效，停留点点星光<a href="https://www.bilibili.com/video/BV15SC2YMEMW">效果</a>
 - 其他wallpaper engine雷姆复刻
 
 # 首屏
