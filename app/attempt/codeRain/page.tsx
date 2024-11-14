@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import CodeString from "../attempt/codeRain/components/CodeString";
+import CodeString from "./components/CodeString";
 
-const CamouflagePage: React.FC = () => {
+const CodeRainPage: React.FC = () => {
   const [codes, setCodes] = useState<
     { x: number; y: number; animationDuration: number; key: number }[]
   >([]);
@@ -30,7 +30,7 @@ const CamouflagePage: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen overflow-hidden relative">
+    <div className="w-full h-screen overflow-hidden relative flex justify-center items-center bg-[black] text-white border-b-2 border-white border-solid">
       {codes.map((code) => (
         <CodeString
           x={code.x}
@@ -39,8 +39,9 @@ const CamouflagePage: React.FC = () => {
           key={code.key}
         ></CodeString>
       ))}
+      <h1 className="text-[10vmax]">Code Rain</h1>
     </div>
   );
 };
 
-export default CamouflagePage;
+export default CodeRainPage;

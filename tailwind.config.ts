@@ -385,6 +385,14 @@ const config: Config = {
             clipPath: "circle(50%)",
           },
         },
+        codeFalling: {
+          "0%": {
+            transform: "translateY(0vh)",
+          },
+          "100%": {
+            transform: "translateY(250vh)",
+          },
+        },
       },
       animation: {
         streamer: "streamer 5s infinite linear",
@@ -407,6 +415,7 @@ const config: Config = {
         hanamove: "hanamove 2s linear forwards",
         ripple1: "ripple1 1s forwards",
         ripple2: "ripple2 1s forwards",
+        codeFalling: "codeFalling 10s forwards linear",
       },
     },
   },

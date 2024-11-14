@@ -10,7 +10,6 @@
 
 # 特效
 - 鼠标移动过快连锁闪电特效，停留点点星光<a href="https://www.bilibili.com/video/BV15SC2YMEMW">效果</a>
-- 代码雨复刻
 - 其他wallpaper engine雷姆复刻
 
 # 首屏
@@ -24,6 +23,12 @@
 - Rem cursor!
 
 # github图床见知乎收藏
+
+## 代码雨复刻 ✅
++ 单数字falling
++ 一串数字越上透明度越低
++ 字符瞬变
++ 性能优化
 
 ## 水波雷姆复刻-Ripple ✅
 + css: 原理：多个div叠在一起，background-fixed，让背景有大有小配合动画慢慢变大延迟依次出现
@@ -63,8 +68,8 @@
 + SEO
 
 ## swayleaf ✅
-- useMemo导致的水合失败 => useEffect
-- canvas实现 => 没有transition也没有animation => abandon
++ useMemo导致的水合失败 => useEffect
++ canvas实现 => 没有transition也没有animation => abandon
 
 # SEO ✅
 + 查看nextjs部署文档，看看何故favicon不显示 => 有说是需要等待，然后google搜索结果是已经有favicon了
