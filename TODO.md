@@ -10,6 +10,8 @@
 
 # 特效
 - 其他wallpaper engine雷姆复刻
+？ 代码雨的真实姿态（本身不动）
+？ 闪电的真实姿态（留光连点）
 
 # 首屏
 - suspense, loading, 随加载渐进显示
