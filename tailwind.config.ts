@@ -393,6 +393,20 @@ const config: Config = {
             transform: "translateY(250vh)",
           },
         },
+        codeFalling2:{
+          "0%": {
+            clipPath: "polygon(0 0%, 100% 0%, 100% 0%, 0% 0%)",
+          },
+          "20%": {
+            clipPath: "polygon(0 0%, 100% 0%, 100% 30%, 0% 30%)",
+          },
+          "80%": {
+            clipPath: "polygon(0 70%, 100% 70%, 100% 100%, 0% 100%)",
+          },
+          "100%": {
+            clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)",
+          },
+        },
       },
       animation: {
         streamer: "streamer 5s infinite linear",
@@ -416,6 +430,7 @@ const config: Config = {
         ripple1: "ripple1 1s forwards",
         ripple2: "ripple2 1s forwards",
         codeFalling: "codeFalling 10s forwards linear",
+        codeFalling2: "codeFalling2 10s forwards linear",
       },
     },
   },
