@@ -2,9 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import useWindow from "../hooks/useWindow";
-import { throttle } from "lodash";
 
-const CamouflagePage: React.FC = () => {
+const CanvasAttemptPage: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const { width: innerWidth, height: innerHeight } = useWindow();
   useEffect(() => {
@@ -156,13 +155,16 @@ const CamouflagePage: React.FC = () => {
   }, [innerHeight, innerWidth]);
 
   return (
-    <div className="w-full h-screen overflow-hidden relative">
+    <>
       <canvas
-        className="fixed top-0 left-0 z-[99] pointer-events-none"
+        className="fixed top-0 left-0 pointer-events-none"
         ref={canvasRef}
       ></canvas>
-    </div>
+      <div className="w-full h-screen overflow-hidden relative z-10 flex justify-center items-center text-white border-b-2 border-white border-solid">
+        <h1 className="text-[10vmax]">CANVAS ATTEMPT</h1>
+      </div>
+    </>
   );
 };
 
-export default CamouflagePage;
+export default CanvasAttemptPage;
