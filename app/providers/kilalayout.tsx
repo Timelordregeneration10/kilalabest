@@ -321,7 +321,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
           isDismissable={false}
           hideCloseButton={true}
           onOpenChange={onWarningOpenChange}
-          className=" bg-warning bg-cover sm:bg-contain bg-center lg:bg-[length:100%_100%]"
+          className=" bg-warning bg-cover sm:bg-cover bg-center lg:bg-[length:100%_100%]"
           size="3xl"
         >
           <ModalContent>
