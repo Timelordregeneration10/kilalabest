@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers as UIProvider } from "@/app/providers/nextui";
 
@@ -7,7 +7,11 @@ import Head from "next/head";
 import { Toaster } from "react-hot-toast";
 import { KilaLayout } from "./providers/kilalayout";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({
+//   subsets: ["latin"],
+//   display: "swap",
+//   adjustFontFallback: false,
+// });
 
 export const metadata: Metadata = {
   title: "NicholasのPersonal Website",
@@ -78,7 +82,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      {/* <body className={inter.className}> */}
+      <body>
         <UIProvider>
           <KilaLayout>{children}</KilaLayout>
         </UIProvider>
