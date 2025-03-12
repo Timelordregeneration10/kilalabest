@@ -1,5 +1,9 @@
 # notes
 * 展现思路、设计可以问ai
+  - 新项目外链or全放kilalabest里
+  - 新项目模板整合react等
+  - 全放kilalabest网页加载速度影响
+  - 个人网站保持纯净只有个人网站？
 * ​ai绘图得到素材
 + ​移动端适配​
 * lottiefiles 酷炫灵动GIF
