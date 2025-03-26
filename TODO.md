@@ -4,11 +4,18 @@
   - 新项目模板整合react等
   - 全放kilalabest网页加载速度影响
   - 个人网站保持纯净只有个人网站？
+  - 博客记录学习过程，分享学习经验？
+  - 图片分区可以放手办照片，搞个hpoi的链接
+  - 一般照片放github，这样就不担心换手机相册问题？
 * ​ai绘图得到素材
 + ​移动端适配​
 * lottiefiles 酷炫灵动GIF
 
 # three-shader => to be continued (参见fe-study-three-shader)
+
+# live2D Rem
+
+# 3D Rem动作
 
 # 优化
 - sticky结束处理，参考showmecode
