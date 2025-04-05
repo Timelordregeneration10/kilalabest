@@ -1,38 +1,15 @@
+
 # notes
 * 展现思路、设计可以问ai
-  - 新项目外链or全放kilalabest里
-  - 新项目模板整合react等
-  - 全放kilalabest网页加载速度影响
-  - 个人网站保持纯净只有个人网站？
-  - 博客记录学习过程，分享学习经验？
-  - 图片分区可以放手办照片，搞个hpoi的链接
-  - 一般照片放github，这样就不担心换手机相册问题？
-* 理解：先入为主否定博客框架前不妨先试一下博客框架能干什么，想自定义方不方便
 * 网站：awwwards网站获取灵感
 * 网站获取：问ds要awwwards这样的设计/得到灵感的网站推荐
-* 分离：决定网站有什么如何分类，这与网站ui等的设计并不需要同时在一起，通常是分离的
 * ​ai绘图得到素材
 + ​移动端适配​
-* lottiefiles 酷炫灵动GIF
+* lottiefiles 酷炫灵动GIF，svg
 
-test
-
-# three-shader => to be continued (参见fe-study-three-shader)
-
-# live2D Rem
-
-# 3D Rem动作
-
-# 优化
-- sticky结束处理，参考showmecode
-
-# 特效
-- 电子羊歌词特效复刻<a href="https://www.bilibili.com/video/BV1Bz411q7p7">链接</a>DNA双螺旋黑色背景粉色发光
-- 其他wallpaper engine雷姆复刻
-？ 闪电的真实姿态（留光连点）
-
-# 首屏
-- suspense, loading, 随加载渐进显示
+# 结构
+- 导航栏分顶部导航栏和侧边导航栏，顶部照常，侧边可收起样式重新想
+- music，anime放新的about me里面，剩余都应该有具体页面，且首页只放intro
 
 # /RMT
 + 背景纯白svg分段鼠标悬浮随其摇曳，鼠标不在区域则过一段事件自己摇曳<a href="https://www.bilibili.com/video/BV1ZusYeGEfj/">效果</a> => RemArea&RemShelter
@@ -40,8 +17,46 @@ test
 - dreamle的tutorial, RMTprogress
 - 加入世界锚
 - Rem cursor!
+- live2d Rem
+- 手办页（可链接hopi）
+
+# 优化
+- 比如展示做过的项目的列表时，要展示项目预览更好的方法可以是鼠标悬浮时在鼠标位置处显示预览，见https://www.jiejoe.com/home的video部分
+- 比如想让用户知道点击可以跳转到某个页面，可以在鼠标悬浮时出现一个跟随鼠标的icon
+- sticky结束处理，参考showmecode
+- 贝塞尔曲线错误使用（如原神启动那个部分）
+- 所有导航栏应有阴影防止看不清
+- 首屏加载页面可以用香格里拉进游戏的时候那种旋转隧道加点细节（第六集15分钟前）
+  - 提示要可以访问github
+  - 框的阴影生成方法=>问ds svg阴影
+- 性能优化，现在有点卡
+- 全放kilalabest网页加载速度影响
+  - 新项目外链or全放kilalabest里
+  - 图片放图床还是kilalabest里
+
+# 学习
+- ## glitch (参见fe-study-glitch)
+- ## three-shader => to be continued (参见fe-study-three-shader)- 学完之后看黑洞代码
+- ## live2D Rem (参见fe-study-live2D)
+
+# 3D Rem动作
 
 # github图床见知乎收藏
+
+# 特效
+- 电子羊歌词特效复刻<a href="https://www.bilibili.com/video/BV1Bz411q7p7">链接</a>DNA双螺旋黑色背景粉色发光
+- 其他wallpaper engine雷姆复刻
+？ 闪电的真实姿态（留光连点）
+- BV1cAZnY1ETW 0：52的转场，从某层跳到更高的一层
+
+# 个人网站3.0 ❌ => 2.0根本没做完，目前只有首页而已
+- 调研typecho
+- 2.0的保存
+- 内容决定与板块划分
+  - 图片：手机相册蕾姆图片之外的相册 => 如果怕丢失就放图床，想展示的好像也只有蕾姆的部分放在手办part就行了 => 不需要图片
+  - 博客：记录学习某些东西的过程 => 写在时光序里或者readme里 => 不需要博客
+  - about me
+  - 歌单我有网易云音乐，番剧我有anilist
 
 ## 鼠标移动过快连锁闪电特效，停留点点星光<a href="https://www.bilibili.com/video/BV15SC2YMEMW">效果</a> ✅
 + canvas简单绘制线条，图形
@@ -110,6 +125,9 @@ test
 
 # 动画丝滑问题 ✅
 + cubic-bezier完胜，之前有问题不采用认为是dev环境特有的卡顿或者贝塞尔曲线用的不对
+  - 一些好用的预设：
+  - 0.5s+cubic-bezier(0.25,1.25,0.25,1.25)快速跟随且有物理惯性
+  - 0.2s+cubic-bezier(0.33,1,0.33,1)快速跟随(第二个0.33其实＜1就行)
 + 研究useSpring => 大部分丝滑动画不需要弹簧物理效果
 + 好用的tiny spring库：<a href="https://github.com/skevy/wobble/blob/develop/demos/1-chat-heads/index.tsx">wobble</a>
 
