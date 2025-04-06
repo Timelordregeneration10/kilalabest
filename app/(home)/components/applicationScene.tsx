@@ -18,9 +18,15 @@ import useScroll from "@/app/hooks/useScroll";
 
 const applications = [
   { name: "生日系列", url: "https://timelord.cn/birthday" },
-  { name: "静静的蓝毒窝", url: "https://timelord.cn/%E9%9D%99%E9%9D%99%E7%9A%84%E8%93%9D%E6%AF%92%E7%AA%9D/" },
+  {
+    name: "静静的蓝毒窝",
+    url: "https://timelord.cn/%E9%9D%99%E9%9D%99%E7%9A%84%E8%93%9D%E6%AF%92%E7%AA%9D/",
+  },
   { name: "DV帅照集", url: "https://timelord.cn/hdwpic/" },
-  { name: "原神启动！", url: "https://timelord.cn/%E5%8E%9F%E7%A5%9E%E5%90%AF%E5%8A%A8/" },
+  {
+    name: "原神启动！",
+    url: "https://timelord.cn/%E5%8E%9F%E7%A5%9E%E5%90%AF%E5%8A%A8/",
+  },
   { name: "在下坂本，有何贵干", url: "https://timelord.cn/sakamoto/" },
   { name: "Rem gallery系列", url: "/application/gallery/Rem" },
 ];
@@ -108,6 +114,10 @@ export default function ApplicationScene() {
           }) rotate(0deg)`;
         }
         if (yuanRef.current) yuanRef.current.style.display = "none";
+        if (boxRef.current) {
+          boxRef.current.classList.remove("bg-attempt");
+          boxRef.current.classList.add("bg-application");
+        }
       }
       // bg bigger and rotate and fade and yuan show behind bg
       else if (top < -kilaInnerHeight && top >= -2 * kilaInnerHeight) {
@@ -122,6 +132,10 @@ export default function ApplicationScene() {
         if (yuanRef.current) {
           yuanRef.current.style.display = `block`;
           yuanRef.current.style.transform = `translateY(0)`;
+        }
+        if (boxRef.current) {
+          boxRef.current.classList.remove("bg-application");
+          boxRef.current.classList.add("bg-attempt");
         }
       }
       // bg faded and yuan translateY run away
@@ -178,7 +192,7 @@ export default function ApplicationScene() {
         ></Image>
       </div>
       <div
-        className=" fixed top-0 left-0 w-screen h-screen pointer-events-none z-[9] transition-transform duration-400 ease-[cubic-bezier(0.25,0.75,0.85,1)] hidden "
+        className=" fixed top-0 left-0 w-screen h-screen pointer-events-none z-[9] transition-transform duration-100 ease-[cubic-bezier(0.33,1,0.33,1)] hidden "
         ref={yuanRef}
       >
         <Image

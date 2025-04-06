@@ -144,7 +144,7 @@ export default function SinglePage() {
     >
       {twoAiyiRems.map((aiyiRem, index) => (
         <div
-          key={aiyiRem}
+          key={aiyiRem+index}
           className=" absolute w-full h-full top-0 left-0 animate-concreter"
         >
           <NextImage

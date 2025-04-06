@@ -6,7 +6,7 @@ import Image from "next/image";
 import useWindow from "@/app/hooks/useWindow";
 export default function Page() {
   // const aiyiRems = IaiyiRems;
-  
+
   const aiyiRems = useMemo(() => {
     const temp = [];
     for (let i = 0; i < 9; i++) {
@@ -48,8 +48,8 @@ export default function Page() {
           animationPlayState: paused ? "paused" : "running",
         }}
       >
-        {shuffledAiyiRems0.map((aiyiRem: string) => (
-          <div className=" aspect-[12/9] w-full" key={aiyiRem}>
+        {shuffledAiyiRems0.map((aiyiRem: string, index: number) => (
+          <div className=" aspect-[12/9] w-full" key={aiyiRem + index}>
             <Image
               src={aiyiRem}
               width={400}
@@ -67,8 +67,8 @@ export default function Page() {
           animationPlayState: paused ? "paused" : "running",
         }}
       >
-        {shuffledAiyiRems1.map((aiyiRem: string) => (
-          <div className=" aspect-[12/9] w-full" key={aiyiRem}>
+        {shuffledAiyiRems1.map((aiyiRem: string, index: number) => (
+          <div className=" aspect-[12/9] w-full" key={aiyiRem + index}>
             <Image
               src={aiyiRem}
               width={400}
@@ -86,8 +86,8 @@ export default function Page() {
           animationPlayState: paused ? "paused" : "running",
         }}
       >
-        {shuffledAiyiRems2.map((aiyiRem: string) => (
-          <div className=" aspect-[12/9] w-full" key={aiyiRem}>
+        {shuffledAiyiRems2.map((aiyiRem: string, index: number) => (
+          <div className=" aspect-[12/9] w-full" key={aiyiRem + index}>
             <Image
               src={aiyiRem}
               width={400}

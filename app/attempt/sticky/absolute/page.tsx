@@ -98,8 +98,8 @@ export default function Page() {
         className=" absolute w-[calc(100vw/3)] left-0 top-0 flex flex-col h-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 "
         ref={stickyTopRef}
       >
-        {shuffledAiyiRems0.map((aiyiRem: string) => (
-          <div className=" aspect-[12/9] w-full" key={aiyiRem}>
+        {shuffledAiyiRems0.map((aiyiRem: string, index: number) => (
+          <div className=" aspect-[12/9] w-full" key={aiyiRem + index}>
             <Image
               src={aiyiRem}
               width={400}
@@ -114,8 +114,8 @@ export default function Page() {
         className=" absolute w-[calc(100vw/3)] left-[calc(100vw/3)] top-0 flex flex-col h-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 "
         ref={stickyMiddleRef}
       >
-        {shuffledAiyiRems1.map((aiyiRem: string) => (
-          <div className=" aspect-[12/9] w-full" key={aiyiRem}>
+        {shuffledAiyiRems1.map((aiyiRem: string, index: number) => (
+          <div className=" aspect-[12/9] w-full" key={aiyiRem + index}>
             <Image
               src={aiyiRem}
               width={400}
@@ -130,8 +130,8 @@ export default function Page() {
         className=" absolute w-[calc(100vw/3)] top-0 left-[calc(200vw/3)] flex flex-col h-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 "
         ref={stickyBottomRef}
       >
-        {shuffledAiyiRems2.map((aiyiRem: string) => (
-          <div className=" aspect-[12/9] w-full" key={aiyiRem}>
+        {shuffledAiyiRems2.map((aiyiRem: string, index: number) => (
+          <div className=" aspect-[12/9] w-full" key={aiyiRem + index}>
             <Image
               src={aiyiRem}
               width={400}
