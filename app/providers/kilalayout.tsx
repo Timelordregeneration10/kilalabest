@@ -253,12 +253,12 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
             opacity: navitopHeight === "0vh" ? "0.2" : "1",
           }}
         >
-          <div className="w-screen lg:w-[50vw] h-[6vh] sm:h-[8vh] lg:h-[10vh] border-white flex justify-center items-center lg:border-r-2 border-b-2 lg:border-b-0">
+          <div className="w-screen lg:w-[50vw] h-[6vh] sm:h-[8vh] lg:h-[10vh] border-white flex justify-center items-center lg:border-r-2 border-b-2 lg:border-b-0 [box-shadow:_0_0_2px_violet]">
             <div
               className="w-[88vw] lg:w-[44vw] h-[6vh] text-[2.4vmax] overflow-hidden pt-2 lg:p-0 cursor-pointer"
               onClick={() => router.push("/")}
             >
-              <div className="h-[6vh] w-[200vmax] animate-rmtcycle transition-colors duration-700 hover:text-[rgb(145,190,240)]">
+              <div className="h-[6vh] w-[200vmax] animate-rmtcycle transition-[_color,_text-shadow] duration-700 hover:text-[rgb(145,190,240)] [text-shadow:_0_0_2px_violet] hover:[text-shadow:_0_0_2px_#ffffff]">
                 R · M · T R · M · T R · M · T R · M · T R · M · T R · M · T R ·
                 M · T R · M · T R · M · T R · M · T R · M · T R · M · T R · M ·
                 T
@@ -266,18 +266,18 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
           <div className="w-screen lg:w-[50vw] h-[6vh] sm:h-[8vh] lg:h-[10vh] flex flex-row-reverse">
-            <div className=" w-[60%] text-[2.6vmax] sm:text-[3.2vmax] flex justify-center items-center transition-colors duration-700 hover:text-[rgb(255,158,229)]">
+            <div className=" w-[60%] text-[2.6vmax] sm:text-[3.2vmax] flex justify-center items-center transition-[color,_text-shadow] duration-700 hover:text-[rgb(255,158,229)] [text-shadow:_0_0_2px_violet] hover:[text-shadow:_0_0_2px_#ffffff]">
               <a href="/">Nicholas Burkhardt</a>
             </div>
             <div className=" w-[40%] text-[1.5vmax] flex flex-col">
-              <div className=" select-text h-[50%] border-r-2 flex justify-center items-center border-b-2 border-white transition-colors duration-500 hover:text-[rgb(255,158,229)]">
+              <div className=" select-text h-[50%] border-r-2 flex justify-center items-center border-b-2 border-white [box-shadow:_0_0_2px_violet] transition-[color,_text-shadow] duration-500 hover:text-[rgb(255,158,229)] [text-shadow:_0_0_2px_violet] hover:[text-shadow:_0_0_2px_#ffffff]">
                 {contactContent}
               </div>
               <div className="h-[50%] flex flex-row justify-around items-center ">
                 {contactItems.map((item) => {
                   return (
                     <div
-                      className={` flex flex-1 h-full justify-center items-center border-r-2 border-white transition-colors duration-500 cursor-pointer text-white ${item.hoverColor}`}
+                      className={` flex flex-1 h-full justify-center items-center border-r-2 border-white [box-shadow:_0_0_2px_violet] transition-[color,_text-shadow] duration-500 cursor-pointer text-white ${item.hoverColor} [text-shadow:_0_0_2px_violet] hover:[text-shadow:_0_0_2px_#ffffff]`}
                       key={item.id}
                       onClick={() => setContactContent(item.content)}
                     >
@@ -303,7 +303,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
                     }
                     controlScrollTop(sum * kilaInnerHeight);
                   }}
-                  className="cursor-pointer lg:w-[12.4vw] w-[24.9vw] h-[3vh] sm:h-[4vh] lg:h-[5vh] flex justify-center items-center text-[1.7vmax] border-b-2 border-r-2 shadow border-white transition-colors duration-500 hover:text-[violet]"
+                  className="cursor-pointer lg:w-[12.4vw] w-[24.9vw] h-[3vh] sm:h-[4vh] lg:h-[5vh] flex justify-center items-center text-[1.7vmax] border-b-2 border-r-2 [box-shadow:_0_0_2px_violet] border-white transition-[color,_text-shadow] duration-500 hover:text-[violet] [text-shadow:_0_0_2px_violet] hover:[text-shadow:_0_0_2px_#ffffff]"
                 >
                   {item.id}
                 </div>
