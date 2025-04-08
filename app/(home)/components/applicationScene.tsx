@@ -341,7 +341,7 @@ export default function ApplicationScene() {
             <motion.p
               key={app.name}
               initial={{ transform: "translateY(-100%)", opacity: 0 }}
-              whileInView={{ transform: "translateY(0)", opacity: 1 }}
+              whileInView={{ transform: "translateY(0%)", opacity: 1 }}
               transition={{
                 duration: 0.8,
                 ease: "easeInOut",

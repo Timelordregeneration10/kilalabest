@@ -168,7 +168,7 @@ export default function DrawingScene() {
                 transform: index % 2 === 0 ? "skewX(-45deg)" : "skewX(45deg)",
                 opacity: 0,
               }}
-              whileInView={{ transform: "skewY(0)", opacity: 1 }}
+              whileInView={{ transform: "skewY(0deg)", opacity: 1 }}
               transition={{
                 duration: 0.8,
                 ease: "easeInOut",

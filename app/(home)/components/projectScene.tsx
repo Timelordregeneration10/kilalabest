@@ -194,7 +194,7 @@ export default function ProjectScene() {
                   index % 2 === 0 ? "translateX(-50%)" : "translateX(50%)",
                 opacity: 0,
               }}
-              whileInView={{ transform: "translateX(0)", opacity: 1 }}
+              whileInView={{ transform: "translateX(0%)", opacity: 1 }}
               transition={{
                 duration: 0.8,
                 ease: "easeInOut",

@@ -61,7 +61,7 @@ export default function AttemptScene() {
     if (ranword == 0) {
       colorran = "#91bef0";
     }
-    let sec = new Date().getTime();
+    let sec = new Date().getTime() + Math.random();
     setNormalDanmu((n) => [
       ...n,
       {
@@ -98,7 +98,7 @@ export default function AttemptScene() {
       colorran = "#91bef0";
     }
 
-    let sec = new Date().getTime();
+    let sec = new Date().getTime() + Math.random();
     setLeftBottomDanmu((l) => [
       ...l,
       {
@@ -130,7 +130,7 @@ export default function AttemptScene() {
         clearInterval(rotateInterval);
       }
 
-      let sec = new Date().getTime();
+      let sec = new Date().getTime() + Math.random();
       setRotateDanmu((r) => [
         ...r,
         {
@@ -269,7 +269,7 @@ export default function AttemptScene() {
                 transform: index % 2 === 0 ? "skewY(45deg)" : "skewY(-45deg)",
                 opacity: 0,
               }}
-              whileInView={{ transform: "skewY(0)", opacity: 1 }}
+              whileInView={{ transform: "skewY(0deg)", opacity: 1 }}
               transition={{
                 duration: 0.8,
                 ease: "easeInOut",

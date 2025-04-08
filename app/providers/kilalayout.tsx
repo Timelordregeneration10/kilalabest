@@ -94,18 +94,12 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const path = usePathname();
 
-  const {
-    isOpen: isWarningOpen,
-    onOpen: onWarningOpen,
-    onOpenChange: onWarningOpenChange,
-  } = useDisclosure();
+  const { onOpenChange: onWarningOpenChange } = useDisclosure();
 
   const [contactContent, setContactContent] = useState("CONTACT ME");
 
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
-  const [navitopHeight, setNavitopHeight] = useState(
-    kilaInnerWidth > 1024 ? "10vh" : kilaInnerWidth > 640 ? "16vh" : "12vh"
-  );
+  const [navitopHeight, setNavitopHeight] = useState("10vh");
 
   const { scrollTop, controlScrollTop } = useScroll();
 
@@ -247,7 +241,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
       {/* navi */}
       <div className="fixed top-0 left-0 w-screen text-white select-none z-[20] flex flex-col">
         <div
-          className="w-screen lg:h-[10vh] h-[12vh] sm:h-[16vh] flex lg:flex-row flex-col border-b-2 border-white overflow-hidden transition-[height_opacity] duration-500"
+          className="w-screen lg:h-[10vh] h-[12vh] sm:h-[16vh] flex lg:flex-row flex-col border-b-2 border-white overflow-hidden transition-[height_opacity] duration-500  [box-shadow:_0_0_2px_violet]"
           style={{
             height: navitopHeight,
             opacity: navitopHeight === "0vh" ? "0.2" : "1",
@@ -258,10 +252,17 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
               className="w-[88vw] lg:w-[44vw] h-[6vh] text-[2.4vmax] overflow-hidden pt-2 lg:p-0 cursor-pointer"
               onClick={() => router.push("/")}
             >
-              <div className="h-[6vh] w-[200vmax] animate-rmtcycle transition-[_color,_text-shadow] duration-700 hover:text-[rgb(145,190,240)] [text-shadow:_0_0_2px_violet] hover:[text-shadow:_0_0_2px_#ffffff]">
-                R · M · T R · M · T R · M · T R · M · T R · M · T R · M · T R ·
-                M · T R · M · T R · M · T R · M · T R · M · T R · M · T R · M ·
-                T
+              <div className="h-[6vh] w-[200%] flex justify-around items-center animate-rmtcycle transition-[_color,_text-shadow] duration-700 hover:text-[rgb(145,190,240)] [text-shadow:_0_0_2px_violet] hover:[text-shadow:_0_0_2px_#ffffff]">
+                {Array.from({
+                  length:
+                    (navitopHeight === "10vh"
+                      ? 3
+                      : navitopHeight === "16vh"
+                      ? 4
+                      : 2) * 2,
+                }).map((_, i) => (
+                  <div key={"R · M · T" + i}>R · M · T</div>
+                ))}
               </div>
             </div>
           </div>

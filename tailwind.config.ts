@@ -55,7 +55,9 @@ const config: Config = {
           },
         },
         rmtcycle: {
-          from: {},
+          from: {
+            transform: "translateX(0%)",
+          },
           to: {
             transform: "translateX(-50%)",
           },
@@ -411,7 +413,7 @@ const config: Config = {
       animation: {
         streamer: "streamer 5s infinite linear",
         personwebheart: "personwebheart 2s linear forwards",
-        rmtcycle: "rmtcycle 10s linear infinite backwards",
+        rmtcycle: "rmtcycle 5s linear infinite backwards",
         scrollcycle: "scrollcycle 1.3s linear infinite",
         sanInfinity: "sanInfinity 3s steps(1) infinite",
         turn24: "turn24 6s linear infinite",

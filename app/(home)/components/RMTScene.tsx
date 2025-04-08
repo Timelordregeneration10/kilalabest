@@ -134,7 +134,7 @@ export default function RMTScene() {
               }}
               whileInView={{
                 clipPath:
-                  "polygon(50% 0%, 100% 0, 100% 35%, 100% 67%, 100% 100%, 46% 100%, 0 100%, 0 62%, 0 35%, 0 0)",
+                  "polygon(50% 0%, 100% 0%, 100% 35%, 100% 67%, 100% 100%, 46% 100%, 0% 100%, 0% 62%, 0% 35%, 0% 0%)",
               }}
               transition={{
                 duration: 0.8,
