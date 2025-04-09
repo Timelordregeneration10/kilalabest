@@ -31,9 +31,10 @@
 + RMT循环优化，固定RMT个数，实现无缝循环
 + attemptScene重复key修复
 + framer-motion whileInView属性没加单位导致的Invalid keyframe value for property transform: xxx(12.72287)bug修复
-- 首屏加载页面可以用香格里拉进游戏的时候那种旋转隧道加点细节（第六集15分钟前）
++ 香格里拉进游戏的时候那种旋转隧道（第六集13分钟前）特效实现
+  + 框的阴影生成方法=>问ds svg阴影=>效果不如box-shadow，顺带一提text-shadow由于不好控制字大小以及难以居中舍弃了
+- 首屏加载页面可以用frontier特效
   - 提示要可以访问github
-  - 框的阴影生成方法=>问ds svg阴影
 - 性能优化，现在有点卡
 - 全放kilalabest网页加载速度影响
   - 新项目外链or全放kilalabest里
