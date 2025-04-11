@@ -27,7 +27,7 @@
 + 贝塞尔曲线错误使用（如原神启动那个部分）
 + Rem gallery和Rem sticky key重复bug修复
 + 所有导航栏应有阴影防止看不清
-- 导航栏初始显示问题 => 加载动画？看看低网速下加载动画和骨架谁先出来，看看有没有ducument.ejs那样的加载文件
+- 导航栏初始显示问题 => 加载动画？看看低网速下加载动画和骨架谁先出来，看看有没有ducument.ejs那样的加载文件 => SSR
 + RMT循环优化，固定RMT个数，实现无缝循环
 + attemptScene重复key修复
 + framer-motion whileInView属性没加单位导致的Invalid keyframe value for property transform: xxx(12.72287)bug修复
