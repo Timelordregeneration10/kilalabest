@@ -232,7 +232,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
   }, [path]);
 
   return (
-    <div className="kilalalayout w-screen text-center overflow-x-hidden no-scrollbar m-0 p-0 font-[saibo] select-none invisible">
+    <div className="kilalalayout w-screen text-center overflow-x-hidden no-scrollbar m-0 p-0 font-[saibo] select-none hidden">
       <div className=" min-h-screen w-full">{children}</div>
 
       {/* footer放在components里是因为footer都是静态的，剥离出来可以服务端渲染 */}

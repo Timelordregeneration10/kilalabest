@@ -47,7 +47,7 @@ export function FrontierVanishLayout({
       frontierHeart.style.animationPlayState = "running";
       setTimeout(() => {
         frontierAll.style.animationPlayState = "running";
-        kilalalayout.style.visibility = "visible";
+        kilalalayout.style.display = "block";
         setTimeout(() => {
           frontierAll.remove();
         }, 1100);

@@ -22,8 +22,9 @@ export const metadata: Metadata = {
   authors: { name: "Nicholas Burkhardt", url: "https://kilalabest.cn" },
   generator: "Next.js",
   keywords: [
-    "rmt",
+    "雷绮罗姆",
     "RMT",
+    "rmt",
     "timelord",
     "Nicholas",
     "Nicholas Burkhardt",

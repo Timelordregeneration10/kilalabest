@@ -35,7 +35,7 @@
   + 框的阴影生成方法=>问ds svg阴影=>效果不如box-shadow，顺带一提text-shadow由于不好控制字大小以及难以居中舍弃了
 + 首屏加载页面可以用frontier特效
   + 提示要可以访问github
-  + 如果卡的话设置frontier之外的元素加载完之前的visibility
+  + 如果卡的话设置frontier之外的元素加载完之前的visibility => 还是得设置display
   + 不知道为什么坑爹的next好像useEffect里面window.onload或者document.onReadyStateChange设置不管用，dev环境永远无法触发window onload或者document readyState为complete的真实，于是天才般的interval每秒检测是否加载完成横空出世完美解决。
 - 性能优化，现在有点卡
 - 全放kilalabest网页加载速度影响
