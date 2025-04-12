@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import TWEEN from "@tweenjs/tween.js";
-import { useRouter } from "next/navigation";
 import useWindow from "../../hooks/useWindow";
 import { motion } from "framer-motion";
+import { loadingContext } from "@/app/providers/frontierVanishLayout";
 
 const projects = [
   {
@@ -35,14 +35,11 @@ export default function ProjectScene() {
   const threeCubeRef = useRef<HTMLDivElement>(null);
   const isMobile = useWindow().width < 640;
   const [isHover, setIsHover] = useState(isMobile);
-  const router = useRouter();
+
+  const {loading}=useContext(loadingContext);
 
   useEffect(() => {
-    if (typeof window != undefined) {
-      window.addEventListener("resize", () => {
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-    }
+    if(loading) return;
     const scene = new THREE.Scene();
     scene.background = null;
     const texloader = new THREE.TextureLoader();
@@ -125,6 +122,11 @@ export default function ProjectScene() {
 
     if (threeCubeRef.current)
       threeCubeRef.current.appendChild(renderer.domElement);
+    if (typeof window != undefined) {
+      window.addEventListener("resize", () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    }
     function render() {
       //官方的
       groupGFD.children.forEach((mesh: any) => {
@@ -138,7 +140,7 @@ export default function ProjectScene() {
       requestAnimationFrame(render);
     }
     render();
-  }, []);
+  }, [loading]);
 
   return (
     <div className="h-screen w-screen bg-project bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">

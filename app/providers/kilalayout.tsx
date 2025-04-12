@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Foot from "./components/footer";
 import heartpng from "../assets/heart.png";
 import { usePathname, useRouter } from "next/navigation";
@@ -20,6 +20,7 @@ import cookie from "js-cookie";
 import useScroll from "../hooks/useScroll";
 import { BsFlower1 } from "react-icons/bs";
 import { throttle } from "lodash";
+import { loadingContext } from "./frontierVanishLayout";
 
 interface Heart {
   px: number;
@@ -127,8 +128,10 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
   const [leaveWebTimeout, setLeaveWebTimeout] = useState<NodeJS.Timeout | null>(
     null
   );
+  const { loading } = useContext(loadingContext);
   useEffect(() => {
     if (hideLeaveWeb(path)) return;
+    if (loading) return;
     const mouseLeaveHandler = () => {
       setLeaveWebTimeout(
         setTimeout(() => {
@@ -146,7 +149,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
       document.removeEventListener("mouseleave", mouseLeaveHandler);
       document.removeEventListener("mouseenter", mouseEnterHandler);
     };
-  }, [path, leaveWebTimeout]);
+  }, [path, loading, leaveWebTimeout]);
 
   // heart bubble
   const [heartList, setHeartlist] = useState<Array<Heart>>([]);
@@ -232,7 +235,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
   }, [path]);
 
   return (
-    <div className="kilalalayout w-screen text-center overflow-x-hidden no-scrollbar m-0 p-0 font-[saibo] select-none hidden">
+    <div className="w-screen text-center overflow-x-hidden no-scrollbar m-0 p-0 font-[saibo] select-none">
       <div className=" min-h-screen w-full">{children}</div>
 
       {/* footer放在components里是因为footer都是静态的，剥离出来可以服务端渲染 */}
@@ -351,21 +354,23 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
       )}
 
       {/* leaveweb page */}
-      {showLeaveWeb && (
-        <div className="fixed top-0 left-0 w-screen h-screen z-[99] bg-leaveweb bg-cover bg-center lg:bg-[length:100vw_100vh]">
-          <div className="absolute top-[35vh] right-0 px-[2vmax] text-[4vmax] sm:text-[6vmax] bg-[rgb(255,158,229)] text-white">
-            you have leaved!
-          </div>
-          <button
-            onClick={() => {
-              setShowLeaveWeb(false);
-            }}
-            className="absolute bottom-[25vh] right-[5vw] px-[2vmax] text-[5vmax] bg-[rgb(124,255,130)] text-white border-hidden hover:bg-[rgb(55,255,0)]"
-          >
-            return
-          </button>
+      <div
+        className="fixed top-0 left-0 w-screen h-screen z-[99] bg-leaveweb bg-cover bg-center lg:bg-[length:100vw_100vh]"
+        // 确保加载页面时背景图也被加载
+        style={{ visibility: showLeaveWeb ? "visible" : "hidden" }}
+      >
+        <div className="absolute top-[35vh] right-0 px-[2vmax] text-[4vmax] sm:text-[6vmax] bg-[rgb(255,158,229)] text-white">
+          you have leaved!
         </div>
-      )}
+        <button
+          onClick={() => {
+            setShowLeaveWeb(false);
+          }}
+          className="absolute bottom-[25vh] right-[5vw] px-[2vmax] text-[5vmax] bg-[rgb(124,255,130)] text-white border-hidden hover:bg-[rgb(55,255,0)]"
+        >
+          return
+        </button>
+      </div>
 
       {/* heart bubble */}
       {heartList.map((item: Heart) => {

@@ -16,8 +16,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "NicholasのPersonal Website",
-  description: "Nicholas's Personal Website, include many his work",
+  title: "雷绮罗姆的个人网站",
+  description: "雷绮罗姆(Nicholas Burkhardt)'s Personal Website, include many his work, as a frontend developer",
   applicationName: "Personal Website",
   authors: { name: "Nicholas Burkhardt", url: "https://kilalabest.cn" },
   generator: "Next.js",

@@ -15,6 +15,7 @@ import applicationGIF from "../assets/application.gif";
 import bg from "@/app/assets/musedash/application.webp";
 import { motion } from "framer-motion";
 import useScroll from "@/app/hooks/useScroll";
+import { loadingContext } from "@/app/providers/frontierVanishLayout";
 
 const applications = [
   { name: "生日系列", url: "https://timelord.cn/birthday" },
@@ -43,6 +44,7 @@ const appsrc = [
 ];
 
 export default function ApplicationScene() {
+  const { loading } = useContext(loadingContext);
   const isMobile = useWindow().width < 640;
   const [isHover, setIsHover] = useState(isMobile);
 
@@ -211,7 +213,10 @@ export default function ApplicationScene() {
           className="relative z-[11] w-[30vw] h-[30vw] transform-style-3d transition-[transform_width_height] duration-1000 "
           style={{ perspective: isHover ? "1000px" : "1000px" }}
         >
-          <div className="absolute w-full h-full transform-style-3d rotate-x-0 rotate-y-0 rotate-z-0 animate-turn24 ">
+          <div
+            className="absolute w-full h-full transform-style-3d rotate-x-0 rotate-y-0 rotate-z-0 animate-turn24 "
+            style={{ animationPlayState: loading ? "paused" : "running" }}
+          >
             {finalgamecubes.map((gamecube) => {
               return (
                 <div

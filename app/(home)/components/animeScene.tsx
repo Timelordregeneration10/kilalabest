@@ -13,10 +13,12 @@ import suki7 from "../assets/suki7.webp";
 import suki8 from "../assets/suki8.webp";
 import suki9 from "../assets/suki9.webp";
 import useScroll from "@/app/hooks/useScroll";
+import { loadingContext } from "@/app/providers/frontierVanishLayout";
 
 const sukis = [suki1, suki2, suki3, suki4, suki5, suki6, suki7, suki8, suki9];
 
 export default function AnimeScene() {
+  const { loading } = useContext(loadingContext);
   const isMobile = useWindow().width < 640;
   const [isHover, setIsHover] = useState(isMobile);
   const aiyiRems = sukis;
@@ -161,7 +163,10 @@ export default function AnimeScene() {
         </a>
 
         <div className="order-2 sm:order-1 relative text-white text-[11.5vw] sm:text-[6vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
-          <p className=" animate-bounce">
+          <p
+            className=" animate-bounce"
+            style={{ animationPlayState: loading ? "paused" : "running" }}
+          >
             %{" "}
             <a
               href="https://anilist.co/user/NicholasBurkhardt/animelist"

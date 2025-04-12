@@ -1,53 +1,30 @@
 "use client";
 
-import { useEffect } from "react";
+import { createContext, useEffect, useState } from "react";
+
+export const loadingContext = createContext({
+  loading: true,
+});
 
 export function FrontierVanishLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    // if (typeof window === "object" && window.onload === null)
-    //   window.onload = () => {
-    //     console.log("%cwindow loaded", "color:#91bef0; font-size: 20px;");
-    //     const frontierAll = document.getElementsByClassName(
-    //       "frontier-all"
-    //     )[0] as HTMLElement;
-    //     const frontierHeart = document.getElementsByClassName(
-    //       "frontier-heart"
-    //     )[0] as HTMLElement;
-    //     const kilalalayout = document.getElementsByClassName(
-    //       "kilalalayout"
-    //     )[0] as HTMLElement;
-    //     frontierHeart.style.animationPlayState = "running";
-    //     setTimeout(() => {
-    //       frontierAll.style.animationPlayState = "running";
-    //       kilalalayout.style.visibility = "visible";
-    //       setTimeout(() => {
-    //         frontierAll.remove();
-    //       }, 1100);
-    //     }, 900);
-    //   };
-    // return () => {
-    //   window.onload = null;
-    // };
-
     const loadfunc = () => {
       console.log("%cwindow loaded", "color:#91bef0; font-size: 20px;");
+      setLoading(false);
       const frontierAll = document.getElementsByClassName(
         "frontier-all"
       )[0] as HTMLElement;
       const frontierHeart = document.getElementsByClassName(
         "frontier-heart"
       )[0] as HTMLElement;
-      const kilalalayout = document.getElementsByClassName(
-        "kilalalayout"
-      )[0] as HTMLElement;
       frontierHeart.style.animationPlayState = "running";
       setTimeout(() => {
         frontierAll.style.animationPlayState = "running";
-        kilalalayout.style.display = "block";
         setTimeout(() => {
           frontierAll.remove();
         }, 1100);
@@ -63,5 +40,9 @@ export function FrontierVanishLayout({
       clearInterval(checkInterv);
     };
   }, []);
-  return children;
+  return (
+    <loadingContext.Provider value={{ loading }}>
+      {children}
+    </loadingContext.Provider>
+  );
 }

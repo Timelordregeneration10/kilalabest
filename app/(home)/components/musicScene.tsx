@@ -1,20 +1,23 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
 import useWindow from "../../hooks/useWindow";
 import musicGIF from "../assets/music.gif";
 import Image from "next/image";
 import musicBG from "@/app/assets/musedash/music.webp";
+import { loadingContext } from "@/app/providers/frontierVanishLayout";
 
 export default function MusicScene() {
+  const { loading } = useContext(loadingContext);
   const isMobile = useWindow().width < 640;
   const [isHover, setIsHover] = useState(isMobile);
-  const router = useRouter();
   return (
     <div className="h-screen w-screen bg-music bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative overflow-hidden">
       {/* mainScene */}
-      <div className=" absolute top-0 left-0 w-screen h-screen animate-musicAnimation">
+      <div
+        className=" absolute top-0 left-0 w-screen h-screen animate-musicAnimation"
+        style={{ animationPlayState: loading ? "paused" : "running" }}
+      >
         <Image
           src={musicBG}
           width={1600}
@@ -122,7 +125,10 @@ export default function MusicScene() {
         </a>
 
         <div className=" relative text-white text-[12.5vw] sm:text-[6vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
-          <p className=" animate-bounce">
+          <p
+            className=" animate-bounce"
+            style={{ animationPlayState: loading ? "paused" : "running" }}
+          >
             ^{" "}
             <a
               href="https://music.163.com/#/user/home?id=479983448"

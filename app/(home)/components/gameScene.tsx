@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
 import useWindow from "../../hooks/useWindow";
 import hollowknight from "../../assets/game/hollowknight.webp";
 import endinglilies from "../../assets/game/endinglilies.webp";
@@ -12,6 +11,7 @@ import no11 from "../../assets/game/no11.webp";
 import Image from "next/image";
 import gameGIF from "../assets/game.gif";
 import { motion } from "framer-motion";
+import { loadingContext } from "@/app/providers/frontierVanishLayout";
 
 const gamesrc = [hollowknight, endinglilies, terreria, astlibra, skull, no11];
 
@@ -29,9 +29,9 @@ const gameList = [
 ];
 
 export default function GameScene() {
+  const { loading } = useContext(loadingContext);
   const isMobile = useWindow().width < 640;
   const [isHover, setIsHover] = useState(isMobile);
-  const router = useRouter();
 
   let beforeTransforms = [];
   let afterTransforms = [];
@@ -107,7 +107,10 @@ export default function GameScene() {
           className="relative w-[30vw] h-[30vw] transform-style-3d transition-[transform_width_height] duration-1000 "
           style={{ perspective: isHover ? "1000px" : "1000px" }}
         >
-          <div className="absolute w-full h-full transform-style-3d rotate-x-0 rotate-y-0 rotate-z-0 animate-turn24 ">
+          <div
+            className="absolute w-full h-full transform-style-3d rotate-x-0 rotate-y-0 rotate-z-0 animate-turn24 "
+            style={{ animationPlayState: loading ? "paused" : "running" }}
+          >
             {finalgamecubes.map((gamecube) => {
               return (
                 <div

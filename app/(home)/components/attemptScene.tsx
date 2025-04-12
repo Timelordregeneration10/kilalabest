@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import useWindow from "../../hooks/useWindow";
 import { motion } from "framer-motion";
+import { loadingContext } from "@/app/providers/frontierVanishLayout";
 
 const attempts = [
   { name: "sticky系列", url: "/attempt/sticky" },
@@ -14,19 +15,23 @@ const attempts = [
 ];
 
 export default function AttemptScene() {
+  const { loading } = useContext(loadingContext);
   const isMobile = useWindow().width < 640;
   const [isHover, setIsHover] = useState(isMobile);
 
-  const words = [
-    "如果真爱有颜色，那一定是蓝色！",
-    "蕾姆是最可爱的！",
-    "我喜欢蕾姆啊！",
-    "蕾姆是最棒的！",
-    "蕾姆是我一切温柔的来源和归属！",
-    "RMTYYDS!!",
-    "Rem suki!",
-    "蕾姆生日快乐！！！！！！！！！",
-  ];
+  const words = useMemo(
+    () => [
+      "如果真爱有颜色，那一定是蓝色！",
+      "蕾姆是最可爱的！",
+      "我喜欢蕾姆啊！",
+      "蕾姆是最棒的！",
+      "蕾姆是我一切温柔的来源和归属！",
+      "RMTYYDS!!",
+      "Rem suki!",
+      "蕾姆生日快乐！！！！！！！！！",
+    ],
+    []
+  );
   const [normalDanmu, setNormalDanmu] = useState<
     Array<{
       order: number;
@@ -50,7 +55,8 @@ export default function AttemptScene() {
       count: number;
     }>
   >([]);
-  function adddanmu() {
+
+  const adddanmu = useCallback(() => {
     let ran1 = Math.random();
     let ran2 = Math.random();
     let ran3 = Math.random();
@@ -87,9 +93,9 @@ export default function AttemptScene() {
         return templist;
       });
     }, 7000);
-  }
+  }, [words]);
 
-  function addToLeftBottomDanmu() {
+  const addToLeftBottomDanmu = useCallback(() => {
     let ranword = Math.floor(Math.random() * words.length);
     let colorran = `rgb(${Math.floor(Math.random() * 100 + 155)},${Math.floor(
       Math.random() * 100 + 155
@@ -121,9 +127,9 @@ export default function AttemptScene() {
         return templist;
       });
     }, 2000);
-  }
+  }, [words]);
 
-  function addRotateDanmu() {
+  const addRotateDanmu = useCallback(() => {
     let currentNum = 0;
     let rotateInterval = setInterval(() => {
       if (currentNum >= 12) {
@@ -155,9 +161,10 @@ export default function AttemptScene() {
 
       currentNum++;
     }, 50);
-  }
+  }, []);
 
   useEffect(() => {
+    if (loading) return;
     let danmuInterval = setInterval(() => {
       adddanmu();
     }, 300);
@@ -172,7 +179,7 @@ export default function AttemptScene() {
       clearInterval(danmuInterval2);
       clearInterval(danmuInterval3);
     };
-  }, []);
+  }, [loading, adddanmu, addToLeftBottomDanmu, addRotateDanmu]);
 
   return (
     <div className="h-screen w-screen bg-attempt bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative overflow-hidden">

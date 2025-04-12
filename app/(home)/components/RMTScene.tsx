@@ -6,7 +6,6 @@ import sisRem1Rem from "../../assets/rmt/sisRem1.webp";
 import sisRem2Rem from "../../assets/rmt/sisRem2.webp";
 import wangjiangRem from "../../assets/rmt/wangjiangRem.webp";
 import Image from "next/image";
-import { useContext } from "react";
 import { motion } from "framer-motion";
 import useScroll from "@/app/hooks/useScroll";
 
