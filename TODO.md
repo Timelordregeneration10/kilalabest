@@ -27,14 +27,16 @@
 + 贝塞尔曲线错误使用（如原神启动那个部分）
 + Rem gallery和Rem sticky key重复bug修复
 + 所有导航栏应有阴影防止看不清
-- 导航栏初始显示问题 => 加载动画？看看低网速下加载动画和骨架谁先出来，看看有没有ducument.ejs那样的加载文件 => SSR
++ 导航栏初始显示问题 => 加载动画？看看低网速下加载动画和骨架谁先出来，看看有没有ducument.ejs那样的加载文件 => SSR
 + RMT循环优化，固定RMT个数，实现无缝循环
 + attemptScene重复key修复
 + framer-motion whileInView属性没加单位导致的Invalid keyframe value for property transform: xxx(12.72287)bug修复
 + 香格里拉进游戏的时候那种旋转隧道（第六集13分钟前）特效实现
   + 框的阴影生成方法=>问ds svg阴影=>效果不如box-shadow，顺带一提text-shadow由于不好控制字大小以及难以居中舍弃了
-- 首屏加载页面可以用frontier特效
-  - 提示要可以访问github
++ 首屏加载页面可以用frontier特效
+  + 提示要可以访问github
+  + 如果卡的话设置frontier之外的元素加载完之前的visibility
+  + 不知道为什么坑爹的next好像useEffect里面window.onload或者document.onReadyStateChange设置不管用，dev环境永远无法触发window onload或者document readyState为complete的真实，于是天才般的interval每秒检测是否加载完成横空出世完美解决。
 - 性能优化，现在有点卡
 - 全放kilalabest网页加载速度影响
   - 新项目外链or全放kilalabest里

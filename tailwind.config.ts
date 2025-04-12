@@ -39,6 +39,30 @@ const config: Config = {
         graffiti: "url('./assets/drawing/graffiti/bg.jpg')",
       },
       keyframes: {
+        frontier: {
+          "0%": {
+            transform: "translateZ(-200px) rotate(0deg)",
+          },
+          "100%": {
+            transform: "translateZ(100px) rotate(360deg)",
+          },
+        },
+        frontierHeartExpand: {
+          "0%": {
+            clipPath: "circle(60px)",
+          },
+          "100%": {
+            clipPath: "circle(100%)",
+          },
+        },
+        frontierVanish: {
+          "0%": {
+            clipPath: "circle(100%)",
+          },
+          "100%": {
+            clipPath: "circle(0%)",
+          },
+        },
         streamer: {
           "100%": {
             backgroundPosition: "-400%",
@@ -395,7 +419,7 @@ const config: Config = {
             transform: "translateY(250vh)",
           },
         },
-        codeFalling2:{
+        codeFalling2: {
           "0%": {
             clipPath: "polygon(0 0%, 100% 0%, 100% 0%, 0% 0%)",
           },
@@ -411,6 +435,9 @@ const config: Config = {
         },
       },
       animation: {
+        frontier: "frontier 15s linear infinite",
+        frontierHeartExpand: "frontierHeartExpand 1s ease forwards",
+        frontierVanish: "frontierVanish 1s ease forwards",
         streamer: "streamer 5s infinite linear",
         personwebheart: "personwebheart 2s linear forwards",
         rmtcycle: "rmtcycle 5s linear infinite backwards",
