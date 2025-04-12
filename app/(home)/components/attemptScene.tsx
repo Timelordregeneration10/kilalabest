@@ -4,6 +4,7 @@ import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import useWindow from "../../hooks/useWindow";
 import { motion } from "framer-motion";
 import { loadingContext } from "@/app/providers/frontierVanishLayout";
+import useScroll from "@/app/hooks/useScroll";
 
 const attempts = [
   { name: "sticky系列", url: "/attempt/sticky" },
@@ -163,23 +164,78 @@ export default function AttemptScene() {
     }, 50);
   }, []);
 
+  const { scrollTop } = useScroll();
+  const { height: kilaInnerHeight } = useWindow();
+  const [animating, setAnimating] = useState(false);
+
   useEffect(() => {
     if (loading) return;
-    let danmuInterval = setInterval(() => {
-      adddanmu();
-    }, 300);
-    let danmuInterval2 = setInterval(() => {
-      addToLeftBottomDanmu();
-    }, 3000);
-    let danmuInterval3 = setInterval(() => {
-      addRotateDanmu();
-    }, 7000);
+    if (
+      scrollTop > 7.7 * kilaInnerHeight &&
+      scrollTop < 9.7 * kilaInnerHeight
+    ) {
+      setAnimating(true);
+    } else {
+      setAnimating(false);
+    }
+  }, [loading, scrollTop, kilaInnerHeight]);
+
+  const [danmuInterval1, setDanmuInterval1] = useState<NodeJS.Timeout | null>(
+    null
+  );
+  const [danmuInterval2, setDanmuInterval2] = useState<NodeJS.Timeout | null>(
+    null
+  );
+  const [danmuInterval3, setDanmuInterval3] = useState<NodeJS.Timeout | null>(
+    null
+  );
+
+  useEffect(() => {
+    setDanmuInterval1((i) => {
+      if (i) clearInterval(i);
+      return null;
+    });
+    setDanmuInterval2((i) => {
+      if (i) clearInterval(i);
+      return null;
+    });
+    setDanmuInterval3((i) => {
+      if (i) clearInterval(i);
+      return null;
+    });
+    if (!animating) {
+      return;
+    }
+    setDanmuInterval1(
+      setInterval(() => {
+        adddanmu();
+      }, 300)
+    );
+    setDanmuInterval2(
+      setInterval(() => {
+        addToLeftBottomDanmu();
+      }, 3000)
+    );
+    setDanmuInterval3(
+      setInterval(() => {
+        addRotateDanmu();
+      }, 7000)
+    );
     return () => {
-      clearInterval(danmuInterval);
-      clearInterval(danmuInterval2);
-      clearInterval(danmuInterval3);
+      setDanmuInterval1((i) => {
+        if (i) clearInterval(i);
+        return null;
+      });
+      setDanmuInterval2((i) => {
+        if (i) clearInterval(i);
+        return null;
+      });
+      setDanmuInterval3((i) => {
+        if (i) clearInterval(i);
+        return null;
+      });
     };
-  }, [loading, adddanmu, addToLeftBottomDanmu, addRotateDanmu]);
+  }, [animating, adddanmu, addToLeftBottomDanmu, addRotateDanmu]);
 
   return (
     <div className="h-screen w-screen bg-attempt bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative overflow-hidden">

@@ -175,6 +175,20 @@ export default function ApplicationScene() {
     }
   }, [kilaInnerWidth, scrollTop, kilaInnerHeight]);
 
+  const [animationPlayState, setAnimationPlayState] = useState("paused");
+
+  useEffect(() => {
+    if (loading) return;
+    if (
+      scrollTop > 4.7 * kilaInnerHeight &&
+      scrollTop < 6.7 * kilaInnerHeight
+    ) {
+      setAnimationPlayState("running");
+    } else {
+      setAnimationPlayState("paused");
+    }
+  }, [loading, scrollTop, kilaInnerHeight]);
+
   return (
     <div
       className="h-[300vh] w-screen bg-application bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative"
@@ -215,7 +229,7 @@ export default function ApplicationScene() {
         >
           <div
             className="absolute w-full h-full transform-style-3d rotate-x-0 rotate-y-0 rotate-z-0 animate-turn24 "
-            style={{ animationPlayState: loading ? "paused" : "running" }}
+            style={{ animationPlayState }}
           >
             {finalgamecubes.map((gamecube) => {
               return (

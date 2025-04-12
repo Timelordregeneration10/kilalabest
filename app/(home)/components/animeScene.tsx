@@ -23,8 +23,20 @@ export default function AnimeScene() {
   const [isHover, setIsHover] = useState(isMobile);
   const aiyiRems = sukis;
   const { scrollTop } = useScroll();
-
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
+  const [animationPlayState, setAnimationPlayState] = useState("paused");
+
+  useEffect(() => {
+    if (loading) return;
+    if (
+      scrollTop > 9.7 * kilaInnerHeight &&
+      scrollTop < 11.7 * kilaInnerHeight
+    ) {
+      setAnimationPlayState("running");
+    } else {
+      setAnimationPlayState("paused");
+    }
+  }, [loading, scrollTop, kilaInnerHeight]);
 
   useEffect(() => {
     if (stickyTopRef.current) {
@@ -165,7 +177,7 @@ export default function AnimeScene() {
         <div className="order-2 sm:order-1 relative text-white text-[11.5vw] sm:text-[6vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] ">
           <p
             className=" animate-bounce"
-            style={{ animationPlayState: loading ? "paused" : "running" }}
+            style={{ animationPlayState }}
           >
             %{" "}
             <a

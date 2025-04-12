@@ -6,6 +6,7 @@ import TWEEN from "@tweenjs/tween.js";
 import useWindow from "../../hooks/useWindow";
 import { motion } from "framer-motion";
 import { loadingContext } from "@/app/providers/frontierVanishLayout";
+import useScroll from "@/app/hooks/useScroll";
 
 const projects = [
   {
@@ -36,10 +37,28 @@ export default function ProjectScene() {
   const isMobile = useWindow().width < 640;
   const [isHover, setIsHover] = useState(isMobile);
 
-  const {loading}=useContext(loadingContext);
+  const { loading } = useContext(loadingContext);
+  const { scrollTop } = useScroll();
+  const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
+  const [animationPlayState, setAnimationPlayState] = useState("paused");
+  const [animationId, setAnimationId] = useState(0);
 
   useEffect(() => {
-    if(loading) return;
+    if (loading) return;
+    // 扩大范围，增加渲染缓冲时间
+    if (
+      scrollTop > (3.7 - 1) * kilaInnerHeight &&
+      scrollTop < (5.7 + 1) * kilaInnerHeight
+    ) {
+      setAnimationPlayState("running");
+    } else {
+      setAnimationPlayState("paused");
+      cancelAnimationFrame(animationId);
+    }
+  }, [loading, scrollTop, kilaInnerHeight, animationId]);
+
+  useEffect(() => {
+    if (loading) return;
     const scene = new THREE.Scene();
     scene.background = null;
     const texloader = new THREE.TextureLoader();
@@ -128,19 +147,29 @@ export default function ProjectScene() {
       });
     }
     function render() {
-      //官方的
-      groupGFD.children.forEach((mesh: any) => {
-        mesh.rotateX(mesh.scale.x * 0.01);
-        mesh.rotateY(mesh.scale.y * 0.01);
-        mesh.rotateZ(mesh.scale.z * 0.01);
-      });
+      if (animationPlayState === "paused") {
+      } else {
+        //官方的
+        groupGFD.children.forEach((mesh: any) => {
+          mesh.rotateX(mesh.scale.x * 0.01);
+          mesh.rotateY(mesh.scale.y * 0.01);
+          mesh.rotateZ(mesh.scale.z * 0.01);
+        });
 
-      group.update();
-      renderer.render(scene, camera);
-      requestAnimationFrame(render);
+        group.update();
+        renderer.render(scene, camera);
+      }
+      setAnimationId(requestAnimationFrame(render));
     }
     render();
-  }, [loading]);
+    const warning = threeCubeRef.current;
+    return () => {
+      if (warning) {
+        warning.removeChild(renderer.domElement);
+      }
+      renderer.dispose();
+    };
+  }, [loading, animationPlayState]);
 
   return (
     <div className="h-screen w-screen bg-project bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">

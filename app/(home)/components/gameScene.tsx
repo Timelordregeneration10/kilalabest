@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useWindow from "../../hooks/useWindow";
 import hollowknight from "../../assets/game/hollowknight.webp";
 import endinglilies from "../../assets/game/endinglilies.webp";
@@ -12,6 +12,7 @@ import Image from "next/image";
 import gameGIF from "../assets/game.gif";
 import { motion } from "framer-motion";
 import { loadingContext } from "@/app/providers/frontierVanishLayout";
+import useScroll from "@/app/hooks/useScroll";
 
 const gamesrc = [hollowknight, endinglilies, terreria, astlibra, skull, no11];
 
@@ -99,6 +100,22 @@ export default function GameScene() {
   }
   const finalsmallgamecubes = smallgamecubes;
 
+  const { scrollTop } = useScroll();
+  const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
+  const [animationPlayState, setAnimationPlayState] = useState("paused");
+
+  useEffect(() => {
+    if (loading) return;
+    if (
+      scrollTop > 10.7 * kilaInnerHeight &&
+      scrollTop < 12.7 * kilaInnerHeight
+    ) {
+      setAnimationPlayState("running");
+    } else {
+      setAnimationPlayState("paused");
+    }
+  }, [loading, scrollTop, kilaInnerHeight]);
+
   return (
     <div className="h-screen w-screen bg-game bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
       {/* mainScene */}
@@ -109,7 +126,7 @@ export default function GameScene() {
         >
           <div
             className="absolute w-full h-full transform-style-3d rotate-x-0 rotate-y-0 rotate-z-0 animate-turn24 "
-            style={{ animationPlayState: loading ? "paused" : "running" }}
+            style={{ animationPlayState }}
           >
             {finalgamecubes.map((gamecube) => {
               return (
@@ -138,7 +155,10 @@ export default function GameScene() {
               );
             })}
           </div>
-          <div className="absolute w-[20%] h-[20%] left-[40%] top-[40%] transform-style-3d rotate-x-0 rotate-y-0 rotate-z-0 animate-turn24 ">
+          <div
+            className="absolute w-[20%] h-[20%] left-[40%] top-[40%] transform-style-3d rotate-x-0 rotate-y-0 rotate-z-0 animate-turn24 "
+            style={{ animationPlayState }}
+          >
             {finalsmallgamecubes.map((gamecube) => {
               return (
                 <Image

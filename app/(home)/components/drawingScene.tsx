@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import useWindow from "../../hooks/useWindow";
 import { motion } from "framer-motion";
 import { loadingContext } from "@/app/providers/frontierVanishLayout";
+import useScroll from "@/app/hooks/useScroll";
 
 const drawings = [
   { name: "JC迷宫", url: "https://timelord.cn?to=maze" },
@@ -20,6 +21,25 @@ export default function DrawingScene() {
   const isMobile = useWindow().width < 640;
   const [isHover, setIsHover] = useState(isMobile);
   const router = useRouter();
+
+  const { scrollTop } = useScroll();
+  const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
+  const [animationPlayState, setAnimationPlayState] = useState("paused");
+  const [animationId, setAnimationId] = useState(0);
+
+  useEffect(() => {
+    if (loading) return;
+    // 扩大范围，增加渲染缓冲时间
+    if (
+      scrollTop > (11.7 - 1) * kilaInnerHeight &&
+      scrollTop < (13.7 + 1) * kilaInnerHeight
+    ) {
+      setAnimationPlayState("running");
+    } else {
+      setAnimationPlayState("paused");
+      cancelAnimationFrame(animationId);
+    }
+  }, [loading, scrollTop, kilaInnerHeight, animationId]);
 
   useEffect(() => {
     if (loading) return;
@@ -99,21 +119,34 @@ export default function DrawingScene() {
     }
     const clock = new THREE.Clock();
     function render() {
-      //官方的
-      const t = clock.getDelta();
-      groupGFD.children.forEach((mesh: any) => {
-        mesh.position.y -= t * 30;
-        if (mesh.position.y < -150) {
-          mesh.position.y = 150;
-        }
-      });
-
-      group.update();
-      renderer.render(scene, camera);
-      requestAnimationFrame(render);
+      if (animationPlayState === "paused") {
+      } else {
+        //官方的
+        const t = clock.getDelta();
+        groupGFD.children.forEach((mesh: any) => {
+          mesh.position.y -= t * 30;
+          if (mesh.position.y < -150) {
+            mesh.position.y = 150;
+          }
+        });
+        group.update();
+        renderer.render(scene, camera);
+      }
+      setAnimationId(requestAnimationFrame(render));
     }
     render();
-  }, [loading]);
+    const warning = threeRainRef.current;
+    return () => {
+      if (warning) {
+        warning.removeChild(renderer.domElement);
+      }
+      renderer.dispose();
+      groupGFD.children.forEach((mesh: any) => {
+        mesh.material.dispose();
+        mesh.geometry.dispose();
+      });
+    };
+  }, [loading, animationPlayState]);
 
   return (
     <div className="h-screen w-screen bg-drawing bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">

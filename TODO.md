@@ -35,9 +35,18 @@
   + 框的阴影生成方法=>问ds svg阴影=>效果不如box-shadow，顺带一提text-shadow由于不好控制字大小以及难以居中舍弃了
 + 首屏加载页面可以用frontier特效
   + 提示要可以访问github
-  - 如果卡的话设置frontier之外的元素加载完之前的visibility => 还是得设置display => 设置display为none的话字体图片什么的就不会加载了草，两难境地
+  + 如果卡的话设置frontier之外的元素加载完之前的visibility => 还是得设置display => 设置display为none的话字体图片什么的就不会加载了草，两难境地 => 根据是否loading控制动画和视频和three的播放
+    + 控制视频播放
+    + 控制动画播放
+    + 控制js动画播放
+    + 控制three播放
   + 不知道为什么坑爹的next好像useEffect里面window.onload或者document.onReadyStateChange设置不管用，dev环境永远无法触发window onload或者document readyState为complete的真实，于是天才般的interval每秒检测是否加载完成横空出世完美解决。
-- 性能优化，现在有点卡
++ 性能优化，现在有点卡
+  + 根据scrollTop控制动画和视频和three播放
+    + 控制视频播放
+    + 控制动画播放
+    + 控制js动画播放
+    + 控制three播放
 - 全放kilalabest网页加载速度影响
   - 新项目外链or全放kilalabest里
     - 旧项目如attempt和application-gallery需要迁移到新仓库还是现在这样

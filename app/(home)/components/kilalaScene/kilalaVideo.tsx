@@ -13,18 +13,13 @@ export default function KilalaVideo() {
   useEffect(() => {
     if (loading) return;
     if (videoRef.current) {
-      videoRef.current.play();
-    }
-  }, [loading]);
-  useEffect(() => {
-    if (videoRef.current) {
       if (scrollTop > 2 * kilaInnerHeight) {
         videoRef.current.pause();
       } else {
         videoRef.current.play();
       }
     }
-  }, [kilaInnerWidth, scrollTop, kilaInnerHeight]);
+  }, [loading, kilaInnerWidth, scrollTop, kilaInnerHeight]);
   return (
     <video
       src="/kilalascene.mp4"
