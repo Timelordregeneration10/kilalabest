@@ -5,17 +5,17 @@ export function FrontierLayout({ children }: { children: React.ReactNode }) {
         className="frontier-all fixed z-[1000] top-0 left-0 w-screen h-screen bg-black overflow-hidden flex justify-center items-center perspective-[100px] transform-style-3d animate-frontierVanish"
         style={{ animationPlayState: "paused" }}
       >
-        <div className="absolute top-[12vh] left-0 w-full text-center text-white text-[3.5vmax] font-bold">
+        <div className="absolute z-10 top-[12vh] left-0 w-full text-center text-white text-[3.5vmax] font-bold">
           loading...
         </div>
         <div className="absolute bottom-0 right-0 text-[#ffc6ff] text-xs p-4">
           ⚠本网站部署于Github，确保您的网络环境可以正常访问Github⚠
         </div>
+        <div
+          className="frontier-heart absolute top-0 left-0 z-20 min-w-[100vw] min-h-screen w-screen h-screen bg-[#91bef0] animate-frontierHeartExpand"
+          style={{ animationPlayState: "paused" }}
+        ></div>
         <div className=" relative w-[300px] h-[300px] flex justify-center items-center transform-style-3d ">
-          <div
-            className="frontier-heart min-w-[100vw] min-h-screen w-screen h-screen bg-[#91bef0] animate-frontierHeartExpand"
-            style={{ animationPlayState: "paused" }}
-          ></div>
           {Array(30)
             .fill(0)
             .map((_, i) => (

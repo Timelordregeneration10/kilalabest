@@ -19,16 +19,16 @@ export function FrontierVanishLayout({
       const frontierAll = document.getElementsByClassName(
         "frontier-all"
       )[0] as HTMLElement;
-      const frontierHeart = document.getElementsByClassName(
-        "frontier-heart"
-      )[0] as HTMLElement;
-      frontierHeart.style.animationPlayState = "running";
+      // const frontierHeart = document.getElementsByClassName(
+      //   "frontier-heart"
+      // )[0] as HTMLElement;
+      // frontierHeart.style.animationPlayState = "running";
       setTimeout(() => {
         frontierAll.style.animationPlayState = "running";
         setTimeout(() => {
           frontierAll.remove();
         }, 1100);
-      }, 900);
+      }, 100);
     };
     const checkInterv = setInterval(() => {
       if (typeof document === "object" && document.readyState === "complete") {
