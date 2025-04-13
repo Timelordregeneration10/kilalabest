@@ -44,6 +44,7 @@ function useScroll() {
         }
       };
       document.addEventListener("scroll", scrollHandler);
+      scrollHandler();
       return () => {
         document.removeEventListener("scroll", scrollHandler);
       };
