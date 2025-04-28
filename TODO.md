@@ -47,10 +47,10 @@
     + 控制动画播放
     + 控制js动画播放
     + 控制three播放
-- 全放kilalabest网页加载速度影响
-  - 新项目外链or全放kilalabest里
-    - 旧项目如attempt和application-gallery需要迁移到新仓库还是现在这样
-  - 图片放图床还是kilalabest里
++ 全放kilalabest网页加载速度影响
+  + 新项目外链or全放kilalabest里 => 全放kilalabest也完全没问题，next.js默认支持基于路由的代码拆分，每个页面（包括子页面）会被打包为独立的 JavaScript 文件，仅在用户访问时按需加载
+    + 旧项目如attempt和application-gallery需要迁移到新仓库还是现在这样 => 就现在这样
+  + 图片放图床还是kilalabest里 => next自带的Image标签优化更胜一筹
 
 # 学习
 - ## glitch (参见fe-study-glitch)
@@ -60,6 +60,11 @@
 # 3D Rem动作
 
 # github图床见知乎收藏
++ cdn加速：jsDelivr 实现方法：
+  + 假设图片存储在 GitHub 仓库 https://github.com/用户名/仓库名/blob/main/images/test.jpg。
+  + CDN 加速链接格式为：https://cdn.jsdelivr.net/gh/用户名/仓库名@分支名/images/test.jpg
+  + （例如：https://cdn.jsdelivr.net/gh/yourname/your-repo@main/images/test.jpg）。
+  + 优势：全球 CDN 节点加速，加载速度比直接访问 GitHub 快 2-3 倍。
 
 # 特效
 - 电子羊歌词特效复刻<a href="https://www.bilibili.com/video/BV1Bz411q7p7">链接</a>DNA双螺旋黑色背景粉色发光
