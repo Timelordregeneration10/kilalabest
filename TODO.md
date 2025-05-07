@@ -57,6 +57,7 @@
 - ## glitch (参见fe-study-glitch)
 - ## three-shader => to be continued (参见fe-study-three-shader)- 学完之后看黑洞代码
 - ## live2D Rem (参见fe-study-live2D)
+- ## jiejoe svg等
 
 # 3D Rem动作
 
