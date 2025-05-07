@@ -54,7 +54,7 @@
   + 图片放图床还是kilalabest里 => next自带的Image标签优化更胜一筹
 
 # 学习
-- ## GSAP (参见fe-study-glitch)
+- ## GSAP (参见fe-study-GSAP)
 - ## glitch (参见fe-study-glitch)
 - ## three-shader => to be continued (参见fe-study-three-shader)- 学完之后看黑洞代码
 - ## live2D Rem (参见fe-study-live2D)
