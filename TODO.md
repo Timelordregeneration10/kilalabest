@@ -7,6 +7,17 @@
 + ​移动端适配​
 * lottiefiles 酷炫灵动GIF，svg
 
+# 学习
+* 可借助AI理解
+- ## GSAP (参见fe-study-GSAP)
+- ## glitch (参见fe-study-glitch)
+- ## three-shader => to be continued (参见fe-study-three-shader)- 学完之后看黑洞代码
+- ## live2D Rem (参见fe-study-live2D)
+- ## jiejoe svg等
+- 网站
+  * 网站：awwwards网站获取灵感
+  * 网站获取：问ds要awwwards这样的设计/得到灵感的网站推荐
+
 # 结构
 - 导航栏分顶部导航栏和侧边导航栏，顶部照常，侧边可收起样式重新想
 - music，anime放新的about me里面，剩余都应该有具体页面，且首页只放intro
@@ -52,13 +63,6 @@
   + 新项目外链or全放kilalabest里 => 全放kilalabest也完全没问题，next.js默认支持基于路由的代码拆分，每个页面（包括子页面）会被打包为独立的 JavaScript 文件，仅在用户访问时按需加载
     + 旧项目如attempt和application-gallery需要迁移到新仓库还是现在这样 => 就现在这样
   + 图片放图床还是kilalabest里 => next自带的Image标签优化更胜一筹
-
-# 学习
-- ## GSAP (参见fe-study-GSAP)
-- ## glitch (参见fe-study-glitch)
-- ## three-shader => to be continued (参见fe-study-three-shader)- 学完之后看黑洞代码
-- ## live2D Rem (参见fe-study-live2D)
-- ## jiejoe svg等
 
 # 3D Rem动作
 
