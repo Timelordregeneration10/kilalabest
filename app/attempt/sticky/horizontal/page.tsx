@@ -1,10 +1,10 @@
 "use client";
 
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
 // import IaiyiRems from "@/app/constants/aiyiRem";
 import useWindow from "@/app/hooks/useWindow";
-import { stickyScrollContext } from "../providers/stickyProvider";
+import useScroll from "@/app/hooks/useScroll";
 export default function Page() {
   // const aiyiRems = IaiyiRems;
 
@@ -16,7 +16,7 @@ export default function Page() {
     return temp;
   }, []);
 
-  const { scrollTop } = useContext(stickyScrollContext);
+  const { scrollTop } = useScroll();
 
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
   // control stickyRef translateX

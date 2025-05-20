@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import useWindow from "@/app/hooks/useWindow";
 import getImageSizeByUrl from "@/app/utils/getImageSizeByUrl";
+import useScroll from "@/app/hooks/useScroll";
 export default function Page() {
   const [graffitis, setGraffitis] = useState<
     Array<{ width: number; height: number; url: string }>
@@ -44,9 +45,7 @@ export default function Page() {
     };
   }, []);
 
-  const [scrollTop, setScrollTop] = useState(0);
-
-  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const { scrollTop } = useScroll();
 
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
   // control stickyRef translateX
@@ -77,13 +76,6 @@ export default function Page() {
   const [selectedGraffiti, setSelectedGraffiti] = useState("");
 
   return (
-    <div
-      className="w-screen h-screen overflow-x-hidden overflow-y-scroll no-scrollbar"
-      ref={scrollRef}
-      onScroll={() => {
-        if (scrollRef.current) setScrollTop(scrollRef.current.scrollTop);
-      }}
-    >
       <div
         className="w-full min-h-screen relative bg-graffiti bg-cover bg-center bg-fixed"
         ref={stickyRef}
@@ -135,6 +127,5 @@ export default function Page() {
           </div>
         )}
       </div>
-    </div>
   );
 }

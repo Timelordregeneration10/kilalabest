@@ -38,7 +38,7 @@
 - 比如想让用户知道点击可以跳转到某个页面，可以在鼠标悬浮时出现一个跟随鼠标的icon
 - 换个加载界面，现在的到后面就太卡了，这个页面的模糊感觉不错<a href="https://www.cnblogs.com/lfri/p/12212878.html">链接</a>
 + sticky结束处理，参考showmecode
-  + body神力让fixed成神了，sticky基本推出历史舞台
+  + body神力让fixed成神了，sticky基本推出历史舞台 => 才怪，sticky在版本支持情况下是fixed实现横向滚动的上位存在好吧，详见app\attempt\sticky\thought.md
 + 贝塞尔曲线错误使用（如原神启动那个部分）
 + Rem gallery和Rem sticky key重复bug修复
 + 所有导航栏应有阴影防止看不清

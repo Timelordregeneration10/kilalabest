@@ -21,10 +21,15 @@ sticky不生效=>两个坑：sticky元素高度和滚动元素高度相同，h-a
 但是反过来说只要整个页面像timelord.cn一样都在box-all这个滚动容器内，那么sticky将非常丝滑地横向滚动，而attempt的sticky没有这么做是因为保持页面的纯净，不应该让全局的footer进入局部的sticky页面
 还有关于sticky的一些补充：首先sticky的触发条件是有一个滚动容器，容器内容超出容器高度，然后sticky元素则会在轮到自己的时候黏住，直到极限要超出父元素范围了才走，如果父元素是滚动容器本身，那么轮到sticky之后除非滚完了，都会一直黏住，如果父元素是滚动容器中的一个元素，那么sticky元素抵达这个父元素的边界了就不粘了和父元素一起走了
 sticky还有一点局限就是sticky元素要等抵达父元素边界了之后会恢复static，所以attempt里的sticky的horizontal的滚动结束的那里才那么奇怪像是收成了一绺
+！！注意，一个 sticky 元素会“固定”在离它最近的一个拥有“滚动机制”的祖先上（当该祖先的 overflow 是 hidden、scroll、auto 或 overlay 时），即便这个祖先不是最近的真实可滚动祖先。这有效地抑制了任何“sticky”行为！！
+🤬↑这就导致了attempt里的sticky如果不是在页面里的滚动容器怎么都不生效，因为我的kilalaLayout里的外层div有overflowX:hidden所以sticky粘这上面去了而不是body，导致我一直以为body不被认可滚动元素
 
 # body神力
 如果一个元素长宽铺满了屏幕，且有fixed属性，那么zindex更小的任何元素都无法滚动，除了body/document.documentElement
 那么此时如果把要横向滚动的元素放在fixed的元素里，横向滚动的元素就将可以交互，也就实现了又可以滚又可以交互
-但是sticky的情况并不承认body是滚动元素
+但是sticky的情况并不承认body是滚动元素 => 见↑🤬 => 其实认可
 
-# fixed于是成神
+# fixed于是成神❌
+# sticky于是成神
+只要计算好横向滚动元素的宽度，设成空白区域的高度，然后绑定translateX就行了
+fixed实际上就是模拟了sticky，感觉用fixed是因为当时没有sticky，以及为了兼容性
