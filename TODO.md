@@ -16,6 +16,8 @@
 - ## jiejoe svg等
 - 网站
   * 网站：awwwards网站获取灵感
+    * <a href="https://gsap.com/demos/">gsap demo</a>
+    * <a href="https://gsap.com/showcase/">gsap showcase</a>
   * 网站获取：问ds要awwwards这样的设计/得到灵感的网站推荐
 
 # 结构
@@ -35,7 +37,8 @@
 - 比如展示做过的项目的列表时，要展示项目预览更好的方法可以是鼠标悬浮时在鼠标位置处显示预览，见https://www.jiejoe.com/home的video部分
 - 比如想让用户知道点击可以跳转到某个页面，可以在鼠标悬浮时出现一个跟随鼠标的icon
 - 换个加载界面，现在的到后面就太卡了，这个页面的模糊感觉不错<a href="https://www.cnblogs.com/lfri/p/12212878.html">链接</a>
-- sticky结束处理，参考showmecode
++ sticky结束处理，参考showmecode
+  + body神力让fixed成神了，sticky基本推出历史舞台
 + 贝塞尔曲线错误使用（如原神启动那个部分）
 + Rem gallery和Rem sticky key重复bug修复
 + 所有导航栏应有阴影防止看不清
