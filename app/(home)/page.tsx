@@ -27,7 +27,7 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div className=" min-h-screen w-full overflow-hidden">
       <KilalaScene></KilalaScene>
       <RMTScene></RMTScene>
       <ProjectScene></ProjectScene>
@@ -41,6 +41,6 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </>
+    </div>
   );
 }

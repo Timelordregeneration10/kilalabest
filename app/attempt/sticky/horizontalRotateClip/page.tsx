@@ -24,21 +24,21 @@ export default function Page() {
   // control stickyRef translateX
   useEffect(() => {
     if (stickyTopRef.current && scrollRef.current) {
-      stickyTopRef.current.style.transform = `rotate(${rotateDEG}deg) translateX(-${
+      stickyTopRef.current.style.transform = `translateX(-${
         scrollTop >= stickyTopRef.current.scrollWidth - kilaInnerWidth
           ? stickyTopRef.current.scrollWidth - kilaInnerWidth
           : scrollTop
       }px)`;
     }
     if (stickyMiddleRef.current && scrollRef.current) {
-      stickyMiddleRef.current.style.transform = `rotate(${rotateDEG}deg) translateX(-${
+      stickyMiddleRef.current.style.transform = `translateX(-${
         stickyMiddleRef.current.scrollWidth - kilaInnerWidth - scrollTop <= 0
           ? 0
           : stickyMiddleRef.current.scrollWidth - kilaInnerWidth - scrollTop
       }px)`;
     }
     if (stickyBottomRef.current && scrollRef.current) {
-      stickyBottomRef.current.style.transform = `rotate(${rotateDEG}deg) translateX(-${
+      stickyBottomRef.current.style.transform = `translateX(-${
         scrollTop >= stickyBottomRef.current.scrollWidth - kilaInnerWidth
           ? stickyBottomRef.current.scrollWidth - kilaInnerWidth
           : scrollTop
@@ -92,72 +92,70 @@ export default function Page() {
       ref={scrollRef}
     >
       <div
-        className={` sticky left-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 `}
+        className="sticky top-0 w-full overflow-hidden"
         style={{
-          top:
-            String(
-              (100 - stickyHeightVH) / 2 -
-                stickyHeightVH / Math.cos((rotateDEG * Math.PI) / 180)
-            ) + "vh",
-          height: String(stickyHeightVH) + "vh",
+          transform: `translateY(${
+            -(3 * stickyHeightVH - 100) / 2
+          }vh) rotate(${rotateDEG}deg)`,
         }}
-        ref={stickyTopRef}
       >
-        {shuffledAiyiRems0.map((aiyiRem: string, index: number) => (
-          <div className=" aspect-[9/16] h-full" key={aiyiRem + index}>
-            <Image
-              src={aiyiRem}
-              width={200}
-              height={300}
-              className="w-full h-full object-cover"
-              alt="aiyiRem"
-            ></Image>
-          </div>
-        ))}
-      </div>
-      <div
-        className={` sticky left-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 `}
-        style={{
-          top: String((100 - stickyHeightVH) / 2) + "vh",
-          height: String(stickyHeightVH) + "vh",
-        }}
-        ref={stickyMiddleRef}
-      >
-        {shuffledAiyiRems1.map((aiyiRem: string, index: number) => (
-          <div className=" aspect-[9/16] h-full" key={aiyiRem + index}>
-            <Image
-              src={aiyiRem}
-              width={200}
-              height={300}
-              className="w-full h-full object-cover"
-              alt="aiyiRem"
-            ></Image>
-          </div>
-        ))}
-      </div>
-      <div
-        className={` sticky flex w-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 `}
-        style={{
-          top:
-            String(
-              (100 - stickyHeightVH) / 2 +
-                stickyHeightVH / Math.cos((rotateDEG * Math.PI) / 180)
-            ) + "vh",
-          height: String(stickyHeightVH) + "vh",
-        }}
-        ref={stickyBottomRef}
-      >
-        {shuffledAiyiRems2.map((aiyiRem: string, index: number) => (
-          <div className=" aspect-[9/16] h-full" key={aiyiRem + index}>
-            <Image
-              src={aiyiRem}
-              width={200}
-              height={300}
-              className="w-full h-full object-cover"
-              alt="aiyiRem"
-            ></Image>
-          </div>
-        ))}
+        <div
+          className={` left-0 flex w-auto transition-transform ease-[cubic-bezier(0.33,1,0.33,1)] duration-1000 `}
+          style={{
+            height: String(stickyHeightVH) + "vh",
+          }}
+          ref={stickyTopRef}
+        >
+          {shuffledAiyiRems0.map((aiyiRem: string, index: number) => (
+            <div className=" aspect-[9/16] h-full" key={aiyiRem + index}>
+              <Image
+                src={aiyiRem}
+                width={200}
+                height={300}
+                className="w-full h-full object-cover"
+                alt="aiyiRem"
+              ></Image>
+            </div>
+          ))}
+        </div>
+        <div
+          className={` left-0 flex w-auto transition-transform ease-[cubic-bezier(0.33,1,0.33,1)] duration-1000 `}
+          style={{
+            height: String(stickyHeightVH) + "vh",
+          }}
+          ref={stickyMiddleRef}
+        >
+          {shuffledAiyiRems1.map((aiyiRem: string, index: number) => (
+            <div className=" aspect-[9/16] h-full" key={aiyiRem + index}>
+              <Image
+                src={aiyiRem}
+                width={200}
+                height={300}
+                className="w-full h-full object-cover"
+                alt="aiyiRem"
+              ></Image>
+            </div>
+          ))}
+        </div>
+        <div
+          className={` flex w-auto transition-transform ease-[cubic-bezier(0.33,1,0.33,1)] duration-1000 `}
+          style={{
+            height: String(stickyHeightVH) + "vh",
+          }}
+          ref={stickyBottomRef}
+        >
+          {shuffledAiyiRems2.map((aiyiRem: string, index: number) => (
+            <div className=" aspect-[9/16] h-full" key={aiyiRem + index}>
+              <Image
+                src={aiyiRem}
+                width={200}
+                height={300}
+                className="w-full h-full object-cover"
+                alt="aiyiRem"
+              ></Image>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

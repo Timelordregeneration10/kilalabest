@@ -162,6 +162,7 @@
   - 0.5s+cubic-bezier(0.25,0.75,0.85,1)缓慢跟随
   - 0.5s+cubic-bezier(0.25,1.25,0.25,1.25)快速跟随且有物理惯性
   - 0.2s+cubic-bezier(0.33,1,0.33,1)快速跟随(第二个0.33其实＜1就行)
+  - 1s+cubic-bezier(0.33,1,0.33,1)阻尼滚动用过的都说好
 + 研究useSpring => 大部分丝滑动画不需要弹簧物理效果
 + 好用的tiny spring库：<a href="https://github.com/skevy/wobble/blob/develop/demos/1-chat-heads/index.tsx">wobble</a>
 
