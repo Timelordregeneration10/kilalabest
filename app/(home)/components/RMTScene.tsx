@@ -161,7 +161,61 @@ export default function RMTScene() {
             width={Rem.rwidth}
             height={Rem.rheight}
             alt={Rem.rid}
-            className={` ${Rem.fwidth} ${Rem.fheight} ${Rem.rzIndex} absolute top-0 ${Rem.rposition} pointer-events-none transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-500 opacity-95 `}
+            className={` ${Rem.fwidth} ${Rem.fheight} ${Rem.rzIndex} absolute top-0 ${Rem.rposition} pointer-events-none transition-transform delay-100 ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-500 opacity-95 `}
+            style={{
+              transform: `translate(${
+                ((scrollTop > windowHeight * 4 ? windowHeight * 4 : scrollTop) /
+                  20) *
+                  windowScaleX *
+                  Rem.rscaleX +
+                Rem.rtranslateX
+              }vmax,${
+                ((scrollTop > windowHeight * 4 ? windowHeight * 4 : scrollTop) /
+                  20) *
+                  windowScaleY *
+                  Rem.rscaleY +
+                Rem.rtranslateY
+              }vmin)`,
+            }}
+          ></Image>
+        );
+      })}
+      {Rems.map((Rem) => {
+        return (
+          <Image
+            key={Rem.rid}
+            src={Rem.rsrc}
+            width={Rem.rwidth}
+            height={Rem.rheight}
+            alt={Rem.rid}
+            className={` ${Rem.fwidth} ${Rem.fheight} ${Rem.rzIndex} absolute top-0 ${Rem.rposition} pointer-events-none transition-transform delay-[50ms] mix-blend-difference ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-500 opacity-95 `}
+            style={{
+              transform: `translate(${
+                ((scrollTop > windowHeight * 4 ? windowHeight * 4 : scrollTop) /
+                  20) *
+                  windowScaleX *
+                  Rem.rscaleX +
+                Rem.rtranslateX
+              }vmax,${
+                ((scrollTop > windowHeight * 4 ? windowHeight * 4 : scrollTop) /
+                  20) *
+                  windowScaleY *
+                  Rem.rscaleY +
+                Rem.rtranslateY
+              }vmin)`,
+            }}
+          ></Image>
+        );
+      })}
+      {Rems.map((Rem) => {
+        return (
+          <Image
+            key={Rem.rid}
+            src={Rem.rsrc}
+            width={Rem.rwidth}
+            height={Rem.rheight}
+            alt={Rem.rid}
+            className={` ${Rem.fwidth} ${Rem.fheight} ${Rem.rzIndex} absolute top-0 ${Rem.rposition} pointer-events-none transition-transform mix-blend-lighten ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-500 opacity-95 `}
             style={{
               transform: `translate(${
                 ((scrollTop > windowHeight * 4 ? windowHeight * 4 : scrollTop) /
