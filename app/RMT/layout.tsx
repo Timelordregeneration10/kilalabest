@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "RMT",
@@ -31,5 +32,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <canvas
+        id="live2d"
+        width="300"
+        height="600"
+        style={{ position: "fixed", bottom: 0, zIndex: 98 }}
+      ></canvas>
+      <Script src="https://timelordregeneration10.github.io/live2d/attempt/cubism2/compressed/lib/live2d.js" />
+      <Script src="/loadlive2d.js" />
+    </>
+  );
 }
