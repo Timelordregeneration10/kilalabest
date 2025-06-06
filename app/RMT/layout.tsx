@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import Live2dRem from "./components/Live2dRem";
 
 export const metadata: Metadata = {
   title: "RMT",
@@ -35,14 +35,7 @@ export default function RootLayout({
   return (
     <>
       {children}
-      <canvas
-        id="live2d"
-        width="300"
-        height="600"
-        style={{ position: "fixed", bottom: 0, zIndex: 98 }}
-      ></canvas>
-      <Script src="https://timelordregeneration10.github.io/live2d/attempt/cubism2/compressed/lib/live2d.js" />
-      <Script src="/loadlive2d.js" />
+      <Live2dRem />
     </>
   );
 }
