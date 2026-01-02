@@ -76,7 +76,7 @@ const naviItems = [
 ];
 
 const hideLeaveWeb = (path: string) => {
-  if (path.startsWith("/camouflage") || path.startsWith("/RMT/RemShelter"))
+  if (path.startsWith("/camouflage") || path.startsWith("/RMT/RemShelter") || path.startsWith("/application/timer"))
     return true;
   return false;
 };
@@ -87,7 +87,7 @@ const hideHana = (path: string) => {
 };
 
 const hideHeart = (path: string) => {
-  if (path.startsWith("/RMT/RemArea")) return true;
+  if (path.startsWith("/RMT/RemArea") || path.startsWith("/application/timer")) return true;
   return false;
 };
 

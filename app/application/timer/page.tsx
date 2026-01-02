@@ -1,40 +1,37 @@
 "use client";
+import useWindow from "@/app/hooks/useWindow";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 export default function TimerPage() {
+  const { width: currentWidth, height: currentHeight } = useWindow();
   const YEAR_2000 = useMemo(() => new Date("2000-01-01"), []);
   const [displayTime, setDisplayTime] = useState("00:00.000");
   const [startTime, setStartTime] = useState(0);
   const [passedTimeWhenStop, setPassedTimeWhenStop] = useState(0);
-  const [started, setStarted] = useState(false);
   const [running, setRunning] = useState(false);
   const [currentAnimationFrameId, setCurrentAnimationFrameId] = useState<number | null>(null);
 
   const renderloop = useCallback(() => {
-    if (started) {
-      if (running) {
-        const passTime = new Date().getTime() - startTime;
-        const newDisplayTime = new Date(YEAR_2000.getTime() + passTime).toISOString().slice(11, -1);
-        if (newDisplayTime.slice(0, 2) === '00') {
-          setDisplayTime(newDisplayTime.slice(3));
-        } else {
-          setDisplayTime(newDisplayTime);
-        }
+    if (running) {
+      const passTime = new Date().getTime() - startTime;
+      const newDisplayTime = new Date(YEAR_2000.getTime() + passTime).toISOString().slice(11, -1);
+      if (newDisplayTime.slice(0, 2) === '00') {
+        setDisplayTime(newDisplayTime.slice(3));
+      } else {
+        setDisplayTime(newDisplayTime);
       }
     }
     setCurrentAnimationFrameId(requestAnimationFrame(renderloop));
-  }, [started, running, startTime, YEAR_2000]);
+  }, [running, startTime, YEAR_2000]);
 
-  const handleStart = useCallback(() => {
-    if (!started) {
-      setStarted(true);
+  const handleStartStop = useCallback(() => {
+    // 初始情况，开始计时
+    if (!running && passedTimeWhenStop === 0) {
       setRunning(true);
       setStartTime(new Date().getTime());
     }
-  }, [started]);
-
-  const handleStop = useCallback(() => {
-    if (started) {
+    // 计时中，暂停或继续
+    else {
       if (passedTimeWhenStop === 0) {
         setPassedTimeWhenStop(new Date().getTime() - startTime);
         setRunning(false);
@@ -44,10 +41,9 @@ export default function TimerPage() {
         setRunning(true);
       }
     }
-  }, [started, passedTimeWhenStop, startTime]);
+  }, [running, passedTimeWhenStop, startTime]);
 
   const handleClear = useCallback(() => {
-    setStarted(false);
     setRunning(false);
     setStartTime(0);
     setPassedTimeWhenStop(0);
@@ -55,26 +51,104 @@ export default function TimerPage() {
   }, []);
 
   useEffect(() => {
-    if (started && running) {
+    if (running) {
       renderloop();
     }
-  }, [started, running, renderloop]);
+  }, [running, renderloop]);
 
   useEffect(() => {
-    if (running && started) {
+    if (running) {
     } else {
       if (currentAnimationFrameId) {
         cancelAnimationFrame(currentAnimationFrameId);
       }
     }
-  }, [running, started, currentAnimationFrameId]);
+  }, [running, currentAnimationFrameId]);
+
+  const DOUBLE_CLICK_TIME = useMemo(() => 200, []);
+  const [singleClickTimeout, setSingleClickTimeout] = useState<NodeJS.Timeout | null>(null);
+  const handleMobileClick = useCallback(() => {
+    // 双击
+    if (singleClickTimeout) {
+      clearTimeout(singleClickTimeout);
+      setSingleClickTimeout(null);
+      handleClear();
+    }
+    // 单击
+    else {
+      setSingleClickTimeout(setTimeout(() => {
+        handleStartStop();
+        if (singleClickTimeout) {
+          clearTimeout(singleClickTimeout);
+        }
+        setSingleClickTimeout(null);
+      }, DOUBLE_CLICK_TIME));
+    }
+  }, [singleClickTimeout, handleStartStop, handleClear, DOUBLE_CLICK_TIME]);
+
+  const [mousePosition, setMousePosition] = useState<{ x: number, y: number }>({ x: 0, y: 0 });
+  useEffect(() => {
+    let ticking = false;
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setMousePosition({ x: e.clientX, y: e.clientY });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [mousePosition]);
+
+  const handlePCClick = useCallback(() => {
+    if (mousePosition.x > currentWidth / 2) {
+      handleClear();
+    } else {
+      handleStartStop();
+    }
+  }, [mousePosition.x, currentWidth, handleStartStop, handleClear]);
 
   return (
-    <div className="w-screen h-screen relative flex flex-col justify-center items-center">
-      <div className="text-4xl font-bold">{displayTime}</div>
-      <button className="text-2xl font-bold" onClick={handleStart}>start</button>
-      <button className="text-2xl font-bold" onClick={handleStop}>{started ? running ? "stop" : "continue" : "stop"}</button>
-      <button className="text-2xl font-bold" onClick={handleClear}>clear</button>
+    <div className="w-screen h-screen relative bg-black cursor-none">
+      {currentWidth < 640 ? (
+        <div className="w-full h-full flex flex-col justify-center items-center" onClick={handleMobileClick}>
+          <div className="text-[15vw] text-white">{displayTime}</div>
+        </div>
+      ) : (
+        <div className="w-full h-full flex flex-col justify-center items-center">
+          <div className="text-[15vw] w-fit relative">
+            <div className="text-[violet] transition-transform ease-[cubic-bezier(0.9,1,1,1)] duration-300" style={{ transform: `translate(${(mousePosition.x - currentWidth / 2) / 3}px, ${(mousePosition.y - currentHeight / 2) / 3}px)` }}>{displayTime}</div>
+            <div className="absolute top-0 left-0 text-[#91bef0] transition-transform ease-[cubic-bezier(0.6,1,1,1)] duration-300" style={{ transform: `translate(${(mousePosition.x - currentWidth / 2) / 3}px, ${(mousePosition.y - currentHeight / 2) / 3}px)` }}>{displayTime}</div>
+            <div className="absolute top-0 left-0 text-white transition-transform ease-[cubic-bezier(0.33,1,1,1)] duration-300" style={{ transform: `translate(${(mousePosition.x - currentWidth / 2) / 3}px, ${(mousePosition.y - currentHeight / 2) / 3}px)` }}>
+              {(!running && passedTimeWhenStop === 0) ? (
+                <div className="absolute top-0 left-0 text-white">
+                  {displayTime}
+                </div>
+              ) : (
+                <>
+                  <div className="relative text-white">
+                    {displayTime}
+                  </div>
+                  <div className="absolute top-0 left-0 text-[#c2ff61] [clip-path:circle(0%)] animate-timerFront">
+                    {displayTime}
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+          <div
+            className="fixed z-[19] -top-8 -left-8 w-16 h-16 flex justify-center items-center text-xl bg-white rounded-full transition-transform duration-500 ease-[cubic-bezier(0.25,1.25,0.25,1.25)] mix-blend-difference"
+            style={{ transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)` }}
+            onClick={handlePCClick}
+          >
+            {mousePosition.x > currentWidth / 2 ? "clear" : (running ? "stop" : "start")}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -433,6 +433,32 @@ const config: Config = {
             clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)",
           },
         },
+        timerFront: {
+          "0%": {
+            clipPath: "circle(0%)",
+            color: "#c2ff61"
+          },
+          "10%": {
+            clipPath: "circle(100%)",
+            color: "#61b8ff"
+          },
+          "50%": {
+            clipPath: "circle(100%)",
+            color: "#ff6196"
+          },
+          "90%": {
+            clipPath: "circle(100%)",
+            color: "#ffffff"
+          },
+          "95%": {
+            clipPath: "circle(0%)",
+            color: "#ffffff"
+          },
+          "100%": {
+            clipPath: "circle(0%)",
+            color: "#c2ff61"
+          },
+        },
       },
       animation: {
         frontier: "frontier 15s linear infinite",
@@ -460,6 +486,7 @@ const config: Config = {
         ripple2: "ripple2 1s forwards",
         codeFalling: "codeFalling 10s forwards linear",
         codeFalling2: "codeFalling2 10s forwards linear",
+        timerFront: "timerFront 10s linear forwards infinite",
       },
     },
   },
