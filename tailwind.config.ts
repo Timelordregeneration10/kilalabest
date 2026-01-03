@@ -440,17 +440,21 @@ const config: Config = {
           },
           "10%": {
             clipPath: "circle(100%)",
-            color: "#61b8ff"
+            color: "#44ffb1"
           },
           "50%": {
             clipPath: "circle(100%)",
-            color: "#ff6196"
+            color: "#61b8ff"
           },
           "90%": {
             clipPath: "circle(100%)",
+            color: "#ff6196"
+          },
+          "98%": {
+            clipPath: "circle(100%)",
             color: "#ffffff"
           },
-          "95%": {
+          "99%": {
             clipPath: "circle(0%)",
             color: "#ffffff"
           },
