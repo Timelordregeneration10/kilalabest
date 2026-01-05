@@ -37,6 +37,7 @@
 - 比如展示做过的项目的列表时，要展示项目预览更好的方法可以是鼠标悬浮时在鼠标位置处显示预览，见https://www.jiejoe.com/home的video部分
 - 比如想让用户知道点击可以跳转到某个页面，可以在鼠标悬浮时出现一个跟随鼠标的icon
 - 换个加载界面，现在的到后面就太卡了，这个页面的模糊感觉不错<a href="https://www.cnblogs.com/lfri/p/12212878.html">链接</a>
+- 字体体积太大了，考虑使用不用下载的字体，部分必须使用字体的情况使用工具进行‌提取常用字符‌：通过工具（如font-spider、FontTools）提取页面实际使用的字符集，生成更小的字体文件
 + sticky结束处理，参考showmecode
   + body神力让fixed成神了，sticky基本推出历史舞台 => 才怪，sticky在版本支持情况下是fixed实现横向滚动的上位存在好吧，详见app\attempt\sticky\thought.md
 + 贝塞尔曲线错误使用（如原神启动那个部分）
