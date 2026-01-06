@@ -128,6 +128,11 @@ export default function TimerPage() {
     }
   }, [mousePosition.x, currentWidth, handleStartStop, handleClear]);
 
+  const handlePCContextMenu = useCallback((e: MouseEvent) => {
+    e.preventDefault();
+    handleClear();
+  }, [handleClear]);
+
   useEffect(() => {
     const handleSpaceEntered = (e: KeyboardEvent) => {
       if (e.code === "Space") {
@@ -152,14 +157,15 @@ export default function TimerPage() {
           <div className="text-[15vw] text-white">{displayTime}</div>
         </div>
       ) : (
-        <div className="w-full h-full flex flex-col justify-center items-center">
+        // @ts-ignore
+        <div className="w-full h-full flex flex-col justify-center items-center relative" onClick={handlePCClick} onContextMenu={handlePCContextMenu}>
           <div className="text-[15vw] w-fit relative">
             <div
               className="text-[violet] transition-transform ease-[cubic-bezier(0.9,1,1,1)] duration-300"
               style={{
                 transform: `translate(${
-                  (mousePosition.x - currentWidth / 2) / 3
-                }px, ${(mousePosition.y - currentHeight / 2) / 3}px)`,
+                  (mousePosition.x - currentWidth / 2) / 4
+                }px, ${(mousePosition.y - currentHeight / 2) / 4}px)`,
               }}
             >
               {displayTime}
@@ -168,8 +174,8 @@ export default function TimerPage() {
               className="absolute top-0 left-0 text-[#91bef0] transition-transform ease-[cubic-bezier(0.6,1,1,1)] duration-300"
               style={{
                 transform: `translate(${
-                  (mousePosition.x - currentWidth / 2) / 3
-                }px, ${(mousePosition.y - currentHeight / 2) / 3}px)`,
+                  (mousePosition.x - currentWidth / 2) / 4
+                }px, ${(mousePosition.y - currentHeight / 2) / 4}px)`,
               }}
             >
               {displayTime}
@@ -178,8 +184,8 @@ export default function TimerPage() {
               className="absolute top-0 left-0 text-white transition-transform ease-[cubic-bezier(0.33,1,1,1)] duration-300"
               style={{
                 transform: `translate(${
-                  (mousePosition.x - currentWidth / 2) / 3
-                }px, ${(mousePosition.y - currentHeight / 2) / 3}px)`,
+                  (mousePosition.x - currentWidth / 2) / 4
+                }px, ${(mousePosition.y - currentHeight / 2) / 4}px)`,
               }}
             >
               {!running && passedTimeWhenStop === 0 ? (
@@ -206,7 +212,6 @@ export default function TimerPage() {
             style={{
               transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
             }}
-            onClick={handlePCClick}
           >
             {mousePosition.x > currentWidth / 2
               ? "clear"
@@ -214,6 +219,11 @@ export default function TimerPage() {
               ? "stop"
               : "start"}
           </div>
+          {/* 太卡了，放弃 */}
+          {/* <div className="absolute z-[19] top-0 left-0 w-full h-full bg-white cursor-pointer flex justify-center items-center mix-blend-difference duration-500 transition-[clip-path] ease-[cubic-bezier(0.25,1.25,0.25,1.25)]" style={{ clipPath: `circle(40px at ${mousePosition.x}px ${mousePosition.y}px)` }}>
+            <div className="w-1/2 h-full [line-break:anywhere] overflow-hidden" onClick={handleStartStop}>{Array.from({length: 1000}).map(()=>(running?"stop":"start")).join(" ")}</div>
+            <div className="w-1/2 h-full [line-break:anywhere] overflow-hidden" onClick={handleClear}>{Array.from({length: 1000}).map(()=>"clear").join(" ")}</div>
+          </div> */}
         </div>
       )}
     </div>

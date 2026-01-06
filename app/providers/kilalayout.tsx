@@ -91,6 +91,11 @@ const hideHeart = (path: string) => {
   return false;
 };
 
+const hideFont = (path: string) => {
+  if (path.startsWith("/application/timer")) return true;
+  return false;
+};
+
 export function KilaLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const path = usePathname();
@@ -234,8 +239,17 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
     };
   }, [path]);
 
+  const [hideFontClass, setHideFontClass] = useState(true);
+  useEffect(() => {
+    if (hideFont(path)) {
+      setHideFontClass(true);
+    } else {
+      setHideFontClass(false);
+    }
+  }, [path]);
+
   return (
-    <div className="w-screen text-center no-scrollbar m-0 p-0 font-[saibo] select-none">
+    <div className="w-screen text-center no-scrollbar m-0 p-0 select-none" style={{ fontFamily: hideFontClass ? "cursive" : "saibo" }}>
       <div className=" min-h-screen w-full">{children}</div>
 
       {/* footer放在components里是因为footer都是静态的，剥离出来可以服务端渲染 */}
