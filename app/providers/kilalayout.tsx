@@ -129,6 +129,14 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
   }, [kilaInnerWidth]);
 
   // leave web
+  const [pathShowLeaveWeb, setPathShowLeaveWeb] = useState(false);
+  useEffect(()=>{
+    if(hideLeaveWeb(path)){
+      setPathShowLeaveWeb(false);
+    }else{
+      setPathShowLeaveWeb(true);
+    }
+  }, [path])  
   const [showLeaveWeb, setShowLeaveWeb] = useState(false);
   const [leaveWebTimeout, setLeaveWebTimeout] = useState<NodeJS.Timeout | null>(
     null
@@ -368,23 +376,25 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
       )}
 
       {/* leaveweb page */}
-      <div
-        className="fixed top-0 left-0 w-screen h-screen z-[99] bg-leaveweb bg-cover bg-center lg:bg-[length:100vw_100vh]"
-        // 确保加载页面时背景图也被加载
-        style={{ visibility: showLeaveWeb ? "visible" : "hidden" }}
-      >
-        <div className="absolute top-[35vh] right-0 px-[2vmax] text-[4vmax] sm:text-[6vmax] bg-[rgb(255,158,229)] text-white">
-          you have leaved!
-        </div>
-        <button
-          onClick={() => {
-            setShowLeaveWeb(false);
-          }}
-          className="absolute bottom-[25vh] right-[5vw] px-[2vmax] text-[5vmax] bg-[rgb(124,255,130)] text-white border-hidden hover:bg-[rgb(55,255,0)]"
+      {pathShowLeaveWeb && (
+        <div
+          className="fixed top-0 left-0 w-screen h-screen z-[99] bg-leaveweb bg-cover bg-center lg:bg-[length:100vw_100vh]"
+          // 确保加载页面时背景图也被加载
+          style={{ visibility: showLeaveWeb ? "visible" : "hidden" }}
         >
-          return
-        </button>
-      </div>
+          <div className="absolute top-[35vh] right-0 px-[2vmax] text-[4vmax] sm:text-[6vmax] bg-[rgb(255,158,229)] text-white">
+            you have leaved!
+          </div>
+          <button
+            onClick={() => {
+              setShowLeaveWeb(false);
+            }}
+            className="absolute bottom-[25vh] right-[5vw] px-[2vmax] text-[5vmax] bg-[rgb(124,255,130)] text-white border-hidden hover:bg-[rgb(55,255,0)]"
+          >
+            return
+          </button>
+        </div>
+      )}
 
       {/* heart bubble */}
       {heartList.map((item: Heart) => {
