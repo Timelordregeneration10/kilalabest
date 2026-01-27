@@ -6,8 +6,9 @@ import { Providers as UIProvider } from "@/app/providers/nextui";
 import Head from "next/head";
 import { Toaster } from "react-hot-toast";
 import { KilaLayout } from "./providers/kilalayout";
-import { FrontierLayout } from "./providers/frontierLayout";
-import { FrontierVanishLayout } from "./providers/frontierVanishLayout";
+// import { FrontierLayout } from "./providers/frontierLayout";
+import { RingLayout } from "./providers/ringLayout";
+import { LoadingVanishLayout } from "./providers/loadingVanishLayout";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -87,13 +88,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
       {/* <body> */}
-        <FrontierLayout>
-          <FrontierVanishLayout>
+        {/* <FrontierLayout> */}
+        <RingLayout>
+          <LoadingVanishLayout>
             <UIProvider>
               <KilaLayout>{children}</KilaLayout>
             </UIProvider>
-          </FrontierVanishLayout>
-        </FrontierLayout>
+          </LoadingVanishLayout>
+        </RingLayout>
+        {/* </FrontierLayout> */}
         <Toaster />
       </body>
     </html>

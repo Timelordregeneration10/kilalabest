@@ -11,7 +11,7 @@ import no11 from "../../assets/game/no11.webp";
 import Image from "next/image";
 import gameGIF from "../assets/game.gif";
 import { motion } from "framer-motion";
-import { loadingContext } from "@/app/providers/frontierVanishLayout";
+import { loadingContext } from "@/app/providers/loadingVanishLayout";
 import useScroll from "@/app/hooks/useScroll";
 
 const gamesrc = [hollowknight, endinglilies, terreria, astlibra, skull, no11];

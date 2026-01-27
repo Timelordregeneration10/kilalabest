@@ -55,7 +55,7 @@ const config: Config = {
             clipPath: "circle(100%)",
           },
         },
-        frontierVanish: {
+        loadingVanish: {
           "0%": {
             clipPath: "circle(100%)",
           },
@@ -467,7 +467,7 @@ const config: Config = {
       animation: {
         frontier: "frontier 15s linear infinite",
         frontierHeartExpand: "frontierHeartExpand 1s ease forwards",
-        frontierVanish: "frontierVanish 1s ease forwards",
+        loadingVanish: "loadingVanish 1s ease forwards",
         streamer: "streamer 5s infinite linear",
         personwebheart: "personwebheart 2s linear forwards",
         rmtcycle: "rmtcycle 5s linear infinite backwards",

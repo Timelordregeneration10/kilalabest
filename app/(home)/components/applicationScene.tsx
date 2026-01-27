@@ -15,7 +15,7 @@ import applicationGIF from "../assets/application.gif";
 import bg from "@/app/assets/musedash/application.webp";
 import { motion } from "framer-motion";
 import useScroll from "@/app/hooks/useScroll";
-import { loadingContext } from "@/app/providers/frontierVanishLayout";
+import { loadingContext } from "@/app/providers/loadingVanishLayout";
 
 const applications = [
   { name: "生日系列", url: "https://timelord.cn/birthday" },

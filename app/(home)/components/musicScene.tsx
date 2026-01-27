@@ -5,7 +5,7 @@ import useWindow from "../../hooks/useWindow";
 import musicGIF from "../assets/music.gif";
 import Image from "next/image";
 import musicBG from "@/app/assets/musedash/music.webp";
-import { loadingContext } from "@/app/providers/frontierVanishLayout";
+import { loadingContext } from "@/app/providers/loadingVanishLayout";
 import useScroll from "@/app/hooks/useScroll";
 
 export default function MusicScene() {

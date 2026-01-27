@@ -20,7 +20,7 @@ import cookie from "js-cookie";
 import useScroll from "../hooks/useScroll";
 import { BsFlower1 } from "react-icons/bs";
 import { throttle } from "lodash";
-import { loadingContext } from "./frontierVanishLayout";
+import { loadingContext } from "./loadingVanishLayout";
 
 interface Heart {
   px: number;

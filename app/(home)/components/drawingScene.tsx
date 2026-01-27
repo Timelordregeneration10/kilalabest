@@ -6,7 +6,7 @@ import TWEEN from "@tweenjs/tween.js";
 import { useRouter } from "next/navigation";
 import useWindow from "../../hooks/useWindow";
 import { motion } from "framer-motion";
-import { loadingContext } from "@/app/providers/frontierVanishLayout";
+import { loadingContext } from "@/app/providers/loadingVanishLayout";
 import useScroll from "@/app/hooks/useScroll";
 
 const drawings = [

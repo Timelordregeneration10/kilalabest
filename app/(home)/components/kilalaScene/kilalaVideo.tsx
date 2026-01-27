@@ -2,7 +2,7 @@
 
 import useScroll from "@/app/hooks/useScroll";
 import useWindow from "@/app/hooks/useWindow";
-import { loadingContext } from "@/app/providers/frontierVanishLayout";
+import { loadingContext } from "@/app/providers/loadingVanishLayout";
 import { useContext, useEffect, useRef } from "react";
 
 export default function KilalaVideo() {

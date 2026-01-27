@@ -6,7 +6,7 @@ export const loadingContext = createContext({
   loading: true,
 });
 
-export function FrontierVanishLayout({
+export function LoadingVanishLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -16,17 +16,13 @@ export function FrontierVanishLayout({
     const loadfunc = () => {
       console.log("%cwindow loaded", "color:#91bef0; font-size: 20px;");
       setLoading(false);
-      const frontierAll = document.getElementsByClassName(
-        "frontier-all"
+      const loadingVanish = document.getElementsByClassName(
+        "animate-loadingVanish"
       )[0] as HTMLElement;
-      // const frontierHeart = document.getElementsByClassName(
-      //   "frontier-heart"
-      // )[0] as HTMLElement;
-      // frontierHeart.style.animationPlayState = "running";
       setTimeout(() => {
-        frontierAll.style.animationPlayState = "running";
+        loadingVanish.style.animationPlayState = "running";
         setTimeout(() => {
-          frontierAll.remove();
+          loadingVanish.remove();
         }, 1100);
       }, 100);
     };

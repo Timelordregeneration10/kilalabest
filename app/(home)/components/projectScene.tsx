@@ -5,7 +5,7 @@ import * as THREE from "three";
 import TWEEN from "@tweenjs/tween.js";
 import useWindow from "../../hooks/useWindow";
 import { motion } from "framer-motion";
-import { loadingContext } from "@/app/providers/frontierVanishLayout";
+import { loadingContext } from "@/app/providers/loadingVanishLayout";
 import useScroll from "@/app/hooks/useScroll";
 
 const projects = [

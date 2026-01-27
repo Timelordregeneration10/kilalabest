@@ -1,6 +1,6 @@
 "use client";
 
-import { loadingContext } from "@/app/providers/frontierVanishLayout";
+import { loadingContext } from "@/app/providers/loadingVanishLayout";
 import { useContext } from "react";
 
 export default function CyberPunkKilala() {

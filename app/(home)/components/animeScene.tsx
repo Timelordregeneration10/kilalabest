@@ -13,7 +13,7 @@ import suki7 from "../assets/suki7.webp";
 import suki8 from "../assets/suki8.webp";
 import suki9 from "../assets/suki9.webp";
 import useScroll from "@/app/hooks/useScroll";
-import { loadingContext } from "@/app/providers/frontierVanishLayout";
+import { loadingContext } from "@/app/providers/loadingVanishLayout";
 
 const sukis = [suki1, suki2, suki3, suki4, suki5, suki6, suki7, suki8, suki9];
 
