@@ -150,7 +150,13 @@ export function RingLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <style>{flatStyleConfigs}</style>
-      <div className="fixed z-[1000] top-0 left-0 w-screen h-screen bg-black animate-loadingVanish" style={{ animationPlayState: "paused" }}>
+      <div className="fixed z-[1000] top-0 left-0 w-screen h-screen bg-black div-loading-content">
+        <div className="absolute z-10 top-[8vh] left-0 w-full text-center text-white text-[3.5vmax] font-bold">
+          loading...
+        </div>
+        <div className="absolute bottom-0 right-0 text-[#ffc6ff] text-xs p-4">
+          ⚠本网站部署于Github，确保您的网络环境可以正常访问Github⚠
+        </div>
         <div
           className="relative w-screen h-screen transform-style-3d"
           style={{
@@ -191,6 +197,9 @@ export function RingLayout({ children }: { children: React.ReactNode }) {
             );
           })}
         </div>
+      </div>
+      <div className="fixed z-[1001] top-0 left-0 w-screen h-screen div-heyboxInspired">
+        <div className="w-0 h-0 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-0 border-solid border-white rounded-full animate-heyboxInspired" style={{ animationPlayState: "paused" }}></div>
       </div>
       {children}
     </>

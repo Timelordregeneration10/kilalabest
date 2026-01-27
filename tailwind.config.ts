@@ -463,6 +463,23 @@ const config: Config = {
             color: "#c2ff61"
           },
         },
+        heyboxInspired: {
+          "0%": {
+            width: "0px",
+            height: "0px",
+            borderWidth: "0px",
+          },
+          "50%": {
+            width: "calc(1.415 * 100vmax)",
+            height: "calc(1.415 * 100vmax)",
+            borderWidth: "calc(1.415 * 50vmax)",
+          },
+          "100%": {
+            width: "calc(1.415 * 100vmax)",
+            height: "calc(1.415 * 100vmax)",
+            borderWidth: "0px"
+          },
+        },
       },
       animation: {
         frontier: "frontier 15s linear infinite",
@@ -491,6 +508,7 @@ const config: Config = {
         codeFalling: "codeFalling 10s forwards linear",
         codeFalling2: "codeFalling2 10s forwards linear",
         timerFront: "timerFront 10s linear forwards infinite",
+        heyboxInspired: "heyboxInspired 0.8s linear forwards",
       },
     },
   },

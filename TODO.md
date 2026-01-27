@@ -47,6 +47,8 @@
 - 字体体积太大了，考虑使用不用下载的字体，部分必须使用字体的情况使用工具进行‌提取常用字符‌：通过工具（如font-spider、FontTools）提取页面实际使用的字符集，生成更小的字体文件
 + 换个加载界面，现在的到后面就太卡了，这个页面的模糊感觉不错<a href="https://www.cnblogs.com/lfri/p/12212878.html">链接</a>
   + ring解决了
+  + loading，以及文字
+  + 动画可以用之前小黑盒的那种，变大然后从中间消失
 + sticky结束处理，参考showmecode
   + body神力让fixed成神了，sticky基本推出历史舞台 => 才怪，sticky在版本支持情况下是fixed实现横向滚动的上位存在好吧，详见app\attempt\sticky\thought.md
 + 贝塞尔曲线错误使用（如原神启动那个部分）

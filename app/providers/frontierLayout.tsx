@@ -2,7 +2,7 @@ export function FrontierLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div
-        className="frontier-all fixed z-[1000] top-0 left-0 w-screen h-screen bg-black overflow-hidden flex justify-center items-center perspective-[100px] transform-style-3d animate-loadingVanish"
+        className="frontier-all fixed z-[1000] top-0 left-0 w-screen h-screen bg-black overflow-hidden flex justify-center items-center perspective-[100px] transform-style-3d animate-loadingVanish div-loading-content"
         style={{ animationPlayState: "paused" }}
       >
         <div className="absolute z-10 top-[12vh] left-0 w-full text-center text-white text-[3.5vmax] font-bold">

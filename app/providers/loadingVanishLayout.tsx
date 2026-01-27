@@ -16,14 +16,23 @@ export function LoadingVanishLayout({
     const loadfunc = () => {
       console.log("%cwindow loaded", "color:#91bef0; font-size: 20px;");
       setLoading(false);
-      const loadingVanish = document.getElementsByClassName(
-        "animate-loadingVanish"
+      const divLoadingContent = document.getElementsByClassName(
+        "div-loading-content"
+      )[0] as HTMLElement;
+      const heyboxInspired = document.getElementsByClassName(
+        "animate-heyboxInspired"
+      )[0] as HTMLElement;
+      const divHeyboxInspired = document.getElementsByClassName(
+        "div-heyboxInspired"
       )[0] as HTMLElement;
       setTimeout(() => {
-        loadingVanish.style.animationPlayState = "running";
+        heyboxInspired.style.animationPlayState = "running";
         setTimeout(() => {
-          loadingVanish.remove();
-        }, 1100);
+          divLoadingContent.remove();
+        }, 400);
+        setTimeout(() => {
+          divHeyboxInspired.remove();
+        }, 900);
       }, 100);
     };
     const checkInterv = setInterval(() => {
