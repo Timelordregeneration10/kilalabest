@@ -89,7 +89,8 @@
   + 优势：全球 CDN 节点加速，加载速度比直接访问 GitHub 快 2-3 倍。
 
 # 特效
-- 电子羊歌词特效复刻<a href="https://www.bilibili.com/video/BV1Bz411q7p7">链接</a>DNA双螺旋黑色背景粉色发光
++ 电子羊歌词特效复刻<a href="https://www.bilibili.com/video/BV1Bz411q7p7">链接</a>DNA双螺旋黑色背景粉色发光
+- 混剪转场、设计相关学习 <a href="https://www.bilibili.com/video/BV1wLzYBfEXb/">节目2部分</a>
 - 其他wallpaper engine雷姆复刻
 ？ 闪电的真实姿态（留光连点）
 - BV1cAZnY1ETW 0：52的转场，从某层跳到更高的一层
