@@ -1,36 +1,17 @@
 
-# notes
-* 展现思路、设计可以问ai
-* 网站：awwwards网站获取灵感
-* 网站获取：问ds要awwwards这样的设计/得到灵感的网站推荐
-* ​ai绘图得到素材
-+ ​移动端适配​
+# notes 📌
 * lottiefiles 酷炫灵动GIF，svg
 
-# 暂时的一个目标
-- 半个月后（三月底之前）完成可以分享给jiejoe的网站
-- 刚刚看个人网站时发现的一些问题
-  - 作为一名正式前端工程师，那些学生时代的拿不出手的项目就可以不用放上去了，这不是面试用
-  - 绘画那块跳转到timelord的那里肯定得改，不能再跳过去了
-  - 游戏、动画、音乐部分都涉及到太多东西，看看怎么展示比较好
-    - 比如游戏的话要有b站视频、游戏截图等等
-    - 而番的话比较统一有anilist的数据源，封面、评分、日期等
-    - 音乐的话又有网易云音乐的接口？听歌次数、分类等
-    - 或许这块太大又不融入首页的话可以考虑像jiejoe首页的无限画布那样单开一个页面
-  - 离开屏幕页面还可以再优化，现在的感觉有点单调
-  - 当前首页完全时喵斯风的，图片比较多，如果有能力的话可以改整个配色和风格
-
-# shader学习中记录
-- 首页的番那部分可以用粒子特效？悬浮展示具体的番（展示形式看看是选中后canvas外展示还是就在canvas上展示好）
-  - 数据源来自anilist，用graphQL查数据
-  - 或者反光的球那种？
-
-# 学习
+# 学习 📌
 * 可借助AI理解
-- ## GSAP (参见fe-study-GSAP)
-- ## glitch (参见fe-study-glitch)
-- ## three-shader => to be continued (参见fe-study-three-shader)- 学完之后看黑洞代码
-- ## live2D Rem (参见fe-study-live2D)
++ ## GSAP (参见fe-study-GSAP)
+  + https://github.com/Timelordregeneration10/GSAP
+<!-- - ## glitch (参见fe-study-glitch) -->
+- ## three-shader => to be continued (参见fe-study-three-shader)
+  - https://github.com/Timelordregeneration10/three
+  - shader可以作为一个长期投入的反向，每天掌握一种特效甚至公式之类的
++ ## live2D Rem (参见fe-study-live2D)
+  + https://github.com/Timelordregeneration10/live2d
 - ## jiejoe svg等
 - 网站
   * 网站：awwwards网站获取灵感
@@ -38,31 +19,99 @@
     * <a href="https://gsap.com/showcase/">gsap showcase</a>
   * 网站获取：问ds要awwwards这样的设计/得到灵感的网站推荐
 
-# 结构
-- 导航栏分顶部导航栏和侧边导航栏，顶部照常，侧边可收起样式重新想
-- music，anime放新的about me里面，剩余都应该有具体页面，且首页只放intro
-
-# 首页
+# 待实现复刻/特效 📌
+- 其他wallpaper engine雷姆复刻
+- 闪电的真实姿态（留光连点）<a href="https://www.bilibili.com/video/BV15SC2YMEMW">效果</a>
+  - 可能需要three
 - 看了 https://wodniack.dev/ 的启发
     - 滚动效果做好了试试无限滚动作为背景，以鼠标滚动作为触发
-    - 图片太卡了，文字还可以，参考 https://timelord.cn/RemHB!/test
+    - 图片太卡了，文字还可以，参考 https://timelord.cn/RemHB!/2026/test
     - 试试融入swayleaf？
-- 对了晚上回去的时候手机看到的pattern1的部分全屏想不到还挺适合的
-    - 新的首页也许会比较适合，配合其他的css3d，每种都加上鼠标移动的交互
+- 阴阳回天op里的同心圆image-clip鲜明border，可以搭配滚动时同心圆异速转动，某一瞬间重合
+- BV1w5FKzMEH8 滚动驱动的某位置大图片移动
 
-# /RMT
-+ 背景纯白svg分段鼠标悬浮随其摇曳，鼠标不在区域则过一段事件自己摇曳<a href="https://www.bilibili.com/video/BV1ZusYeGEfj/">效果</a> => RemArea&RemShelter
-- 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
-- dreamle的tutorial, RMTprogress
-- 加入世界锚
-- Rem cursor!
-- live2d Rem
-- 手办页（可链接hopi）
+# 暂时的一个目标: 完成可以分享给jiejoe的网站
+- 整体思路
+  + 先梳理应该包含哪些部分
+  + 将发现的问题转化为TODO
+  - 完成TODO
++ 先梳理一下我现在作为一名正式的前端工程师，个人网站需要包含什么
+  + 总结之前看到的其他个人网站都有什么
+    - Daniel——梦开始的电视机：视差滚动首屏、作品列表、自我介绍、获得奖项、介绍自己接活儿的工作流程、FAQ、contact me
+    - 保罗的小窝，……+2：博客类
+    - xiaoyangst：纯简约……
+    - jiejoe：blur首屏、自我介绍（比较短）、爱好/技能、理念（视觉至上）、作品列表（视频）（点击后跳转到视频 路由）、作品列表（图片）（点击后跳转到图片 路由）、contact me
+      - 有一个菜单栏，里面是路由列表，一个路由对应一个详情页，包含了主页、图片、视频、contact me
+  + 回顾我当前个人网站都有什么
+    - home页：首屏、RMT、项目、application、attempt、歌、番、游戏、画、contact me
+  + 确定我的个人网站应该有什么
+    - 有详情路由基准
+      - 那部分本身内容多，首页仅展示代表性的几个，要看全部就得去详情路由
+      - 且有不方便放在主页的特别契合的展示页面（如jiejoe图片里的无限画布）
+    - 叙事逻辑
+      - 首屏 => about me简单自我介绍 => 最先介绍喜欢蕾蕾 => 喜欢做一些特效 => 爱好相关 => contact me
+    - 缺的部分
+      - about me
+      - 详情路由有无待定
+- 具体改动TODO
+  - kilalaLayout
+    - 繁花跟随的效果就不要了，单独放在一个页面吧
+    - 导航栏的存在感需要更低，观者在使用其他页面时希望看见当前内容，而不是footer或者导航栏？
+      - 导航栏可以参考 https://kprverse.com/ 之后用three效果的画全屏肯定更爽，现在一直可以看见的话有些冗余
+      - 最后的footer结尾部分可以不是当前这样的纯文字，可以是比如 https://247artists.com/ 的最后的一个3d空间前进动画
+    - 离开屏幕页面还可以再优化，现在的感觉有点单调
+  - 首页
+    - 确定内容（每一块具体的东西）（关注叙事逻辑）
+      - __self
+        - ...
+        - about me部分
+        - 游戏的话要有b站视频、游戏截图等等
+        - 而番的话比较统一有anilist的数据源，封面、评分、日期等
+        - 音乐的话又有网易云音乐的接口？听歌次数、分类等
+      - application和attempt部分记得加上最近的作品，最近指目前首页还没有的特效
+        - json-editor
+        - GSAP
+        - kilalabest commits
+        - timelord commits
+      - RMT部分可以解释什么是RMT， 或许可以参考 https://kprverse.com/about 的效果
+    - 列出当前特效库
+      - 记得threeTODO里的
+      - https://247artists.com/ 的正方体紧密排列随着滚动部分飞出的效果很适合展示大量元素
+        - 可以创新，比如不是长方体，或者是六边形、三角形、或者任何满足平面镶嵌的东西
+      - 可以放一段横向滚动使用卷轴效果，放画儿什么的？（顺便看一下横向滚动的那个网站他难道是每个画都一个three的scene吗）
+      - 首页的番那部分可以用粒子特效？悬浮展示具体的番（展示形式看看是选中后canvas外展示还是就在canvas上展示好）
+      - 可以复刻一下seedance2.0制作的湖中女神特效，随着滚动一张卡牌从湖中出现，再滚动就3d缓动一下最后粒子效果消失
+      - 比如展示做过的项目的列表时，要展示项目预览更好的方法可以是鼠标悬浮时在鼠标位置处显示预览，见https://www.jiejoe.com/home的video部分
+      - 比如想让用户知道点击可以跳转到某个页面，可以在鼠标悬浮时出现一个跟随鼠标的icon
+      - 特效库
+        - ...
+    - 评估可行性：当前首页完全时喵斯风的，图片比较多，如果有能力的话可以改整个配色和风格
+    - 最终有无详情页还得看特效够不够，是否适合
+    - 游戏部分加steam库存链接
+      - https://steamcommunity.com/profiles/76561199218897932/games/?tab=all
+      - 记得说开UU加速器
+    - 元素启动如果作为application的话需要把背景换成原神启动画面
+    - drawing部分不能直接跳到timelord
+    - 字体体积太大了，考虑使用不用下载的字体，部分必须使用字体的情况使用工具进行‌提取常用字符‌：通过工具（如font-spider、FontTools）提取页面实际使用的字符集，生成更小的字体文件
+  - /RMT
+    + 背景纯白svg分段鼠标悬浮随其摇曳，鼠标不在区域则过一段事件自己摇曳<a href="https://www.bilibili.com/video/BV1ZusYeGEfj/">效果</a> => RemArea&RemShelter
+    - 记得把待施工页删了
+    - layout
+      - live2d Rem
+        + 放置完成
+        - 加个开关显示与否
+      - Rem cursor!
+    - new page
+      - 放照片墙式的雷姆图片？无限滚动，虚拟列表，先上传github图床
+      - 很多雷姆no background，不一定视差滚动；边角鼠标雷姆GIFs
+      - 加入世界锚
+      - 手办页（可链接hopi）
 
-# 优化
-- 比如展示做过的项目的列表时，要展示项目预览更好的方法可以是鼠标悬浮时在鼠标位置处显示预览，见https://www.jiejoe.com/home的video部分
-- 比如想让用户知道点击可以跳转到某个页面，可以在鼠标悬浮时出现一个跟随鼠标的icon
-- 字体体积太大了，考虑使用不用下载的字体，部分必须使用字体的情况使用工具进行‌提取常用字符‌：通过工具（如font-spider、FontTools）提取页面实际使用的字符集，生成更小的字体文件
+
+# 电子羊歌词特效复刻 ✅
++ <a href="https://www.bilibili.com/video/BV1Bz411q7p7">链接</a>DNA双螺旋黑色背景粉色发光
+
+# 优化 ✅
 + 换个加载界面，现在的到后面就太卡了，这个页面的模糊感觉不错<a href="https://www.cnblogs.com/lfri/p/12212878.html">链接</a>
   + ring解决了
   + loading，以及文字
@@ -97,21 +146,13 @@
     + 旧项目如attempt和application-gallery需要迁移到新仓库还是现在这样 => 就现在这样
   + 图片放图床还是kilalabest里 => next自带的Image标签优化更胜一筹
 
-# 3D Rem动作
 
-# github图床见知乎收藏
+# github图床见知乎收藏 ✅
 + cdn加速：jsDelivr 实现方法：
   + 假设图片存储在 GitHub 仓库 https://github.com/用户名/仓库名/blob/main/images/test.jpg。
   + CDN 加速链接格式为：https://cdn.jsdelivr.net/gh/用户名/仓库名@分支名/images/test.jpg
   + （例如：https://cdn.jsdelivr.net/gh/yourname/your-repo@main/images/test.jpg）。
   + 优势：全球 CDN 节点加速，加载速度比直接访问 GitHub 快 2-3 倍。
-
-# 特效
-+ 电子羊歌词特效复刻<a href="https://www.bilibili.com/video/BV1Bz411q7p7">链接</a>DNA双螺旋黑色背景粉色发光
-- 混剪转场、设计相关学习 <a href="https://www.bilibili.com/video/BV1wLzYBfEXb/">节目2部分</a>
-- 其他wallpaper engine雷姆复刻
-？ 闪电的真实姿态（留光连点）
-- BV1cAZnY1ETW 0：52的转场，从某层跳到更高的一层
 
 # 个人网站3.0 ❌ => 2.0根本没做完，目前只有首页而已
 - 调研typecho
