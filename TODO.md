@@ -61,38 +61,121 @@
       - 最后的footer结尾部分可以不是当前这样的纯文字，可以是比如 https://247artists.com/ 的最后的一个3d空间前进动画
     - 离开屏幕页面还可以再优化，现在的感觉有点单调
   - 首页
-    - 确定内容（每一块具体的东西）（关注叙事逻辑）
-      - __self
-        - ...
-        - about me部分
-        - 游戏的话要有b站视频、游戏截图等等
-        - 而番的话比较统一有anilist的数据源，封面、评分、日期等
-        - 音乐的话又有网易云音乐的接口？听歌次数、分类等
-      - application和attempt部分记得加上最近的作品，最近指目前首页还没有的特效
-        - json-editor
-        - GSAP
-        - kilalabest commits
-        - timelord commits
-      - RMT部分可以解释什么是RMT， 或许可以参考 https://kprverse.com/about 的效果
-    - 列出当前特效库
-      - 记得threeTODO里的
-      - https://247artists.com/ 的正方体紧密排列随着滚动部分飞出的效果很适合展示大量元素
-        - 可以创新，比如不是长方体，或者是六边形、三角形、或者任何满足平面镶嵌的东西
-      - 可以放一段横向滚动使用卷轴效果，放画儿什么的？（顺便看一下横向滚动的那个网站他难道是每个画都一个three的scene吗）
-      - 首页的番那部分可以用粒子特效？悬浮展示具体的番（展示形式看看是选中后canvas外展示还是就在canvas上展示好）
-      - 可以复刻一下seedance2.0制作的湖中女神特效，随着滚动一张卡牌从湖中出现，再滚动就3d缓动一下最后粒子效果消失
-      - 比如展示做过的项目的列表时，要展示项目预览更好的方法可以是鼠标悬浮时在鼠标位置处显示预览，见https://www.jiejoe.com/home的video部分
-      - 比如想让用户知道点击可以跳转到某个页面，可以在鼠标悬浮时出现一个跟随鼠标的icon
-      - 特效库
-        - ...
+    + 确定内容（每一块具体的东西）（关注叙事逻辑）
+      - 首屏：雷绮罗姆
+      - about me：
+        - 内容
+          ```
+          Hi，我是雷绮罗姆，一名爱折腾动效的前端工程师。
+          精通 CSS 与 JavaScript，也熟练掌握现代前端工程化框架（如 React/Vue）。我的灵感来源五花八门——从番剧的 OP/ED、优秀网站的交互设计，到生活中的光影与自然律动。
+          我相信网页不该只是静态信息的堆砌，所以我总在尝试用代码让界面“活”起来：无论是细腻的视差滚动、流畅的交互动画，还是基于 Three.js 的着色器实验。
+          如果你也痴迷于丝滑过渡与令人眼前一亮的视觉体验，那我们一定聊得来！
+
+          Hi, I’m Nicholas Burkhardt , a front-end engineer with a passion for web animations.
+
+          I wield CSS and JavaScript with precision, and I’m equally adept with modern front-end frameworks like React and Vue. My inspiration springs from a kaleidoscope of sources: the opening and ending sequences of anime, the elegant interactions of exceptional websites, and even the subtle dance of light and rhythm found in everyday life.
+
+          To me, a webpage should never be a static pile of information. That’s why I constantly strive to animate interfaces into living experiences—be it through delicate parallax scrolling, fluid interactive animations, or experimental shaders powered by Three.js.
+
+          If you, too, are enchanted by buttery-smooth transitions and visuals that spark delight, we’re bound to hit it off!
+          ```
+      - RMT：above all，Rem是我唯一的信仰。
+        - 后面的具体展开的文字（指已有的）和日记中的蕾蕾定义都视情况配合特效展示
+        - RMT部分可以解释什么是RMT， 或许可以参考 https://kprverse.com/about 的效果
+      - 作品集部分：先把当前所有的列出来（直接补充特效库）再选取前几个
+        - 区分application和attempt的基准：完成度、是否能称为产品
+        - application和attempt部分记得加上最近的作品，最近指目前首页还没有的特效
+          - application
+            - /RMT/RemShelter
+            - birthday
+            - /application/gallery/Rem
+            - ring
+            - json-editor
+            - 静静的蓝毒窝
+            - /attempt/ripple
+            - /application/timer
+            - /attempt/codeRain/2
+            - honeyLemonSoda
+            - =============首页展示分界线==============
+            - bouncingRem
+            - 原神启动
+            - sakamoto
+            - /application/electronicSheep
+            - scoreboard
+          - attempt
+            - /attempt/sticky
+            - frontier
+            - /attempt/swayleaf
+            - css3d
+            - [待完成]GSAP index聚合
+            - heyboxLike
+            - bilibilitop
+            - fontSeries
+            - tunnel
+            - [待完成]繁花跟随
+            - =============首页展示分界线==============
+            - threeRem
+            - myHappyEngagement
+            - mix-blend-mode
+            - /attempt/canvas
+            - wyyyyAR2025
+      - 爱好相关：
+        - 番，歌，游戏：链接肯定要放，展示的信息根据特效来
+        - 其中歌的话我理解似乎不用太把详细列表展示，而是搞个特效诱导观者点网易云音乐的链接就行，因为要知道我听什么歌直接看个人主页是最快的
+        - 然后游戏的话内容方面额外要有b站链接，游戏截图的话根据特效可放可不放
+        - 画：选取代表作展示，同时构建详情页（详情页的完成度取决于是否有其他详情页）
+      - contact me：内容就是邮箱，QQ，微信，b站id，网易云音乐id
+    - 确定特效
+      - 当前还需要的特效
+        - 首页
+          - 首屏
+          - RMT除了视差滚动还需要的
+          - 作品集列表展示需要的特效，application和attempt各10
+          - 番的多元素特效
+          - 歌的引到点击链接特效
+          - 游戏的能展现游戏截图或者其他什么的特效
+          - 画
+          - contact me
+        - 可能会做的详情路由
+      - 列出当前好用的特效库
+        - 已有的
+          - swayleaf
+          - 视差滚动
+          - 原神启动
+          - css3d
+          - sticky横向滚动、阻尼滚动
+          - 还有一些浅薄的three
+        - 记得threeTODO里的
+          - 传送门特效
+          - 瞬光的涟漪
+          - 黑洞
+          - 古柳的星系
+          - 古柳的球
+          - 古柳的圆周错位图片
+          - 图片的部分消失
+        - 仿一下
+          - https://activetheory.net/
+          - https://kprverse.com/
+        - https://247artists.com/ 的正方体紧密排列随着滚动部分飞出的效果很适合展示大量元素
+          - 可以创新，比如不是长方体，或者是六边形、三角形、或者任何满足平面镶嵌的东西
+        - RMT部分可以解释什么是RMT， 或许可以参考 https://kprverse.com/about 的效果
+      - 一些idea
+        - 可以放一段横向滚动使用卷轴效果，放画儿什么的？（顺便看一下横向滚动的那个网站他难道是每个画都一个three的scene吗）
+        - 首页的番那部分可以用粒子特效？悬浮展示具体的番（展示形式看看是选中后canvas外展示还是就在canvas上展示好）
+        - 可以复刻一下seedance2.0制作的湖中女神特效，随着滚动一张卡牌从湖中出现，再滚动就3d缓动一下最后粒子效果消失
+        - 比如展示做过的项目的列表时，要展示项目预览更好的方法可以是鼠标悬浮时在鼠标位置处显示预览，见https://www.jiejoe.com/home的video部分
+        - 比如想让用户知道点击可以跳转到某个页面，可以在鼠标悬浮时出现一个跟随鼠标的icon
+    - 实现
     - 评估可行性：当前首页完全时喵斯风的，图片比较多，如果有能力的话可以改整个配色和风格
     - 最终有无详情页还得看特效够不够，是否适合
     - 游戏部分加steam库存链接
       - https://steamcommunity.com/profiles/76561199218897932/games/?tab=all
       - 记得说开UU加速器
+    - 记得把备案许可证下了
     - 元素启动如果作为application的话需要把背景换成原神启动画面
     - drawing部分不能直接跳到timelord
     - 字体体积太大了，考虑使用不用下载的字体，部分必须使用字体的情况使用工具进行‌提取常用字符‌：通过工具（如font-spider、FontTools）提取页面实际使用的字符集，生成更小的字体文件
+    - birthday系列缺了mengqi和刘浩
   - /RMT
     + 背景纯白svg分段鼠标悬浮随其摇曳，鼠标不在区域则过一段事件自己摇曳<a href="https://www.bilibili.com/video/BV1ZusYeGEfj/">效果</a> => RemArea&RemShelter
     - 记得把待施工页删了
