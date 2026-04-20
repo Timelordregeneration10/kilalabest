@@ -1,3 +1,4 @@
+import ShopifyBg from "./components/shopifyBg"
 import KilalaScene from "./components/kilalaScene";
 import RMTScene from "./components/RMTScene";
 import ProjectScene from "./components/projectScene";
@@ -28,6 +29,7 @@ export default function Home() {
 
   return (
     <div className=" min-h-screen w-full overflow-hidden">
+      <ShopifyBg></ShopifyBg>
       <KilalaScene></KilalaScene>
       <RMTScene></RMTScene>
       <ProjectScene></ProjectScene>

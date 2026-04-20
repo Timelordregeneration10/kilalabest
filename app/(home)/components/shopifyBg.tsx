@@ -1,244 +1,364 @@
 "use client";
 
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useContext } from "react";
 import * as THREE from "three";
-import TWEEN from "@tweenjs/tween.js";
-import useWindow from "../../hooks/useWindow";
-import { motion } from "framer-motion";
-import { loadingContext } from "@/app/providers/loadingVanishLayout";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
+import useWindow from "@/app/hooks/useWindow";
 import useScroll from "@/app/hooks/useScroll";
+import { loadingContext } from "@/app/providers/loadingVanishLayout";
 
-const projects = [
-  {
-    name: "Code-Web: 模型应用管理平台",
-    url: "https://timelordregeneration10.github.io/CodeWeb/login",
-  },
-  { name: "选课系统", url: "https://timelord.cn/courseSelectionSystem" },
-  {
-    name: "今何啖兮: 智能膳食推荐系统",
-    url: "https://timelordregeneration10.github.io/Nutrition_Recommendation/login",
-  },
-  {
-    name: "旅行物语",
-    url: "https://timelordregeneration10.github.io/notimetotravel/",
-  },
-  {
-    name: "教务管理系统",
-    url: "https://timelordregeneration10.github.io/Educational-administration-management-system/",
-  },
-  {
-    name: "admintest",
-    url: "https://timelordregeneration10.github.io/admintest/",
-  },
-];
-
-export default function ShopifyBg() {
-  const threeCubeRef = useRef<HTMLDivElement>(null);
-  const isMobile = useWindow().width < 640;
-  const [isHover, setIsHover] = useState(isMobile);
-
+export default function ProjectScene() {
   const { loading } = useContext(loadingContext);
   const { scrollTop } = useScroll();
-  const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
-  const [animationPlayState, setAnimationPlayState] = useState("paused");
-  const [animationId, setAnimationId] = useState(0);
+  const { height: kilaInnerHeight } = useWindow();
+  /** genAI_feature_task_490709_moto_start */
+  const scrollProgressRef = useRef(0);
+  /** genAI_feature_task_490709_moto_end */
 
+  const threeRef = useRef<HTMLDivElement>(null);
+
+  /** genAI_feature_task_490709_moto_start */
   useEffect(() => {
-    if (loading) return;
-    // 扩大范围，增加渲染缓冲时间
-    if (
-      scrollTop > (3.7 - 1) * kilaInnerHeight &&
-      scrollTop < (5.7 + 1) * kilaInnerHeight
-    ) {
-      setAnimationPlayState("running");
-    } else {
-      setAnimationPlayState("paused");
-      cancelAnimationFrame(animationId);
+    if (loading) {
+      return;
     }
-  }, [loading, scrollTop, kilaInnerHeight, animationId]);
+    const denom = kilaInnerHeight || window.innerHeight;
+    scrollProgressRef.current = scrollTop / denom;
+  }, [loading, scrollTop, kilaInnerHeight]);
+  /** genAI_feature_task_490709_moto_end */
 
   useEffect(() => {
-    if (loading) return;
+    if (loading) {
+      return;
+    }
+    if (!threeRef.current) {
+      return;
+    }
+
+    /** genAI_feature_task_490709_moto_start */
+    let rafId = 0;
+    let w = threeRef.current.clientWidth;
+    let h = threeRef.current.clientHeight;
+
     const scene = new THREE.Scene();
-    scene.background = null;
-    const texloader = new THREE.TextureLoader();
-    const materialforlook = new THREE.MeshBasicMaterial();
-    const geoforlook = new THREE.SphereGeometry(20, 20, 20);
-    const meshforlook = new THREE.Mesh(geoforlook, materialforlook);
-    meshforlook.position.set(0, 0, 0);
 
-    const groupGFD = new THREE.Group();
-    const material1 = [];
-    for (let i = 0; i < 3; i++) {
-      material1[i] = new THREE.MeshBasicMaterial({
-        map: texloader.load(`https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/three-gfd-${i + 1}.webp`),
-      });
-    }
-
-    for (let i = 0; i < 100; i++) {
-      const size = Math.random() * 40 + 10;
-      const geometry = new THREE.BoxGeometry(size, size, size);
-      const mesh = new THREE.Mesh(geometry, [
-        material1[0],
-        material1[0],
-        material1[2],
-        material1[1],
-        material1[1],
-        material1[2],
-      ]);
-      mesh.rotateX(2 * Math.PI * Math.random());
-      mesh.rotateY(2 * Math.PI * Math.random());
-      mesh.rotateZ(2 * Math.PI * Math.random());
-      groupGFD.add(mesh);
-      const x = 300 * (Math.random() - 0.5);
-      const y = 200 * (Math.random() - 0.5);
-      const z = 300 * (Math.random() - 0.5);
-      let offset = 30;
-      mesh.position.set(
-        x > 0 ? x + offset : x - offset,
-        y,
-        z > 0 ? z + offset : z - offset
-      );
-    }
-    scene.add(groupGFD);
-    groupGFD.visible = true;
-    meshforlook.position.set(0, 0, 0);
-
-    const camera = new THREE.PerspectiveCamera(
-      30,
-      window.innerWidth / window.innerHeight,
-      100,
-      3000
-    );
-    const R = 100; //相机圆周运动的半径
-    const tw = new TWEEN.Tween({ angle: 0 })
-      .to({ angle: Math.PI * 2 }, 16000)
-      .onUpdate(function (obj) {
-        camera.position.set(
-          R * Math.cos(obj.angle),
-          0,
-          R * Math.sin(obj.angle)
-        );
-        camera.lookAt(meshforlook.position);
-      });
-    const group = new TWEEN.Group();
-    group.add(tw);
-    function circleMove() {
-      tw.start();
-    }
-    circleMove();
-    setInterval(circleMove, 16000);
+    const camera = new THREE.PerspectiveCamera(75, w / h, 0.01, 2000);
+    camera.position.set(0, 0, 350);
+    camera.lookAt(new THREE.Vector3());
 
     const renderer = new THREE.WebGLRenderer({
-      //抗锯齿属性，WebGLRenderer常用的一个属性
       antialias: true,
-      //透明度alpha，用来使背景透明
       alpha: true,
     });
-    renderer.setClearAlpha(0); //设置alpha
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.render(scene, camera); //每次scene或者camera改变都需要重新render
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(w, h);
+    renderer.setClearColor(0x000000, 0);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
 
-    if (threeCubeRef.current)
-      threeCubeRef.current.appendChild(renderer.domElement);
-    if (typeof window != undefined) {
-      window.addEventListener("resize", () => {
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
+    threeRef.current.appendChild(renderer.domElement);
+
+    // Bloom 仅写入 EffectComposer 内部缓冲，避免全屏覆盖背景；最后以加法混合叠到已绘制的背景上
+    const bloomComposer = new EffectComposer(renderer);
+    bloomComposer.setPixelRatio(renderer.getPixelRatio());
+    bloomComposer.setSize(w, h);
+    bloomComposer.renderToScreen = false;
+
+    const bloomRenderPass = new RenderPass(scene, camera);
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(w, h), 0.1, 0.0, 1);
+
+    bloomComposer.addPass(bloomRenderPass);
+    bloomComposer.addPass(bloomPass);
+
+    const overlayScene = new THREE.Scene();
+    const overlayCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    overlayCamera.position.z = 1;
+    const bloomOverlayMaterial = new THREE.MeshBasicMaterial({
+      map: bloomComposer.readBuffer.texture,
+      transparent: true,
+      blending: THREE.AdditiveBlending,
+      depthTest: false,
+      depthWrite: false,
+      toneMapped: false,
+    });
+    // 这里的 2, 2 是平面在 X、Y 方向上的宽高（世界单位），用来和正交相机的视锥范围对齐，铺满整个屏幕
+    const bloomOverlayMesh = new THREE.Mesh(
+      new THREE.PlaneGeometry(2, 2),
+      bloomOverlayMaterial,
+    );
+    overlayScene.add(bloomOverlayMesh);
+
+    const vertex = /* GLSL */ `
+  varying vec2 vUv;
+
+  void main() {
+    vUv = uv;
+    
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+`;
+
+    const fragmentFire = /* GLSL */ `
+  varying vec2 vUv;
+  uniform float uProgress;
+  uniform sampler2D uNoise;
+  uniform sampler2D uNoiseOverlay;
+  uniform float yWeight;
+  uniform float noiseWeight;
+  uniform float overlayWeight;
+  uniform float uTime;
+  uniform float timeSpeed;
+
+  float setOpacity(float r, float g, float b, float tonethreshold) {
+    float tone = (r + g + b) / 3.0;
+    float alpha = 1.0;
+    if(tone<tonethreshold) {
+        alpha = 0.0;
     }
-    function render() {
-      if (animationPlayState === "paused") {
-      } else {
-        //官方的
-        groupGFD.children.forEach((mesh: any) => {
-          mesh.rotateX(mesh.scale.x * 0.01);
-          mesh.rotateY(mesh.scale.y * 0.01);
-          mesh.rotateZ(mesh.scale.z * 0.01);
-        });
+    return alpha;
+  }
 
-        group.update();
-        renderer.render(scene, camera);
+  void main() {
+    vec2 noiseUv = vUv + vec2(0., uTime*timeSpeed);
+    vec3 noiseTexOrigin = texture2D(uNoise, noiseUv).rgb;
+    vec3 noiseTexOriginOverlay = texture2D(uNoiseOverlay, noiseUv).rgb;
+    vec3 noiseTex = (noiseTexOrigin*noiseWeight + noiseTexOriginOverlay*overlayWeight + vUv.y*yWeight)/(yWeight + noiseWeight + overlayWeight);
+    float opacity1 = setOpacity(noiseTex.r, noiseTex.g, noiseTex.b, uProgress*1.0401-0.04);
+    if (opacity1 == 0.){
+        discard;
+    }
+    float opacity2 = setOpacity(noiseTex.r, noiseTex.g, noiseTex.b, uProgress*1.0401);
+    if (opacity2 == 0.){
+        gl_FragColor = vec4(1., 1., 1., 1.0)*1.5;
+        return;
+    }
+    discard;
+  }
+`;
+
+    const fragmentBg = /* GLSL */ `
+  varying vec2 vUv;
+  uniform sampler2D uTexture;
+  uniform sampler2D uTextureNext;
+  uniform float uProgress;
+  uniform sampler2D uNoise;
+  uniform sampler2D uNoiseOverlay;
+  uniform float yWeight;
+  uniform float noiseWeight;
+  uniform float overlayWeight;
+  uniform float uTime;
+  uniform float timeSpeed;
+
+  float setOpacity(float r, float g, float b, float tonethreshold) {
+    float tone = (r + g + b) / 3.0;
+    float alpha = 1.0;
+    if(tone<tonethreshold) {
+        alpha = 0.0;
+    }
+    return alpha;
+  }
+
+  void main() {
+    vec4 tex = texture2D(uTexture, vUv);
+    vec4 texNext = texture2D(uTextureNext, vUv);
+    vec2 noiseUv = vUv + vec2(0., uTime*timeSpeed);
+    vec3 noiseTexOrigin = texture2D(uNoise, noiseUv).rgb;
+    vec3 noiseTexOriginOverlay = texture2D(uNoiseOverlay, noiseUv).rgb;
+    vec3 noiseTex = (noiseTexOrigin*noiseWeight + noiseTexOriginOverlay*overlayWeight + vUv.y*yWeight)/(yWeight + noiseWeight + overlayWeight);
+    float opacity1 = setOpacity(noiseTex.r, noiseTex.g, noiseTex.b, uProgress*1.0401-0.04);
+    if (opacity1 == 0.){
+        float finalNextr = texNext.r;
+        float finalNextg = texNext.g;
+        float finalNextb = texNext.b;
+        gl_FragColor = vec4(finalNextr*1.0, finalNextg*1.0, finalNextb*1.0, 1.0);
+        return;
+    }
+    float opacity2 = setOpacity(noiseTex.r, noiseTex.g, noiseTex.b, uProgress*1.0401);
+    if (opacity2 == 0.){
+        gl_FragColor = vec4(1., 1., 1., 1.);
+        return;
+    }
+    float finalr = tex.r;
+    float finalg = tex.g;
+    float finalb = tex.b;
+    gl_FragColor = vec4(finalr*1.0, finalg*1.0, finalb*1.0, 1.0);
+  }
+`;
+
+    const materialFire = new THREE.ShaderMaterial({
+      vertexShader: vertex,
+      fragmentShader: fragmentFire,
+      uniforms: {
+        uProgress: { value: 0 },
+        uNoise: {
+          value: new THREE.TextureLoader().load(
+            "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/distort.png",
+          ),
+        },
+        uNoiseOverlay: {
+          value: new THREE.TextureLoader().load(
+            "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/waterturbulence.png",
+          ),
+        },
+        yWeight: {
+          value: 10,
+        },
+        noiseWeight: {
+          value: 2.5,
+        },
+        overlayWeight: {
+          value: 1.5,
+        },
+        uTime: {
+          value: 0,
+        },
+        timeSpeed: {
+          value: 0.2,
+        },
+      },
+      side: THREE.DoubleSide,
+    });
+    materialFire.uniforms.uNoise.value.wrapS = THREE.MirroredRepeatWrapping;
+    materialFire.uniforms.uNoise.value.wrapT = THREE.MirroredRepeatWrapping;
+    materialFire.uniforms.uNoiseOverlay.value.wrapS = THREE.MirroredRepeatWrapping;
+    materialFire.uniforms.uNoiseOverlay.value.wrapT = THREE.MirroredRepeatWrapping;
+
+    const materialBg = new THREE.ShaderMaterial({
+      vertexShader: vertex,
+      fragmentShader: fragmentBg,
+      uniforms: {
+        uTexture: {
+          value: new THREE.TextureLoader().load(
+            "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-anime.webp",
+          ),
+        },
+        uTextureNext: {
+          value: new THREE.TextureLoader().load(
+            "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-rmt.webp",
+          ),
+        },
+        uProgress: { value: 0 },
+        uNoise: {
+          value: new THREE.TextureLoader().load(
+            "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/distort.png",
+          ),
+        },
+        uNoiseOverlay: {
+          value: new THREE.TextureLoader().load(
+            "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/waterturbulence.png",
+          ),
+        },
+        uTime: {
+          value: 0,
+        },
+        yWeight: {
+          value: 10,
+        },
+        noiseWeight: {
+          value: 2.5,
+        },
+        overlayWeight: {
+          value: 1.5,
+        },
+        timeSpeed: {
+          value: 0.2,
+        },
+      },
+      side: THREE.DoubleSide,
+    });
+    materialBg.uniforms.uNoise.value.wrapS = THREE.MirroredRepeatWrapping;
+    materialBg.uniforms.uNoise.value.wrapT = THREE.MirroredRepeatWrapping;
+    materialBg.uniforms.uNoiseOverlay.value.wrapS = THREE.MirroredRepeatWrapping;
+    materialBg.uniforms.uNoiseOverlay.value.wrapT = THREE.MirroredRepeatWrapping;
+
+    const meshFire = new THREE.Mesh(
+      new THREE.PlaneGeometry(750, 500),
+      materialFire,
+    );
+    meshFire.layers.set(1);
+    scene.add(meshFire);
+    const meshBg = new THREE.Mesh(new THREE.PlaneGeometry(750, 500), materialBg);
+    meshBg.layers.set(0);
+    scene.add(meshBg);
+
+    const clock = new THREE.Clock();
+
+    function updateFromScrollProgress(progress: number) {
+      const p = progress;
+      materialFire.uniforms.uProgress.value = p;
+      materialBg.uniforms.uProgress.value = p;
+    }
+
+    function renderFrame() {
+      updateFromScrollProgress(scrollProgressRef.current);
+      materialFire.uniforms.uTime.value = clock.getElapsedTime();
+      materialBg.uniforms.uTime.value = clock.getElapsedTime();
+
+      renderer.setRenderTarget(null);
+      renderer.autoClear = true;
+      renderer.setClearColor(0x000000, 1);
+      renderer.clear(true, true, true);
+
+      camera.layers.set(0);
+      renderer.render(scene, camera);
+
+      camera.layers.set(1);
+      bloomComposer.render();
+
+      bloomOverlayMaterial.map = bloomComposer.readBuffer.texture;
+
+      renderer.autoClear = false;
+      renderer.clearDepth();
+      renderer.render(overlayScene, overlayCamera);
+      renderer.autoClear = true;
+
+      rafId = requestAnimationFrame(renderFrame);
+    }
+
+    renderFrame();
+
+    function resize() {
+      if (!threeRef.current) {
+        return;
       }
-      setAnimationId(requestAnimationFrame(render));
+      w = threeRef.current.clientWidth;
+      h = threeRef.current.clientHeight;
+      renderer.setSize(w, h);
+      bloomComposer.setSize(w, h);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
     }
-    render();
-    const warning = threeCubeRef.current;
+
+    window.addEventListener("resize", resize);
+    /** genAI_feature_task_490709_moto_end */
+
     return () => {
-      if (warning) {
-        warning.removeChild(renderer.domElement);
+      /** genAI_feature_task_490709_moto_start */
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", resize);
+      /** genAI_feature_task_490709_moto_end */
+      const host = threeRef.current;
+      if (host && renderer.domElement.parentNode === host) {
+        host.removeChild(renderer.domElement);
       }
+      /** genAI_feature_task_490709_moto_start */
+      meshFire.geometry.dispose();
+      meshBg.geometry.dispose();
+      materialFire.dispose();
+      materialBg.dispose();
+      bloomOverlayMesh.geometry.dispose();
+      bloomOverlayMaterial.dispose();
+      bloomComposer.dispose();
       renderer.dispose();
+      /** genAI_feature_task_490709_moto_end */
     };
-  }, [loading, animationPlayState]);
+  }, [loading]);
 
   return (
-    <div className="h-screen w-screen bg-project bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
-      {/* mainScene */}
-      <div
-        className=" absolute top-0 left-0 w-screen h-screen"
-        ref={threeCubeRef}
-      ></div>
-      {/* title and context */}
-      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center sm:gap-[8vw]">
-        <div
-          className="order-1 sm:order-2 relative text-white h-[40vh] flex justify-center items-center "
-          onMouseEnter={() => {
-            setIsHover(true);
-          }}
-          onMouseLeave={() => {
-            setIsHover(false);
-          }}
-        >
-          <div
-            className={`text-[20vw] sm:text-[9.4vmax] ${
-              isHover ? "opacity-100" : "opacity-0"
-            } transition-opacity  text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#b4f1d1] to-[#fffb87db]  `}
-          >
-            <h2>Project</h2>
-          </div>
-          <div
-            className={`absolute flex justify-center items-center h-[40vh] text-[30vw] sm:text-[11.2vmax] [clip-path:inset(_0_0_50%_0)] ${
-              isHover
-                ? "-translate-y-[8vw] sm:-translate-y-[3.8vmax]"
-                : "translate-y-1"
-            } transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#b4f1d1] to-[#fffb87db]  `}
-          >
-            <p>项目</p>
-          </div>
-          <div
-            className={`absolute flex justify-center items-center h-[40vh] text-[30vw] sm:text-[11.2vmax] [clip-path:inset(_50%_0_0_0)] ${
-              isHover
-                ? "translate-y-[8vw] sm:translate-y-[3.8vmax]"
-                : "translate-y-0"
-            } transition-transform text-transparent bg-clip-text  bg-gradient-to-r from-[white] via-[#b4f1d1] to-[#fffb87db]  `}
-          >
-            <p>项目</p>
-          </div>
-        </div>
-
-        <div className="order-2 sm:order-1 relative text-white text-[5.5vw] sm:text-[3vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_violet] text-start sm:text-end">
-          {projects.map((pro, index) => (
-            <motion.p
-              key={pro.name}
-              initial={{
-                transform:
-                  index % 2 === 0 ? "translateX(-50%)" : "translateX(50%)",
-                opacity: 0,
-              }}
-              whileInView={{ transform: "translateX(0%)", opacity: 1 }}
-              transition={{
-                duration: 0.8,
-                ease: "easeInOut",
-                type: "tween",
-              }}
-            >
-              <a href={pro.url} target="_blank">
-                - {pro.name} -
-              </a>
-            </motion.p>
-          ))}
-        </div>
-      </div>
-    </div>
+    <div
+      className="fixed top-0 left-0 w-full h-screen z-[1]"
+      ref={threeRef}
+    ></div>
   );
 }
