@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useContext, useEffect, useRef, useState } from "react";
 import Foot from "./components/footer";
-import heartpng from "../assets/heart.png";
 import { usePathname, useRouter } from "next/navigation";
 import useWindow from "../hooks/useWindow";
 import {
@@ -402,7 +401,7 @@ export function KilaLayout({ children }: { children: React.ReactNode }) {
           <Image
             height={40}
             width={40}
-            src={heartpng}
+            src={"https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-heart.png"}
             alt="heart"
             key={item.order}
             className={`absolute w-[40px] h-[40px] select-none pointer-events-none animate-personwebheart z-[2147483647]`}

@@ -2,19 +2,19 @@
 
 import { useContext, useEffect, useState } from "react";
 import useWindow from "../../hooks/useWindow";
-import hollowknight from "../../assets/game/hollowknight.webp";
-import endinglilies from "../../assets/game/endinglilies.webp";
-import terreria from "../../assets/game/terreria.webp";
-import astlibra from "../../assets/game/astlibra.webp";
-import skull from "../../assets/game/skull.webp";
-import no11 from "../../assets/game/no11.webp";
 import Image from "next/image";
-import gameGIF from "../assets/game.gif";
 import { motion } from "framer-motion";
 import { loadingContext } from "@/app/providers/loadingVanishLayout";
 import useScroll from "@/app/hooks/useScroll";
 
-const gamesrc = [hollowknight, endinglilies, terreria, astlibra, skull, no11];
+const gamesrc = [
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-game-hollowknight.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-game-endinglilies.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-game-terreria.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-game-astlibra.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-game-skull.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-game-no11.webp",
+];
 
 const gameList = [
   "Hollow Knight",
@@ -246,7 +246,7 @@ export default function GameScene() {
               width={60}
               height={60}
               alt="game"
-              src={gameGIF}
+              src={"https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-home-assets-game.gif"}
               className="min-w-[60px] min-h-[60px] absolute top-0 transition-[left_transform]"
               style={{
                 left: isHover ? "calc(100%)" : "0",
@@ -266,7 +266,7 @@ export default function GameScene() {
               width={60}
               height={60}
               alt="game"
-              src={gameGIF}
+              src={"https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-home-assets-game.gif"}
               className="min-w-[60px] min-h-[60px] absolute bottom-0 transition-[right_transform]"
               style={{
                 right: isHover ? "calc(100%)" : "0",

@@ -22,7 +22,7 @@ export default function KilalaVideo() {
   }, [loading, kilaInnerWidth, scrollTop, kilaInnerHeight]);
   return (
     <video
-      src="/kilalascene.mp4"
+      src="https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalascene.mp4"
       ref={videoRef}
       loop={true}
       muted={true}

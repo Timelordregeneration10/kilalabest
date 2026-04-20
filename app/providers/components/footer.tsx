@@ -25,9 +25,6 @@ export default function Footer() {
             <div>
                 ·
             </div>
-            <div>
-                备案/许可证编号：<a href="https://beian.miit.gov.cn/" target="_blank">沪ICP备2023026274号-3</a>
-            </div>
         </div>
     )
 }

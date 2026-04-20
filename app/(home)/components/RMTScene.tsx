@@ -1,10 +1,5 @@
 "use client";
 import useWindow from "../../hooks/useWindow";
-import heavenRem from "../../assets/rmt/heavenRem.webp";
-import jpegRem from "../../assets/rmt/jpegRem.webp";
-import sisRem1Rem from "../../assets/rmt/sisRem1.webp";
-import sisRem2Rem from "../../assets/rmt/sisRem2.webp";
-import wangjiangRem from "../../assets/rmt/wangjiangRem.webp";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import useScroll from "@/app/hooks/useScroll";
@@ -26,7 +21,7 @@ const RMTExplains = [
 const Rems = [
   {
     rid: "wangjiangRem",
-    rsrc: wangjiangRem,
+    rsrc: "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-wangjiangRem.webp",
     rscaleX: -1,
     rscaleY: -1,
     fwidth: "w-[55vmax]",
@@ -40,7 +35,7 @@ const Rems = [
   },
   {
     rid: "sisRem1Rem",
-    rsrc: sisRem1Rem,
+    rsrc: "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-sisRem1.webp",
     rscaleX: 0.7,
     rscaleY: -1,
     fwidth: "w-[80vmax]",
@@ -54,7 +49,7 @@ const Rems = [
   },
   {
     rid: "jpegRem",
-    rsrc: jpegRem,
+    rsrc: "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-jpegRem.webp",
     rscaleX: -0.8,
     rscaleY: -1.6,
     fwidth: "w-[90vmax]",
@@ -68,7 +63,7 @@ const Rems = [
   },
   {
     rid: "sisRem2Rem",
-    rsrc: sisRem2Rem,
+    rsrc: "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-sisRem2.webp",
     rscaleX: 1,
     rscaleY: -1.2,
     fwidth: "w-[78vmax]",
@@ -82,7 +77,7 @@ const Rems = [
   },
   {
     rid: "heavenRem",
-    rsrc: heavenRem,
+    rsrc: "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-heavenRem.webp",
     rscaleX: -1,
     rscaleY: -1.2,
     fwidth: "w-[120vmax]",

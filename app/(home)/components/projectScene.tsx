@@ -71,7 +71,7 @@ export default function ProjectScene() {
     const material1 = [];
     for (let i = 0; i < 3; i++) {
       material1[i] = new THREE.MeshBasicMaterial({
-        map: texloader.load(`/three/gfd/${i + 1}.webp`),
+        map: texloader.load(`https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/three-gfd-${i + 1}.webp`),
       });
     }
 

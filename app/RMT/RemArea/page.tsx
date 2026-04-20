@@ -1,37 +1,26 @@
 "use client";
 import SwayLeaf from "@/app/components/SwayLeaf";
 import { useEffect, useMemo, useState } from "react";
-import RemCursor0 from "@/app/assets/rmt/RemCursors/0.gif";
-import RemCursor1 from "@/app/assets/rmt/RemCursors/1.gif";
-import RemCursor2 from "@/app/assets/rmt/RemCursors/2.gif";
-import RemCursor3 from "@/app/assets/rmt/RemCursors/3.gif";
-import RemCursor4 from "@/app/assets/rmt/RemCursors/4.gif";
-import RemCursor5 from "@/app/assets/rmt/RemCursors/5.gif";
-import RemCursor6 from "@/app/assets/rmt/RemCursors/6.gif";
-import RemCursor7 from "@/app/assets/rmt/RemCursors/7.gif";
-import RemCursor8 from "@/app/assets/rmt/RemCursors/8.gif";
-import RemCursor9 from "@/app/assets/rmt/RemCursors/9.gif";
-import RemCursor10 from "@/app/assets/rmt/RemCursors/10.gif";
 import { StaticImageData } from "next/image";
 
 const RemCursors = [
-  RemCursor0,
-  RemCursor1,
-  RemCursor2,
-  RemCursor3,
-  RemCursor4,
-  RemCursor5,
-  RemCursor6,
-  RemCursor7,
-  RemCursor8,
-  RemCursor9,
-  RemCursor10,
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-0.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-1.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-2.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-3.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-4.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-5.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-6.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-7.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-8.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-9.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-10.gif",
 ];
 
 const RemAreaPage: React.FC = () => {
   const [RemArrays, setRemArrays] = useState<
     {
-      src: StaticImageData;
+      src: string;
       scale: number;
       y: number;
       key: string;

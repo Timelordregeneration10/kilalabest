@@ -56,7 +56,7 @@ const RippleAttemptPage: React.FC = () => {
       <div className="w-[100vmax] h-[100vmax] relative overflow-hidden">
         <div
           ref={clickRef}
-          className="absolute top-0 left-0 w-full h-full pt-60 bg-[length:_100%] bg-center bg-fixed bg-[url('/aiyiRemPublic/7.webp')]"
+          className="absolute top-0 left-0 w-full h-full pt-60 bg-[length:_100%] bg-center bg-fixed bg-[url('https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/aiyiRemPublic7.webp')]"
         >
           <a href="https://segmentfault.com/a/1190000019132065" target="_blank">
             原文链接
@@ -80,8 +80,8 @@ const RippleAttemptPage: React.FC = () => {
                   <div
                     key={zIndex}
                     // cnm, 不管是用clippath还是widthheight关键是初始值得是动画初始值，因为动画设置了b的延迟，不设置成动画初值会挡住牛魔的先动画的
-                    // className="absolute rounded-full w-0 h-0 top-[50%] left-[50%] bg-center bg-fixed animate-ripple1 bg-[url('/aiyiRemPublic/7.webp')]"
-                    className="absolute [clip-path:circle(0%)] top-0 left-0 w-full h-full bg-center bg-fixed animate-ripple2 bg-[url('/aiyiRemPublic/7.webp')]"
+                    // className="absolute rounded-full w-0 h-0 top-[50%] left-[50%] bg-center bg-fixed animate-ripple1 bg-[url('https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/aiyiRemPublic7.webp')]"
+                    className="absolute [clip-path:circle(0%)] top-0 left-0 w-full h-full bg-center bg-fixed animate-ripple2 bg-[url('https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/aiyiRemPublic7.webp')]"
                     style={{
                       zIndex,
                       backgroundSize:

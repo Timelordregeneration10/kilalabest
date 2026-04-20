@@ -1,6 +1,5 @@
 "use client";
 import Image, { StaticImageData } from "next/image";
-import leafPNG from "@/app/assets/leaf.png";
 import {
   CSSProperties,
   MouseEvent,
@@ -28,7 +27,7 @@ interface SwayLeafProps {
 const defaultProps = {
   width: 40,
   height: 40,
-  src: leafPNG,
+  src: "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-leaf.png",
   hoverAreaScale: 5,
   hoverAreaBackgroundColor: "transparent",
   // 默认不消失

@@ -2,17 +2,7 @@
 
 import { useContext, useEffect, useRef, useState } from "react";
 import useWindow from "../../hooks/useWindow";
-import birthday1 from "../../assets/applicaton/birthday1.webp";
-import birthday2 from "../../assets/applicaton/birthday2.webp";
-import birthday3 from "../../assets/applicaton/birthday3.webp";
-import hdwpic from "../../assets/applicaton/hdwpic.webp";
-import landu1 from "../../assets/applicaton/landu1.webp";
-import landu2 from "../../assets/applicaton/landu2.webp";
-import yuan from "../../assets/applicaton/yuan.webp";
-import sakamoto from "../../assets/applicaton/sakamoto.webp";
 import Image from "next/image";
-import applicationGIF from "../assets/application.gif";
-import bg from "@/app/assets/musedash/application.webp";
 import { motion } from "framer-motion";
 import useScroll from "@/app/hooks/useScroll";
 import { loadingContext } from "@/app/providers/loadingVanishLayout";
@@ -33,14 +23,14 @@ const applications = [
 ];
 
 const appsrc = [
-  birthday1,
-  birthday2,
-  birthday3,
-  hdwpic,
-  landu1,
-  landu2,
-  yuan,
-  sakamoto,
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-application-birthday1.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-application-birthday2.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-application-birthday3.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-application-hdwpic.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-application-landu1.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-application-landu2.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-application-yuan.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-application-sakamoto.webp",
 ];
 
 export default function ApplicationScene() {
@@ -199,7 +189,7 @@ export default function ApplicationScene() {
         ref={bgRef}
       >
         <Image
-          src={bg}
+          src={"https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-application.webp"}
           width={1600}
           height={900}
           loading="eager"
@@ -213,7 +203,7 @@ export default function ApplicationScene() {
       >
         <Image
           src={
-            "https://timelord.cn/%E5%8E%9F%E7%A5%9E%E5%90%AF%E5%8A%A8/yuanshen.jpg"
+            "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/yuanshen.jpg"
           }
           width={1600}
           height={900}
@@ -325,7 +315,7 @@ export default function ApplicationScene() {
               width={60}
               height={60}
               alt="application"
-              src={applicationGIF}
+              src={"https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-home-assets-application.gif"}
               className="min-w-[60px] min-h-[60px] absolute top-0 transition-[left_transform]"
               style={{
                 left: isHover ? "calc(100%)" : "0",
@@ -345,7 +335,7 @@ export default function ApplicationScene() {
               width={60}
               height={60}
               alt="application"
-              src={applicationGIF}
+              src={"https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-home-assets-application.gif"}
               className="min-w-[60px] min-h-[60px] absolute bottom-0 transition-[right_transform]"
               style={{
                 right: isHover ? "calc(100%)" : "0",

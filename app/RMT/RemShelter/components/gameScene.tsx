@@ -1,43 +1,33 @@
 "use client";
 import SwayLeaf from "@/app/components/SwayLeaf";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
-import RemCursor0 from "@/app/assets/rmt/RemCursors/0.gif";
-import RemCursor1 from "@/app/assets/rmt/RemCursors/1.gif";
-import RemCursor2 from "@/app/assets/rmt/RemCursors/2.gif";
-import RemCursor3 from "@/app/assets/rmt/RemCursors/3.gif";
-import RemCursor4 from "@/app/assets/rmt/RemCursors/4.gif";
-import RemCursor5 from "@/app/assets/rmt/RemCursors/5.gif";
-import RemCursor6 from "@/app/assets/rmt/RemCursors/6.gif";
-import RemCursor7 from "@/app/assets/rmt/RemCursors/7.gif";
-import RemCursor8 from "@/app/assets/rmt/RemCursors/8.gif";
-import RemCursor9 from "@/app/assets/rmt/RemCursors/9.gif";
-import RemCursor10 from "@/app/assets/rmt/RemCursors/10.gif";
-import taido from "@/app/RMT/RemShelter/assets/taido.webp";
-import seyu from "@/app/RMT/RemShelter/assets/seyu.webp";
-import qiangyu from "@/app/RMT/RemShelter/assets/qiangyu.webp";
-import baoshi from "@/app/RMT/RemShelter/assets/baoshi.webp";
-import fennu from "@/app/RMT/RemShelter/assets/fennu.webp";
-import aoman from "@/app/RMT/RemShelter/assets/aoman.webp";
 import { StaticImageData } from "next/image";
 
 const RemCursors = [
-  RemCursor0,
-  RemCursor1,
-  RemCursor2,
-  RemCursor3,
-  RemCursor4,
-  RemCursor5,
-  RemCursor6,
-  RemCursor7,
-  RemCursor8,
-  RemCursor9,
-  RemCursor10,
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-0.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-1.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-2.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-3.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-4.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-5.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-6.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-7.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-8.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-9.gif",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-rmt-RemCursors-10.gif",
 ];
 
-const waluyi = [taido, seyu, qiangyu, baoshi, fennu, aoman];
+const waluyi = [
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-RemShelter-taido.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-RemShelter-seyu.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-RemShelter-qiangyu.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-RemShelter-baoshi.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-RemShelter-fennu.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-RemShelter-aoman.webp",
+];
 
 interface Leaf {
-  src: StaticImageData;
+  src: StaticImageData | string;
   size: number;
   scale: number;
   top: number;

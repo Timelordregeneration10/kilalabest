@@ -12,7 +12,7 @@ export default function DrawingScene() {
   const initialAiyiRems = useMemo(() => {
     const temp = [];
     for (let i = 0; i < 9; i++) {
-      temp.push("/aiyiRemPublic/" + String(i + 1) + ".webp");
+      temp.push("https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/aiyiRemPublic" + String(i + 1) + ".webp");
     }
     return temp;
   }, []);

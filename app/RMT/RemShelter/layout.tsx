@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import RemShelterBG from "@/app/RMT/RemShelter/assets/RemShelterBG.webp";
 import type { Viewport } from "next";
 
 export const viewport: Viewport = {
@@ -71,7 +70,7 @@ export default function RootLayout({
   return (
     <>
       <Image
-        src={RemShelterBG}
+        src={"https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/RemShelterBG.webp"}
         alt="RemShelterBG"
         height={744}
         width={1200}

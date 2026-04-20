@@ -2,9 +2,7 @@
 
 import { useContext, useEffect, useState } from "react";
 import useWindow from "../../hooks/useWindow";
-import musicGIF from "../assets/music.gif";
 import Image from "next/image";
-import musicBG from "@/app/assets/musedash/music.webp";
 import { loadingContext } from "@/app/providers/loadingVanishLayout";
 import useScroll from "@/app/hooks/useScroll";
 
@@ -37,7 +35,7 @@ export default function MusicScene() {
         style={{ animationPlayState }}
       >
         <Image
-          src={musicBG}
+          src={"https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-music.webp"}
           width={1600}
           height={900}
           alt="musicbg"
@@ -112,7 +110,7 @@ export default function MusicScene() {
               width={60}
               height={60}
               alt="music"
-              src={musicGIF}
+              src={"https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-home-assets-music.gif"}
               className="min-w-[60px] min-h-[60px] absolute top-0 transition-[left_transform]"
               style={{
                 left: isHover ? "calc(100%)" : "0",
@@ -132,7 +130,7 @@ export default function MusicScene() {
               width={60}
               height={60}
               alt="music"
-              src={musicGIF}
+              src={"https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-home-assets-music.gif"}
               className="min-w-[60px] min-h-[60px] absolute bottom-0 transition-[right_transform]"
               style={{
                 right: isHover ? "calc(100%)" : "0",

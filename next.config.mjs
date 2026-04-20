@@ -6,6 +6,10 @@ const nextConfig = {
             protocol: 'https',
             hostname: 'timelord.cn',
           },
+          {
+            protocol: 'https',
+            hostname: 'cdn.jsdelivr.net',
+          },
         ],
       },
 };

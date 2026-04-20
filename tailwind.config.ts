@@ -25,18 +25,18 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "streamer-color":
           "linear-gradient(90deg, #91bdf044, #ee82ee44, #91bdf044)",
-        leaveweb: "url('./assets/musedash/leaving.webp')", //最终会被打包到global.css
-        kilalascene: "url('./assets/musedash/kilalascene.webp')",
-        rmt: "url('./assets/musedash/rmt.webp')",
-        project: "url('./assets/musedash/project.webp')",
-        application: "url('./assets/musedash/application.webp')",
-        attempt: "url('./assets/musedash/attempt.webp')",
-        music: "url('./assets/musedash/music.webp')",
-        anime: "url('./assets/musedash/anime.webp')",
-        game: "url('./assets/musedash/game.webp')",
-        drawing: "url('./assets/musedash/drawing.webp')",
-        warning: "url('./assets/musedash/warning.webp')",
-        graffiti: "url('./assets/drawing/graffiti/bg.jpg')",
+        leaveweb: "url('https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-leaving.webp')", //最终会被打包到global.css
+        kilalascene: "url('https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-kilalascene.webp')",
+        rmt: "url('https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-rmt.webp')",
+        project: "url('https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-project.webp')",
+        application: "url('https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-application.webp')",
+        attempt: "url('https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-attempt.webp')",
+        music: "url('https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-music.webp')",
+        anime: "url('https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-anime.webp')",
+        game: "url('https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-game.webp')",
+        drawing: "url('https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-drawing.webp')",
+        warning: "url('https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-warning.webp')",
+        graffiti: "url('https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-drawing-graffiti-bg.jpg')",
       },
       keyframes: {
         frontier: {

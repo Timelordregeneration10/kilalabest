@@ -3,19 +3,20 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import useWindow from "../../hooks/useWindow";
 import Image from "next/image";
-import suki1 from "../assets/suki1.webp";
-import suki2 from "../assets/suki2.webp";
-import suki3 from "../assets/suki3.webp";
-import suki4 from "../assets/suki4.webp";
-import suki5 from "../assets/suki5.webp";
-import suki6 from "../assets/suki6.webp";
-import suki7 from "../assets/suki7.webp";
-import suki8 from "../assets/suki8.webp";
-import suki9 from "../assets/suki9.webp";
 import useScroll from "@/app/hooks/useScroll";
 import { loadingContext } from "@/app/providers/loadingVanishLayout";
 
-const sukis = [suki1, suki2, suki3, suki4, suki5, suki6, suki7, suki8, suki9];
+const sukis = [
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-home-assets-suki1.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-home-assets-suki2.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-home-assets-suki3.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-home-assets-suki4.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-home-assets-suki5.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-home-assets-suki6.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-home-assets-suki7.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-home-assets-suki8.webp",
+  "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-home-assets-suki9.webp",
+];
 
 export default function AnimeScene() {
   const { loading } = useContext(loadingContext);

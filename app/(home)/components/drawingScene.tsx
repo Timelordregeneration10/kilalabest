@@ -54,7 +54,7 @@ export default function DrawingScene() {
     const groupGFD = new THREE.Group();
     const textures2 = [];
     for (let i = 0; i < 3; i++) {
-      textures2[i] = texloader.load(`/three/gfd/${i + 1}.webp`);
+      textures2[i] = texloader.load(`https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/three-gfd-${i + 1}.webp`);
     }
 
     for (let i = 0; i < 1000; i++) {

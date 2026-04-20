@@ -52,6 +52,6 @@ html::-webkit-scrollbar {
 @layer base {
   @font-face {
     font-family: "saibo";
-    src: url("./font/shangshousaiboti.ttf");
+    src: url("https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/shangshousaiboti.ttf");
   }
 }

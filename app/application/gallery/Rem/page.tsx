@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import darkRem from "./assets/darkRem.jpg";
 
 const RemGallerys = [
   { name: "卡片旋转动效", url: "/application/gallery/Rem/cardRotate" },
@@ -14,7 +13,7 @@ export default function RemGalleryPage() {
     <div className="w-screen h-screen relative">
       <Image
         className="w-full h-full absolute z-[0] top-0 left-0 object-cover sm:object-fill pointer-events-none"
-        src={darkRem}
+        src={"https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/darkRem.jpg"}
         width={4096}
         height={2304}
         alt="Rem gallery bg"

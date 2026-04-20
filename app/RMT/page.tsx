@@ -1,5 +1,4 @@
 import Image from "next/image";
-import RMTbg from "./assets/RMTbg.jpg";
 
 const RMTPage: React.FC = () => {
   return (
@@ -21,7 +20,7 @@ const RMTPage: React.FC = () => {
       </ul>
       <div className="absolute top-0 left-0 w-screen h-screen flex justify-center items-center">
         <Image
-          src={RMTbg}
+          src={"https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/RMTbg.jpg"}
           width={1600}
           height={900}
           alt="RMT background"

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import momentaRem from "./assets/momentaRem.jpg";
 
 const RemStickys = [
   { name: "水平滚动", url: "/attempt/sticky/horizontal" },
@@ -14,7 +13,7 @@ export default function RemStickysPage() {
     <div className="w-screen h-screen relative">
       <Image
         className="w-full h-full absolute z-[0] top-0 left-0 object-cover sm:object-fill pointer-events-none"
-        src={momentaRem}
+        src={"https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/momentaRem.jpg"}
         width={4096}
         height={2304}
         alt="Rem sticky bg"

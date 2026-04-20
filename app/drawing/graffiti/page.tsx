@@ -25,16 +25,16 @@ export default function Page() {
     }
     const arr = [];
     for (let i = 0; i < 8; i += 2) {
-      arr.push(getResult("/graffiti/v" + String(i) + ".webp"));
+      arr.push(getResult("https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/graffitiv" + String(i) + ".webp"));
     }
     for (let i = 0; i < 7; i += 2) {
-      arr.push(getResult("/graffiti/h" + String(i) + ".webp"));
+      arr.push(getResult("https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/graffitih" + String(i) + ".webp"));
     }
     for (let i = 1; i < 8; i += 2) {
-      arr.push(getResult("/graffiti/v" + String(i) + ".webp"));
+      arr.push(getResult("https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/graffitiv" + String(i) + ".webp"));
     }
     for (let i = 1; i < 7; i += 2) {
-      arr.push(getResult("/graffiti/h" + String(i) + ".webp"));
+      arr.push(getResult("https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/graffitih" + String(i) + ".webp"));
     }
     Promise.all(arr).then(() => {
       setSizeGotton(true);
