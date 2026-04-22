@@ -27,7 +27,7 @@ export default function KilalaVideo() {
       loop={true}
       muted={true}
       playsInline={true}
-      className="w-screen h-screen object-cover lg:object-fill"
+      className="w-screen h-[120vh] object-cover lg:object-fill"
     ></video>
   );
 }

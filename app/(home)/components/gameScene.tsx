@@ -119,7 +119,7 @@ export default function GameScene() {
   return (
     <div className="h-screen w-screen bg-game bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
       {/* mainScene */}
-      <div className="absolute z-[1] left-0 top-0 w-screen h-screen flex justify-center items-center ">
+      <div className="absolute z-[3] left-0 top-0 w-screen h-screen flex justify-center items-center pointer-events-none">
         <div
           className="relative w-[30vw] h-[30vw] transform-style-3d transition-[transform_width_height] duration-1000 "
           style={{ perspective: isHover ? "1000px" : "1000px" }}
@@ -179,7 +179,7 @@ export default function GameScene() {
         </div>
       </div>
       {/* title and context */}
-      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-[10vh] sm:gap-[10vw]">
+      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-[10vh] sm:gap-[10vw] z-[2] relative">
         <a
           className=" relative text-white h-fit flex justify-center items-center cursor-pointer px-12 py-8 sm:px-24 sm:py-16"
           onMouseEnter={() => {

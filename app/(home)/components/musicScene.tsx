@@ -29,21 +29,8 @@ export default function MusicScene() {
 
   return (
     <div className="h-screen w-screen bg-music bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative overflow-hidden">
-      {/* mainScene */}
-      <div
-        className=" absolute top-0 left-0 w-screen h-screen animate-musicAnimation"
-        style={{ animationPlayState }}
-      >
-        <Image
-          src={"https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-assets-musedash-music.webp"}
-          width={1600}
-          height={900}
-          alt="musicbg"
-          className="w-full h-full object-cover"
-        ></Image>
-      </div>
       {/* title and context */}
-      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-[10vh] sm:gap-[10vw]">
+      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center gap-[10vh] sm:gap-[10vw] z-[2] relative">
         <a
           className=" relative text-white h-fit flex justify-center items-center cursor-pointer px-12 py-8 sm:px-24 sm:py-16"
           onMouseEnter={() => {

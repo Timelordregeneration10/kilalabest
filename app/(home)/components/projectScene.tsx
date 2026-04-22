@@ -1,8 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useRef, useState } from "react";
-import * as THREE from "three";
-import TWEEN from "@tweenjs/tween.js";
+import { useContext, useEffect, useState } from "react";
 import useWindow from "../../hooks/useWindow";
 import { motion } from "framer-motion";
 import { loadingContext } from "@/app/providers/loadingVanishLayout";
@@ -33,15 +31,12 @@ const projects = [
 ];
 
 export default function ProjectScene() {
-  const threeCubeRef = useRef<HTMLDivElement>(null);
   const isMobile = useWindow().width < 640;
   const [isHover, setIsHover] = useState(isMobile);
 
   const { loading } = useContext(loadingContext);
   const { scrollTop } = useScroll();
   const { width: kilaInnerWidth, height: kilaInnerHeight } = useWindow();
-  const [animationPlayState, setAnimationPlayState] = useState("paused");
-  const [animationId, setAnimationId] = useState(0);
 
   useEffect(() => {
     if (loading) return;
@@ -50,136 +45,13 @@ export default function ProjectScene() {
       scrollTop > (3.7 - 1) * kilaInnerHeight &&
       scrollTop < (5.7 + 1) * kilaInnerHeight
     ) {
-      setAnimationPlayState("running");
-    } else {
-      setAnimationPlayState("paused");
-      cancelAnimationFrame(animationId);
     }
-  }, [loading, scrollTop, kilaInnerHeight, animationId]);
-
-  useEffect(() => {
-    if (loading) return;
-    const scene = new THREE.Scene();
-    scene.background = null;
-    const texloader = new THREE.TextureLoader();
-    const materialforlook = new THREE.MeshBasicMaterial();
-    const geoforlook = new THREE.SphereGeometry(20, 20, 20);
-    const meshforlook = new THREE.Mesh(geoforlook, materialforlook);
-    meshforlook.position.set(0, 0, 0);
-
-    const groupGFD = new THREE.Group();
-    const material1 = [];
-    for (let i = 0; i < 3; i++) {
-      material1[i] = new THREE.MeshBasicMaterial({
-        map: texloader.load(`https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/three-gfd-${i + 1}.webp`),
-      });
-    }
-
-    for (let i = 0; i < 100; i++) {
-      const size = Math.random() * 40 + 10;
-      const geometry = new THREE.BoxGeometry(size, size, size);
-      const mesh = new THREE.Mesh(geometry, [
-        material1[0],
-        material1[0],
-        material1[2],
-        material1[1],
-        material1[1],
-        material1[2],
-      ]);
-      mesh.rotateX(2 * Math.PI * Math.random());
-      mesh.rotateY(2 * Math.PI * Math.random());
-      mesh.rotateZ(2 * Math.PI * Math.random());
-      groupGFD.add(mesh);
-      const x = 300 * (Math.random() - 0.5);
-      const y = 200 * (Math.random() - 0.5);
-      const z = 300 * (Math.random() - 0.5);
-      let offset = 30;
-      mesh.position.set(
-        x > 0 ? x + offset : x - offset,
-        y,
-        z > 0 ? z + offset : z - offset
-      );
-    }
-    scene.add(groupGFD);
-    groupGFD.visible = true;
-    meshforlook.position.set(0, 0, 0);
-
-    const camera = new THREE.PerspectiveCamera(
-      30,
-      window.innerWidth / window.innerHeight,
-      100,
-      3000
-    );
-    const R = 100; //相机圆周运动的半径
-    const tw = new TWEEN.Tween({ angle: 0 })
-      .to({ angle: Math.PI * 2 }, 16000)
-      .onUpdate(function (obj) {
-        camera.position.set(
-          R * Math.cos(obj.angle),
-          0,
-          R * Math.sin(obj.angle)
-        );
-        camera.lookAt(meshforlook.position);
-      });
-    const group = new TWEEN.Group();
-    group.add(tw);
-    function circleMove() {
-      tw.start();
-    }
-    circleMove();
-    setInterval(circleMove, 16000);
-
-    const renderer = new THREE.WebGLRenderer({
-      //抗锯齿属性，WebGLRenderer常用的一个属性
-      antialias: true,
-      //透明度alpha，用来使背景透明
-      alpha: true,
-    });
-    renderer.setClearAlpha(0); //设置alpha
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.render(scene, camera); //每次scene或者camera改变都需要重新render
-
-    if (threeCubeRef.current)
-      threeCubeRef.current.appendChild(renderer.domElement);
-    if (typeof window != undefined) {
-      window.addEventListener("resize", () => {
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-    }
-    function render() {
-      if (animationPlayState === "paused") {
-      } else {
-        //官方的
-        groupGFD.children.forEach((mesh: any) => {
-          mesh.rotateX(mesh.scale.x * 0.01);
-          mesh.rotateY(mesh.scale.y * 0.01);
-          mesh.rotateZ(mesh.scale.z * 0.01);
-        });
-
-        group.update();
-        renderer.render(scene, camera);
-      }
-      setAnimationId(requestAnimationFrame(render));
-    }
-    render();
-    const warning = threeCubeRef.current;
-    return () => {
-      if (warning) {
-        warning.removeChild(renderer.domElement);
-      }
-      renderer.dispose();
-    };
-  }, [loading, animationPlayState]);
+  }, [loading, scrollTop, kilaInnerHeight]);
 
   return (
     <div className="h-screen w-screen bg-project bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
-      {/* mainScene */}
-      <div
-        className=" absolute top-0 left-0 w-screen h-screen"
-        ref={threeCubeRef}
-      ></div>
       {/* title and context */}
-      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center sm:gap-[8vw]">
+      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center sm:gap-[8vw]m z-[2] relative">
         <div
           className="order-1 sm:order-2 relative text-white h-[40vh] flex justify-center items-center "
           onMouseEnter={() => {
