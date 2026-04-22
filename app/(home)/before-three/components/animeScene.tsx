@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, useEffect, useRef, useState } from "react";
-import useWindow from "../../hooks/useWindow";
+import useWindow from "../../../hooks/useWindow";
 import Image from "next/image";
 import useScroll from "@/app/hooks/useScroll";
 import { loadingContext } from "@/app/providers/loadingVanishLayout";
@@ -79,7 +79,7 @@ export default function AnimeScene() {
   return (
     <div className="h-screen w-screen bg-anime bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative overflow-hidden">
       {/* mainScene */}
-      <div className=" absolute top-0 left-0 w-screen h-screen z-[2]">
+      <div className=" absolute top-0 left-0 w-screen h-screen">
         <div
           className=" relative h-[calc(100vh/3)] left-0 top-0 flex w-auto transition-transform ease-[cubic-bezier(0.25,0.75,0.85,1)] duration-400 "
           ref={stickyTopRef}
@@ -136,7 +136,7 @@ export default function AnimeScene() {
         </div>
       </div>
       {/* title and context */}
-      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center sm:gap-[7vw] z-[2] relative">
+      <div className="px-6 sm:px-10 lg:px-20 h-screen w-screen flex flex-col sm:flex-row justify-center items-center sm:gap-[7vw]">
         <a
           className="order-1 sm:order-2 relative text-white h-[40vh] flex justify-center items-center cursor-pointer "
           onMouseEnter={() => {

@@ -8,7 +8,7 @@ export default function ScrollToRMTscene() {
   const { height } = useWindow();
   return (
     <div
-      className="absolute left-[49vw] bottom-[25vh] sm:bottom-[27vh] lg:bottom-[30vh]"
+      className="absolute left-[49vw] bottom-[5vh] sm:bottom-[7vh] lg:bottom-[10vh]"
       onClick={() => {
         controlScrollTop(height);
       }}

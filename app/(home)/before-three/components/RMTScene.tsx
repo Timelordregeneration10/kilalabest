@@ -1,5 +1,5 @@
 "use client";
-import useWindow from "../../hooks/useWindow";
+import useWindow from "../../../hooks/useWindow";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import useScroll from "@/app/hooks/useScroll";
@@ -30,7 +30,7 @@ const Rems = [
     rheight: 1132,
     rtranslateX: 48,
     rtranslateY: 20,
-    rzIndex: "z-[3]",
+    rzIndex: "z-[1]",
     rposition: "left-0",
   },
   {
@@ -44,7 +44,7 @@ const Rems = [
     rheight: 744,
     rtranslateX: -40,
     rtranslateY: 80,
-    rzIndex: "z-[4]",
+    rzIndex: "z-[2]",
     rposition: "right-0",
   },
   {
@@ -58,7 +58,7 @@ const Rems = [
     rheight: 2212,
     rtranslateX: 60,
     rtranslateY: 160,
-    rzIndex: "z-[5]",
+    rzIndex: "z-[3]",
     rposition: "left-0",
   },
   {
@@ -72,7 +72,7 @@ const Rems = [
     rheight: 1403,
     rtranslateX: -100,
     rtranslateY: 220,
-    rzIndex: "z-[6]",
+    rzIndex: "z-[4]",
     rposition: "right-0",
   },
   {
@@ -86,7 +86,7 @@ const Rems = [
     rheight: 2994,
     rtranslateX: 120,
     rtranslateY: 300,
-    rzIndex: "z-[7]",
+    rzIndex: "z-[5]",
     rposition: "left-0",
   },
 ];
@@ -101,8 +101,7 @@ export default function RMTScene() {
   // TODO: Rem related link
 
   return (
-    // <div className=" h-[370vh] w-screen bg-rmt bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
-    <div className=" h-[370vh] w-screen relative">
+    <div className=" h-[370vh] w-screen bg-rmt bg-cover bg-center lg:bg-[length:100vw_100vh] bg-fixed relative">
       {/* <div className="fixed pointer-events-none top-0 left-0 w-screen h-screen z-[0] bg-[#0000003f]"
         style={{ clipPath: `inset(${scrollTop >= innerHeight ? 0 : (innerHeight - scrollTop) / innerHeight * 100}% 0% ${scrollTop <= innerHeight * 3.7 ? 0 : scrollTop >= innerHeight * 4.7 ? 100 : (scrollTop - innerHeight * 3.7) / innerHeight * 100}% 0%)` }}
       ></div>
@@ -113,7 +112,7 @@ export default function RMTScene() {
           RMT
         </div>
       </div> */}
-      <div className="absolute bottom-0 right-0 mr-[10vmin] text-white text-end z-[2]">
+      <div className="absolute bottom-0 right-0 mr-[10vmin] text-white text-end">
         <a
           className=" block text-[15vh] sm:text-[24.4vmax] [text-shadow:_0.5vw_0.5vw_0.2vw_#91bef0] cursor-pointer "
           href="/RMT"
@@ -144,7 +143,7 @@ export default function RMTScene() {
         </div>
       </div>
       <a
-        className="absolute left-6 -bottom-3 block text-[11vh] sm:text-[22.4vmax]  cursor-pointer text-white [text-shadow:_0.5vmax_0.5vmax_0.2vmax_#91bef0] z-[2]"
+        className="absolute left-6 -bottom-3 block text-[11vh] sm:text-[22.4vmax]  cursor-pointer text-white [text-shadow:_0.5vmax_0.5vmax_0.2vmax_#91bef0]"
         href="/RMT"
       >
         <h2>REM:</h2>

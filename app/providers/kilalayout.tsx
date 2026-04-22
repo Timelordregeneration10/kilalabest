@@ -55,7 +55,7 @@ const contactItems = [
 ];
 
 // height means scene scrollHeight
-const naviItems = [
+export const naviItems = [
   { id: "RMT", url: "/RMT", height: 3.7 },
   { id: "Project", url: "/project", height: 1 },
   { id: "Application", url: "/application", height: 3 },
