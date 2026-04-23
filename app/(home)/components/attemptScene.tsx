@@ -8,8 +8,10 @@ import useScroll from "@/app/hooks/useScroll";
 
 const attempts = [
   { name: "sticky系列", url: "/attempt/sticky" },
-  { name: "初学three.js与Rem", url: "https://timelord.cn/threeRem" },
+  { name: "frontier特效", url: "https://timelord.cn/frontier/" },
+  { name: "swayleaf", url: "/attempt/swayleaf" },
   { name: "CSS3D系列", url: "https://timelord.cn/css3d" },
+  { name: "小黑盒点击特效", url: "https://timelord.cn/heyboxLike/" },
   { name: "bilibilitop", url: "https://timelord.cn/bilibilitop" },
   { name: "Font系列", url: "https://timelord.cn/fontSeries" },
   { name: "My Happy Engagement", url: "https://timelord.cn/myHappyEngagement" },

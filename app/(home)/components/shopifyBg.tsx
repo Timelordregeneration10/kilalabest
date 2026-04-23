@@ -8,36 +8,7 @@ import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPa
 import useWindow from "@/app/hooks/useWindow";
 import useScroll from "@/app/hooks/useScroll";
 import { loadingContext } from "@/app/providers/loadingVanishLayout";
-
-interface NaviItem {
-  id: string;
-  url: string;
-  height: number;
-}
-
-/**
- * 场景配置：可直接替换为外部传入的数据源。
- * height 的单位是“屏高倍数”，1 表示 100vh，3.7 表示 370vh。
- */
-const naviItems: NaviItem[] = [
-  { id: "kilala", url: "/", height: 1 },
-  { id: "RMT", url: "/RMT", height: 3.7 },
-  { id: "Project", url: "/project", height: 1 },
-  { id: "Application", url: "/application", height: 3 },
-  { id: "Attempt", url: "/attempt", height: 1 },
-  {
-    id: "Music",
-    url: "https://music.163.com/#/user/home?id=479983448",
-    height: 1,
-  },
-  {
-    id: "Anime",
-    url: "https://anilist.co/user/NicholasBurkhardt/animelist",
-    height: 1,
-  },
-  { id: "Game", url: "https://space.bilibili.com/515016084", height: 1 },
-  { id: "Drawing", url: "/drawing", height: 1 },
-];
+import { naviItems } from "@/app/providers/kilalayout";
 
 /**
  * 背景切换图列表：场景索引与该列表索引一一对应，不够时循环使用。
@@ -55,7 +26,7 @@ const transitionImageList: string[] = [
   "https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/black.png"
 ];
 
-export default function ProjectScene() {
+export default function ShopifyBg() {
   const { loading } = useContext(loadingContext);
   const { scrollTop } = useScroll();
   const { height: kilaInnerHeight } = useWindow();
@@ -337,7 +308,7 @@ export default function ProjectScene() {
       sceneInnerProgress: number;
     } {
       const safeNaviItems =
-        naviItems.length > 0 ? naviItems : [{ id: "Default", url: "/", height: 1 }];
+        naviItems.length > 0 ? [{ id: "kilala", url: "/", height: 1 },...naviItems] : [{ id: "Default", url: "/", height: 1 }];
       const defaultSceneHeight = 1;
       // 单个场景用于执行过渡动画的固定窗口高度：1 屏（100vh）
       const transitionWindowHeight = 1;
