@@ -33,6 +33,15 @@
 - 其他pattern里记录的实现
 - 3维的旋涡，配合粒子效果？
 
+# 阿达拉希pw！
+- 没有设计？那就让gpt给我设计！然后我再去实现就行了！
+  - https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-GPT-design-pw-all.png
+  - https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-GPT-design-pw-1.png
+  - https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-GPT-design-pw-2.png
+  - https://cdn.jsdelivr.net/gh/Timelordregeneration10/kilala-img-bed/kilalabest-GPT-design-pw-3.png
+- 顺序
+  - 理解GPT说的流程，再继续
+
 # 暂时的一个目标: 完成可以分享给jiejoe的网站 => 认识到自己的不足，还远不够分享 => 无限期暂停 [⏸]
 - 整体思路
   + 先梳理应该包含哪些部分
